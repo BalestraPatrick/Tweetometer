@@ -4,7 +4,7 @@ Tweets Counter is an app to see which users are spamming your Twitter timeline. 
 This project uses [RxSwift](https://github.com/ReactiveX/RxSwift).
 
 ### Usage
-Tweets Counter uses CocoaPods to manage the dependencies. If you want to run the projects, makre sure to run `pod install` and open the .xcworkspace.
+Tweets Counter uses [Carthage](https://github.com/Carthage/Carthage) to manage the dependencies. If you want to run the project, make sure to install Carthage and do `carthage update` before running.
 Please use the latest version of Xcode (7.1 at the moment of writing) and Swift because I'll try to keep the project up to date.
 
 ### Contribution
