@@ -18,5 +18,5 @@ DerivedData
 *.xcuserstate
 
 Carthage/Checkouts
-
 Carthage/Build
+Pods
