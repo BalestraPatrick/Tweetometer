@@ -15,14 +15,14 @@ public struct TweetsRequest {
     public init() {
         let url = NSURL(string: TwitterAPI().userTimelineURL)!
         
-        let observable = Alamofire.request(Method.GET, url).rx_response()
-        observable.observeOn(MainScheduler.sharedInstance)
-            .subscribe(onNext: { json in
-                
-                print(json)
-                
-                }, onError: { error in
-                    print(error)
-            })
+//        let observable = Alamofire.request(Method.GET, url).rx_response()
+//        observable.observeOn(MainScheduler.sharedInstance)
+//            .subscribe(onNext: { json in
+//                
+//                print(json)
+//                
+//                }, onError: { error in
+//                    print(error)
+//            })
     }
 }

@@ -26,3 +26,8 @@ struct TwitterAPI {
         }
     }
 }
+
+
+struct TableViewCell {
+    let user = "UserCell"
+}
