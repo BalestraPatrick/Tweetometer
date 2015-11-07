@@ -10,6 +10,7 @@ This project uses [CocoaPods](https://github.com/CocoaPods/CocoaPods/) to manage
 Fabric is also used and you need to add your own API key by using [cocoapods keys](https://github.com/orta/cocoapods-keys). First install the gem (if not already installed) and then add your API Key and Build Secret like this:
 
 `pod keys set FABRIC_API_KEY YOUR_API_KEY_HERE`
+
 `pod keys set FABRIC_BUILD_SECRET YOUR_BUILD_SECRET_HERE`
 
 Please use the latest version of Xcode available.
