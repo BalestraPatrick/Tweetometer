@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0E3BC4108B119C70885863B2 /* Pods_TweetsCounterKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 018A32B8E5DC36F582C2D094 /* Pods_TweetsCounterKit.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		A753BA9A1A8B38AE9AD7C39B /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B560E69F32810C963EEC14D4 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		AE0C38431BE58815003A858F /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE0C38421BE58815003A858F /* Alamofire.framework */; };
 		AE0C38491BE589B8003A858F /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE0C38481BE589B8003A858F /* RxSwift.framework */; };
@@ -28,6 +27,8 @@
 		AE9181041BE4EEB500726002 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9181031BE4EEB500726002 /* Constants.swift */; };
 		AE9181071BE4EECA00726002 /* TweetsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9181061BE4EECA00726002 /* TweetsRequest.swift */; };
 		AE91810A1BE4EEF300726002 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9181091BE4EEF300726002 /* Helpers.swift */; };
+		AEE20A6B1BEE1AA900A029CF /* RxAlamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AEE20A6A1BEE1AA900A029CF /* RxAlamofire.framework */; };
+		AEE20A6D1BEE1AAF00A029CF /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AEE20A6C1BEE1AAF00A029CF /* Pods.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -124,6 +125,8 @@
 		AEBDAE391BE57A7E00D8E8C3 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = "Pods/../build/Debug-iphoneos/Alamofire.framework"; sourceTree = "<group>"; };
 		AEBDAE3A1BE57A7E00D8E8C3 /* RxAlamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxAlamofire.framework; path = "Pods/../build/Debug-iphoneos/RxAlamofire.framework"; sourceTree = "<group>"; };
 		AEBDAE3B1BE57A7E00D8E8C3 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = "Pods/../build/Debug-iphoneos/RxSwift.framework"; sourceTree = "<group>"; };
+		AEE20A6A1BEE1AA900A029CF /* RxAlamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxAlamofire.framework; path = "Pods/../build/Debug-iphoneos/RxAlamofire.framework"; sourceTree = "<group>"; };
+		AEE20A6C1BEE1AAF00A029CF /* Pods.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Pods.framework; path = "Pods/../build/Debug-iphoneos/Pods.framework"; sourceTree = "<group>"; };
 		B560E69F32810C963EEC14D4 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F02BBE7C287BE5BB40EB548C /* Pods_TweetsCounter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TweetsCounter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -156,9 +159,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AEE20A6D1BEE1AAF00A029CF /* Pods.framework in Frameworks */,
+				AEE20A6B1BEE1AA900A029CF /* RxAlamofire.framework in Frameworks */,
 				AE0C38431BE58815003A858F /* Alamofire.framework in Frameworks */,
 				AE0C38491BE589B8003A858F /* RxSwift.framework in Frameworks */,
-				0E3BC4108B119C70885863B2 /* Pods_TweetsCounterKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -176,6 +180,8 @@
 		75DDA918902E9559544BBC6E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				AEE20A6C1BEE1AAF00A029CF /* Pods.framework */,
+				AEE20A6A1BEE1AA900A029CF /* RxAlamofire.framework */,
 				AE26EDEF1BEE1293000E9829 /* RxAlamofire.framework */,
 				AE0C38481BE589B8003A858F /* RxSwift.framework */,
 				AE0C38421BE58815003A858F /* Alamofire.framework */,
@@ -839,7 +845,7 @@
 		};
 		AE9180FA1BE4EE0B00726002 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 90BD3A33DFA1AF03E464BEED /* Pods-TweetsCounterKit.debug.xcconfig */;
+			baseConfigurationReference = 738DAB5135BB417D3D552A1B /* Pods.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -847,14 +853,11 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/build/Debug-iphoneos",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = TweetsCounterKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.patrickbalestra.TweetsCounterKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -867,7 +870,7 @@
 		};
 		AE9180FB1BE4EE0B00726002 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 260F5456BF64025A4F2B7029 /* Pods-TweetsCounterKit.release.xcconfig */;
+			baseConfigurationReference = 5BF987EA791A3D33BC2000ED /* Pods.release.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -875,14 +878,11 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/build/Debug-iphoneos",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = TweetsCounterKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.patrickbalestra.TweetsCounterKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;

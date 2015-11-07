@@ -12,10 +12,6 @@ PODS:
   - RxAlamofire/Core (0.3.1):
     - Alamofire (~> 3.0)
     - RxSwift (~> 2.0.0-beta)
-  - RxBlocking (2.0.0-beta.2):
-    - RxSwift (~> 2.0.0-beta)
-  - RxCocoa (2.0.0-beta.2):
-    - RxSwift (~> 2.0.0-beta)
   - RxSwift (2.0.0-beta.2)
   - TwitterCore (1.12.1):
     - Fabric
@@ -28,8 +24,6 @@ DEPENDENCIES:
   - Crashlytics
   - Fabric
   - RxAlamofire (~> 0.3)
-  - RxBlocking (~> 2.0.0-beta)
-  - RxCocoa (~> 2.0.0-beta)
   - RxSwift (~> 2.0.0-beta)
   - TwitterCore
   - TwitterKit
@@ -40,8 +34,6 @@ SPEC CHECKSUMS:
   Crashlytics: 1ee87895c37472eb3f01f409ea1654a464d2f8d4
   Fabric: d737eda3a26ac940a5430230eedb35f16b226131
   RxAlamofire: 5a288da5965ca4652625231d4d3c4d3da3ee2eee
-  RxBlocking: ffb518856fb7712dcef7e18406ccb8c2854b3104
-  RxCocoa: ee39aa3ab24a8dde3832669f8e1e2c7652925e0c
   RxSwift: 795720c22352cf1f62669ef3695b5df7e195103b
   TwitterCore: 2b1bdd58dfba3f21b416d2a0d1ca74173e3b0eea
   TwitterKit: 7f55ebb8d2a1476f7ef2d6fedd40090d4b349b40
