@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0E3BC4108B119C70885863B2 /* Pods_TweetsCounterKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 018A32B8E5DC36F582C2D094 /* Pods_TweetsCounterKit.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		A753BA9A1A8B38AE9AD7C39B /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B560E69F32810C963EEC14D4 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		AE0C38431BE58815003A858F /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE0C38421BE58815003A858F /* Alamofire.framework */; };
 		AE0C38491BE589B8003A858F /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE0C38481BE589B8003A858F /* RxSwift.framework */; };
 		AE277DEE1BD4E6DB004E151C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE277DED1BD4E6DB004E151C /* AppDelegate.swift */; };
@@ -26,7 +28,6 @@
 		AE9181041BE4EEB500726002 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9181031BE4EEB500726002 /* Constants.swift */; };
 		AE9181071BE4EECA00726002 /* TweetsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9181061BE4EECA00726002 /* TweetsRequest.swift */; };
 		AE91810A1BE4EEF300726002 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9181091BE4EEF300726002 /* Helpers.swift */; };
-		CE4ABD38DC8F453B6D4297D7 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B560E69F32810C963EEC14D4 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,6 +92,7 @@
 		90BD3A33DFA1AF03E464BEED /* Pods-TweetsCounterKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TweetsCounterKit.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TweetsCounterKit/Pods-TweetsCounterKit.debug.xcconfig"; sourceTree = "<group>"; };
 		AE0C38421BE58815003A858F /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		AE0C38481BE589B8003A858F /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
+		AE26EDEF1BEE1293000E9829 /* RxAlamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxAlamofire.framework; path = "Pods/../build/Debug-iphoneos/RxAlamofire.framework"; sourceTree = "<group>"; };
 		AE277DEA1BD4E6DB004E151C /* TweetsCounter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TweetsCounter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE277DED1BD4E6DB004E151C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AE277DEF1BD4E6DB004E151C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -132,7 +134,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AE9180F81BE4EE0B00726002 /* TweetsCounterKit.framework in Frameworks */,
-				CE4ABD38DC8F453B6D4297D7 /* Pods.framework in Frameworks */,
+				A753BA9A1A8B38AE9AD7C39B /* Pods.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -156,6 +158,7 @@
 			files = (
 				AE0C38431BE58815003A858F /* Alamofire.framework in Frameworks */,
 				AE0C38491BE589B8003A858F /* RxSwift.framework in Frameworks */,
+				0E3BC4108B119C70885863B2 /* Pods_TweetsCounterKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -173,6 +176,7 @@
 		75DDA918902E9559544BBC6E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				AE26EDEF1BEE1293000E9829 /* RxAlamofire.framework */,
 				AE0C38481BE589B8003A858F /* RxSwift.framework */,
 				AE0C38421BE58815003A858F /* Alamofire.framework */,
 				AEBDAE391BE57A7E00D8E8C3 /* Alamofire.framework */,
@@ -332,13 +336,14 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AE277E121BD4E6DB004E151C /* Build configuration list for PBXNativeTarget "TweetsCounter" */;
 			buildPhases = (
-				7972EACEC191E42CD3B7677C /* Check Pods Manifest.lock */,
+				1EAAB72E07ADC544AD0BA056 /* Check Pods Manifest.lock */,
 				AE277DE61BD4E6DB004E151C /* Sources */,
 				AE277DE71BD4E6DB004E151C /* Frameworks */,
 				AE277DE81BD4E6DB004E151C /* Resources */,
 				AE5B758E1BD4E7F80064BF6C /* Embed Frameworks */,
 				AE4E3F371BE791B6003D8F86 /* ShellScript */,
-				AA5C1F4DFA152E6503001285 /* Copy Pods Resources */,
+				E6C243643A213843CFAE3E51 /* Embed Pods Frameworks */,
+				2E0BA0243ED47A195B09C765 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -510,7 +515,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		7972EACEC191E42CD3B7677C /* Check Pods Manifest.lock */ = {
+		1EAAB72E07ADC544AD0BA056 /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -525,7 +530,7 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		AA5C1F4DFA152E6503001285 /* Copy Pods Resources */ = {
+		2E0BA0243ED47A195B09C765 /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -552,6 +557,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Fabric/Fabric.framework/run\" `pod keys get FABRIC_API_KEY` `pod keys get FABRIC_BUILD_SECRET`";
+		};
+		E6C243643A213843CFAE3E51 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -819,6 +839,7 @@
 		};
 		AE9180FA1BE4EE0B00726002 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 90BD3A33DFA1AF03E464BEED /* Pods-TweetsCounterKit.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -826,7 +847,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos",
+				);
 				INFOPLIST_FILE = TweetsCounterKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -843,6 +867,7 @@
 		};
 		AE9180FB1BE4EE0B00726002 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 260F5456BF64025A4F2B7029 /* Pods-TweetsCounterKit.release.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -850,7 +875,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos",
+				);
 				INFOPLIST_FILE = TweetsCounterKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
