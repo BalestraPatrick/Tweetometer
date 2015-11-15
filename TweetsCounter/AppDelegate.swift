@@ -10,17 +10,15 @@ import UIKit
 import Fabric
 import Crashlytics
 import TwitterKit
+import Keys
 
-@UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+@UIApplicationMain class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-
-        Fabric.with([Crashlytics.self, Twitter.self])
-        
+        Twitter.sharedInstance().startWithConsumerKey(TweetscounterKeys().fABRIC_API_KEY(), consumerSecret: TweetscounterKeys().fABRIC_BUILD_SECRET())
+        Fabric.with([Crashlytics.sharedInstance(), Twitter.sharedInstance()])
         return true
     }
 

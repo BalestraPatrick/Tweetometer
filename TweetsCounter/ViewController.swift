@@ -8,6 +8,7 @@
 
 import UIKit
 import TweetsCounterKit
+import TwitterKit
 
 class ViewController: UIViewController {
 
@@ -17,7 +18,12 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         let req = TweetsRequest()
-        
+
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        let login = TwitterLoginViewController()
+        self.presentViewController(login, animated: true, completion: nil)
     }
 }
 
