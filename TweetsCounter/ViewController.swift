@@ -7,8 +7,6 @@
 //
 
 import UIKit
-import TweetsCounterKit
-import TwitterKit
 
 class ViewController: UIViewController {
 
@@ -17,7 +15,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let req = TweetsRequest()
+//        let req = TweetsRequest()
 
     }
     
