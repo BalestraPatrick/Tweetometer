@@ -12,16 +12,18 @@ import Alamofire
 import RxSwift
 import TwitterKit
 
-public class TweetsRequest {
+struct TweetsRequest {
     
     private var client: TWTRAPIClient
 
-    public init() {
-
+    init() {
+        
         if let userID = Twitter.sharedInstance().sessionStore.session()?.userID {
             client = TWTRAPIClient(userID: userID)
+            print(userID)
         } else {
             client = TWTRAPIClient()
         }
+        
     }
 }

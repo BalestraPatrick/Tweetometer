@@ -8,25 +8,17 @@
 
 import Foundation
 
-struct TwitterAPI {
-    let baseURL = "https://api.twitter.com/"
-    let version = "1.1"
-
-    let userTimelinePath = "/statuses/user_timeline"
+struct TwitterEndpoints {
     
-    var URL: String {
-        get {
-            return baseURL + version
-        }
-    }
+    let userTimelineComponents: NSURLComponents = {
+        let components = NSURLComponents()
+        components.scheme = "https"
+        components.host = "api.twitter.com"
+        components.path = "/1.1/statuses/user_timeline"
+        return components
+    }()
     
-    var userTimelineURL: String {
-        get {
-            return URL + userTimelinePath
-        }
-    }
 }
-
 
 struct TableViewCell {
     let user = "UserCell"

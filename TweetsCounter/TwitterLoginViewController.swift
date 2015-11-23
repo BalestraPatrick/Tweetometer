@@ -11,22 +11,20 @@ import TwitterKit
 
 public class TwitterLoginViewController: UIViewController {
 
+    var twitterSession = TwitterSession()
+    
     override public func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = UIColor.whiteColor()
-        
+        let store = Twitter.sharedInstance().sessionStore
+        let lastSession = store.session()
+        print("User ID of the last session: \(lastSession?.userID)")
+
         let logInButton = TWTRLogInButton { (session, error) in
-            if let unwrappedSession = session {
-                let alert = UIAlertController(title: "Logged In",
-                    message: "User \(unwrappedSession.userName) has logged in",
-                    preferredStyle: UIAlertControllerStyle.Alert
-                )
-                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
-                self.presentViewController(alert, animated: true, completion: nil)
-            } else {
-                NSLog("Login error: %@", error!.localizedDescription);
+            if let e = error {
+                self.twitterSession.handleLogInError(e)
             }
+            self.twitterSession.session = session
         }
         
         logInButton.center = self.view.center
