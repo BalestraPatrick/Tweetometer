@@ -15,13 +15,23 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let req = TweetsRequest()
-
     }
     
     override func viewDidAppear(animated: Bool) {
-        let login = TwitterLoginViewController()
-        self.presentViewController(login, animated: true, completion: nil)
+        do {
+            let result = try Tweets().startFetching()
+            print("Analyze Tweets! \(result)")
+        }
+        catch TwitterError.NotAuthenticated {
+            self.presentViewController(StoryboardScene.Main.twitterLoginViewController(), animated: true, completion: nil)
+        }
+        catch TwitterError.Unknown {
+            print("Unknown Error occured")
+        }
+        catch {
+            
+        }
     }
+    
 }
 
