@@ -20,6 +20,10 @@ struct TwitterEndpoints {
     
 }
 
-struct TableViewCell {
+struct TableViewCellIdentifiers {
     let user = "UserCell"
+}
+
+struct ViewControllerIdentifiers {
+    let twitterLogin = "TwitterLogin"
 }

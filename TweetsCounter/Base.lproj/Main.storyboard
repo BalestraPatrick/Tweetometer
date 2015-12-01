@@ -73,5 +73,42 @@
             </objects>
             <point key="canvasLocation" x="427" y="926"/>
         </scene>
+        <!--Twitter Login View Controller-->
+        <scene sceneID="Gb4-SI-36J">
+            <objects>
+                <viewController storyboardIdentifier="TwitterLogin" id="G6B-Kp-BNF" customClass="TwitterLoginViewController" customModule="TweetsCounter" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="CdZ-7i-uyy"/>
+                        <viewControllerLayoutGuide type="bottom" id="SIM-Lw-ilQ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="XA5-k3-P0y">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ai7-39-zC5">
+                                <rect key="frame" x="259.5" y="555" width="81" height="30"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="82o-hQ-kYi"/>
+                                    <constraint firstAttribute="width" constant="81" id="cft-sR-xEK"/>
+                                </constraints>
+                                <state key="normal" title="Cancel"/>
+                                <connections>
+                                    <action selector="cancel:" destination="G6B-Kp-BNF" eventType="touchUpInside" id="TOA-Yk-Fqa"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="SIM-Lw-ilQ" firstAttribute="top" secondItem="Ai7-39-zC5" secondAttribute="bottom" constant="15" id="MRC-5M-Z3x"/>
+                            <constraint firstItem="Ai7-39-zC5" firstAttribute="centerX" secondItem="XA5-k3-P0y" secondAttribute="centerX" id="ojp-lD-3dp"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Hu3-dA-3VD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1257" y="1382"/>
+        </scene>
     </scenes>
 </document>

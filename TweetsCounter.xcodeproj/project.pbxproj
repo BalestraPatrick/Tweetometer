@@ -18,7 +18,8 @@
 		AE3E81BE1BF8B40600A51804 /* TwitterLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3E81BD1BF8B40600A51804 /* TwitterLoginViewController.swift */; };
 		AEE4D8081BF9BFD100C9CA08 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE4D8071BF9BFD100C9CA08 /* Constants.swift */; };
 		AEE4D80A1BF9BFDB00C9CA08 /* TweetsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE4D8091BF9BFDB00C9CA08 /* TweetsRequest.swift */; };
-		AEFD95611BFB257C00AD5CD8 /* TwitterSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEFD95601BFB257C00AD5CD8 /* TwitterSession.swift */; };
+		AEE8C9AA1C0D97C50047A6A6 /* Tweets.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE8C9A91C0D97C50047A6A6 /* Tweets.swift */; };
+		AEE8C9AD1C0DB2D40047A6A6 /* Storyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE8C9AC1C0DB2D40047A6A6 /* Storyboard.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,7 +84,8 @@
 		AEE20A6C1BEE1AAF00A029CF /* Pods.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Pods.framework; path = "Pods/../build/Debug-iphoneos/Pods.framework"; sourceTree = "<group>"; };
 		AEE4D8071BF9BFD100C9CA08 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		AEE4D8091BF9BFDB00C9CA08 /* TweetsRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetsRequest.swift; sourceTree = "<group>"; };
-		AEFD95601BFB257C00AD5CD8 /* TwitterSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterSession.swift; sourceTree = "<group>"; };
+		AEE8C9A91C0D97C50047A6A6 /* Tweets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tweets.swift; sourceTree = "<group>"; };
+		AEE8C9AC1C0DB2D40047A6A6 /* Storyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Storyboard.swift; sourceTree = "<group>"; };
 		B560E69F32810C963EEC14D4 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F02BBE7C287BE5BB40EB548C /* Pods_TweetsCounter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TweetsCounter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -163,10 +165,9 @@
 			children = (
 				AE277DED1BD4E6DB004E151C /* AppDelegate.swift */,
 				AE277DEF1BD4E6DB004E151C /* ViewController.swift */,
-				AE3E81BD1BF8B40600A51804 /* TwitterLoginViewController.swift */,
-				AEE4D8091BF9BFDB00C9CA08 /* TweetsRequest.swift */,
-				AEFD95601BFB257C00AD5CD8 /* TwitterSession.swift */,
+				AEE8C9AB1C0DAAB60047A6A6 /* Twitter */,
 				AEE4D8071BF9BFD100C9CA08 /* Constants.swift */,
+				AEE8C9AC1C0DB2D40047A6A6 /* Storyboard.swift */,
 				AE277DF11BD4E6DB004E151C /* Main.storyboard */,
 				AE277DF41BD4E6DB004E151C /* Assets.xcassets */,
 				AE277DF91BD4E6DB004E151C /* Info.plist */,
@@ -191,6 +192,16 @@
 				AE277E0F1BD4E6DB004E151C /* Info.plist */,
 			);
 			path = TweetsCounterUITests;
+			sourceTree = "<group>";
+		};
+		AEE8C9AB1C0DAAB60047A6A6 /* Twitter */ = {
+			isa = PBXGroup;
+			children = (
+				AE3E81BD1BF8B40600A51804 /* TwitterLoginViewController.swift */,
+				AEE8C9A91C0D97C50047A6A6 /* Tweets.swift */,
+				AEE4D8091BF9BFDB00C9CA08 /* TweetsRequest.swift */,
+			);
+			name = Twitter;
 			sourceTree = "<group>";
 		};
 		FA8B1149C36D9A66C62B8BE8 /* Pods */ = {
@@ -389,8 +400,9 @@
 				AE277DF01BD4E6DB004E151C /* ViewController.swift in Sources */,
 				AE3E81BE1BF8B40600A51804 /* TwitterLoginViewController.swift in Sources */,
 				AE277DEE1BD4E6DB004E151C /* AppDelegate.swift in Sources */,
+				AEE8C9AD1C0DB2D40047A6A6 /* Storyboard.swift in Sources */,
 				AEE4D80A1BF9BFDB00C9CA08 /* TweetsRequest.swift in Sources */,
-				AEFD95611BFB257C00AD5CD8 /* TwitterSession.swift in Sources */,
+				AEE8C9AA1C0D97C50047A6A6 /* Tweets.swift in Sources */,
 				AEE4D8081BF9BFD100C9CA08 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
