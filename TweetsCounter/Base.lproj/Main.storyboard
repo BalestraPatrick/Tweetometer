@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="CKX-yh-fN9">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="CKX-yh-fN9">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Who is spamming today?-->
@@ -18,7 +19,6 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="rso-oX-7fS">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                                <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="UserCell" id="te9-gm-mVz">
@@ -27,14 +27,11 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="te9-gm-mVz" id="1CI-Gc-lpG">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
-                                            <animations/>
                                         </tableViewCellContentView>
-                                        <animations/>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
                         </subviews>
-                        <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="rso-oX-7fS" secondAttribute="trailing" id="7ZH-vE-S1K"/>
@@ -44,9 +41,19 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Who is spamming today?" id="qij-GM-89B">
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="FhS-OA-b3v">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="u4C-qs-5mp" customClass="ProfilePictureButton" customModule="TweetsCounter" customModuleProvider="target">
+                                <rect key="frame" x="20" y="7" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="showProfile:" destination="BYZ-38-t0r" eventType="touchUpInside" id="L39-BG-sdf"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="NoE-yk-Izm"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="profileButton" destination="u4C-qs-5mp" id="3bg-Tv-aEt"/>
                         <outlet property="tableView" destination="rso-oX-7fS" id="Aqk-H5-NCc"/>
                     </connections>
                 </viewController>
@@ -62,7 +69,6 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="A0T-ro-vqk">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <animations/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -85,26 +91,57 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ai7-39-zC5">
-                                <rect key="frame" x="259.5" y="555" width="81" height="30"/>
-                                <animations/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tweets Counter needs access to your account to analyze your timeline." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DAf-T3-Tbp">
+                                <rect key="frame" x="40" y="176" width="520" height="48"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="82o-hQ-kYi"/>
-                                    <constraint firstAttribute="width" constant="81" id="cft-sR-xEK"/>
+                                    <constraint firstAttribute="height" constant="21" id="9on-L4-s0s"/>
                                 </constraints>
-                                <state key="normal" title="Cancel"/>
-                                <connections>
-                                    <action selector="cancel:" destination="G6B-Kp-BNF" eventType="touchUpInside" id="TOA-Yk-Fqa"/>
-                                </connections>
-                            </button>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="20"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="9on-L4-s0s"/>
+                                    </mask>
+                                </variation>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="GA4-BO-2eY">
+                                <rect key="frame" x="268" y="102" width="64" height="64"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="64" id="N0K-8R-sys"/>
+                                    <constraint firstAttribute="width" constant="64" id="pE2-Kv-hZ6"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login Result Message" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y6N-cZ-yde">
+                                <rect key="frame" x="40" y="388" width="520" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="nU3-0J-Fa5"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="20"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="nU3-0J-Fa5"/>
+                                    </mask>
+                                </variation>
+                            </label>
                         </subviews>
-                        <animations/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.29504310344827589" green="0.13065732758620691" blue="0.63782327586206899" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="SIM-Lw-ilQ" firstAttribute="top" secondItem="Ai7-39-zC5" secondAttribute="bottom" constant="15" id="MRC-5M-Z3x"/>
-                            <constraint firstItem="Ai7-39-zC5" firstAttribute="centerX" secondItem="XA5-k3-P0y" secondAttribute="centerX" id="ojp-lD-3dp"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="DAf-T3-Tbp" secondAttribute="trailing" constant="20" id="1Cu-Cn-P1y"/>
+                            <constraint firstItem="DAf-T3-Tbp" firstAttribute="leading" secondItem="XA5-k3-P0y" secondAttribute="leadingMargin" constant="20" id="1EY-M7-X8O"/>
+                            <constraint firstItem="GA4-BO-2eY" firstAttribute="centerX" secondItem="XA5-k3-P0y" secondAttribute="centerX" id="7wa-wq-Rk5"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="y6N-cZ-yde" secondAttribute="trailing" constant="20" id="Rr7-t0-mz5"/>
+                            <constraint firstItem="DAf-T3-Tbp" firstAttribute="top" secondItem="GA4-BO-2eY" secondAttribute="bottom" constant="10" id="SQt-z5-Q5w"/>
+                            <constraint firstItem="y6N-cZ-yde" firstAttribute="centerY" secondItem="XA5-k3-P0y" secondAttribute="centerY" constant="100" id="faK-nh-wGU"/>
+                            <constraint firstItem="DAf-T3-Tbp" firstAttribute="centerY" secondItem="XA5-k3-P0y" secondAttribute="centerY" constant="-100" id="pzJ-Lg-1Sb"/>
+                            <constraint firstItem="y6N-cZ-yde" firstAttribute="leading" secondItem="XA5-k3-P0y" secondAttribute="leadingMargin" constant="20" id="uuk-at-JYg"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="resultLabel" destination="y6N-cZ-yde" id="6L2-68-5Mz"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Hu3-dA-3VD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

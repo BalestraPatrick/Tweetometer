@@ -10,24 +10,31 @@ import Foundation
 import TwitterKit
 
 
-enum TwitterError: ErrorType {
+enum AuthenticationError: ErrorType {
     case NotAuthenticated
     case Unknown
 }
 
 struct Tweets {
-
-    let request = TweetsRequest()
     
-    func startFetching() throws -> String {
-        var client: TWTRAPIClient
-
+    func checkSessionUserID() throws -> String {
         if let userID = Twitter.sharedInstance().sessionStore.session()?.userID {
-            client = TWTRAPIClient(userID: userID)
-            return ""
+            return userID
         } else {
-            client = TWTRAPIClient()
-            throw TwitterError.NotAuthenticated
+            throw AuthenticationError.NotAuthenticated
+        }
+    }
+    
+    func requestTweets(userID: String) {
+        let client = TWTRAPIClient(userID: userID)
+        client.loadUserWithID(userID) { (user, error) in
+            guard error == nil && user != nil else {
+                // TODO: Handle error
+                print(error)
+                return
+            }
+            // Download profile image of the logged in user
+//            ProfileImageDownloader().downloadProfileImageURL((user?.profileImageURL)!)
         }
     }
 }
