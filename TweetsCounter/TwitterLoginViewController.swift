@@ -16,16 +16,16 @@ public class TwitterLoginViewController: UIViewController {
     override public func viewDidLoad() {
         super.viewDidLoad()
         
+        // Add login button to view
         let logInButton = TWTRLogInButton { (session, error) in
-//            print("error \(error)")
-//            print("session \(session)")
-//            if let e = error {
-//                self.resultLabel.text = e.localizedFailureReason;
-//            } else {
-//                self.dismissViewControllerAnimated(true, completion: nil)
-//            }
+            // TODO: should probably save user session somewhere or check if it's already stored in TwitterKit
+            if let e = error {
+                self.resultLabel.text = e.localizedFailureReason;
+            } else {
+                self.dismissViewControllerAnimated(true, completion: nil)
+            }
         }
-
+        
         logInButton.center = self.view.center
         self.view.addSubview(logInButton)
         
@@ -34,5 +34,5 @@ public class TwitterLoginViewController: UIViewController {
     public override func preferredStatusBarStyle() -> UIStatusBarStyle {
         return .LightContent
     }
-
+    
 }

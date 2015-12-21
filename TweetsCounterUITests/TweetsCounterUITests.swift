@@ -28,11 +28,5 @@ class TweetsCounterUITests: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
-        // Use recording to get started writing UI tests.
-        XCUIApplication().buttons["Log in with Twitter"].tap()
-
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
     
 }

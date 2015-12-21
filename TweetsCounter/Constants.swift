@@ -20,10 +20,16 @@ struct TwitterEndpoints {
     
 }
 
-struct TableViewCellIdentifiers {
-    let user = "UserCell"
+let cacheName = "TweetsCounter"
+
+struct StashCacheIdentifier {
+    static let profilePicture = "UserProfilePicture"
 }
 
-struct ViewControllerIdentifiers {
-    let twitterLogin = "TwitterLogin"
+struct TableViewCellIdentifier {
+    static let user = "UserCell"
+}
+
+struct ViewControllerIdentifier {
+    static let twitterLogin = "TwitterLogin"
 }

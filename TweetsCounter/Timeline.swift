@@ -8,7 +8,7 @@
 
 import UIKit
 
-class Timeline {
+struct Timeline {
     var tweets:[Tweet] = []
     
     init() {

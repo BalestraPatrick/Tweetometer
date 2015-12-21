@@ -1,21 +1,20 @@
 PODS:
-  - Alamofire (3.1.2)
-  - Crashlytics (3.4.0):
+  - Alamofire (3.1.4)
+  - Crashlytics (3.4.1):
     - Fabric (~> 1.6.0)
-  - Fabric (1.6.0):
-    - Fabric/Base (= 1.6.0)
-  - Fabric/Base (1.6.0)
+  - Fabric (1.6.1)
   - Keys (1.0.0)
-  - RxAlamofire (0.3.1):
-    - RxAlamofire/Core (= 0.3.1)
-  - RxAlamofire/Core (0.3.1):
+  - RxAlamofire (0.3.3):
+    - RxAlamofire/Core (= 0.3.3)
+  - RxAlamofire/Core (0.3.3):
     - Alamofire (~> 3.0)
     - RxSwift (~> 2.0.0-beta)
-  - RxSwift (2.0.0-beta.2)
-  - TwitterCore (1.13.1):
+  - RxSwift (2.0.0-beta.4)
+  - Stash (0.4.0)
+  - TwitterCore (1.14.6):
     - Fabric
-  - TwitterKit (1.13.1):
-    - TwitterCore (= 1.13.1)
+  - TwitterKit (1.14.6):
+    - TwitterCore (= 1.14.6)
 
 DEPENDENCIES:
   - Alamofire (~> 3.0)
@@ -24,6 +23,7 @@ DEPENDENCIES:
   - Keys (from `Pods/CocoaPodsKeys`)
   - RxAlamofire (~> 0.3)
   - RxSwift (~> 2.0.0-beta)
+  - Stash
   - TwitterCore
   - TwitterKit
 
@@ -32,13 +32,14 @@ EXTERNAL SOURCES:
     :path: Pods/CocoaPodsKeys
 
 SPEC CHECKSUMS:
-  Alamofire: 7c16ca65f3c7e681fd925fd7f2dec7747ff96855
-  Crashlytics: 1ee87895c37472eb3f01f409ea1654a464d2f8d4
-  Fabric: d737eda3a26ac940a5430230eedb35f16b226131
+  Alamofire: fbc829692f351fa1d8a31dd75fd7f7f56fea31fb
+  Crashlytics: 41574a245bc6ae10c55d57f385ebd2004e5bee05
+  Fabric: bf0ceb04e7c924090efc5f8c55e4fbcca189e0a0
   Keys: 7d2ff6ff42f6903358267ce56e9392f83c31acfe
-  RxAlamofire: 5a288da5965ca4652625231d4d3c4d3da3ee2eee
-  RxSwift: 795720c22352cf1f62669ef3695b5df7e195103b
-  TwitterCore: 4f6fbd413f6d574d38bfbeeeb5cd75738caf567e
-  TwitterKit: 77ee49981d79c9663eae3920641addf7c8713b38
+  RxAlamofire: 3ff214d5f12a1e897f9ada956062d0281bf3262f
+  RxSwift: 191c6b06da783a8671433cf35a54d2ad2fd2d9de
+  Stash: 403eac5694d630095ff50935751a1b4d11f4cb90
+  TwitterCore: 5e9b2d066ceeef53fe611c0c4436cb700f1ed620
+  TwitterKit: f67360ee0a5f935f053bf37015652ac157e4eb92
 
 COCOAPODS: 0.39.0

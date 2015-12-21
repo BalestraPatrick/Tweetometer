@@ -11,53 +11,82 @@ import RxSwift
 import RxAlamofire
 import Alamofire
 import TwitterKit
+import Stash
 
 class TimelineViewModel {
-
-    var profilePicture: Dynamic<UIImage?> = Dynamic(nil)
-    var userID: String = ""
+    
+    let stash = try! Stash(name: cacheName, rootPath: NSTemporaryDirectory())
+    let disposebag = DisposeBag()
+    
+    var userID: String?
+    var loggedInUser: TWTRUser?
     
     init() {
         
     }
     
     /**
-     Check authentication of the current user to see if we can proceed to load the timeline.
+     Request the profile information for the currently authenticated user.
      
-     - parameter callback: Contains an optional authentication error.
+     - returns: User object with all its fetched data.
      */
-    func checkAuthentication(callback: (AuthenticationError?) -> Void) {
-        do {
-            let tweets = Tweets()
-            userID = try tweets.checkSessionUserID()
-            tweets.requestTweets(userID)
-        }
-        catch let error as AuthenticationError {
-            callback(error)
-        }
-        catch {}
+    func requestProfileInformation() -> Observable<TWTRUser> {
+        return create({ observer -> Disposable in
+            do {
+                let session = TwitterSession()
+                let userID = try session.checkSessionUserID()
+                
+                Twitter.sharedInstance()
+                    .rx_loadUserWithID(userID, session: session)
+                    .observeOn(MainScheduler.sharedInstance)
+                    .subscribe(onNext: { user in
+                        self.loggedInUser = user
+                        observer.onNext(user)
+                        observer.onCompleted()
+                        }, onError: { error in
+                            // Present error in case of no internet access and with information contained in the NSError object
+                            print("Failed in requesting user data with error: \(error)!")
+                            // TODO: Use Error Type
+                            observer.onError(error)
+                        }, onCompleted: nil, onDisposed: nil)
+                    .addDisposableTo(self.disposebag)
+            }
+            catch {
+                // Throw the error in the callback to present the login view controller
+                observer.onError(TwitterRequestError.NotAuthenticated)
+            }
+            return AnonymousDisposable {}
+        })
     }
     
-    func requestProfilePicture() {
-        
-        let client = TWTRAPIClient(userID: userID)
-        client.loadUserWithID(userID) { (user, error) in
-            guard error == nil && user != nil else {
-                print(error)
-                return
+    /**
+     Fetch from local cache or download the authenticated user's profile picture.
+     
+     - returns: User profile image.
+     */
+    func requestProfilePicture() -> Observable<UIImage> {
+        return create({ observer -> Disposable in
+            if self.loggedInUser == nil {
+                observer.onError(TwitterRequestError.NotAuthenticated)
+            } else if let image = self.stash[StashCacheIdentifier.profilePicture] as? UIImage {
+                observer.onNext(image)
+                observer.onCompleted()
+            } else {
+                // Download profile image of the logged in user if not cached
+                request(Method.GET, (self.loggedInUser?.profileImageLargeURL)!)
+                    .flatMap {
+                        $0.validate(statusCode: 200 ..< 300).rx_data()
+                    }
+                    .observeOn(MainScheduler.sharedInstance)
+                    .subscribe {
+                        guard let data = $0.element else { return }
+                        let image = UIImage(data: data)!
+                        self.stash[StashCacheIdentifier.profilePicture] = image
+                        observer.onNext(image)
+                        observer.onCompleted()
+                    }.addDisposableTo(self.disposebag)
             }
-            // Download profile image of the logged in user
-            _ = request(.GET, (user?.profileImageURL)!)
-            .flatMap {
-                $0
-                    .validate(statusCode: 200 ..< 300)
-                    .rx_data()
-                }
-                .observeOn(MainScheduler.sharedInstance)
-                .subscribe {
-                    guard let data = $0.element else { return }
-                    self.profilePicture.value = UIImage(data: data)!
-            }
-        }
+            return AnonymousDisposable {}
+        })
     }
 }
