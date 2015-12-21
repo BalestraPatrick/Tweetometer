@@ -12,14 +12,12 @@ import RxSwift
 
 extension Twitter {
     
-    /**
-     Load user information via the Twitter API.
-     
-     - parameter userID:  ID of the user account to be fetched.
-     - parameter session: Session to load the request.
-     
-     - returns: An Observable containing the user object.
-     */
+    ///  Load user information via the Twitter API.
+    ///
+    ///  - parameter userID:  ID of the user account to be fetched.
+    ///  - parameter session: Session to load the request.
+    ///
+    ///  - returns: An Observable containing the user object.
     func rx_loadUserWithID(userID: String, session: TwitterSession) -> Observable<TWTRUser> {
         return create { (observer: AnyObserver<TWTRUser>) -> Disposable in
             session.client?.loadUserWithID(userID) { user, error in

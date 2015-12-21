@@ -18,13 +18,7 @@ class TwitterSession {
     
     var client: TWTRAPIClient?
     
-    /**
-     Check the session user ID to see if there is an user logged in.
-     
-     - throws: .NotAuthenticated if there is no available user logged in.
-     
-     - returns: A string containing the userID.
-     */
+    ///  Check the session user ID to see if there is an user logged in.
     func checkSessionUserID() throws -> String {
         if let userID = Twitter.sharedInstance().sessionStore.session()?.userID {
             client = TWTRAPIClient(userID: userID)

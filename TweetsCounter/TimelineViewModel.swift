@@ -25,11 +25,9 @@ class TimelineViewModel {
         
     }
     
-    /**
-     Request the profile information for the currently authenticated user.
-     
-     - returns: User object with all its fetched data.
-     */
+    /// Request the profile information for the currently authenticated user.
+    ///
+    /// - returns: User object with all its fetched data.
     func requestProfileInformation() -> Observable<TWTRUser> {
         return create({ observer -> Disposable in
             do {
@@ -59,11 +57,9 @@ class TimelineViewModel {
         })
     }
     
-    /**
-     Fetch from local cache or download the authenticated user's profile picture.
-     
-     - returns: User profile image.
-     */
+    /// Fetch from local cache or download the authenticated user's profile picture.
+    ///
+    /// - returns: User profile image.
     func requestProfilePicture() -> Observable<UIImage> {
         return create({ observer -> Disposable in
             if self.loggedInUser == nil {
