@@ -2,6 +2,10 @@ before_install:
   - gem install cocoapods -v '0.39.0'
   - gem install cocoapods-keys
   - xcodebuild -version -sdk
+
+cache:
+  - bundler
+  - cocoapods
   
 rvm: 2.2.2
 language: objective-c
