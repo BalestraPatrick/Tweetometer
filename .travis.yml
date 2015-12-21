@@ -1,8 +1,8 @@
 before_install:
   - gem install cocoapods -v '0.39.0'
   - gem install cocoapods-keys
-  - bundle exec pod keys set FABRIC_API_KEY FABRIC_API_KEY TweetsCounter
-  - bundle exec pod keys set FABRIC_BUILD_SECRET FABRIC_BUILD_SECRET 
+  - bundle exec pod keys set FABRIC_API_KEY $FABRIC_API_KEY TweetsCounter
+  - bundle exec pod keys set FABRIC_BUILD_SECRET $FABRIC_BUILD_SECRET 
 
 rvm: 2.2.2
 language: objective-c
