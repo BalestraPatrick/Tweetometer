@@ -7,4 +7,3 @@ language: objective-c
 osx-image: xcode7.2
 xcode_workspace: TweetsCounter.xcworkspace
 xcode_scheme: TweetsCounter
-xcode_sdk: iphonesimulator9.1
