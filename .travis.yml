@@ -1,3 +1,6 @@
+before_install:
+  - gem install cocoapods -v '0.39.0'
+
 language: objective-c
 osx-image: xcode7.2
 xcode_workspace: TweetsCounter.xcworkspace
