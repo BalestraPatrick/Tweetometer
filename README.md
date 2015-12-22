@@ -4,7 +4,7 @@
 
 Tweets Counter is an app to see who is tweeting a lot in your Twitter timeline. It often happens to me that I check my timeline and I see a few hundreds tweets in just a few hours and I wonder "Who is spamming my timeline?". 
 
-This is a WIP and I started it as a small side project to improve my Swift skills. The project is written in Swift 2.0 and it uses the Fabric SDK to access Twitter's API.
+This is a WIP. The project is written in Swift 2.0 and it uses the Fabric SDK to access Twitter's API.
 
 ### Usage
 This project uses [CocoaPods](https://github.com/CocoaPods/CocoaPods/) to manage the dependencies. If you want to run the project, you first need to install the pods by doing `pod install`.
