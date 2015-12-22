@@ -6,10 +6,10 @@ before_install:
 cache:
   - bundler
   - cocoapods
-  
+
 rvm: 2.2.2
+osx-image: xcode7.1
 language: objective-c
-osx-image: xcode7.2
 xcode_workspace: TweetsCounter.xcworkspace
 xcode_scheme: TweetsCounter
 script: xctool -workspace TweetsCounter.xcworkspace -scheme TweetsCounter build  CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO
