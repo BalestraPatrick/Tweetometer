@@ -1,5 +1,7 @@
 # TweetsCounter
 
+![](https://travis-ci.org/BalestraPatrick/TweetsCounter.svg?branch=master)
+
 Tweets Counter is an app to see who is tweeting a lot in your Twitter timeline. It often happens to me that I check my timeline and I see a few hundreds tweets in just a few hours and I wonder "Who is spamming my timeline?". 
 
 This is a WIP and I started it as a small side project to improve my Swift skills. The project is written in Swift 2.0 and it uses the Fabric SDK to access Twitter's API.
