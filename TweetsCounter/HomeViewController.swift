@@ -21,7 +21,6 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.applyCustomization()
-        
     }
     
     override func viewDidAppear(animated: Bool) {
