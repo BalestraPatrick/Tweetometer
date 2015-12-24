@@ -11,36 +11,15 @@ import Fabric
 import Crashlytics
 import TwitterKit
 import Keys
-import SWHttpTrafficRecorder
 
-@UIApplicationMain class AppDelegate: UIResponder, UIApplicationDelegate, SWHttpTrafficRecordingProgressDelegate {
+@UIApplicationMain class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         Twitter.sharedInstance().startWithConsumerKey(TweetscounterKeys().fABRIC_API_KEY(), consumerSecret: TweetscounterKeys().fABRIC_BUILD_SECRET())
         Fabric.with([Crashlytics.sharedInstance(), Twitter.sharedInstance()])
-        
-        if let sharedRecorder = SWHttpTrafficRecorder.sharedRecorder() {
-            sharedRecorder.recordingFormat = SWHTTPTrafficRecordingFormat.Mocktail
-            sharedRecorder.progressDelegate = self
-            sharedRecorder.startRecording()
-        }
         return true
-    }
-    
-    func updateRecordingProgress(currentProgress: SWHTTPTrafficRecordingProgressKind, userInfo info: [NSObject : AnyObject]!) {
-        guard let request = info[SWHTTPTrafficRecordingProgressRequestKey] as? NSURLRequest, urlString = request.URL?.absoluteString else {
-            return
-        }
-        
-        let progress =  ["Received","Skipped","Started","Loaded","Recorded", "FailedToLoad", "FailedToRecord"][currentProgress.rawValue-1]
-        
-        if let path = info[SWHTTPTrafficRecordingProgressFilePathKey] as? String{
-            print("Progress:\(progress), request: \(urlString) at \(path)")
-        } else {
-            print("Progress:\(progress), request: \(urlString)")
-        }
     }
     
     func applicationWillResignActive(application: UIApplication) {

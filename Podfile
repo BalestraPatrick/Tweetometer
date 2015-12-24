@@ -12,7 +12,7 @@ pod 'TwitterCore'
 pod 'Alamofire', '~> 3.0'
 pod 'RxSwift', '~> 2.0.0-beta'
 pod 'Stash'
-pod 'SWHttpTrafficRecorder', '~> 1.0'
+pod 'ObjectMapper', '~> 1.0'
 
 plugin 'cocoapods-keys', {
     :project => "TweetsCounter",
