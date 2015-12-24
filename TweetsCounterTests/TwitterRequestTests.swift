@@ -22,6 +22,7 @@ class TwitterRequestTests: XCTestCase {
     
     override func tearDown() {
         super.tearDown()
+        OHHTTPStubs.removeAllStubs()
     }
     
     func testLoadUserProfileSuccessfully() {
@@ -30,7 +31,7 @@ class TwitterRequestTests: XCTestCase {
         
         _ = timelineViewModel.requestProfileInformation()
             .subscribe(onNext: { user in
-                XCTAssertNotNil(user)
+                XCTAssertNil(user)
                 XCTAssertEqual(user.userID, self.userData.userID)
                 XCTAssertEqual(user.name, self.userData.name)
                 XCTAssertEqual(user.screenName, self.userData.screenName)
@@ -45,9 +46,23 @@ class TwitterRequestTests: XCTestCase {
     }
     
     func testLoadUserProfileFailed() {
-        stub(isHost(TwitterEndpoints().timeline.host)) { _ in
-            let stubData = "Hello World!".dataUsingEncoding(NSUTF8StringEncoding)
-            return OHHTTPStubsResponse(data: stubData!, statusCode:200, headers:nil)
+        
+        let expectation = expectationWithDescription("Receive error when the request fails.")
+        
+        _ = timelineViewModel.requestProfileInformation()
+            .subscribe(onNext: { user in
+                XCTFail("Failed in requesting the profile information with error: \(user)")
+                }, onError: { error in
+                    expectation.fulfill()
+                }, onCompleted: nil, onDisposed: nil)
+        
+        waitForExpectationsWithTimeout(10.0) { error in
+            XCTAssertNil(error, "Failed expectation \(expectation) with error \(error)")
+        }
+        
+        stub(isPath(TwitterEndpoints().profile.host!)) { request in
+            let notConnectedError = NSError(domain:NSURLErrorDomain, code:Int(CFNetworkErrors.CFURLErrorNotConnectedToInternet.rawValue), userInfo:nil)
+            return OHHTTPStubsResponse(error:notConnectedError)
         }
     }
 }
