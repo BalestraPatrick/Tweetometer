@@ -13,6 +13,7 @@ pod 'Alamofire', '~> 3.0'
 pod 'RxSwift', '~> 2.0.0-beta'
 pod 'Stash'
 pod 'ObjectMapper', '~> 1.0'
+pod 'Unbox'
 
 plugin 'cocoapods-keys', {
     :project => "TweetsCounter",

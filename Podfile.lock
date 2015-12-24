@@ -29,6 +29,7 @@ PODS:
     - Fabric
   - TwitterKit (1.14.6):
     - TwitterCore (= 1.14.6)
+  - Unbox (1.2.3)
 
 DEPENDENCIES:
   - Alamofire (~> 3.0)
@@ -42,6 +43,7 @@ DEPENDENCIES:
   - Stash
   - TwitterCore
   - TwitterKit
+  - Unbox
 
 EXTERNAL SOURCES:
   Keys:
@@ -59,5 +61,6 @@ SPEC CHECKSUMS:
   Stash: 403eac5694d630095ff50935751a1b4d11f4cb90
   TwitterCore: 5e9b2d066ceeef53fe611c0c4436cb700f1ed620
   TwitterKit: f67360ee0a5f935f053bf37015652ac157e4eb92
+  Unbox: 357412aec9fe10e0dcd36df61a2352a277037b62
 
 COCOAPODS: 0.39.0
