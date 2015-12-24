@@ -18,6 +18,8 @@ PODS:
   - OHHTTPStubs/NSURLSession (4.7.0):
     - OHHTTPStubs/Core
   - OHHTTPStubs/OHPathHelpers (4.7.0)
+  - OHHTTPStubs/Swift (4.7.0):
+    - OHHTTPStubs/Core
   - RxAlamofire (0.3.3):
     - RxAlamofire/Core (= 0.3.3)
   - RxAlamofire/Core (0.3.3):
@@ -38,6 +40,7 @@ DEPENDENCIES:
   - Keys (from `Pods/CocoaPodsKeys`)
   - ObjectMapper (~> 1.0)
   - OHHTTPStubs
+  - OHHTTPStubs/Swift
   - RxAlamofire (~> 0.3)
   - RxSwift (~> 2.0.0-beta)
   - Stash

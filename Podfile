@@ -26,4 +26,5 @@ plugin 'cocoapods-keys', {
 target "TweetsCounterTests" do
     pod 'TwitterKit'
     pod 'OHHTTPStubs'
+    pod 'OHHTTPStubs/Swift'
 end
