@@ -22,6 +22,13 @@ struct TwitterEndpoints {
         return timeline.string!
     }
     
+    let profile: NSURLComponents = {
+        let components = NSURLComponents()
+        components.scheme = "https"
+        components.host = "api.twitter.com"
+        components.path = "users/show.json"
+        return components
+    }()
     
 }
 

@@ -92,6 +92,8 @@ extension Twitter {
                 } else {
                     do {
                         let JSON: AnyObject = try NSJSONSerialization.JSONObjectWithData(data!, options: .AllowFragments)
+                        
+                        print("Received \(JSON)")
                         print("Received \(JSON)")
                         // TODO: Should convert to Timeline object
                         observer.onNext(JSON)
