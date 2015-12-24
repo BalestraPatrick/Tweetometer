@@ -37,6 +37,14 @@ class HomeViewController: UIViewController {
                     }
                 }, onCompleted: nil, onDisposed: nil)
             .addDisposableTo(self.disposeBag)
+        
+        viewModel.requestTimeline()
+            .subscribe(onNext: { timeline in
+                
+                }, onError: { error in
+                    
+                }, onCompleted: nil, onDisposed: nil)
+            .addDisposableTo(self.disposeBag)
     }
     
     // MARK: Data Request
@@ -51,6 +59,7 @@ class HomeViewController: UIViewController {
                     // handle completion
                 }, onDisposed: nil)
             .addDisposableTo(self.disposeBag)
+        
     }
     
     // MARK: IBActions

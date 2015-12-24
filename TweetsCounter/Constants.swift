@@ -10,13 +10,18 @@ import Foundation
 
 struct TwitterEndpoints {
     
-    let userTimelineComponents: NSURLComponents = {
+    let timeline: NSURLComponents = {
         let components = NSURLComponents()
         components.scheme = "https"
         components.host = "api.twitter.com"
-        components.path = "/1.1/statuses/user_timeline"
+        components.path = "/1.1/statuses/home_timeline.json"
         return components
     }()
+    
+    var timelineURL: String {
+        return timeline.string!
+    }
+    
     
 }
 

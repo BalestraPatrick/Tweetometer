@@ -16,10 +16,10 @@ import Stash
 class TimelineViewModel {
     
     let stash = try! Stash(name: cacheName, rootPath: NSTemporaryDirectory())
+    let session = TwitterSession()
     let disposebag = DisposeBag()
     
     var userID: String?
-    var loggedInUser: TWTRUser?
     
     init() {
         
@@ -29,16 +29,15 @@ class TimelineViewModel {
     ///
     /// - returns: User object with all its fetched data.
     func requestProfileInformation() -> Observable<TWTRUser> {
-        return create({ observer -> Disposable in
+        return create { observer -> Disposable in
             do {
-                let session = TwitterSession()
-                let userID = try session.checkSessionUserID()
+                let userID = try self.session.checkSessionUserID()
                 
                 Twitter.sharedInstance()
-                    .rx_loadUserWithID(userID, session: session)
+                    .rx_loadUserWithID(userID, client: self.session.client!)
                     .observeOn(MainScheduler.sharedInstance)
                     .subscribe(onNext: { user in
-                        self.loggedInUser = user
+                        self.session.user = user
                         observer.onNext(user)
                         observer.onCompleted()
                         }, onError: { error in
@@ -54,22 +53,39 @@ class TimelineViewModel {
                 observer.onError(TwitterRequestError.NotAuthenticated)
             }
             return AnonymousDisposable {}
-        })
+        }
+    }
+    
+    /// Request the user timeline for the currently authenticated user.
+    ///
+    /// - returns: Timeline object with all the tweets.
+    func requestTimeline() -> Observable<Timeline> {
+        return create { observer -> Disposable in
+            if let client = self.session.client {
+                Twitter.sharedInstance()
+                    .rx_loadTimeline(1, client: client)
+                    .observeOn(MainScheduler.sharedInstance)
+                    .subscribe(onNext: { timeline in
+                        
+                        }, onError: { error in
+                            
+                        }, onCompleted: nil, onDisposed: nil)
+                    .addDisposableTo(self.disposebag)
+            } else {
+                observer.onError(TwitterRequestError.NotAuthenticated)
+            }
+            return AnonymousDisposable {}
+        }
     }
     
     /// Fetch from local cache or download the authenticated user's profile picture.
     ///
     /// - returns: User profile image.
     func requestProfilePicture() -> Observable<UIImage> {
-        return create({ observer -> Disposable in
-            if self.loggedInUser == nil {
-                observer.onError(TwitterRequestError.NotAuthenticated)
-            } else if let image = self.stash[StashCacheIdentifier.profilePicture] as? UIImage {
-                observer.onNext(image)
-                observer.onCompleted()
-            } else {
+        return create { observer -> Disposable in
+            if let _ = self.session.client, let user = self.session.user {
                 // Download profile image of the logged in user if not cached
-                request(Method.GET, (self.loggedInUser?.profileImageLargeURL)!)
+                request(Method.GET, (user.profileImageLargeURL)!)
                     .flatMap {
                         $0.validate(statusCode: 200 ..< 300).rx_data()
                     }
@@ -81,8 +97,13 @@ class TimelineViewModel {
                         observer.onNext(image)
                         observer.onCompleted()
                     }.addDisposableTo(self.disposebag)
+            } else if let image = self.stash[StashCacheIdentifier.profilePicture] as? UIImage {
+                observer.onNext(image)
+                observer.onCompleted()
+            } else {
+                observer.onError(TwitterRequestError.NotAuthenticated)
             }
             return AnonymousDisposable {}
-        })
+        }
     }
 }

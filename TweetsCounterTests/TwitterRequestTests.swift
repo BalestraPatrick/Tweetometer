@@ -6,9 +6,10 @@
 //  Copyright © 2015 Patrick Balestra. All rights reserved.
 //
 
+@testable import TweetsCounter
 import XCTest
 import TwitterKit
-@testable import TweetsCounter
+import OHHTTPStubs
 
 class TwitterRequestTests: XCTestCase {
     
@@ -42,4 +43,10 @@ class TwitterRequestTests: XCTestCase {
         }
     }
     
+    func testLoadUserProfileFailed() {
+        stub(isHost("mywebservice.com")) { _ in
+            let stubData = "Hello World!".dataUsingEncoding(NSUTF8StringEncoding)
+            return OHHTTPStubsResponse(data: stubData!, statusCode:200, headers:nil)
+        }
+    }
 }

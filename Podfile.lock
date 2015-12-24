@@ -4,6 +4,19 @@ PODS:
     - Fabric (~> 1.6.0)
   - Fabric (1.6.1)
   - Keys (1.0.0)
+  - OHHTTPStubs (4.7.0):
+    - OHHTTPStubs/Default (= 4.7.0)
+  - OHHTTPStubs/Core (4.7.0)
+  - OHHTTPStubs/Default (4.7.0):
+    - OHHTTPStubs/Core
+    - OHHTTPStubs/JSON
+    - OHHTTPStubs/NSURLSession
+    - OHHTTPStubs/OHPathHelpers
+  - OHHTTPStubs/JSON (4.7.0):
+    - OHHTTPStubs/Core
+  - OHHTTPStubs/NSURLSession (4.7.0):
+    - OHHTTPStubs/Core
+  - OHHTTPStubs/OHPathHelpers (4.7.0)
   - RxAlamofire (0.3.3):
     - RxAlamofire/Core (= 0.3.3)
   - RxAlamofire/Core (0.3.3):
@@ -11,6 +24,7 @@ PODS:
     - RxSwift (~> 2.0.0-beta)
   - RxSwift (2.0.0-beta.4)
   - Stash (0.4.0)
+  - SWHttpTrafficRecorder (1.0)
   - TwitterCore (1.14.6):
     - Fabric
   - TwitterKit (1.14.6):
@@ -21,9 +35,11 @@ DEPENDENCIES:
   - Crashlytics
   - Fabric
   - Keys (from `Pods/CocoaPodsKeys`)
+  - OHHTTPStubs
   - RxAlamofire (~> 0.3)
   - RxSwift (~> 2.0.0-beta)
   - Stash
+  - SWHttpTrafficRecorder (~> 1.0)
   - TwitterCore
   - TwitterKit
 
@@ -36,9 +52,11 @@ SPEC CHECKSUMS:
   Crashlytics: 41574a245bc6ae10c55d57f385ebd2004e5bee05
   Fabric: bf0ceb04e7c924090efc5f8c55e4fbcca189e0a0
   Keys: 7d2ff6ff42f6903358267ce56e9392f83c31acfe
+  OHHTTPStubs: d2bf6a0f407620d67e75a1d3f12d86a2b1dd15c0
   RxAlamofire: 3ff214d5f12a1e897f9ada956062d0281bf3262f
   RxSwift: 191c6b06da783a8671433cf35a54d2ad2fd2d9de
   Stash: 403eac5694d630095ff50935751a1b4d11f4cb90
+  SWHttpTrafficRecorder: 6f0ffd83ad1b493e7621948f5b71f236fb5bb21e
   TwitterCore: 5e9b2d066ceeef53fe611c0c4436cb700f1ed620
   TwitterKit: f67360ee0a5f935f053bf37015652ac157e4eb92
 
