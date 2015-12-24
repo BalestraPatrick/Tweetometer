@@ -12,7 +12,6 @@ import TwitterKit
 
 struct User: Unboxable {
     
-    //    var createdAt: NSDate
     var userID: String
     var followersCount: Int
     var followingCount: Int
@@ -22,6 +21,7 @@ struct User: Unboxable {
     var profileImageURL: NSURL?
     
     init(unboxer: Unboxer) {
+        self.userID = unboxer.unbox("id")
         self.followersCount = unboxer.unbox("followers_count")
         self.followingCount = unboxer.unbox("friends_count")
         self.statusesCount = unboxer.unbox("statuses_count")
@@ -31,8 +31,12 @@ struct User: Unboxable {
     }
     
     init(user: TWTRUser) {
-        self.profileImageURL = NSURL(string: user.profileImageLargeURL)
+        self.userID = user.userID
+        self.followersCount = 0
+        self.followingCount = 0
+        self.statusesCount = 0
         self.screenName = user.screenName
         self.name = user.name
+        self.profileImageURL = NSURL(string: user.profileImageLargeURL)
     }
 }
