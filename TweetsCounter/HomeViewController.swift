@@ -39,7 +39,7 @@ class HomeViewController: UIViewController {
         
         viewModel.requestTimeline()
             .subscribe(onNext: { timeline in
-                
+                print(timeline)
                 }, onError: { error in
                     
                 }, onCompleted: nil, onDisposed: nil)

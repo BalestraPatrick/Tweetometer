@@ -79,28 +79,21 @@ extension Twitter {
     ///
     /// - returns: An Observable of the Timeline.
     // TODO: Use zip and check rate limit of the twitter API to request as many tweets as possible
-    func rx_loadTimeline(count: Int, client: TWTRAPIClient) -> Observable<AnyObject> {
-        return create { (observer: AnyObserver<AnyObject>) -> Disposable in
-            let params = ["count": "\(count)"]
-            
-            let request = client.URLRequestWithMethod("GET", URL: TwitterEndpoints().timelineURL, parameters: params, error: nil)
+    func rx_loadTimeline(count: Int, client: TWTRAPIClient) -> Observable<NSData> {
+        return create { (observer: AnyObserver<NSData>) -> Disposable in
+            let parameters = ["count": "\(count)"]
+            let request = client.URLRequestWithMethod("GET", URL: TwitterEndpoints().timelineURL, parameters: parameters, error: nil)
             client.sendTwitterRequest(request) { response, data, connectionError in
                 if let e = connectionError {
                     // An error occured
                     print("Error: \(e)")
                     observer.onError(e)
                 } else {
-                    do {
-                        let JSON: AnyObject = try NSJSONSerialization.JSONObjectWithData(data!, options: .AllowFragments)
-                        
-                        print("Received \(JSON)")
-                        print("Received \(JSON)")
-                        // TODO: Should convert to Timeline object
-                        observer.onNext(JSON)
+                    if let d = data {
+                        observer.onNext(d)
                         observer.onCompleted()
-                    } catch {
-                        print(error)
-                        observer.onError(error)
+                    } else {
+                        observer.onError(NSError(domain: "com.patrickbalestra.tweetscounter", code: 404, userInfo: ["error" : "Did not receive any data"]))
                     }
                 }
             }

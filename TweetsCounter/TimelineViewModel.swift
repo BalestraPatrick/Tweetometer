@@ -66,9 +66,16 @@ class TimelineViewModel {
                     .rx_loadTimeline(1, client: client)
                     .observeOn(MainScheduler.sharedInstance)
                     .subscribe(onNext: { timeline in
-                        
+                        do {
+                            let JSON: AnyObject = try NSJSONSerialization.JSONObjectWithData(timeline, options: .AllowFragments)
+                            // TODO: build timeline
+                            observer.onNext(Timeline())
+                            observer.onCompleted()
+                        } catch {
+                            observer.onError(error)
+                        }
                         }, onError: { error in
-                            
+                            observer.onError(error)
                         }, onCompleted: nil, onDisposed: nil)
                     .addDisposableTo(self.disposebag)
             } else {

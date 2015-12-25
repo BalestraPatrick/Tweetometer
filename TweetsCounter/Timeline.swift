@@ -12,5 +12,8 @@ struct Timeline {
     
     var tweets:[Tweet]
     
+    init() {
+        tweets = []
+    }
 }
 
