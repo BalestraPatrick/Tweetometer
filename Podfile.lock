@@ -25,8 +25,8 @@ PODS:
   - RxAlamofire/Core (0.3.3):
     - Alamofire (~> 3.0)
     - RxSwift (~> 2.0.0-beta)
-  - RxSwift (2.0.0-beta.4)
-  - Stash (0.4.0)
+  - RxSwift (2.0.0-rc.0)
+  - Stash (0.5.0)
   - TwitterCore (1.14.6):
     - Fabric
   - TwitterKit (1.14.6):
@@ -60,8 +60,8 @@ SPEC CHECKSUMS:
   ObjectMapper: 98524bac0dca46c6b3d5ee02cd410fc700ec6ce2
   OHHTTPStubs: d2bf6a0f407620d67e75a1d3f12d86a2b1dd15c0
   RxAlamofire: 3ff214d5f12a1e897f9ada956062d0281bf3262f
-  RxSwift: 191c6b06da783a8671433cf35a54d2ad2fd2d9de
-  Stash: 403eac5694d630095ff50935751a1b4d11f4cb90
+  RxSwift: b8452e54c1da42dbd7e12167c606911c0cd29b49
+  Stash: 14be1c144a3c077d858e1180e22ab96eb79ab2ba
   TwitterCore: 5e9b2d066ceeef53fe611c0c4436cb700f1ed620
   TwitterKit: f67360ee0a5f935f053bf37015652ac157e4eb92
   Unbox: 357412aec9fe10e0dcd36df61a2352a277037b62
