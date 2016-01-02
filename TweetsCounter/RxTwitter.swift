@@ -19,7 +19,7 @@ extension Twitter {
     ///
     /// - returns: An Observable of the user.
     func rx_loadUserWithID(userID: String, client: TWTRAPIClient) -> Observable<TWTRUser> {
-        return create { (observer: AnyObserver<TWTRUser>) -> Disposable in
+        return Observable.create { (observer: AnyObserver<TWTRUser>) -> Disposable in
             client.loadUserWithID(userID) { user, error in
                 if let e = error {
                     observer.onError(e)
@@ -39,7 +39,7 @@ extension Twitter {
     ///
     /// - returns: An Observable of the tweet.
     func rx_loadTweetWithID(tweetID: String, client: TWTRAPIClient) -> Observable<TWTRTweet> {
-        return create { (observer: AnyObserver<TWTRTweet>) -> Disposable in
+        return Observable.create { (observer: AnyObserver<TWTRTweet>) -> Disposable in
             client.loadTweetWithID(tweetID, completion: { tweet, error in
                 if let e = error {
                     observer.onError(e)
@@ -59,7 +59,7 @@ extension Twitter {
     ///
     /// - returns: An Observable of the array of tweets.
     func rx_loadTweetsWithIDs(ids: Array<String>, client: TWTRAPIClient) -> Observable<Array<AnyObject>> {
-        return create { (observer: AnyObserver<Array<AnyObject>>) -> Disposable in
+        return Observable.create { (observer: AnyObserver<Array<AnyObject>>) -> Disposable in
             client.loadTweetsWithIDs(ids, completion: { tweets, error in
                 if let e = error {
                     observer.onError(e)
@@ -80,7 +80,7 @@ extension Twitter {
     /// - returns: An Observable of the Timeline.
     // TODO: Use zip and check rate limit of the twitter API to request as many tweets as possible
     func rx_loadTimeline(count: Int, client: TWTRAPIClient) -> Observable<NSData> {
-        return create { (observer: AnyObserver<NSData>) -> Disposable in
+        return Observable.create { (observer: AnyObserver<NSData>) -> Disposable in
             let parameters = ["count": "\(count)"]
             let request = client.URLRequestWithMethod("GET", URL: TwitterEndpoints().timelineURL, parameters: parameters, error: nil)
             client.sendTwitterRequest(request) { response, data, connectionError in
