@@ -16,26 +16,25 @@ import Stash
 class TimelineViewModel {
     
     let stash = try! Stash(name: cacheName, rootPath: NSTemporaryDirectory())
-    let session = TwitterSession()
+    var session = TwitterSession()
     let disposebag = DisposeBag()
     
     var userID: String?
     
     init() {
-        
     }
     
     /// Request the profile information for the currently authenticated user.
     ///
     /// - returns: User object with all its fetched data.
     func requestProfileInformation() -> Observable<TWTRUser> {
-        return create { observer -> Disposable in
+        return Observable.create { observer -> Disposable in
             do {
                 let userID = try self.session.checkSessionUserID()
                 
                 Twitter.sharedInstance()
                     .rx_loadUserWithID(userID, client: self.session.client!)
-                    .observeOn(MainScheduler.sharedInstance)
+                    .observeOn(MainScheduler.instance)
                     .subscribe(onNext: { user in
                         self.session.user = user
                         observer.onNext(user)
@@ -60,15 +59,26 @@ class TimelineViewModel {
     ///
     /// - returns: Timeline object with all the tweets.
     func requestTimeline() -> Observable<Timeline> {
-        return create { observer -> Disposable in
+        return Observable.create { observer -> Disposable in
             if let client = self.session.client {
                 Twitter.sharedInstance()
                     .rx_loadTimeline(1, client: client)
-                    .observeOn(MainScheduler.sharedInstance)
+                    .observeOn(MainScheduler.instance)
                     .subscribe(onNext: { timeline in
                         do {
-                            let JSON: AnyObject = try NSJSONSerialization.JSONObjectWithData(timeline, options: .AllowFragments)
+                            let tweets: Array = try NSJSONSerialization.JSONObjectWithData(timeline, options: .AllowFragments) as! Array<AnyObject>
                             // TODO: build timeline
+                            //                            let timeline = Timeline(u
+                            
+                            for tweet in tweets {
+                                let user = tweet["user"]
+                                //                                let tweetObject = Tweet(tweet: <#T##TWTRTweet#>)
+                                if let u = user {
+                                    
+                                    print(u!["screen_name"])
+                                }
+                                
+                            }
                             observer.onNext(Timeline())
                             observer.onCompleted()
                         } catch {
@@ -89,14 +99,14 @@ class TimelineViewModel {
     ///
     /// - returns: User profile image.
     func requestProfilePicture() -> Observable<UIImage> {
-        return create { observer -> Disposable in
+        return Observable.create { observer -> Disposable in
             if let _ = self.session.client, let user = self.session.user {
                 // Download profile image of the logged in user if not cached
                 request(Method.GET, (user.profileImageLargeURL)!)
                     .flatMap {
                         $0.validate(statusCode: 200 ..< 300).rx_data()
                     }
-                    .observeOn(MainScheduler.sharedInstance)
+                    .observeOn(MainScheduler.instance)
                     .subscribe {
                         guard let data = $0.element else { return }
                         let image = UIImage(data: data)!

@@ -4,7 +4,7 @@ PODS:
     - Fabric (~> 1.6.0)
   - Fabric (1.6.1)
   - Keys (1.0.0)
-  - ObjectMapper (1.0.1)
+  - ObjectMapper (1.1.0)
   - OHHTTPStubs (4.7.0):
     - OHHTTPStubs/Default (= 4.7.0)
   - OHHTTPStubs/Core (4.7.0)
@@ -25,8 +25,9 @@ PODS:
   - RxAlamofire/Core (0.3.3):
     - Alamofire (~> 3.0)
     - RxSwift (~> 2.0.0-beta)
-  - RxSwift (2.0.0-rc.0)
+  - RxSwift (2.0.0)
   - Stash (0.5.0)
+  - SWHttpTrafficRecorder (1.0)
   - TwitterCore (1.14.6):
     - Fabric
   - TwitterKit (1.14.6):
@@ -44,6 +45,7 @@ DEPENDENCIES:
   - RxAlamofire (~> 0.3)
   - RxSwift (~> 2.0.0-beta)
   - Stash
+  - SWHttpTrafficRecorder (~> 1.0)
   - TwitterCore
   - TwitterKit
   - Unbox
@@ -57,11 +59,12 @@ SPEC CHECKSUMS:
   Crashlytics: 41574a245bc6ae10c55d57f385ebd2004e5bee05
   Fabric: bf0ceb04e7c924090efc5f8c55e4fbcca189e0a0
   Keys: 7d2ff6ff42f6903358267ce56e9392f83c31acfe
-  ObjectMapper: 98524bac0dca46c6b3d5ee02cd410fc700ec6ce2
+  ObjectMapper: 365eac5aac06ae9298978fb2482b3d4c5ef4bb5d
   OHHTTPStubs: d2bf6a0f407620d67e75a1d3f12d86a2b1dd15c0
   RxAlamofire: 3ff214d5f12a1e897f9ada956062d0281bf3262f
-  RxSwift: b8452e54c1da42dbd7e12167c606911c0cd29b49
+  RxSwift: d83246efa6f16c50c143bec134649d045498f601
   Stash: 14be1c144a3c077d858e1180e22ab96eb79ab2ba
+  SWHttpTrafficRecorder: 6f0ffd83ad1b493e7621948f5b71f236fb5bb21e
   TwitterCore: 5e9b2d066ceeef53fe611c0c4436cb700f1ed620
   TwitterKit: f67360ee0a5f935f053bf37015652ac157e4eb92
   Unbox: 357412aec9fe10e0dcd36df61a2352a277037b62
