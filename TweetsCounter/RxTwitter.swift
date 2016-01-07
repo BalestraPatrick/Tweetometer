@@ -12,61 +12,99 @@ import RxSwift
 
 extension Twitter {
     
-    /// Load user information.
+    /// Triggers user authentication with Twitter.
     ///
-    /// - parameter userID:  ID of the user account to be fetched.
-    /// - parameter client:  Client to which load the request.
+    /// - parameter client:  API client used to load the request.
     ///
-    /// - returns: An Observable of the user.
-    func rx_loadUserWithID(userID: String, client: TWTRAPIClient) -> Observable<TWTRUser> {
-        return Observable.create { (observer: AnyObserver<TWTRUser>) -> Disposable in
-            client.loadUserWithID(userID) { user, error in
-                if let e = error {
-                    observer.onError(e)
-                } else {
-                    observer.onNext(user!)
-                    observer.onCompleted()
+    /// - returns: The Twitter user session.
+    func rx_logIn(client: TWTRAPIClient) -> Observable<TWTRSession> {
+        return Observable.create { (observer: AnyObserver<TWTRSession>) -> Disposable in
+            self.logInWithCompletion { session, error in
+                guard let session = session else {
+                    observer.onError(error ?? TwitterError.Unknown)
+                    return
                 }
+                observer.onNext(session)
+                observer.onCompleted()
             }
             return AnonymousDisposable { }
         }
     }
     
-    /// Load a specific tweet.
+    /// Triggers user authentication with Twitter.
     ///
-    /// - parameter tweetID: ID of the tweet to be retrieved.
-    /// - parameter client:  Client to which load the request.
+    /// - parameter client:  API client used to load the request.
     ///
-    /// - returns: An Observable of the tweet.
+    /// - returns: The Guest user session.
+    func rx_logInGuest(client: TWTRAPIClient) -> Observable<TWTRGuestSession> {
+        return Observable.create { (observer: AnyObserver<TWTRGuestSession>) -> Disposable in
+            self.logInGuestWithCompletion { session, error in
+                guard let session = session else {
+                    observer.onError(error ?? TwitterError.Unknown)
+                    return
+                }
+                observer.onNext(session)
+                observer.onCompleted()
+            }
+            return AnonymousDisposable { }
+        }
+    }
+    
+    /// Loads a Twitter User.
+    ///
+    /// - parameter userID:  ID of the user account to be fetched.
+    /// - parameter client:  API client used to load the request.
+    ///
+    /// - returns: An Observable of the user.
+    func rx_loadUserWithID(userID: String, client: TWTRAPIClient) -> Observable<TWTRUser> {
+        return Observable.create { (observer: AnyObserver<TWTRUser>) -> Disposable in
+            client.loadUserWithID(userID) { user, error in
+                guard let user = user else {
+                    observer.onError(error ?? TwitterError.Unknown)
+                    return
+                }
+                observer.onNext(user)
+                observer.onCompleted()
+            }
+            return AnonymousDisposable { }
+        }
+    }
+    
+    /// Loads a single Tweet from the network or cache.
+    ///
+    /// - parameter tweetID:  ID of the tweet to be retrieved.
+    /// - parameter client:   API client used to load the request.
+    ///
+    /// - returns: A single tweet.
     func rx_loadTweetWithID(tweetID: String, client: TWTRAPIClient) -> Observable<TWTRTweet> {
         return Observable.create { (observer: AnyObserver<TWTRTweet>) -> Disposable in
             client.loadTweetWithID(tweetID, completion: { tweet, error in
-                if let e = error {
-                    observer.onError(e)
-                } else {
-                    observer.onNext(tweet!)
-                    observer.onCompleted()
+                guard let tweet = tweet else {
+                    observer.onError(error ?? TwitterError.Unknown)
+                    return
                 }
+                observer.onNext(tweet)
+                observer.onCompleted()
             })
             return AnonymousDisposable { }
         }
     }
     
-    /// Load tweets for the given array of IDs.
+    /// Loads a series of Tweets in a batch.
     ///
-    /// - parameter ids:    IDs of the tweets to be retrieved.
-    /// - parameter client: Client to which load the request.
+    /// - parameter ids:     IDs of the tweets to be retrieved.
+    /// - parameter client:  API client used to load the request.
     ///
-    /// - returns: An Observable of the array of tweets.
-    func rx_loadTweetsWithIDs(ids: Array<String>, client: TWTRAPIClient) -> Observable<Array<AnyObject>> {
-        return Observable.create { (observer: AnyObserver<Array<AnyObject>>) -> Disposable in
+    /// - returns: An array of Tweets.
+    func rx_loadTweetsWithIDs(ids: Array<String>, client: TWTRAPIClient) -> Observable<Array<TWTRTweet>> {
+        return Observable.create { (observer: AnyObserver<Array<TWTRTweet>>) -> Disposable in
             client.loadTweetsWithIDs(ids, completion: { tweets, error in
-                if let e = error {
-                    observer.onError(e)
-                } else {
-                    observer.onNext(tweets!)
-                    observer.onCompleted()
+                guard let tweets = tweets, let t = tweets as? [TWTRTweet] else {
+                    observer.onError(error ?? TwitterError.Unknown)
+                    return
                 }
+                observer.onNext(t)
+                observer.onCompleted()
             })
             return AnonymousDisposable { }
         }
@@ -74,30 +112,68 @@ extension Twitter {
     
     /// Load the user timeline.
     ///
-    /// - parameter count:  The number of tweets to retrieve contained in the timeline.
-    /// - parameter client: Client to which load the request.
+    /// - parameter count:   The number of tweets to retrieve contained in the timeline.
+    /// - parameter client:  API client used to load the request.
     ///
-    /// - returns: An Observable of the Timeline.
-    // TODO: Use zip and check rate limit of the twitter API to request as many tweets as possible
+    /// - returns: The timeline data.
     func rx_loadTimeline(count: Int, client: TWTRAPIClient) -> Observable<NSData> {
         return Observable.create { (observer: AnyObserver<NSData>) -> Disposable in
-            let parameters = ["count": "\(count)"]
-            let request = client.URLRequestWithMethod("GET", URL: TwitterEndpoints().timelineURL, parameters: parameters, error: nil)
+            let parameters = [Parameter.TimelineTweetsCount.rawValue: String(count)]
+            var requestError: NSError?
+            let request = client.URLRequestWithMethod(HTTPMethod.GET.rawValue, URL: TwitterEndpoint.Timeline.rawValue, parameters: parameters, error: &requestError)
+            if let requestError = requestError {
+                observer.onError(requestError)
+            }
             client.sendTwitterRequest(request) { response, data, connectionError in
-                if let e = connectionError {
-                    // An error occured
-                    print("Error: \(e)")
-                    observer.onError(e)
-                } else {
-                    if let d = data {
-                        observer.onNext(d)
-                        observer.onCompleted()
-                    } else {
-                        observer.onError(NSError(domain: "com.patrickbalestra.tweetscounter", code: 404, userInfo: ["error" : "Did not receive any data"]))
-                    }
+                guard let data = data, let response = response as? NSHTTPURLResponse where 200 ..< 300 ~= response.statusCode else {
+                    observer.onError(connectionError ?? TwitterError.Unknown)
+                    return
                 }
+                observer.onNext(data)
+                observer.onCompleted()
             }
             return AnonymousDisposable { }
         }
     }
+    
+    /// Returns a signed URL request.
+    ///
+    /// - parameter method:     HTTP method of the request.
+    /// - parameter URL:        Full Twitter endpoint API URL.
+    /// - parameter parameters: Request parameters.
+    /// - parameter client:  API client used to load the request.
+    ///
+    /// - returns: The received object.
+    func rx_URLRequestWithMethod(method: HTTPMethod, URL: String, parameters: [String : AnyObject], client: TWTRAPIClient) -> Observable<AnyObject> {
+        return Observable.create { (observer: AnyObserver<AnyObject>) -> Disposable in
+            let request = client.URLRequestWithMethod(method.rawValue, URL: URL, parameters: parameters, error: nil)
+            client.sendTwitterRequest(request) { response, data, connectionError in
+                guard let data = data else {
+                    observer.onError(connectionError ?? TwitterError.Unknown)
+                    return
+                }
+                observer.onNext(data)
+                observer.onCompleted()
+            }
+            return AnonymousDisposable { }
+        }
+    }
+}
+
+enum TwitterError: ErrorType {
+    case Unknown
+}
+
+/// Twitter APIs only support these 2 types of requests.
+enum HTTPMethod: String {
+    case GET
+    case POST
+}
+
+enum Parameter: String {
+    case TimelineTweetsCount = "count"
+}
+
+enum TwitterEndpoint: String {
+    case Timeline = "https://api.twitter.com/1.1/statuses/home_timeline.json"
 }
