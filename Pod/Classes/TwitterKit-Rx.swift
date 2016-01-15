@@ -1,23 +1,25 @@
 //
-//  RxTwitter.swift
-//  TweetsCounter
+//  TwitterKit-Rx.swift
 //
-//  Created by Patrick Balestra on 12/20/15.
-//  Copyright © 2015 Patrick Balestra. All rights reserved.
+//  Created by Patrick Balestra on 1/8/16.
 //
 
 import Foundation
-import TwitterKit
 import RxSwift
+import TwitterKit
 
-extension Twitter {
+private enum TwitterError: ErrorType {
+    case Unknown
+}
+
+public extension Twitter {
     
     /// Triggers user authentication with Twitter.
     ///
     /// - parameter client:  API client used to load the request.
     ///
     /// - returns: The Twitter user session.
-    func rx_logIn(client: TWTRAPIClient) -> Observable<TWTRSession> {
+    public func rx_logIn(client: TWTRAPIClient) -> Observable<TWTRSession> {
         return Observable.create { (observer: AnyObserver<TWTRSession>) -> Disposable in
             self.logInWithCompletion { session, error in
                 guard let session = session else {
@@ -118,20 +120,22 @@ extension Twitter {
     /// - returns: The timeline data.
     func rx_loadTimeline(count: Int, client: TWTRAPIClient) -> Observable<NSData> {
         return Observable.create { (observer: AnyObserver<NSData>) -> Disposable in
-            let parameters = [Parameter.TimelineTweetsCount.rawValue: String(count)]
-            var requestError: NSError?
-            let request = client.URLRequestWithMethod(HTTPMethod.GET.rawValue, URL: TwitterEndpoint.Timeline.rawValue, parameters: parameters, error: &requestError)
-            if let requestError = requestError {
-                observer.onError(requestError)
-            }
-            client.sendTwitterRequest(request) { response, data, connectionError in
-                guard let data = data, let response = response as? NSHTTPURLResponse where 200 ..< 300 ~= response.statusCode else {
-                    observer.onError(connectionError ?? TwitterError.Unknown)
-                    return
-                }
-                observer.onNext(data)
-                observer.onCompleted()
-            }
+            let HTTPMethod = "GET"
+            let URL = "https://api.twitter.com/1.1/statuses/home_timeline.json"
+            let parameters = ["count" : String(count)]
+            
+            _ = self.rx_URLRequestWithMethod(HTTPMethod, URL: URL, parameters: parameters, client: client)
+                .subscribe(
+                    onNext: { data in
+                        guard let timeline = data as? NSData else {
+                            observer.onError(TwitterError.Unknown)
+                            return
+                        }
+                        observer.onNext(timeline)
+                        observer.onCompleted()
+                    }, onError: { error in
+                        observer.onError(error)
+                    }, onCompleted: nil, onDisposed: nil)
             return AnonymousDisposable { }
         }
     }
@@ -144,9 +148,9 @@ extension Twitter {
     /// - parameter client:  API client used to load the request.
     ///
     /// - returns: The received object.
-    func rx_URLRequestWithMethod(method: HTTPMethod, URL: String, parameters: [String : AnyObject], client: TWTRAPIClient) -> Observable<AnyObject> {
+    func rx_URLRequestWithMethod(method: String, URL: String, parameters: [String : AnyObject], client: TWTRAPIClient) -> Observable<AnyObject> {
         return Observable.create { (observer: AnyObserver<AnyObject>) -> Disposable in
-            let request = client.URLRequestWithMethod(method.rawValue, URL: URL, parameters: parameters, error: nil)
+            let request = client.URLRequestWithMethod(method, URL: URL, parameters: parameters, error: nil)
             client.sendTwitterRequest(request) { response, data, connectionError in
                 guard let data = data else {
                     observer.onError(connectionError ?? TwitterError.Unknown)
@@ -158,22 +162,4 @@ extension Twitter {
             return AnonymousDisposable { }
         }
     }
-}
-
-enum TwitterError: ErrorType {
-    case Unknown
-}
-
-/// Twitter APIs only support these 2 types of requests.
-enum HTTPMethod: String {
-    case GET
-    case POST
-}
-
-enum Parameter: String {
-    case TimelineTweetsCount = "count"
-}
-
-enum TwitterEndpoint: String {
-    case Timeline = "https://api.twitter.com/1.1/statuses/home_timeline.json"
 }

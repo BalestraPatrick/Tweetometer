@@ -1,8 +1,8 @@
 PODS:
   - Alamofire (3.1.4)
-  - Crashlytics (3.4.1):
+  - Crashlytics (3.5.0):
     - Fabric (~> 1.6.0)
-  - Fabric (1.6.1)
+  - Fabric (1.6.2)
   - Keys (1.0.0)
   - ObjectMapper (1.1.1)
   - OHHTTPStubs (4.7.0):
@@ -20,11 +20,11 @@ PODS:
   - OHHTTPStubs/OHPathHelpers (4.7.0)
   - OHHTTPStubs/Swift (4.7.0):
     - OHHTTPStubs/Core
-  - RxAlamofire (0.3.3):
-    - RxAlamofire/Core (= 0.3.3)
-  - RxAlamofire/Core (0.3.3):
+  - RxAlamofire (1.0):
+    - RxAlamofire/Core (= 1.0)
+  - RxAlamofire/Core (1.0):
     - Alamofire (~> 3.0)
-    - RxSwift (~> 2.0.0-beta)
+    - RxSwift (~> 2.0.0)
   - RxSwift (2.0.0)
   - Stash (0.5.0)
   - SWHttpTrafficRecorder (1.0)
@@ -32,6 +32,8 @@ PODS:
     - Fabric
   - TwitterKit (1.14.6):
     - TwitterCore (= 1.14.6)
+  - TwitterKit-Rx (0.1.0):
+    - RxSwift (~> 2.0.0)
   - Unbox (1.2.3)
 
 DEPENDENCIES:
@@ -42,31 +44,35 @@ DEPENDENCIES:
   - ObjectMapper (~> 1.0)
   - OHHTTPStubs
   - OHHTTPStubs/Swift
-  - RxAlamofire (~> 0.3)
+  - RxAlamofire
   - RxSwift (~> 2.0.0-beta)
   - Stash
   - SWHttpTrafficRecorder (~> 1.0)
   - TwitterCore
   - TwitterKit
+  - TwitterKit-Rx (from `TwitterKit-Rx.podspec`)
   - Unbox
 
 EXTERNAL SOURCES:
   Keys:
     :path: Pods/CocoaPodsKeys
+  TwitterKit-Rx:
+    :path: TwitterKit-Rx.podspec
 
 SPEC CHECKSUMS:
   Alamofire: fbc829692f351fa1d8a31dd75fd7f7f56fea31fb
-  Crashlytics: 41574a245bc6ae10c55d57f385ebd2004e5bee05
-  Fabric: bf0ceb04e7c924090efc5f8c55e4fbcca189e0a0
+  Crashlytics: fabfd45d0e8b8dc936c682b97e302b9a49a1c827
+  Fabric: e8296d4a1abb3c5eed770cc86b311c862f51d340
   Keys: 7d2ff6ff42f6903358267ce56e9392f83c31acfe
   ObjectMapper: 4143abed1dbd49b73d75092fe8fa1c88ed6434b7
   OHHTTPStubs: d2bf6a0f407620d67e75a1d3f12d86a2b1dd15c0
-  RxAlamofire: 3ff214d5f12a1e897f9ada956062d0281bf3262f
+  RxAlamofire: a969a44a07bbf40517fa1517ae445b797153b1ec
   RxSwift: d83246efa6f16c50c143bec134649d045498f601
   Stash: 14be1c144a3c077d858e1180e22ab96eb79ab2ba
   SWHttpTrafficRecorder: 6f0ffd83ad1b493e7621948f5b71f236fb5bb21e
   TwitterCore: 5e9b2d066ceeef53fe611c0c4436cb700f1ed620
   TwitterKit: f67360ee0a5f935f053bf37015652ac157e4eb92
+  TwitterKit-Rx: 2969485342622224863c473f9c8626ff2f3bcfef
   Unbox: 357412aec9fe10e0dcd36df61a2352a277037b62
 
 COCOAPODS: 0.39.0

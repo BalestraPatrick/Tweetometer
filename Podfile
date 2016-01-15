@@ -4,7 +4,7 @@ platform :ios, '9.0'
 inhibit_all_warnings!
 use_frameworks!
 
-pod 'RxAlamofire', '~> 0.3'
+pod 'RxAlamofire'
 pod 'Fabric'
 pod 'Crashlytics'
 pod 'TwitterKit'
@@ -14,7 +14,7 @@ pod 'RxSwift', '~> 2.0.0-beta'
 pod 'Stash'
 pod 'ObjectMapper', '~> 1.0'
 pod 'Unbox'
-pod 'SWHttpTrafficRecorder', '~> 1.0'
+pod "TwitterKit-Rx", :path => "TwitterKit-Rx.podspec"
 
 plugin 'cocoapods-keys', {
     :project => "TweetsCounter",

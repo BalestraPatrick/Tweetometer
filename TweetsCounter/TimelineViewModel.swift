@@ -12,6 +12,7 @@ import RxAlamofire
 import Alamofire
 import TwitterKit
 import Stash
+import TwitterKit_Rx
 
 class TimelineViewModel {
     
@@ -34,7 +35,6 @@ class TimelineViewModel {
                 
                 Twitter.sharedInstance()
                     .rx_loadUserWithID(userID, client: self.session.client!)
-                    .observeOn(MainScheduler.instance)
                     .subscribe(onNext: { user in
                         self.session.user = user
                         observer.onNext(user)
@@ -63,21 +63,19 @@ class TimelineViewModel {
             if let client = self.session.client {
                 Twitter.sharedInstance()
                     .rx_loadTimeline(1, client: client)
-                    .observeOn(MainScheduler.instance)
                     .subscribe(onNext: { timeline in
                         do {
                             let tweets: Array = try NSJSONSerialization.JSONObjectWithData(timeline, options: .AllowFragments) as! Array<AnyObject>
                             // TODO: build timeline
                             //                            let timeline = Timeline(u
-                            
+                            // Use already built-in TWTRTweet object
                             for tweet in tweets {
                                 let user = tweet["user"]
                                 //                                let tweetObject = Tweet(tweet: <#T##TWTRTweet#>)
                                 if let u = user {
                                     
                                     print(u!["screen_name"])
-                                }
-                                
+                                }   
                             }
                             observer.onNext(Timeline())
                             observer.onCompleted()

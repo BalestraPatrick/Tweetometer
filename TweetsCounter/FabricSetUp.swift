@@ -7,7 +7,15 @@
 //
 
 import UIKit
+import Fabric
+import Crashlytics
+import TwitterKit
+import Keys
 
 class FabricSetUp: NSObject {
-
+    
+    override init() {
+        Twitter.sharedInstance().startWithConsumerKey(TweetscounterKeys().fABRIC_API_KEY(), consumerSecret: TweetscounterKeys().fABRIC_BUILD_SECRET())
+        Fabric.with([Crashlytics.sharedInstance(), Twitter.sharedInstance()])        
+    }
 }

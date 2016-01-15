@@ -18,6 +18,12 @@ class TwitterRequestTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
+        
+        stub(isMethodGET()) { request in
+            print(request)
+            let stubPath = OHPathForFile("users_show.json", self.dynamicType)
+            return fixture(stubPath!, headers: ["Content-Type":"application/json"])
+        }
     }
     
     override func tearDown() {
@@ -25,12 +31,14 @@ class TwitterRequestTests: XCTestCase {
         OHHTTPStubs.removeAllStubs()
     }
     
-    func testLoadUserProfileSuccessfully() {
+    func testLoadUserProfile() {
         
         let expectation = expectationWithDescription("Receive profile information successfully.")
         
-        _ = timelineViewModel.requestProfileInformation()
+        _ = timelineViewModel
+            .requestProfileInformation()
             .subscribe(onNext: { user in
+                print(user)
                 XCTAssertNotNil(user)
                 XCTAssertEqual(user.userID, self.userData.userID)
                 XCTAssertEqual(user.name, self.userData.name)
@@ -45,24 +53,21 @@ class TwitterRequestTests: XCTestCase {
         }
     }
     
-    //    func testLoadUserProfileFailed() {
+    //    func testLoadTimeline() {
     //        
-    //        let expectation = expectationWithDescription("Receive error when the request fails.")
+    //        let expectation = expectationWithDescription("Receive the Twitter timeline.")
     //        
-    //        _ = timelineViewModel.requestProfileInformation()
-    //            .subscribe(onNext: { user in
-    //                XCTFail("Failed in requesting the profile information with error: \(user)")
+    //        _ = timelineViewModel
+    //            .requestTimeline()
+    //            .subscribe(onNext: { timeline in
+    //                print(timeline)
+    //                expectation.fulfill()
     //                }, onError: { error in
-    //                    expectation.fulfill()
+    //                    XCTFail("Failed in requesting the Twitter timeline with error: \(error)")
     //                }, onCompleted: nil, onDisposed: nil)
     //        
     //        waitForExpectationsWithTimeout(10.0) { error in
     //            XCTAssertNil(error, "Failed expectation \(expectation) with error \(error)")
-    //        }
-    //        
-    //        stub(isPath(TwitterEndpoints().profile.host!)) { request in
-    //            let notConnectedError = NSError(domain:NSURLErrorDomain, code:Int(CFNetworkErrors.CFURLErrorNotConnectedToInternet.rawValue), userInfo:nil)
-    //            return OHHTTPStubsResponse(error:notConnectedError)
     //        }
     //    }
 }
