@@ -12,7 +12,6 @@ import RxAlamofire
 import Alamofire
 import TwitterKit
 import Stash
-import TwitterKit_Rx
 
 class TimelineViewModel {
     
