@@ -10,7 +10,7 @@ import UIKit
 
 struct Timeline {
     
-    var tweets:[Tweet]
+    var tweets: [Tweet]
     
     init() {
         tweets = []

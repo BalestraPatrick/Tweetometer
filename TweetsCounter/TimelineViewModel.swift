@@ -15,13 +15,19 @@ import Stash
 
 class TimelineViewModel {
     
-    let stash = try! Stash(name: cacheName, rootPath: NSTemporaryDirectory())
+    
+    let stash: Stash?
     var session = TwitterSession()
     let disposebag = DisposeBag()
     
     var userID: String?
     
     init() {
+        do {
+            stash = try Stash(name: cacheName, rootPath: NSTemporaryDirectory())
+        } catch {
+            stash = nil
+        }
     }
     
     /// Request the profile information for the currently authenticated user.
@@ -45,8 +51,7 @@ class TimelineViewModel {
                             observer.onError(error)
                         }, onCompleted: nil, onDisposed: nil)
                     .addDisposableTo(self.disposebag)
-            }
-            catch {
+            } catch {
                 // Throw the error in the callback to present the login view controller
                 observer.onError(TwitterRequestError.NotAuthenticated)
             }
@@ -64,11 +69,12 @@ class TimelineViewModel {
                     .rx_loadTimeline(1, client: client)
                     .subscribe(onNext: { timeline in
                         do {
-                            let tweets: Array = try NSJSONSerialization.JSONObjectWithData(timeline, options: .AllowFragments) as! Array<AnyObject>
+                            let tweets: AnyObject = try NSJSONSerialization.JSONObjectWithData(timeline, options: .AllowFragments)
+                            guard let tweetsArray = tweets as? Array<AnyObject> else { fatalError("Could not downcast to array") }
                             // TODO: build timeline
                             //                            let timeline = Timeline(u
                             // Use already built-in TWTRTweet object
-                            for tweet in tweets {
+                            for tweet in tweetsArray {
                                 let user = tweet["user"]
                                 //                                let tweetObject = Tweet(tweet: <#T##TWTRTweet#>)
                                 if let u = user {
@@ -107,11 +113,11 @@ class TimelineViewModel {
                     .subscribe {
                         guard let data = $0.element else { return }
                         let image = UIImage(data: data)!
-                        self.stash[StashCacheIdentifier.profilePicture] = image
+                        self.stash?[StashCacheIdentifier.profilePicture] = image
                         observer.onNext(image)
                         observer.onCompleted()
                     }.addDisposableTo(self.disposebag)
-            } else if let image = self.stash[StashCacheIdentifier.profilePicture] as? UIImage {
+            } else if let image = self.stash?[StashCacheIdentifier.profilePicture] as? UIImage {
                 observer.onNext(image)
                 observer.onCompleted()
             } else {

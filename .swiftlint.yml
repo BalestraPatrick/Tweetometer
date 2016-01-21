@@ -1,0 +1,19 @@
+disabled_rules: # rule identifiers to exclude from running
+  - trailing_whitespace
+  - trailing_newline
+  # - comma
+  # - control_statement
+  # - force_cast
+  # Find all the available rules by running:
+  # swiftlint rules
+included: # paths to include during linting. `--path` is ignored if present.
+  - TweetsCounter
+excluded: # paths to ignore during linting. Takes precedence over `included`.
+  - Pods
+# parameterized rules can be customized from this configuration file
+line_length: 150
+# parameterized rules are first parameterized as a warning level, then error level.
+type_body_length:
+  - 300 # warning
+  - 400 # error
+reporter: "xcode" # reporter type (xcode, json, csv, checkstyle)

@@ -20,7 +20,7 @@ public class TwitterLoginViewController: UIViewController {
         let logInButton = TWTRLogInButton { (session, error) in
             // TODO: should probably save user session somewhere or check if it's already stored in TwitterKit
             if let e = error {
-                self.resultLabel.text = e.localizedFailureReason;
+                self.resultLabel.text = e.localizedFailureReason
             } else {
                 self.dismissViewControllerAnimated(true, completion: nil)
             }

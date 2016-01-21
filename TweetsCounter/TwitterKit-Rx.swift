@@ -121,11 +121,11 @@ public extension Twitter {
     /// - returns: The timeline data.
     public func rx_loadTimeline(count: Int, client: TWTRAPIClient) -> Observable<NSData> {
         return Observable.create { (observer: AnyObserver<NSData>) -> Disposable in
-            let HTTPMethod = "GET"
-            let URL = "https://api.twitter.com/1.1/statuses/home_timeline.json"
+            let httpMethod = "GET"
+            let url = "https://api.twitter.com/1.1/statuses/home_timeline.json"
             let parameters = ["count" : String(count)]
             
-            _ = self.rx_URLRequestWithMethod(HTTPMethod, URL: URL, parameters: parameters, client: client)
+            _ = self.rx_URLRequestWithMethod(httpMethod, url: url, parameters: parameters, client: client)
                 .subscribe(
                     onNext: { data in
                         guard let timeline = data as? NSData else {
@@ -149,18 +149,19 @@ public extension Twitter {
     /// - parameter client:  API client used to load the request.
     ///
     /// - returns: The received object.
-    public func rx_URLRequestWithMethod(method: String, URL: String, parameters: [String : AnyObject], client: TWTRAPIClient) -> Observable<AnyObject> {
-        return Observable.create { (observer: AnyObserver<AnyObject>) -> Disposable in
-            let request = client.URLRequestWithMethod(method, URL: URL, parameters: parameters, error: nil)
-            client.sendTwitterRequest(request) { response, data, connectionError in
-                guard let data = data else {
-                    observer.onError(connectionError ?? TwitterError.Unknown)
-                    return
+    public func rx_URLRequestWithMethod(method: String, url: String, parameters: [String : AnyObject], client: TWTRAPIClient)
+        -> Observable<AnyObject> {
+            return Observable.create { (observer: AnyObserver<AnyObject>) -> Disposable in
+                let request = client.URLRequestWithMethod(method, URL: url, parameters: parameters, error: nil)
+                client.sendTwitterRequest(request) { response, data, connectionError in
+                    guard let data = data else {
+                        observer.onError(connectionError ?? TwitterError.Unknown)
+                        return
+                    }
+                    observer.onNext(data)
+                    observer.onCompleted()
                 }
-                observer.onNext(data)
-                observer.onCompleted()
+                return AnonymousDisposable { }
             }
-            return AnonymousDisposable { }
-        }
     }
 }
