@@ -48,6 +48,11 @@ struct StoryboardScene {
     enum Main : String, StoryboardSceneType {
         static let storyboardName = "Main"
         
+        case Settings = "Settings"
+        static func settingsViewController() -> SettingsViewController {
+            return Main.Settings.viewController() as! SettingsViewController
+        }
+        
         case TwitterLogin = "TwitterLogin"
         static func twitterLoginViewController() -> TwitterLoginViewController {
             return Main.TwitterLogin.viewController() as! TwitterLoginViewController
@@ -56,5 +61,4 @@ struct StoryboardScene {
 }
 
 struct StoryboardSegue {
-    
 }

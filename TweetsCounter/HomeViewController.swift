@@ -64,6 +64,9 @@ class HomeViewController: UIViewController {
     // MARK: IBActions
     
     @IBAction func showProfile(sender: AnyObject) {
-        // Show user profile information and settings
+    }
+    
+    @IBAction func returnFromSegueActions(sender: UIStoryboardSegue) {
+        
     }
 }

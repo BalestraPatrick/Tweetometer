@@ -1,10 +1,47 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="CKX-yh-fN9">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="CKX-yh-fN9">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
+        <!--Settings View Controller-->
+        <scene sceneID="c8v-Ho-N6P">
+            <objects>
+                <tableViewController storyboardIdentifier="Settings" id="iQ3-H0-WG4" customClass="SettingsViewController" customModule="TweetsCounter" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="Ovf-7n-2Rs">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Vvf-dv-seg">
+                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Vvf-dv-seg" id="iyg-LB-WEv">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="iQ3-H0-WG4" id="LlS-OQ-a56"/>
+                            <outlet property="delegate" destination="iQ3-H0-WG4" id="3Iz-Me-JMO"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="awL-PR-la1">
+                        <barButtonItem key="leftBarButtonItem" image="close" id="1jj-MD-sLp">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <segue destination="jEZ-fa-ded" kind="unwind" customClass="DismissFromSettingsSegue" customModule="TweetsCounter" customModuleProvider="target" unwindAction="returnFromSegueActions:" id="kh3-j6-f14"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Orc-vx-cZ5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="jEZ-fa-ded" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="2791" y="-53"/>
+        </scene>
         <!--Who is spamming today?-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -47,6 +84,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <connections>
                                     <action selector="showProfile:" destination="BYZ-38-t0r" eventType="touchUpInside" id="L39-BG-sdf"/>
+                                    <segue destination="txu-sg-ivc" kind="presentation" id="zHc-7k-cnj"/>
                                 </connections>
                             </button>
                         </barButtonItem>
@@ -145,7 +183,28 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Hu3-dA-3VD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1257" y="1382"/>
+            <point key="canvasLocation" x="1257" y="926"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Vk7-Xi-U00">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="txu-sg-ivc" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="WXH-Ex-h0a">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="iQ3-H0-WG4" kind="relationship" relationship="rootViewController" id="grz-u9-WTk"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3Ye-JQ-xu0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1979" y="-53"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="close" width="24" height="24"/>
+    </resources>
 </document>

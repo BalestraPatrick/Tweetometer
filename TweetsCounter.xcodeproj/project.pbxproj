@@ -18,6 +18,8 @@
 		AE277DF81BD4E6DB004E151C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE277DF61BD4E6DB004E151C /* LaunchScreen.storyboard */; };
 		AE277E031BD4E6DB004E151C /* TwitterRequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE277E021BD4E6DB004E151C /* TwitterRequestTests.swift */; };
 		AE277E0E1BD4E6DB004E151C /* TweetsCounterUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE277E0D1BD4E6DB004E151C /* TweetsCounterUITests.swift */; };
+		AE35A2F41C52B4A4001E1D88 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE35A2F31C52B4A4001E1D88 /* SettingsViewController.swift */; };
+		AE35A2F61C52C146001E1D88 /* DismissFromSettingsSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE35A2F51C52C146001E1D88 /* DismissFromSettingsSegue.swift */; };
 		AE3E81BE1BF8B40600A51804 /* TwitterLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3E81BD1BF8B40600A51804 /* TwitterLoginViewController.swift */; };
 		AE6675901C3C13D500DD47AB /* users_show.json in Resources */ = {isa = PBXBuildFile; fileRef = AE66758F1C3C13D500DD47AB /* users_show.json */; };
 		AE67B86D1C5017CD00BFB697 /* TwitterKit-Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE67B86C1C5017CD00BFB697 /* TwitterKit-Rx.swift */; };
@@ -75,6 +77,8 @@
 		AE277E091BD4E6DB004E151C /* TweetsCounterUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TweetsCounterUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE277E0D1BD4E6DB004E151C /* TweetsCounterUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetsCounterUITests.swift; sourceTree = "<group>"; };
 		AE277E0F1BD4E6DB004E151C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AE35A2F31C52B4A4001E1D88 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		AE35A2F51C52C146001E1D88 /* DismissFromSettingsSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DismissFromSettingsSegue.swift; sourceTree = "<group>"; };
 		AE3E81BD1BF8B40600A51804 /* TwitterLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterLoginViewController.swift; sourceTree = "<group>"; };
 		AE66758F1C3C13D500DD47AB /* users_show.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = users_show.json; sourceTree = "<group>"; };
 		AE67B86C1C5017CD00BFB697 /* TwitterKit-Rx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TwitterKit-Rx.swift"; sourceTree = "<group>"; };
@@ -169,6 +173,7 @@
 			isa = PBXGroup;
 			children = (
 				AE277DF11BD4E6DB004E151C /* Main.storyboard */,
+				AE35A2F51C52C146001E1D88 /* DismissFromSettingsSegue.swift */,
 				AE277DF61BD4E6DB004E151C /* LaunchScreen.storyboard */,
 			);
 			name = Storyboards;
@@ -209,6 +214,7 @@
 			children = (
 				AE277DED1BD4E6DB004E151C /* AppDelegate.swift */,
 				AE277DEF1BD4E6DB004E151C /* HomeViewController.swift */,
+				AE35A2F31C52B4A4001E1D88 /* SettingsViewController.swift */,
 				AEC5C1E21C2D4CE000C4F007 /* ViewModel */,
 				AEC5C1E11C2C992900C4F007 /* Model */,
 				AEE8C9AB1C0DAAB60047A6A6 /* Twitter */,
@@ -546,9 +552,11 @@
 				AEC5C1E01C2C992300C4F007 /* User.swift in Sources */,
 				AE0FA7CD1C0EDC7E00EDB0A1 /* Customizations.swift in Sources */,
 				AEF1D6671C3B046B000AAEAC /* FabricSetUp.swift in Sources */,
+				AE35A2F61C52C146001E1D88 /* DismissFromSettingsSegue.swift in Sources */,
 				AE0FA7D61C0F045D00EDB0A1 /* TimelineViewModel.swift in Sources */,
 				AE277DF01BD4E6DB004E151C /* HomeViewController.swift in Sources */,
 				AEC5C1DE1C2C949A00C4F007 /* Tweet.swift in Sources */,
+				AE35A2F41C52B4A4001E1D88 /* SettingsViewController.swift in Sources */,
 				AE3E81BE1BF8B40600A51804 /* TwitterLoginViewController.swift in Sources */,
 				AE277DEE1BD4E6DB004E151C /* AppDelegate.swift in Sources */,
 				AEE8C9AD1C0DB2D40047A6A6 /* Storyboard.swift in Sources */,
