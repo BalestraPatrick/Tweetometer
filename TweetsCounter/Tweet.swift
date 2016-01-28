@@ -8,21 +8,24 @@
 
 import Foundation
 import TwitterKit
+import Unbox
 
 /// We instantiate this class directly from TwitterKit so we don't need to deal with JSON in this case.
 
-struct Tweet: Equatable {
+struct Tweet: Equatable, Unboxable {
     
     var tweetID: String
     var createdAt: NSDate
-    var author: User
-    //    
-    //    init(unboxer: Unboxer) {
-    //        let dateFormatter = NSDateFormatter()
-    //        dateFormatter.dateFormat = "YYYY-MM-dd"
-    //        self.createdAt = unboxer.unbox("created_at", formatter: dateFormatter)
-    //        self.followersCount = unboxer.unbox("followers_count")
-    //    }
+    var author: User? //T
+    
+    init(unboxer: Unboxer) {
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "YYYY-MM-dd"
+        self.createdAt = unboxer.unbox("created_at", formatter: dateFormatter)
+        //        self.followersCount = unboxer.unbox("followers_count")
+        self.tweetID = ""
+        //        self.author = User()
+    }
     
     init(tweet: TWTRTweet) {
         self.tweetID = tweet.tweetID

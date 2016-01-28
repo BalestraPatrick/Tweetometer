@@ -15,12 +15,24 @@ public class TimelineParser {
     
     init(tweets: [[AnyObject]]) {
         self.tweets = tweets
+        parseTweets()
     }
     
     private func parseTweets() -> [[User]] {
         var users = [[User]]()
         for userTweets in self.tweets {
-            
+            for tweet in userTweets {
+                if let tweet = tweet as? Dictionary<String, AnyObject> {
+                    do {
+                        let user: User = try UnboxOrThrow(tweet)
+                    } catch {
+                        print(tweet)
+                        print(error)
+                    }
+                }
+
+            }
+            print(userTweets)
         }
         return users
     }

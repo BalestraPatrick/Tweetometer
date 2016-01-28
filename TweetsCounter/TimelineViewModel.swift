@@ -78,13 +78,12 @@ class TimelineViewModel {
                                 let user = tweet["user"]
                                 if let u = user, let screenName = u!["screen_name"] {
                                     let name = (screenName as? String)!
-                                    print(name)
                                     if var tweetsList = groupedTweets[name] {
                                         // At least a tweet is already present
-                                        tweetsList.append("")
+                                        tweetsList.append(tweet)
                                         groupedTweets.updateValue(tweetsList, forKey: name)
                                     } else {
-                                        groupedTweets.updateValue([""], forKey: name)
+                                        groupedTweets.updateValue([tweet], forKey: name)
                                     }
                                 }   
                             }
