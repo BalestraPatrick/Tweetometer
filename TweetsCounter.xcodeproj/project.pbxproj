@@ -24,6 +24,7 @@
 		AE6675901C3C13D500DD47AB /* users_show.json in Resources */ = {isa = PBXBuildFile; fileRef = AE66758F1C3C13D500DD47AB /* users_show.json */; };
 		AE67B86D1C5017CD00BFB697 /* TwitterKit-Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE67B86C1C5017CD00BFB697 /* TwitterKit-Rx.swift */; };
 		AEA2F4971C2806C700777304 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA2F4961C2806C700777304 /* UserData.swift */; };
+		AEC42BF91C5AAFC60008444D /* TimelineParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEC42BF81C5AAFC60008444D /* TimelineParser.swift */; };
 		AEC5C1DE1C2C949A00C4F007 /* Tweet.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEC5C1DD1C2C949A00C4F007 /* Tweet.swift */; };
 		AEC5C1E01C2C992300C4F007 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEC5C1DF1C2C992300C4F007 /* User.swift */; };
 		AEE4D8081BF9BFD100C9CA08 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE4D8071BF9BFD100C9CA08 /* Constants.swift */; };
@@ -90,6 +91,7 @@
 		AEBDAE391BE57A7E00D8E8C3 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = "Pods/../build/Debug-iphoneos/Alamofire.framework"; sourceTree = "<group>"; };
 		AEBDAE3A1BE57A7E00D8E8C3 /* RxAlamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxAlamofire.framework; path = "Pods/../build/Debug-iphoneos/RxAlamofire.framework"; sourceTree = "<group>"; };
 		AEBDAE3B1BE57A7E00D8E8C3 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = "Pods/../build/Debug-iphoneos/RxSwift.framework"; sourceTree = "<group>"; };
+		AEC42BF81C5AAFC60008444D /* TimelineParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelineParser.swift; sourceTree = "<group>"; };
 		AEC5C1DD1C2C949A00C4F007 /* Tweet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tweet.swift; sourceTree = "<group>"; };
 		AEC5C1DF1C2C992300C4F007 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		AEE20A6A1BEE1AA900A029CF /* RxAlamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxAlamofire.framework; path = "Pods/../build/Debug-iphoneos/RxAlamofire.framework"; sourceTree = "<group>"; };
@@ -267,6 +269,7 @@
 		AEC5C1E11C2C992900C4F007 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				AEC42BF81C5AAFC60008444D /* TimelineParser.swift */,
 				AE0FA7D31C0F03E800EDB0A1 /* Timeline.swift */,
 				AEC5C1DD1C2C949A00C4F007 /* Tweet.swift */,
 				AEC5C1DF1C2C992300C4F007 /* User.swift */,
@@ -559,6 +562,7 @@
 				AE35A2F41C52B4A4001E1D88 /* SettingsViewController.swift in Sources */,
 				AE3E81BE1BF8B40600A51804 /* TwitterLoginViewController.swift in Sources */,
 				AE277DEE1BD4E6DB004E151C /* AppDelegate.swift in Sources */,
+				AEC42BF91C5AAFC60008444D /* TimelineParser.swift in Sources */,
 				AEE8C9AD1C0DB2D40047A6A6 /* Storyboard.swift in Sources */,
 				AEE8C9AA1C0D97C50047A6A6 /* TwitterSession.swift in Sources */,
 				AE67B86D1C5017CD00BFB697 /* TwitterKit-Rx.swift in Sources */,

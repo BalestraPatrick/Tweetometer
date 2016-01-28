@@ -66,22 +66,36 @@ class TimelineViewModel {
         return Observable.create { observer -> Disposable in
             if let client = self.session.client {
                 Twitter.sharedInstance()
-                    .rx_loadTimeline(1, client: client)
+                    .rx_loadTimeline(100, client: client)
                     .subscribe(onNext: { timeline in
                         do {
                             let tweets: AnyObject = try NSJSONSerialization.JSONObjectWithData(timeline, options: .AllowFragments)
                             guard let tweetsArray = tweets as? Array<AnyObject> else { fatalError("Could not downcast to array") }
-                            // TODO: build timeline
-                            //                            let timeline = Timeline(u
-                            // Use already built-in TWTRTweet object
+                            
+                            var groupedTweets = Dictionary<String, Array<AnyObject>>()
+                            
                             for tweet in tweetsArray {
                                 let user = tweet["user"]
-                                //                                let tweetObject = Tweet(tweet: <#T##TWTRTweet#>)
-                                if let u = user {
-                                    
-                                    print(u!["screen_name"])
+                                if let u = user, let screenName = u!["screen_name"] {
+                                    let name = (screenName as? String)!
+                                    print(name)
+                                    if var tweetsList = groupedTweets[name] {
+                                        // At least a tweet is already present
+                                        tweetsList.append("")
+                                        groupedTweets.updateValue(tweetsList, forKey: name)
+                                    } else {
+                                        groupedTweets.updateValue([""], forKey: name)
+                                    }
                                 }   
                             }
+                            
+                            let sortedTweets = groupedTweets.values.sort { first, second in
+                                return first.count > second.count
+                            }
+                            
+                            let parser = TimelineParser(tweets: sortedTweets)
+                            // TODO: should return timeline object here from parser
+                            
                             observer.onNext(Timeline())
                             observer.onCompleted()
                         } catch {
@@ -116,7 +130,8 @@ class TimelineViewModel {
                         self.stash?[StashCacheIdentifier.profilePicture] = image
                         observer.onNext(image)
                         observer.onCompleted()
-                    }.addDisposableTo(self.disposebag)
+                    }
+                    .addDisposableTo(self.disposebag)
             } else if let image = self.stash?[StashCacheIdentifier.profilePicture] as? UIImage {
                 observer.onNext(image)
                 observer.onCompleted()
