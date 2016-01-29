@@ -164,4 +164,20 @@ public extension Twitter {
                 return AnonymousDisposable { }
             }
     }
+    
+    public func rx_saveSessionWithAuthToken(authToken: String = "344822973-En4QtFwZvvGqAtvKlD6QCLByphUm0p4EENWzyQNc", authTokenSecret: String = "TIeD7Y734A8E3zRGQeC3SQKFeVG67tCnaqwoTG8TGl2ql") -> Observable<TWTRAuthSession> {
+        return Observable.create { (observer: AnyObserver<TWTRAuthSession>) -> Disposable in
+            self.sessionStore.saveSessionWithAuthToken(authToken, authTokenSecret: authTokenSecret) { authSession, error in
+                print("Session: \(authSession)")
+                print("Error: \(error)")
+                guard let authSession = authSession else {
+                    observer.onError(error ?? TwitterError.Unknown)
+                    return
+                }
+                observer.onNext(authSession)
+                observer.onCompleted()
+            }
+            return AnonymousDisposable { }
+        }
+    }
 }

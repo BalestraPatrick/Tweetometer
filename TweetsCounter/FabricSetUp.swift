@@ -12,10 +12,21 @@ import Crashlytics
 import TwitterKit
 import Keys
 
+enum AppEnvironment {
+    case Debug
+    case UnitTest
+}
+
 class FabricSetUp: NSObject {
     
-    override init() {
+    init(environment: AppEnvironment) {
         Twitter.sharedInstance().startWithConsumerKey(TweetscounterKeys().fABRIC_API_KEY(), consumerSecret: TweetscounterKeys().fABRIC_BUILD_SECRET())
-        Fabric.with([Crashlytics.sharedInstance(), Twitter.sharedInstance()])        
+        
+        switch environment {
+        case .Debug:
+            Fabric.with([Crashlytics.sharedInstance(), Twitter.sharedInstance()])
+        case .UnitTest:
+            Fabric.with([Twitter.sharedInstance()])
+        }
     }
 }

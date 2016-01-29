@@ -29,4 +29,7 @@ target "TweetsCounterTests" do
     pod 'OHHTTPStubs'
     pod 'OHHTTPStubs/Swift'
     pod 'RxSwift'
+    pod 'Fabric'
+    pod 'TwitterKit'
+    pod 'TwitterCore'
 end

@@ -25,6 +25,8 @@
 		AE67B86D1C5017CD00BFB697 /* TwitterKit-Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE67B86C1C5017CD00BFB697 /* TwitterKit-Rx.swift */; };
 		AEA2F4971C2806C700777304 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA2F4961C2806C700777304 /* UserData.swift */; };
 		AEC42BF91C5AAFC60008444D /* TimelineParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEC42BF81C5AAFC60008444D /* TimelineParser.swift */; };
+		AEC42BFA1C5BD5730008444D /* FabricSetUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF1D6661C3B046B000AAEAC /* FabricSetUp.swift */; };
+		AEC42BFB1C5C20D40008444D /* TwitterKit-Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE67B86C1C5017CD00BFB697 /* TwitterKit-Rx.swift */; };
 		AEC5C1DE1C2C949A00C4F007 /* Tweet.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEC5C1DD1C2C949A00C4F007 /* Tweet.swift */; };
 		AEC5C1E01C2C992300C4F007 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEC5C1DF1C2C992300C4F007 /* User.swift */; };
 		AEE4D8081BF9BFD100C9CA08 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE4D8071BF9BFD100C9CA08 /* Constants.swift */; };
@@ -576,7 +578,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AEC42BFB1C5C20D40008444D /* TwitterKit-Rx.swift in Sources */,
 				AEA2F4971C2806C700777304 /* UserData.swift in Sources */,
+				AEC42BFA1C5BD5730008444D /* FabricSetUp.swift in Sources */,
 				AE277E031BD4E6DB004E151C /* TwitterRequestTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

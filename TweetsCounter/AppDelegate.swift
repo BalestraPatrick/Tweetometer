@@ -14,8 +14,7 @@ import Alamofire
     var window: UIWindow?
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        _ = FabricSetUp()
-        
+        _ = FabricSetUp(environment: .Debug)
         return true
     }
     
@@ -28,15 +27,15 @@ import Alamofire
     }
     
     func applicationWillEnterForeground(application: UIApplication) {
-
+        
     }
     
     func applicationDidBecomeActive(application: UIApplication) {
-
+        
     }
     
     func applicationWillTerminate(application: UIApplication) {
-
+        
     }
     
     
