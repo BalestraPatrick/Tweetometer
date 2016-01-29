@@ -42,7 +42,7 @@ DEPENDENCIES:
   - OHHTTPStubs
   - OHHTTPStubs/Swift
   - RxAlamofire
-  - RxSwift (~> 2.0.0-beta)
+  - RxSwift
   - Stash
   - TwitterCore
   - TwitterKit
@@ -66,6 +66,6 @@ SPEC CHECKSUMS:
   TwitterKit: b5821570887ec2d77650fa232eaec175665dc443
   Unbox: af6e75fddb73ee790c80114bf7b6edef56a0dcd8
 
-PODFILE CHECKSUM: 64dd080a196419a472012fe4f5150d4e323fb2d7
+PODFILE CHECKSUM: 0e0efd7c08847139f052c0b14e0f9a0b4f743869
 
 COCOAPODS: 1.0.0.beta.2

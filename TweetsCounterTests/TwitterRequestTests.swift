@@ -10,11 +10,13 @@
 import XCTest
 import TwitterKit
 import OHHTTPStubs
+import RxSwift
 
 class TwitterRequestTests: XCTestCase {
     
     let userData = UserData()
     let timelineViewModel = TimelineViewModel()
+    let disposeBag = DisposeBag()
     
     override func setUp() {
         super.setUp()
@@ -35,7 +37,7 @@ class TwitterRequestTests: XCTestCase {
         
         let expectation = expectationWithDescription("Receive profile information successfully.")
         
-        _ = timelineViewModel
+        timelineViewModel
             .requestProfileInformation()
             .subscribe(onNext: { user in
                 print(user)
@@ -47,6 +49,7 @@ class TwitterRequestTests: XCTestCase {
                 }, onError: { error in
                     XCTFail("Failed in requesting the profile information with error: \(error)")
                 }, onCompleted: nil, onDisposed: nil)
+            .addDisposableTo(self.disposeBag)
         
         waitForExpectationsWithTimeout(10.0) { error in
             XCTAssertNil(error, "Failed expectation \(expectation) with error \(error)")

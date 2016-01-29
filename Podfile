@@ -19,14 +19,14 @@ target "TweetsCounter" do
     pod 'TwitterKit'
     pod 'TwitterCore'
     pod 'Alamofire', '~> 3.0'
-    pod 'RxSwift', '~> 2.0.0-beta'
+    pod 'RxSwift'
     pod 'Stash'
     pod 'ObjectMapper', '~> 1.0'
     pod 'Unbox'
 end
 
 target "TweetsCounterTests" do
-    pod 'TwitterKit'
     pod 'OHHTTPStubs'
     pod 'OHHTTPStubs/Swift'
+    pod 'RxSwift'
 end
