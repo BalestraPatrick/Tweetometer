@@ -10,6 +10,7 @@ included: # paths to include during linting. `--path` is ignored if present.
   - TweetsCounter
 excluded: # paths to ignore during linting. Takes precedence over `included`.
   - Pods
+  - TweetsCounter/Storyboard.swift
 # parameterized rules can be customized from this configuration file
 line_length: 150
 # parameterized rules are first parameterized as a warning level, then error level.

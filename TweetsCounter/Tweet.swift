@@ -16,14 +16,18 @@ struct Tweet: Equatable, Unboxable {
     
     var tweetID: String
     var createdAt: NSDate
-    var author: User? //T
+    var author: User? // TODO: shouldn't be optional
+    var text: String
     
     init(unboxer: Unboxer) {
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = "YYYY-MM-dd"
         self.createdAt = unboxer.unbox("created_at", formatter: dateFormatter)
         //        self.followersCount = unboxer.unbox("followers_count")
-        self.tweetID = ""
+        self.tweetID = unboxer.unbox("id")
+        self.text = unboxer.unbox("text")
+        let user: Dictionary<String, AnyObject> = unboxer.unbox("user")
+//        let tweetOwner = User(unboxer: user)
         //        self.author = User()
     }
     
@@ -31,6 +35,7 @@ struct Tweet: Equatable, Unboxable {
         self.tweetID = tweet.tweetID
         self.createdAt = tweet.createdAt
         self.author = User(user: tweet.author)
+        self.text = tweet.text
     }
     
 }

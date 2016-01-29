@@ -30,7 +30,7 @@ public class TimelineParser {
                         print(error)
                     }
                 }
-
+                
             }
             print(userTweets)
         }
