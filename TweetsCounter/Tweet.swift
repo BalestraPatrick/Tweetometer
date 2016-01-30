@@ -10,32 +10,44 @@ import Foundation
 import TwitterKit
 import Unbox
 
-/// We instantiate this class directly from TwitterKit so we don't need to deal with JSON in this case.
-
 struct Tweet: Equatable, Unboxable {
     
     var tweetID: String
     var createdAt: NSDate
-    var author: User? // TODO: shouldn't be optional
+    var author: User?
     var text: String
+    var language: String
     
     init(unboxer: Unboxer) {
+        
+        let retweeted: Bool = unboxer.unbox("retweeted")
+        if retweeted {
+            // TODO: handle retweet case
+        }
+        
+        // TODO: Abstract date formatting
         let dateFormatter = NSDateFormatter()
-        dateFormatter.dateFormat = "YYYY-MM-dd"
-        self.createdAt = unboxer.unbox("created_at", formatter: dateFormatter)
-        //        self.followersCount = unboxer.unbox("followers_count")
-        self.tweetID = unboxer.unbox("id")
-        self.text = unboxer.unbox("text")
-        let user: Dictionary<String, AnyObject> = unboxer.unbox("user")
-//        let tweetOwner = User(unboxer: user)
-        //        self.author = User()
+        dateFormatter.dateFormat = "eee MMM dd HH:mm:ss ZZZZ yyyy"
+        createdAt = unboxer.unbox("created_at", formatter: dateFormatter)
+        
+        tweetID = unboxer.unbox("id")
+        text = unboxer.unbox("text")
+        language = unboxer.unbox("lang")
+        
+        let userJSON: Dictionary<String, AnyObject> = unboxer.unbox("user")
+        author = Unbox(userJSON)
+
+        if author == nil {
+            print("Failed to unbox author user with JSON: \(userJSON)")
+        }
     }
     
     init(tweet: TWTRTweet) {
-        self.tweetID = tweet.tweetID
-        self.createdAt = tweet.createdAt
-        self.author = User(user: tweet.author)
-        self.text = tweet.text
+        tweetID = tweet.tweetID
+        createdAt = tweet.createdAt
+        author = User(user: tweet.author)
+        text = tweet.text
+        language = tweet.languageCode
     }
     
 }

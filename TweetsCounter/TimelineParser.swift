@@ -24,13 +24,12 @@ public class TimelineParser {
             for tweet in userTweets {
                 if let tweet = tweet as? Dictionary<String, AnyObject> {
                     do {
-                        let user: User = try UnboxOrThrow(tweet)
+                        let tweet: Tweet = try UnboxOrThrow(tweet)
+//                        print(tweet)
                     } catch {
-                        print(tweet)
                         print(error)
                     }
-                }
-                
+                } 
             }
             print(userTweets)
         }

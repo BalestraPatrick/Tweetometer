@@ -12,31 +12,35 @@ import TwitterKit
 
 struct User: Unboxable {
     
-    var userID: String
+    var userId: Int
     var followersCount: Int
     var followingCount: Int
     var statusesCount: Int
     var screenName: String
     var name: String
+    var description: String
     var profileImageURL: NSURL?
     
     init(unboxer: Unboxer) {
-        self.userID = unboxer.unbox("id")
-        self.followersCount = unboxer.unbox("followers_count")
-        self.followingCount = unboxer.unbox("friends_count")
-        self.statusesCount = unboxer.unbox("statuses_count")
-        self.screenName = unboxer.unbox("screen_name")
-        self.name = unboxer.unbox("name")
-        self.profileImageURL = NSURL(string: unboxer.unbox("profile_image_url_https"))
+        userId = unboxer.unbox("id")
+        followersCount = unboxer.unbox("followers_count")
+        followingCount = unboxer.unbox("friends_count")
+        statusesCount = unboxer.unbox("statuses_count")
+        screenName = unboxer.unbox("screen_name")
+        name = unboxer.unbox("name")
+        description = unboxer.unbox("description")
+        profileImageURL = NSURL(string: unboxer.unbox("profile_image_url_https"))
     }
     
     init(user: TWTRUser) {
-        self.userID = user.userID
-        self.followersCount = 0
-        self.followingCount = 0
-        self.statusesCount = 0
-        self.screenName = user.screenName
-        self.name = user.name
-        self.profileImageURL = NSURL(string: user.profileImageLargeURL)
+        userId = Int(user.userID) ?? 0
+        followersCount = 0
+        followingCount = 0
+        statusesCount = 0
+        screenName = user.screenName
+        name = user.name
+        description = ""
+        profileImageURL = NSURL(string: user.profileImageLargeURL)
+        
     }
 }
