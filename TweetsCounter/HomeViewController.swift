@@ -8,6 +8,7 @@
 
 import UIKit
 import RxSwift
+import RxCocoa
 
 class HomeViewController: UIViewController {
     
@@ -21,9 +22,31 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.applyCustomization()
+        
+        let items = Observable.just([
+            "First Item",
+            "Second Item",
+            "Third Item"
+            ])
+        
+        items
+            .bindTo(tableView.rx_itemsWithCellIdentifier(TableViewCell.UserCell.rawValue, cellType: UITableViewCell.self)) { (row, element, cell) in
+                cell.textLabel?.text = "\(element) @ row \(row)"
+            }
+            .addDisposableTo(disposeBag)
+        
+        
+        tableView
+            .rx_modelSelected(String)
+            .subscribeNext { value in
+//                DefaultWireframe.presentAlert("Tapped `\(value)`")
+            }
+            .addDisposableTo(disposeBag)
     }
     
     override func viewDidAppear(animated: Bool) {
+        
+        // Request user profile information
         viewModel.requestProfileInformation()
             .subscribe(onNext: { user in
                 self.requestProfilePicture()
@@ -37,13 +60,14 @@ class HomeViewController: UIViewController {
                 }, onCompleted: nil, onDisposed: nil)
             .addDisposableTo(self.disposeBag)
         
+        // Request timeline
         viewModel.requestTimeline()
             .subscribe(onNext: { timeline in
                 print(timeline)
                 }, onError: { error in
                     
                 }, onCompleted: nil, onDisposed: nil)
-            .addDisposableTo(self.disposeBag)
+            .addDisposableTo(disposeBag)
     }
     
     // MARK: Data Request
@@ -57,7 +81,7 @@ class HomeViewController: UIViewController {
                 }, onCompleted: {
                     // handle completion
                 }, onDisposed: nil)
-            .addDisposableTo(self.disposeBag)
+            .addDisposableTo(disposeBag)
         
     }
     

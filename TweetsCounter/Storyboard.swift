@@ -1,10 +1,3 @@
-//
-//  Storyboard.swift
-//  TweetsCounter
-//
-//  Created by Patrick Balestra on 12/1/15.
-//  Copyright © 2015 Patrick Balestra. All rights reserved.
-//
 // Generated using SwiftGen, by O.Halligon — https://github.com/AliSoftware/SwiftGen
 
 import Foundation
@@ -58,6 +51,10 @@ struct StoryboardScene {
             return Main.TwitterLogin.viewController() as! TwitterLoginViewController
         }
     }
+}
+
+enum TableViewCell: String {
+    case UserCell = "UserCell"
 }
 
 struct StoryboardSegue {

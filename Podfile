@@ -20,6 +20,7 @@ target "TweetsCounter" do
     pod 'TwitterCore'
     pod 'Alamofire', '~> 3.0'
     pod 'RxSwift'
+    pod 'RxCocoa'
     pod 'Stash'
     pod 'ObjectMapper', '~> 1.0'
     pod 'Unbox'

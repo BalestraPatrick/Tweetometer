@@ -25,6 +25,8 @@ PODS:
   - RxAlamofire/Core (1.1.1):
     - Alamofire (~> 3.0)
     - RxSwift (~> 2.0)
+  - RxCocoa (2.1.0):
+    - RxSwift (~> 2.0)
   - RxSwift (2.0.0)
   - Stash (0.5.0)
   - TwitterCore (1.15.1):
@@ -42,6 +44,7 @@ DEPENDENCIES:
   - OHHTTPStubs
   - OHHTTPStubs/Swift
   - RxAlamofire
+  - RxCocoa
   - RxSwift
   - Stash
   - TwitterCore
@@ -60,12 +63,13 @@ SPEC CHECKSUMS:
   ObjectMapper: 4143abed1dbd49b73d75092fe8fa1c88ed6434b7
   OHHTTPStubs: d2bf6a0f407620d67e75a1d3f12d86a2b1dd15c0
   RxAlamofire: 5900f3842dd7bad9ca620bfb5917b9c984db5cca
+  RxCocoa: 79b5feb8378545336e756a0a33fcf5e95050b71c
   RxSwift: d83246efa6f16c50c143bec134649d045498f601
   Stash: 14be1c144a3c077d858e1180e22ab96eb79ab2ba
   TwitterCore: 12983a7464e34afbbf18881347898a9db526ac71
   TwitterKit: b5821570887ec2d77650fa232eaec175665dc443
   Unbox: af6e75fddb73ee790c80114bf7b6edef56a0dcd8
 
-PODFILE CHECKSUM: d1c8e5c6e509a34820926479360d7d740af4bbd2
+PODFILE CHECKSUM: b14169907eb961750a37a9a4028fb750e60a70b4
 
 COCOAPODS: 1.0.0.beta.2
