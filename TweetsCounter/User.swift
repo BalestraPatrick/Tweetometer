@@ -32,19 +32,6 @@ struct User: Equatable, Unboxable {
         description = unboxer.unbox("description")
         profileImageURL = NSURL(string: unboxer.unbox("profile_image_url_https"))
     }
-    
-    init(user: TWTRUser) {
-        userID = Int(user.userID) ?? 0
-        followersCount = 0
-        followingCount = 0
-        statusesCount = 0
-        screenName = user.screenName
-        name = user.name
-        description = ""
-        profileImageURL = NSURL(string: user.profileImageLargeURL)
-        
-    }
-    
 }
 
 func == (lhs: User, rhs: User) -> Bool {
