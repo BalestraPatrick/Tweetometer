@@ -47,6 +47,6 @@ struct User: Equatable, Unboxable {
     
 }
 
-func ==(lhs: User, rhs: User) -> Bool {
+func == (lhs: User, rhs: User) -> Bool {
     return lhs.userID == rhs.userID
 }
