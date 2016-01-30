@@ -10,10 +10,11 @@ import UIKit
 
 struct Timeline {
     
-    var tweets: [Tweet]
+    /// Users sorted by the highest number of tweets
+    var users: [User]
     
-    init() {
-        tweets = []
+    init(users: [User]) {
+        self.users = users
     }
 }
 

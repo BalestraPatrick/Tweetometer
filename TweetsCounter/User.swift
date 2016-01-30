@@ -10,9 +10,9 @@ import Foundation
 import Unbox
 import TwitterKit
 
-struct User: Unboxable {
+struct User: Equatable, Unboxable {
     
-    var userId: Int
+    var userID: Int
     var followersCount: Int
     var followingCount: Int
     var statusesCount: Int
@@ -20,9 +20,10 @@ struct User: Unboxable {
     var name: String
     var description: String
     var profileImageURL: NSURL?
+    var tweets: [Tweet]?
     
     init(unboxer: Unboxer) {
-        userId = unboxer.unbox("id")
+        userID = unboxer.unbox("id")
         followersCount = unboxer.unbox("followers_count")
         followingCount = unboxer.unbox("friends_count")
         statusesCount = unboxer.unbox("statuses_count")
@@ -33,7 +34,7 @@ struct User: Unboxable {
     }
     
     init(user: TWTRUser) {
-        userId = Int(user.userID) ?? 0
+        userID = Int(user.userID) ?? 0
         followersCount = 0
         followingCount = 0
         statusesCount = 0
@@ -43,4 +44,9 @@ struct User: Unboxable {
         profileImageURL = NSURL(string: user.profileImageLargeURL)
         
     }
+    
+}
+
+func ==(lhs: User, rhs: User) -> Bool {
+    return lhs.userID == rhs.userID
 }

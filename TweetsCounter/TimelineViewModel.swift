@@ -72,31 +72,14 @@ class TimelineViewModel {
                             let tweets: AnyObject = try NSJSONSerialization.JSONObjectWithData(timeline, options: .AllowFragments)
                             guard let tweetsArray = tweets as? Array<AnyObject> else { fatalError("Could not downcast to array") }
                             
-                            var groupedTweets = Dictionary<String, Array<AnyObject>>()
-                            
-                            for tweet in tweetsArray {
-                                let user = tweet["user"]
-                                if let u = user, let screenName = u!["screen_name"] {
-                                    let name = (screenName as? String)!
-                                    if var tweetsList = groupedTweets[name] {
-                                        // At least a tweet is already present
-                                        tweetsList.append(tweet)
-                                        groupedTweets.updateValue(tweetsList, forKey: name)
-                                    } else {
-                                        groupedTweets.updateValue([tweet], forKey: name)
-                                    }
-                                }   
+                            let parser = TimelineParser(jsonTweets: tweetsArray)
+                            if let t = parser.timeline {
+                                observer.onNext(t)
+                                observer.onCompleted()
+                            } else {
+                                observer.onError(JSONError.UnknownError)
                             }
                             
-                            let sortedTweets = groupedTweets.values.sort { first, second in
-                                return first.count > second.count
-                            }
-                            
-                            let parser = TimelineParser(tweets: sortedTweets)
-                            // TODO: should return timeline object here from parser
-                            
-                            observer.onNext(Timeline())
-                            observer.onCompleted()
                         } catch {
                             observer.onError(error)
                         }

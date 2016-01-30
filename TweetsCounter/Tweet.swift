@@ -12,11 +12,12 @@ import Unbox
 
 struct Tweet: Equatable, Unboxable {
     
-    var tweetID: String
+    var tweetID: Int
     var createdAt: NSDate
-    var author: User?
     var text: String
     var language: String
+    var screenName: String
+    var author: User?
     
     init(unboxer: Unboxer) {
         
@@ -36,26 +37,16 @@ struct Tweet: Equatable, Unboxable {
         
         let userJSON: Dictionary<String, AnyObject> = unboxer.unbox("user")
         author = Unbox(userJSON)
-
-        if author == nil {
+        if let author = author {
+            screenName = author.screenName
+        } else {
+            screenName = ""
             print("Failed to unbox author user with JSON: \(userJSON)")
         }
-    }
-    
-    init(tweet: TWTRTweet) {
-        tweetID = tweet.tweetID
-        createdAt = tweet.createdAt
-        author = User(user: tweet.author)
-        text = tweet.text
-        language = tweet.languageCode
     }
     
 }
 
 func == (lhs: Tweet, rhs: Tweet) -> Bool {
     return lhs.tweetID == rhs.tweetID
-}
-
-func != (lhs: Tweet, rhs: Tweet) -> Bool {
-    return lhs.tweetID != rhs.tweetID
 }

@@ -17,4 +17,7 @@ line_length: 150
 type_body_length:
   - 300 # warning
   - 400 # error
+
+function_body_length:
+  - 50
 reporter: "xcode" # reporter type (xcode, json, csv, checkstyle)
