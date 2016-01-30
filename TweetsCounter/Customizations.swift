@@ -24,3 +24,12 @@ extension UIColor {
         return UIColor(red: 0.114, green: 0.631, blue: 0.949, alpha: 1.9)
     }
 }
+
+extension NSDateFormatter {
+
+    static func twitterDateFormatter() -> NSDateFormatter {
+        let formatter = NSDateFormatter()
+        formatter.dateFormat = "eee MMM dd HH:mm:ss ZZZZ yyyy"
+        return formatter
+    }
+}

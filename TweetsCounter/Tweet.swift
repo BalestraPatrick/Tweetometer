@@ -23,13 +23,11 @@ struct Tweet: Equatable, Unboxable {
         
         let retweeted: Bool = unboxer.unbox("retweeted")
         if retweeted {
-            // TODO: handle retweet case
+            // TODO
+            print("Retweeted")
         }
         
-        // TODO: Abstract date formatting
-        let dateFormatter = NSDateFormatter()
-        dateFormatter.dateFormat = "eee MMM dd HH:mm:ss ZZZZ yyyy"
-        createdAt = unboxer.unbox("created_at", formatter: dateFormatter)
+        createdAt = unboxer.unbox("created_at", formatter: NSDateFormatter.twitterDateFormatter())
         
         tweetID = unboxer.unbox("id")
         text = unboxer.unbox("text")
