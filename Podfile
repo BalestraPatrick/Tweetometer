@@ -18,12 +18,13 @@ target "TweetsCounter" do
     pod 'Crashlytics'
     pod 'TwitterKit'
     pod 'TwitterCore'
-    pod 'Alamofire', '~> 3.0'
+    pod 'Alamofire'
     pod 'RxSwift'
     pod 'RxCocoa'
     pod 'Stash'
-    pod 'ObjectMapper', '~> 1.0'
+    pod 'ObjectMapper'
     pod 'Unbox'
+    pod 'ReachabilitySwift'
 end
 
 target "TweetsCounterTests" do

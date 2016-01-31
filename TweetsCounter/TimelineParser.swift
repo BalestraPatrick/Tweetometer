@@ -93,6 +93,7 @@ public final class TimelineParser {
             user.tweets = allTweetsOfUser
             return user
         }
+        
         // Sort users by highest number of tweets
         orderedUsers.sortInPlace { user1, user2 in
             return user1.tweets?.count > user2.tweets?.count

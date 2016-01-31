@@ -88,7 +88,9 @@
                                 </connections>
                             </button>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="NoE-yk-Izm"/>
+                        <barButtonItem key="rightBarButtonItem" image="refresh" id="NoE-yk-Izm">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="profileButton" destination="u4C-qs-5mp" id="3bg-Tv-aEt"/>
@@ -206,5 +208,6 @@
     </scenes>
     <resources>
         <image name="close" width="24" height="24"/>
+        <image name="refresh" width="25" height="25"/>
     </resources>
 </document>
