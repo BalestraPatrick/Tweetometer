@@ -13,7 +13,7 @@ import Alamofire
 import TwitterKit
 import Stash
 
-class TimelineViewModel {
+final class TimelineViewModel {
     
     
     let stash: Stash?

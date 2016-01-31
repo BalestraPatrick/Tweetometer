@@ -14,7 +14,7 @@ enum TwitterRequestError: ErrorType {
     case Unknown
 }
 
-class TwitterSession {
+final class TwitterSession {
     
     var client: TWTRAPIClient?
     var user: TWTRUser?

@@ -10,7 +10,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-class HomeViewController: UIViewController {
+final class HomeViewController: UIViewController {
     
     let disposeBag = DisposeBag()
     
@@ -21,7 +21,8 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.navigationBar.applyCustomization()
+        
+        applyStyle()
         
         let items = Observable.just([
             "First Item",

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ProfilePictureButton: UIButton {
+final class ProfilePictureButton: UIButton {
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)

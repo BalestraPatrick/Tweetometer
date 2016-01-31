@@ -13,7 +13,7 @@ enum JSONError: ErrorType {
     case UnknownError
 }
 
-public class TimelineParser {
+public final class TimelineParser {
     
     typealias JSONTweets = [AnyObject]
     
@@ -82,20 +82,17 @@ public class TimelineParser {
     ///
     /// - returns: A Timeline object containing an array of users.
     private func buildTimelineFromTweets(tweets: [Tweet], users: [User]) -> Timeline {
-        var orderedUsers = [User]()
-        
         // Build list of authors with array of tweets in each user
-        for var user in users {
-            var allTweetsOfUser = [Tweet]()
-            for tweet in tweets {
+        var orderedUsers = users.flatMap { (var user) -> User? in
+            let allTweetsOfUser = tweets.flatMap({ (tweet) -> Tweet? in
                 if tweet.author == user {
-                    allTweetsOfUser.append(tweet)
+                    return tweet
                 }
-            }
+                return nil
+            })
             user.tweets = allTweetsOfUser
-            orderedUsers.append(user)
+            return user
         }
-        
         // Sort users by highest number of tweets
         orderedUsers.sortInPlace { user1, user2 in
             return user1.tweets?.count > user2.tweets?.count

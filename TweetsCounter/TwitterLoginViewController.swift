@@ -9,7 +9,7 @@
 import UIKit
 import TwitterKit
 
-public class TwitterLoginViewController: UIViewController {
+public final class TwitterLoginViewController: UIViewController {
     
     @IBOutlet weak var resultLabel: UILabel!
     
