@@ -8,20 +8,14 @@
 
 import UIKit
 
-extension UINavigationBar {
-    
-    func applyCustomization() {
-        barTintColor = UIColor.whiteColor()
-        titleTextAttributes = [NSForegroundColorAttributeName : UIColor.blackColor()]
-        setBackgroundImage(UIImage(), forBarMetrics: .Default)
-        shadowImage = UIImage()
-    }
-}
-
 extension UIColor {
     
     func twitterBlueColor() -> UIColor {
-        return UIColor(red: 0.114, green: 0.631, blue: 0.949, alpha: 1.9)
+        return UIColor(red: 0.114, green: 0.631, blue: 0.949, alpha: 1.0)
+    }
+    
+    func backgroundGreenColor() -> UIColor {
+        return UIColor(red: 0.015, green: 0.717, blue: 0.404, alpha: 1.0)
     }
 }
 
