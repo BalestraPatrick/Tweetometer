@@ -9,8 +9,9 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import RxDataSources
 
-final class HomeViewController: UIViewController {
+final class HomeViewController: UIViewController, UITableViewDelegate {
     
     let disposeBag = DisposeBag()
     
@@ -18,31 +19,13 @@ final class HomeViewController: UIViewController {
     @IBOutlet weak var profileButton: ProfilePictureButton!
     
     var viewModel = TimelineViewModel()
-    
+    let dataSource = RxTableViewSectionedReloadDataSource<SectionModel<String, User>>()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
         applyStyle()
-        
-        let items = Observable.just([
-            "First Item",
-            "Second Item",
-            "Third Item"
-            ])
-        
-        items
-            .bindTo(tableView.rx_itemsWithCellIdentifier(TableViewCell.UserCell.rawValue, cellType: UITableViewCell.self)) { (row, element, cell) in
-                cell.textLabel?.text = "\(element) @ row \(row)"
-            }
-            .addDisposableTo(disposeBag)
-        
-        
-        tableView
-            .rx_modelSelected(String)
-            .subscribeNext { value in
-//                DefaultWireframe.presentAlert("Tapped `\(value)`")
-            }
-            .addDisposableTo(disposeBag)
+        loadTableView()
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -61,7 +44,6 @@ final class HomeViewController: UIViewController {
                 }, onCompleted: nil, onDisposed: nil)
             .addDisposableTo(self.disposeBag)
         
-        // Request timeline
         viewModel.requestTimeline()
             .subscribe(onNext: { timeline in
                 print(timeline)
@@ -79,11 +61,47 @@ final class HomeViewController: UIViewController {
                 self.profileButton.setBackgroundImage($0, forState: .Normal)
                 }, onError: { error in
                     // handle error
-                }, onCompleted: {
-                    // handle completion
-                }, onDisposed: nil)
+                }, onCompleted: nil, onDisposed: nil)
             .addDisposableTo(disposeBag)
         
+    }
+    
+    func loadTableView() {
+        dataSource.configureCell = { table, indexPath, viewModel in
+            guard let cell = table.dequeueReusableCellWithIdentifier(TableViewCell.UserCellIdentifier.rawValue) as? UserTableViewCell else {
+                fatalError("Could not create cell with identifier \(TableViewCell.UserCellIdentifier.rawValue) in UITableView: \(table)")
+            }
+            cell.textLabel?.text = "\(viewModel) @ row \(indexPath.row)"
+            return cell
+        }
+//        let items = Observable.just([
+//            SectionModel(model: "First section", items: [2])
+//            ])
+//        viewModel.requestTimeline()
+//            items
+//            .bindTo(tableView.rx_itemsWithDataSource(dataSource))
+//            .addDisposableTo(disposeBag)
+        
+//        tableView
+//            .rx_itemSelected
+//            .map { indexPath in
+//                return (indexPath, self.dataSource.itemAtIndexPath(indexPath))
+//            }
+//            .subscribeNext { indexPath, model in
+//                // TODO: push new view on stack with all the tweets of a user
+//            }
+//            .addDisposableTo(disposeBag)
+//        
+//        tableView
+//            .rx_setDelegate(self)
+//            .addDisposableTo(disposeBag)
+        
+    }
+    
+    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let label = UILabel(frame: CGRect.zero)
+        label.text = dataSource.sectionAtIndex(section).model ?? ""
+        return label
     }
     
     // MARK: IBActions

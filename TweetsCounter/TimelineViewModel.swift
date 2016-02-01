@@ -9,6 +9,7 @@
 import UIKit
 import RxSwift
 import RxAlamofire
+import RxDataSources
 import Alamofire
 import TwitterKit
 import Stash
@@ -61,12 +62,12 @@ final class TimelineViewModel {
     
     /// Request the user timeline for the currently authenticated user.
     ///
-    /// - returns: Timeline object with all the tweets.
-    func requestTimeline() -> Observable<Timeline> {
+    /// - returns: Timeline object with all the users tweets.
+    func requestTimeline() -> Observable<[SectionModel<String, User>]> {
         return Observable.create { observer -> Disposable in
             if let client = self.session.client {
                 Twitter.sharedInstance()
-                    .rx_loadTimeline(100, client: client)
+                    .rx_loadTimeline(1, client: client)
                     .subscribe(onNext: { timeline in
                         do {
                             let tweets: AnyObject = try NSJSONSerialization.JSONObjectWithData(timeline, options: .AllowFragments)
@@ -74,7 +75,8 @@ final class TimelineViewModel {
                             
                             let parser = TimelineParser(jsonTweets: tweetsArray)
                             if let t = parser.timeline {
-                                observer.onNext(t)
+                                let items = [SectionModel(model: "First section", items: t.users)]
+                                observer.onNext(items)
                                 observer.onCompleted()
                             } else {
                                 observer.onError(JSONError.UnknownError)

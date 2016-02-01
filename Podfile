@@ -13,14 +13,17 @@ plugin 'cocoapods-keys', {
 }
 
 target "TweetsCounter" do
-    pod 'RxAlamofire'
     pod 'Fabric'
     pod 'Crashlytics'
     pod 'TwitterKit'
     pod 'TwitterCore'
-    pod 'Alamofire'
+    
     pod 'RxSwift'
     pod 'RxCocoa'
+    pod 'RxDataSources'
+    pod 'RxAlamofire'
+    
+    pod 'Alamofire'
     pod 'Stash'
     pod 'ObjectMapper'
     pod 'Unbox'

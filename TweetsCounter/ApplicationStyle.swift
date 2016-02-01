@@ -29,7 +29,7 @@ extension UITableView {
 extension HomeViewController {
     
     func applyStyle() {
-        view.backgroundColor = UIColor().backgroundGreenColor()
+        view.backgroundColor = UIColor().backgroundBlueColor()
         navigationController?.navigationBar.applyStyle()
         tableView.applyStyle()
     }

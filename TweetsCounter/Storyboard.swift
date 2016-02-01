@@ -53,9 +53,5 @@ struct StoryboardScene {
     }
 }
 
-enum TableViewCell: String {
-    case UserCell = "UserCell"
-}
-
 struct StoryboardSegue {
 }

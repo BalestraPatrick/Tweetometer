@@ -32,14 +32,14 @@ struct TwitterEndpoints {
     
 }
 
+enum TableViewCell: String {
+    case UserCellIdentifier = "UserCell"
+}
+
 let cacheName = "TweetsCounter"
 
 struct StashCacheIdentifier {
     static let profilePicture = "UserProfilePicture"
-}
-
-struct TableViewCellIdentifier {
-    static let user = "UserCell"
 }
 
 struct ViewControllerIdentifier {
