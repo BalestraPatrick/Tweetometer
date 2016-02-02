@@ -15,6 +15,7 @@ extension UINavigationBar {
         titleTextAttributes = [NSForegroundColorAttributeName : UIColor.whiteColor(), NSFontAttributeName: UIFont.systemFontOfSize(18, weight: 0.1)]
         setBackgroundImage(UIImage(), forBarMetrics: .Default)
         shadowImage = UIImage()
+        backgroundColor = UIColor().backgroundBlueColor()
     }
 }
 
@@ -23,6 +24,7 @@ extension UITableView {
     func applyStyle() {
         backgroundView = nil
         backgroundColor = UIColor.clearColor()
+        tableFooterView = UIView()
     }
 }
 
