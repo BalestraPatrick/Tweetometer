@@ -51,7 +51,7 @@ public final class TimelineParser {
                     let tweet: Tweet = try UnboxOrThrow(tweet)
                     tweets.append(tweet)
                 } catch {
-                    print(error)
+                    print("Error in unboxing tweet: \(tweet) with error: \(error)")
                     throw JSONError.UnknownError
                 }
             }
