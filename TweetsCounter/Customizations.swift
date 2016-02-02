@@ -24,7 +24,8 @@ extension NSDateFormatter {
 
     static func twitterDateFormatter() -> NSDateFormatter {
         let formatter = NSDateFormatter()
-        formatter.dateFormat = "eee MMM dd HH:mm:ss ZZZZ yyyy"
+        formatter.locale = NSLocale(localeIdentifier: "en_US_POSIX")
+        formatter.dateFormat = "EEE MMM dd HH:mm:ss Z yyyy"
         return formatter
     }
 }
