@@ -25,9 +25,8 @@ final class HomeViewController: UIViewController, UITableViewDelegate {
         super.viewDidLoad()
         
         applyStyle()
-        loadTableView()
     }
-    
+
     override func viewDidAppear(animated: Bool) {
         
         // Request user profile information
@@ -44,13 +43,7 @@ final class HomeViewController: UIViewController, UITableViewDelegate {
                 }, onCompleted: nil, onDisposed: nil)
             .addDisposableTo(self.disposeBag)
         
-        viewModel.requestTimeline()
-            .subscribe(onNext: { timeline in
-                print(timeline)
-                }, onError: { error in
-                    
-                }, onCompleted: nil, onDisposed: nil)
-            .addDisposableTo(disposeBag)
+        loadTableView()
     }
     
     // MARK: Data Request
@@ -67,42 +60,43 @@ final class HomeViewController: UIViewController, UITableViewDelegate {
     }
     
     func loadTableView() {
+        tableView.rowHeight = 61.0
+
         dataSource.configureCell = { table, indexPath, viewModel in
             guard let cell = table.dequeueReusableCellWithIdentifier(TableViewCell.UserCellIdentifier.rawValue) as? UserTableViewCell else {
                 fatalError("Could not create cell with identifier \(TableViewCell.UserCellIdentifier.rawValue) in UITableView: \(table)")
             }
-            cell.textLabel?.text = "\(viewModel) @ row \(indexPath.row)"
+//            cell.textLabel?.text = "\(viewModel) @ row \(indexPath.row)"
+            cell.backgroundColor = UIColor(white: 1.0, alpha: 0.2)
+            
             return cell
         }
-//        let items = Observable.just([
-//            SectionModel(model: "First section", items: [2])
-//            ])
-//        viewModel.requestTimeline()
-//            items
-//            .bindTo(tableView.rx_itemsWithDataSource(dataSource))
-//            .addDisposableTo(disposeBag)
+
+        viewModel.requestTimeline()
+            .bindTo(tableView.rx_itemsWithDataSource(dataSource))
+            .addDisposableTo(disposeBag)
         
-//        tableView
-//            .rx_itemSelected
-//            .map { indexPath in
-//                return (indexPath, self.dataSource.itemAtIndexPath(indexPath))
-//            }
-//            .subscribeNext { indexPath, model in
-//                // TODO: push new view on stack with all the tweets of a user
-//            }
-//            .addDisposableTo(disposeBag)
-//        
-//        tableView
-//            .rx_setDelegate(self)
-//            .addDisposableTo(disposeBag)
+        tableView
+            .rx_itemSelected
+            .map { indexPath in
+                return (indexPath, self.dataSource.itemAtIndexPath(indexPath))
+            }
+            .subscribeNext { indexPath, model in
+                // TODO: push new view on stack with all the tweets of a user
+            }
+            .addDisposableTo(disposeBag)
+
+        tableView
+            .rx_setDelegate(self)
+            .addDisposableTo(disposeBag)
         
     }
     
-    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let label = UILabel(frame: CGRect.zero)
-        label.text = dataSource.sectionAtIndex(section).model ?? ""
-        return label
-    }
+//    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+//        let label = UILabel(frame: CGRect.zero)
+//        label.text = dataSource.sectionAtIndex(section).model ?? ""
+//        return label
+//    }
     
     // MARK: IBActions
     
