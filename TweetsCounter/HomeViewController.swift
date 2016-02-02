@@ -62,13 +62,16 @@ final class HomeViewController: UIViewController, UITableViewDelegate {
     func loadTableView() {
         tableView.rowHeight = 61.0
 
-        dataSource.configureCell = { table, indexPath, viewModel in
+        dataSource.configureCell = { table, indexPath, user in
             guard let cell = table.dequeueReusableCellWithIdentifier(TableViewCell.UserCellIdentifier.rawValue) as? UserTableViewCell else {
                 fatalError("Could not create cell with identifier \(TableViewCell.UserCellIdentifier.rawValue) in UITableView: \(table)")
             }
-//            cell.textLabel?.text = "\(viewModel) @ row \(indexPath.row)"
             cell.backgroundColor = UIColor(white: 1.0, alpha: 0.2)
-            
+            cell.screenNameLabel.text = user.name
+            cell.usernameLabel.text = user.screenName
+            cell.followersLabel.text = "\(user.followersCount) Followers"
+            cell.followingLabel.text = "\(user.followingCount) Following"
+            cell.numberOfTweetsLabel.text = "\(user.tweets?.count ?? 0)"
             return cell
         }
 
