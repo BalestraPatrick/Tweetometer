@@ -27,7 +27,7 @@ target "TweetsCounter" do
     pod 'Stash'
     pod 'ObjectMapper'
     pod 'Unbox'
-    pod 'ReachabilitySwift'
+    pod 'DGElasticPullToRefresh'
 end
 
 target "TweetsCounterTests" do

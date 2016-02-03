@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import DGElasticPullToRefresh
 
 extension HomeViewController {
     
@@ -15,11 +16,12 @@ extension HomeViewController {
         navigationController?.navigationBar.applyStyle()
         tableView.separatorStyle = .None
         tableView.applyStyle()
+        
     }
     
     func setTitleViewContent(numberOfTweets: Int) {
         titleLabel.text = "Tweetometer"
-        subtitleLabel.text = "In the last \(numberOfTweets) tweets of your timeline"
+        subtitleLabel.text = "Of the last \(numberOfTweets) tweets of your timeline"
     }
     
 }
@@ -43,5 +45,15 @@ extension UITableView {
         backgroundView = nil
         backgroundColor = UIColor.clearColor()
         tableFooterView = UIView()
+        let loadingView = DGElasticPullToRefreshLoadingViewCircle()
+        loadingView.tintColor = UIColor.whiteColor()
+        self.dg_addPullToRefreshWithActionHandler({ [weak self] () -> Void in
+            // Add your logic here
+            // Do not forget to call dg_stopLoading() at the end
+            self!.dg_stopLoading()
+            }, loadingView: loadingView)
+        self.dg_setPullToRefreshFillColor(UIColor(red: 57/255.0, green: 67/255.0, blue: 89/255.0, alpha: 1.0))
+        self.dg_setPullToRefreshBackgroundColor(self.backgroundColor!)
     }
+    
 }

@@ -50,6 +50,10 @@ final class HomeViewController: UIViewController, UITableViewDelegate {
         loadTableView()
     }
     
+    deinit {
+        tableView.dg_removePullToRefresh()
+    }
+    
     // MARK: Data Request
     
     func requestProfilePicture() {
