@@ -7,16 +7,9 @@
 //
 
 import Foundation
-#if !RX_NO_MODULE
 import RxSwift
 import RxCocoa
-#endif
-
-#if os(iOS)
-    import UIKit
-#elseif os(OSX)
-    import Cocoa
-#endif 
+import UIKit
 
 protocol ImageService {
     func imageFromURL(URL: NSURL) -> Observable<DownloadableImage>

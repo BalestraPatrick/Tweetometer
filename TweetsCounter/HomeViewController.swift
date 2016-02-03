@@ -67,7 +67,11 @@ final class HomeViewController: UIViewController, UITableViewDelegate {
             guard let cell = table.dequeueReusableCellWithIdentifier(TableViewCell.UserCellIdentifier.rawValue) as? UserTableViewCell else {
                 fatalError("Could not create cell with identifier \(TableViewCell.UserCellIdentifier.rawValue) in UITableView: \(table)")
             }
-            cell.backgroundColor = UIColor(white: 1.0, alpha: 0.2)
+            cell.backgroundColor = indexPath.row % 2 == 0 ? UIColor(white: 1.0, alpha: 0.2) : UIColor(white: 1.0, alpha: 0.1)
+            cell.profilePictureImageView.layer.cornerRadius = cell.profilePictureImageView.frame.size.width / 2
+            cell.profilePictureImageView.layer.borderColor = UIColor.whiteColor().CGColor
+            cell.profilePictureImageView.layer.borderWidth = 1.0
+            cell.profilePictureImageView.layer.masksToBounds = true
             cell.screenName = user.name
             cell.username = user.screenName
             cell.numberOfFollowers = user.followersCount
@@ -96,12 +100,6 @@ final class HomeViewController: UIViewController, UITableViewDelegate {
             .addDisposableTo(disposeBag)
         
     }
-    
-    //    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-    //        let label = UILabel(frame: CGRect.zero)
-    //        label.text = dataSource.sectionAtIndex(section).model ?? ""
-    //        return label
-    //    }
     
     // MARK: IBActions
     

@@ -8,14 +8,8 @@
 
 import Foundation
 
-#if os(iOS)
-    import UIKit
-    typealias Image = UIImage
-#elseif os(OSX)
-    import Cocoa
-    import AppKit
-    typealias Image = NSImage
-#endif
+import UIKit
+typealias Image = UIImage
 
 let MB = 1024 * 1024
 
@@ -33,14 +27,4 @@ extension String {
         let numberFormatter = NSNumberFormatter()
         return numberFormatter.numberFromString(self)?.doubleValue
     }
-}
-
-func showAlert(message: String) {
-    #if os(iOS)
-        UIAlertView(title: "RxExample", message: message, delegate: nil, cancelButtonTitle: "OK").show()
-    #elseif os(OSX)
-        let alert = NSAlert()
-        alert.messageText = message
-        alert.runModal()
-    #endif
 }

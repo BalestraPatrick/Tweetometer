@@ -7,17 +7,11 @@
 //
 
 import Foundation
-#if !RX_NO_MODULE
 import RxSwift
-#endif
-#if os(iOS)
-    import UIKit
-#elseif os(OSX)
-    import Cocoa
-#endif
+import UIKit
 
 enum DownloadableImage{
     case Content(image:Image)
     case OfflinePlaceholder
-
+    
 }

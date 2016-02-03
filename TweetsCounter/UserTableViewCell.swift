@@ -12,7 +12,7 @@ import RxCocoa
 
 final class UserTableViewCell: UITableViewCell {
     
-    @IBOutlet private weak var profilePictureImageView: UIImageView!
+    @IBOutlet weak var profilePictureImageView: UIImageView!
     @IBOutlet private weak var screenNameLabel: UILabel!
     @IBOutlet private weak var usernameLabel: UILabel!
     @IBOutlet private weak var followersLabel: UILabel!
@@ -83,7 +83,6 @@ final class UserTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
         
     }
     

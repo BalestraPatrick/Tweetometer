@@ -30,7 +30,13 @@ struct User: Equatable, Unboxable {
         screenName = unboxer.unbox("screen_name")
         name = unboxer.unbox("name")
         description = unboxer.unbox("description")
-        profileImageURL = NSURL(string: unboxer.unbox("profile_image_url_https"))
+        profileImageURL = convertMediumToBiggerProfilePicture(unboxer.unbox("profile_image_url_https"))
+    }
+    
+    private func convertMediumToBiggerProfilePicture(URL: String) -> NSURL {
+        let biggerURLString = URL.stringByReplacingOccurrencesOfString("_normal", withString: "bigger")
+        let biggerURL = NSURL(string: biggerURLString)!
+        return biggerURL
     }
 }
 
