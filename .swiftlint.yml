@@ -2,15 +2,17 @@ disabled_rules: # rule identifiers to exclude from running
   - trailing_whitespace
   - trailing_newline
   - force_cast
+  - variable_name
   # - comma
   # - control_statement
   # Find all the available rules by running:
   # swiftlint rules
 included: # paths to include during linting. `--path` is ignored if present.
-  - TweetsCounter
+
 excluded: # paths to ignore during linting. Takes precedence over `included`.
   - Pods
   - TweetsCounter/Storyboard.swift
+  - TweetsCounter/RxSwiftServices/
 # parameterized rules can be customized from this configuration file
 line_length: 150
 # parameterized rules are first parameterized as a warning level, then error level.

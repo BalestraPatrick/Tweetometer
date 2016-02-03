@@ -16,6 +16,30 @@ extension UINavigationBar {
         setBackgroundImage(UIImage(), forBarMetrics: .Default)
         shadowImage = UIImage()
         backgroundColor = UIColor().backgroundBlueColor()
+        
+        
+    }
+}
+
+extension UINavigationItem {
+    
+    func applyStyle() {
+        // TODO: subclass UIView and instantiate from here
+        let view = UIView(frame: CGRect(x: 0, y: 0, width: 250, height: 40))
+        let halfWidth = view.frame.size.height / 2
+        let titleLabel = UILabel(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: halfWidth))
+        titleLabel.text = "Who is Tweeting?"
+        titleLabel.textAlignment = .Center
+        titleLabel.textColor = UIColor.whiteColor()
+        view.addSubview(titleLabel)
+        
+        let subtitleLabel = UILabel(frame: CGRect(x: 0, y: halfWidth, width: view.frame.size.width, height: halfWidth))
+        subtitleLabel.text = "In the last 200 tweets of your timeline"
+        subtitleLabel.textAlignment = .Center
+        subtitleLabel.textColor = UIColor.whiteColor()
+        subtitleLabel.font = UIFont.systemFontOfSize(12, weight: 0.05)
+        view.addSubview(subtitleLabel)
+        titleView = view
     }
 }
 
@@ -34,6 +58,7 @@ extension HomeViewController {
         view.backgroundColor = UIColor().backgroundBlueColor()
         navigationController?.navigationBar.applyStyle()
         tableView.applyStyle()
+        navigationItem.applyStyle()
     }
     
 }

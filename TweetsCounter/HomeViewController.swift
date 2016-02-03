@@ -14,19 +14,20 @@ import RxDataSources
 final class HomeViewController: UIViewController, UITableViewDelegate {
     
     let disposeBag = DisposeBag()
+    let imageService = DefaultImageService.sharedImageService
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var profileButton: ProfilePictureButton!
     
     var viewModel = TimelineViewModel()
     let dataSource = RxTableViewSectionedReloadDataSource<SectionModel<String, User>>()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         applyStyle()
     }
-
+    
     override func viewDidAppear(animated: Bool) {
         
         // Request user profile information
@@ -60,21 +61,22 @@ final class HomeViewController: UIViewController, UITableViewDelegate {
     }
     
     func loadTableView() {
-        tableView.rowHeight = 61.0
-
-        dataSource.configureCell = { table, indexPath, user in
+        tableView.rowHeight = 70.0
+        
+        dataSource.configureCell = { [weak self] (table, indexPath, user) in
             guard let cell = table.dequeueReusableCellWithIdentifier(TableViewCell.UserCellIdentifier.rawValue) as? UserTableViewCell else {
                 fatalError("Could not create cell with identifier \(TableViewCell.UserCellIdentifier.rawValue) in UITableView: \(table)")
             }
             cell.backgroundColor = UIColor(white: 1.0, alpha: 0.2)
-            cell.screenNameLabel.text = user.name
-            cell.usernameLabel.text = user.screenName
-            cell.followersLabel.text = "\(user.followersCount) Followers"
-            cell.followingLabel.text = "\(user.followingCount) Following"
-            cell.numberOfTweetsLabel.text = "\(user.tweets?.count ?? 0)"
+            cell.screenName = user.name
+            cell.username = user.screenName
+            cell.numberOfFollowers = user.followersCount
+            cell.numberOfFollowing = user.followingCount
+            cell.numberOfTweets = user.tweets?.count ?? 0
+            cell.downloadableImage = self?.imageService.imageFromURL(user.profileImageURL!) ?? Observable.empty()
             return cell
         }
-
+        
         viewModel.requestTimeline()
             .bindTo(tableView.rx_itemsWithDataSource(dataSource))
             .addDisposableTo(disposeBag)
@@ -88,18 +90,18 @@ final class HomeViewController: UIViewController, UITableViewDelegate {
                 // TODO: push new view on stack with all the tweets of a user
             }
             .addDisposableTo(disposeBag)
-
+        
         tableView
             .rx_setDelegate(self)
             .addDisposableTo(disposeBag)
         
     }
     
-//    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-//        let label = UILabel(frame: CGRect.zero)
-//        label.text = dataSource.sectionAtIndex(section).model ?? ""
-//        return label
-//    }
+    //    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    //        let label = UILabel(frame: CGRect.zero)
+    //        label.text = dataSource.sectionAtIndex(section).model ?? ""
+    //        return label
+    //    }
     
     // MARK: IBActions
     
