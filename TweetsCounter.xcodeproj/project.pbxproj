@@ -12,6 +12,7 @@
 		AE0FA7CD1C0EDC7E00EDB0A1 /* Customizations.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0FA7CC1C0EDC7E00EDB0A1 /* Customizations.swift */; };
 		AE0FA7D41C0F03E800EDB0A1 /* Timeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0FA7D31C0F03E800EDB0A1 /* Timeline.swift */; };
 		AE0FA7D61C0F045D00EDB0A1 /* TimelineViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0FA7D51C0F045D00EDB0A1 /* TimelineViewModel.swift */; };
+		AE15F36C1C62A1BD00EE2F82 /* MenuPopOverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE15F36B1C62A1BD00EE2F82 /* MenuPopOverViewController.swift */; };
 		AE277DEE1BD4E6DB004E151C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE277DED1BD4E6DB004E151C /* AppDelegate.swift */; };
 		AE277DF01BD4E6DB004E151C /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE277DEF1BD4E6DB004E151C /* HomeViewController.swift */; };
 		AE277DF31BD4E6DB004E151C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE277DF11BD4E6DB004E151C /* Main.storyboard */; };
@@ -79,6 +80,7 @@
 		AE0FA7CC1C0EDC7E00EDB0A1 /* Customizations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Customizations.swift; sourceTree = "<group>"; };
 		AE0FA7D31C0F03E800EDB0A1 /* Timeline.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Timeline.swift; sourceTree = "<group>"; };
 		AE0FA7D51C0F045D00EDB0A1 /* TimelineViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelineViewModel.swift; sourceTree = "<group>"; };
+		AE15F36B1C62A1BD00EE2F82 /* MenuPopOverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuPopOverViewController.swift; sourceTree = "<group>"; };
 		AE26EDEF1BEE1293000E9829 /* RxAlamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxAlamofire.framework; path = "Pods/../build/Debug-iphoneos/RxAlamofire.framework"; sourceTree = "<group>"; };
 		AE277DEA1BD4E6DB004E151C /* TweetsCounter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TweetsCounter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE277DED1BD4E6DB004E151C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -184,6 +186,7 @@
 			children = (
 				AE277DEF1BD4E6DB004E151C /* HomeViewController.swift */,
 				AE35A2F31C52B4A4001E1D88 /* SettingsViewController.swift */,
+				AE15F36B1C62A1BD00EE2F82 /* MenuPopOverViewController.swift */,
 			);
 			name = "View Controller";
 			sourceTree = "<group>";
@@ -613,6 +616,7 @@
 				AE35A2F61C52C146001E1D88 /* DismissFromSettingsSegue.swift in Sources */,
 				AE0FA7D61C0F045D00EDB0A1 /* TimelineViewModel.swift in Sources */,
 				AE277DF01BD4E6DB004E151C /* HomeViewController.swift in Sources */,
+				AE15F36C1C62A1BD00EE2F82 /* MenuPopOverViewController.swift in Sources */,
 				AEC5C1DE1C2C949A00C4F007 /* Tweet.swift in Sources */,
 				AEE4ED251C624C1B0023A80F /* UIImageView+DownloadableImage.swift in Sources */,
 				AE35A2F41C52B4A4001E1D88 /* SettingsViewController.swift in Sources */,

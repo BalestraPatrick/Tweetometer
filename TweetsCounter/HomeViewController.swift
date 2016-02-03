@@ -54,6 +54,16 @@ final class HomeViewController: UIViewController, UITableViewDelegate {
         tableView.dg_removePullToRefresh()
     }
     
+    // MARK: Storyboard Segues
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == StoryboardSegue.Main.MenuPopOver.rawValue {
+            let menuPopOver = segue.destinationViewController as! MenuPopOverViewController
+            menuPopOver.modalPresentationStyle = UIModalPresentationStyle.Popover
+            menuPopOver.popoverPresentationController!.delegate = self
+        }
+    }
+    
     // MARK: Data Request
     
     func requestProfilePicture() {
@@ -114,10 +124,6 @@ final class HomeViewController: UIViewController, UITableViewDelegate {
             .rx_setDelegate(self)
             .addDisposableTo(disposeBag)
         
-    }
-    
-    func tableView(tableView: UITableView, editingStyleForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCellEditingStyle {
-        return .None
     }
     
     // MARK: IBActions

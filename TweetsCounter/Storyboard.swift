@@ -41,6 +41,11 @@ struct StoryboardScene {
     enum Main : String, StoryboardSceneType {
         static let storyboardName = "Main"
         
+        case MenuPopOver = "MenuPopOver"
+        static func menuPopOverViewController() -> MenuPopOverViewController {
+            return Main.MenuPopOver.viewController() as! MenuPopOverViewController
+        }
+        
         case Settings = "Settings"
         static func settingsViewController() -> SettingsViewController {
             return Main.Settings.viewController() as! SettingsViewController
@@ -54,4 +59,7 @@ struct StoryboardScene {
 }
 
 struct StoryboardSegue {
+    enum Main : String, StoryboardSegueType {
+        case MenuPopOver = "MenuPopOver"
+    }
 }

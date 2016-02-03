@@ -42,6 +42,38 @@
             </objects>
             <point key="canvasLocation" x="2791" y="-53"/>
         </scene>
+        <!--Menu Pop Over View Controller-->
+        <scene sceneID="vvo-5B-Z7j">
+            <objects>
+                <tableViewController storyboardIdentifier="MenuPopOver" id="p7T-X3-Vin" customClass="MenuPopOverViewController" customModule="TweetsCounter" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="RQF-4u-aes">
+                        <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="ZJr-Mc-ZnX">
+                                <rect key="frame" x="0.0" y="28" width="200" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ZJr-Mc-ZnX" id="sf7-qW-yEv">
+                                    <rect key="frame" x="0.0" y="0.0" width="200" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="p7T-X3-Vin" id="kca-a0-k1N"/>
+                            <outlet property="delegate" destination="p7T-X3-Vin" id="EhP-ox-dOG"/>
+                        </connections>
+                    </tableView>
+                    <value key="contentSizeForViewInPopover" type="size" width="200" height="200"/>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="200" height="200"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dY2-sq-hGH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1257" y="-447"/>
+        </scene>
         <!--Home View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -261,6 +293,12 @@
                         </view>
                         <barButtonItem key="rightBarButtonItem" image="Menu" id="NoE-yk-Izm">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="presentPopOver:" destination="BYZ-38-t0r" id="6gU-89-Pxb"/>
+                                <segue destination="p7T-X3-Vin" kind="popoverPresentation" identifier="MenuPopOver" popoverAnchorBarButtonItem="NoE-yk-Izm" id="maH-fW-2FS">
+                                    <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                </segue>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>

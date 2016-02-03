@@ -26,6 +26,20 @@ extension HomeViewController {
     
 }
 
+extension HomeViewController: UIPopoverPresentationControllerDelegate {
+ 
+    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
+        return UIModalPresentationStyle.None
+    }
+}
+
+extension HomeViewController: UITabBarDelegate {
+    
+    func tableView(tableView: UITableView, editingStyleForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCellEditingStyle {
+        return .None
+    }
+}
+
 extension UINavigationBar {
     
     func applyStyle() {
