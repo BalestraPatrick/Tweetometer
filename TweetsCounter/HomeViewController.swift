@@ -17,9 +17,9 @@ final class HomeViewController: UIViewController, UITableViewDelegate {
     let imageService = DefaultImageService.sharedImageService
     
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var profileButton: ProfilePictureButton!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var subtitleLabel: UILabel!
+    @IBOutlet weak var profileButton: ProfilePictureButton!
     
     var viewModel = TimelineViewModel()
     let dataSource = RxTableViewSectionedReloadDataSource<SectionModel<String, User>>()

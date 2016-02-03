@@ -259,7 +259,7 @@
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         </view>
-                        <barButtonItem key="rightBarButtonItem" image="refresh" id="NoE-yk-Izm">
+                        <barButtonItem key="rightBarButtonItem" image="Menu" id="NoE-yk-Izm">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </barButtonItem>
                     </navigationItem>
@@ -381,7 +381,7 @@
     </scenes>
     <resources>
         <image name="Detail" width="25" height="25"/>
+        <image name="Menu" width="25" height="25"/>
         <image name="close" width="24" height="24"/>
-        <image name="refresh" width="25" height="25"/>
     </resources>
 </document>
