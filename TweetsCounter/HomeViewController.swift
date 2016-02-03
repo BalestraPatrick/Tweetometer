@@ -18,6 +18,8 @@ final class HomeViewController: UIViewController, UITableViewDelegate {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var profileButton: ProfilePictureButton!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var subtitleLabel: UILabel!
     
     var viewModel = TimelineViewModel()
     let dataSource = RxTableViewSectionedReloadDataSource<SectionModel<String, User>>()
@@ -26,6 +28,7 @@ final class HomeViewController: UIViewController, UITableViewDelegate {
         super.viewDidLoad()
         
         applyStyle()
+        setTitleViewContent(200)
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -61,7 +64,7 @@ final class HomeViewController: UIViewController, UITableViewDelegate {
     }
     
     func loadTableView() {
-        tableView.rowHeight = 70.0
+        tableView.rowHeight = 75.0
         
         dataSource.configureCell = { [weak self] (table, indexPath, user) in
             guard let cell = table.dequeueReusableCellWithIdentifier(TableViewCell.UserCellIdentifier.rawValue) as? UserTableViewCell else {
@@ -78,6 +81,7 @@ final class HomeViewController: UIViewController, UITableViewDelegate {
             cell.numberOfFollowing = user.followingCount
             cell.numberOfTweets = user.tweets?.count ?? 0
             cell.downloadableImage = self?.imageService.imageFromURL(user.profileImageURL!) ?? Observable.empty()
+            cell.index = indexPath.row
             return cell
         }
         
@@ -96,9 +100,20 @@ final class HomeViewController: UIViewController, UITableViewDelegate {
             .addDisposableTo(disposeBag)
         
         tableView
+            .rx_itemDeselected
+            .subscribeNext { indexPath in
+                
+            }
+            .addDisposableTo(disposeBag)
+        
+        tableView
             .rx_setDelegate(self)
             .addDisposableTo(disposeBag)
         
+    }
+    
+    func tableView(tableView: UITableView, editingStyleForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCellEditingStyle {
+        return .None
     }
     
     // MARK: IBActions

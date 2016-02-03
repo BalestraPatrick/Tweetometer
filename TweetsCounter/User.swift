@@ -34,7 +34,7 @@ struct User: Equatable, Unboxable {
     }
     
     private func convertMediumToBiggerProfilePicture(URL: String) -> NSURL {
-        let biggerURLString = URL.stringByReplacingOccurrencesOfString("_normal", withString: "bigger")
+        let biggerURLString = URL.stringByReplacingOccurrencesOfString("normal", withString: "bigger")
         let biggerURL = NSURL(string: biggerURLString)!
         return biggerURL
     }

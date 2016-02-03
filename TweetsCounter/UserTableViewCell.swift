@@ -19,6 +19,8 @@ final class UserTableViewCell: UITableViewCell {
     @IBOutlet private weak var followingLabel: UILabel!
     @IBOutlet private weak var numberOfTweetsLabel: UILabel!
     
+    var index = 0
+    
     var disposeBag = DisposeBag()
     var downloadableImage: Observable<DownloadableImage>? {
         didSet {
@@ -89,6 +91,15 @@ final class UserTableViewCell: UITableViewCell {
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         
+    }
+    
+    override func setHighlighted(highlighted: Bool, animated: Bool) {
+        super.setHighlighted(highlighted, animated: animated)
+        if highlighted {
+            self.backgroundColor = UIColor(white: 1.0, alpha: 0.0)
+        } else {
+            self.backgroundColor = index % 2 == 0 ? UIColor(white: 1.0, alpha: 0.2) : UIColor(white: 1.0, alpha: 0.1)
+        }
     }
     
 }

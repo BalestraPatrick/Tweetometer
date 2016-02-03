@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		AE07A0D61C5D4AD400514B1C /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE07A0D51C5D4AD400514B1C /* UserTableViewCell.swift */; };
+		AE0B38D91C628BDB00C38E9B /* NavigationTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0B38D81C628BDB00C38E9B /* NavigationTitleView.swift */; };
 		AE0FA7C71C0DEBDE00EDB0A1 /* ProfilePictureButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0FA7C61C0DEBDE00EDB0A1 /* ProfilePictureButton.swift */; };
 		AE0FA7CD1C0EDC7E00EDB0A1 /* Customizations.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0FA7CC1C0EDC7E00EDB0A1 /* Customizations.swift */; };
 		AE0FA7D41C0F03E800EDB0A1 /* Timeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0FA7D31C0F03E800EDB0A1 /* Timeline.swift */; };
@@ -73,6 +74,7 @@
 		5F7E2A19A566A94B966B75F6 /* Pods-TweetsCounterTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TweetsCounterTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TweetsCounterTests/Pods-TweetsCounterTests.release.xcconfig"; sourceTree = "<group>"; };
 		834CD7A0B0E56E16907A50F2 /* Pods_TweetsCounterTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TweetsCounterTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE07A0D51C5D4AD400514B1C /* UserTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
+		AE0B38D81C628BDB00C38E9B /* NavigationTitleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationTitleView.swift; sourceTree = "<group>"; };
 		AE0C38421BE58815003A858F /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		AE0C38481BE589B8003A858F /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
 		AE0FA7C61C0DEBDE00EDB0A1 /* ProfilePictureButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfilePictureButton.swift; sourceTree = "<group>"; };
@@ -223,6 +225,7 @@
 			children = (
 				AE07A0D51C5D4AD400514B1C /* UserTableViewCell.swift */,
 				AE0FA7C61C0DEBDE00EDB0A1 /* ProfilePictureButton.swift */,
+				AE0B38D81C628BDB00C38E9B /* NavigationTitleView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -633,6 +636,7 @@
 				AEE4ED231C624C1B0023A80F /* ReachabilityService.swift in Sources */,
 				AEE4D8081BF9BFD100C9CA08 /* Constants.swift in Sources */,
 				AEE4ED241C624C1B0023A80F /* UIImage+Extensions.swift in Sources */,
+				AE0B38D91C628BDB00C38E9B /* NavigationTitleView.swift in Sources */,
 				AEE4ED221C624C1B0023A80F /* Reachability.swift in Sources */,
 				AE0FA7D41C0F03E800EDB0A1 /* Timeline.swift in Sources */,
 			);
