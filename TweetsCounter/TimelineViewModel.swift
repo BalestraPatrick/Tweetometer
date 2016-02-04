@@ -30,14 +30,14 @@ final class TimelineViewModel {
             stash = nil
         }
     }
-    
+
     /// Request the profile information for the currently authenticated user.
     ///
     /// - returns: User object with all its fetched data.
     func requestProfileInformation() -> Observable<TWTRUser> {
         return Observable.create { observer -> Disposable in
             do {
-                let userID = try self.session.checkSessionUserID()
+                let userID = try self.session.isUserLoggedIn()
                 
                 Twitter.sharedInstance()
                     .rx_loadUserWithID(userID, client: self.session.client!)
@@ -101,7 +101,10 @@ final class TimelineViewModel {
     /// - returns: User profile image.
     func requestProfilePicture() -> Observable<UIImage> {
         return Observable.create { observer -> Disposable in
-            if let _ = self.session.client, let user = self.session.user {
+            if let image = self.stash?[StashCacheIdentifier.profilePicture] as? UIImage {
+                observer.onNext(image)
+                observer.onCompleted()
+            } else if let _ = self.session.client, let user = self.session.user {
                 // Download profile image of the logged in user if not cached
                 request(Method.GET, (user.profileImageLargeURL)!)
                     .flatMap {
@@ -116,9 +119,6 @@ final class TimelineViewModel {
                         observer.onCompleted()
                     }
                     .addDisposableTo(self.disposebag)
-            } else if let image = self.stash?[StashCacheIdentifier.profilePicture] as? UIImage {
-                observer.onNext(image)
-                observer.onCompleted()
             } else {
                 observer.onError(TwitterRequestError.NotAuthenticated)
             }

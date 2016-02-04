@@ -20,7 +20,7 @@ final class TwitterSession {
     var user: TWTRUser?
     
     ///  Check the session user ID to see if there is an user logged in.
-    func checkSessionUserID() throws -> String {
+    func isUserLoggedIn() throws -> String {
         if let userID = Twitter.sharedInstance().sessionStore.session()?.userID {
             client = TWTRAPIClient(userID: userID)
             return userID

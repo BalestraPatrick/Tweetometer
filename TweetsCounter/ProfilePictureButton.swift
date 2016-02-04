@@ -7,8 +7,16 @@
 //
 
 import UIKit
+import RxSwift
 
 final class ProfilePictureButton: UIButton {
+    
+    var disposeBag = DisposeBag()
+    var image = UIImage() {
+        didSet {
+            self.setBackgroundImage(image, forState: .Normal)
+        }
+    }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)

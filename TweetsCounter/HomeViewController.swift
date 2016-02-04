@@ -32,21 +32,7 @@ final class HomeViewController: UIViewController, UITableViewDelegate {
     }
     
     override func viewDidAppear(animated: Bool) {
-        
-        // Request user profile information
-        viewModel.requestProfileInformation()
-            .subscribe(onNext: { user in
-                self.requestProfilePicture()
-                }, onError: { error in
-                    switch error {
-                    case TwitterRequestError.NotAuthenticated:
-                        self.presentViewController(StoryboardScene.Main.twitterLoginViewController(), animated: true, completion: nil)
-                    default:
-                        print("Failed to request profile information with error: \(error)")
-                    }
-                }, onCompleted: nil, onDisposed: nil)
-            .addDisposableTo(self.disposeBag)
-        
+        startRequests()
         loadTableView()
     }
     
@@ -66,15 +52,27 @@ final class HomeViewController: UIViewController, UITableViewDelegate {
     
     // MARK: Data Request
     
-    func requestProfilePicture() {
-        viewModel.requestProfilePicture()
-            .subscribe(onNext: {
-                self.profileButton.setBackgroundImage($0, forState: .Normal)
-                }, onError: { error in
-                    // handle error
-                }, onCompleted: nil, onDisposed: nil)
-            .addDisposableTo(disposeBag)
-        
+    func startRequests() {
+        do {
+            // Check is a user is already logged in. If not, we present the LogIn View Controller
+            try viewModel.session.isUserLoggedIn()
+            
+            // Load the user profile information
+            viewModel.requestProfileInformation()
+            
+            // Load the user profile picture
+            viewModel.requestProfilePicture()
+                .bindNext { self.profileButton.image = $0 }
+                .addDisposableTo(disposeBag)
+            
+        } catch {
+            switch error {
+            case TwitterRequestError.NotAuthenticated:
+                self.presentViewController(StoryboardScene.Main.twitterLoginViewController(), animated: true, completion: nil)
+            default:
+                print("Failed to request profile information with error: \(error)")
+            }
+        }
     }
     
     func loadTableView() {
@@ -114,13 +112,6 @@ final class HomeViewController: UIViewController, UITableViewDelegate {
             .addDisposableTo(disposeBag)
         
         tableView
-            .rx_itemDeselected
-            .subscribeNext { indexPath in
-                
-            }
-            .addDisposableTo(disposeBag)
-        
-        tableView
             .rx_setDelegate(self)
             .addDisposableTo(disposeBag)
         
@@ -129,6 +120,7 @@ final class HomeViewController: UIViewController, UITableViewDelegate {
     // MARK: IBActions
     
     @IBAction func showProfile(sender: AnyObject) {
+        
     }
     
     @IBAction func returnFromSegueActions(sender: UIStoryboardSegue) {
