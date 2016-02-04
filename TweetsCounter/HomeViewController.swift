@@ -36,7 +36,11 @@ final class HomeViewController: UIViewController, UITableViewDelegate {
         super.viewDidAppear(animated)
         
         if shouldPresentLogIn {
-            presentViewController(StoryboardScene.Main.twitterLoginViewController(), animated: true, completion: nil)
+            let logInViewController = StoryboardScene.Main.twitterLoginViewController()
+            logInViewController.homeViewController = self
+            presentViewController(logInViewController, animated: true, completion: {
+                self.shouldPresentLogIn = false
+            })
         }
     }
     

@@ -29,6 +29,8 @@ final class TimelineViewModel {
         } catch {
             stash = nil
         }
+        
+        
     }
 
     /// Request the profile information for the currently authenticated user.
@@ -38,7 +40,8 @@ final class TimelineViewModel {
         return Observable.create { observer -> Disposable in
             do {
                 let userID = try self.session.isUserLoggedIn()
-                
+                Twitter.sharedInstance().sessionStore.sessionForUserID(userID)
+
                 Twitter.sharedInstance()
                     .rx_loadUserWithID(userID, client: self.session.client!)
                     .subscribe(onNext: { user in
