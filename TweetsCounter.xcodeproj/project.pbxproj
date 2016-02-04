@@ -187,6 +187,7 @@
 				AE277DEF1BD4E6DB004E151C /* HomeViewController.swift */,
 				AE35A2F31C52B4A4001E1D88 /* SettingsViewController.swift */,
 				AE15F36B1C62A1BD00EE2F82 /* MenuPopOverViewController.swift */,
+				AE3E81BD1BF8B40600A51804 /* TwitterLoginViewController.swift */,
 			);
 			name = "View Controller";
 			sourceTree = "<group>";
@@ -346,7 +347,6 @@
 			isa = PBXGroup;
 			children = (
 				AE67B86C1C5017CD00BFB697 /* TwitterKit-Rx.swift */,
-				AE3E81BD1BF8B40600A51804 /* TwitterLoginViewController.swift */,
 				AEE8C9A91C0D97C50047A6A6 /* TwitterSession.swift */,
 			);
 			name = Twitter;
