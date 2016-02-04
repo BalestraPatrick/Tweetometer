@@ -13,27 +13,31 @@ import RxDataSources
 
 final class HomeViewController: UIViewController, UITableViewDelegate {
     
-    let disposeBag = DisposeBag()
-    let imageService = DefaultImageService.sharedImageService
-    
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var subtitleLabel: UILabel!
     @IBOutlet weak var profileButton: ProfilePictureButton!
     
-    var viewModel = TimelineViewModel()
     let dataSource = RxTableViewSectionedReloadDataSource<SectionModel<String, User>>()
+    let disposeBag = DisposeBag()
+    let imageService = DefaultImageService.sharedImageService
     
+    var viewModel = TimelineViewModel()
+    var shouldPresentLogIn = false
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         applyStyle()
         setTitleViewContent(200)
+        startRequests()
     }
     
     override func viewDidAppear(animated: Bool) {
-        startRequests()
-        loadTableView()
+        super.viewDidAppear(animated)
+        
+        if shouldPresentLogIn {
+            presentViewController(StoryboardScene.Main.twitterLoginViewController(), animated: true, completion: nil)
+        }
     }
     
     deinit {
@@ -56,19 +60,20 @@ final class HomeViewController: UIViewController, UITableViewDelegate {
         do {
             // Check is a user is already logged in. If not, we present the LogIn View Controller
             try viewModel.session.isUserLoggedIn()
-            
+
+            loadTableView()
+
             // Load the user profile information
-            viewModel.requestProfileInformation()
-            
-            // Load the user profile picture
-            viewModel.requestProfilePicture()
-                .bindNext { self.profileButton.image = $0 }
-                .addDisposableTo(disposeBag)
-            
+            viewModel.requestProfileInformation().subscribeNext { [weak self] _ in
+                // Load the user profile picture
+                self!.viewModel.requestProfilePicture()
+                    .bindNext { self!.profileButton.image = $0 }
+                    .addDisposableTo(self!.disposeBag)
+            }.addDisposableTo(disposeBag)
         } catch {
             switch error {
             case TwitterRequestError.NotAuthenticated:
-                self.presentViewController(StoryboardScene.Main.twitterLoginViewController(), animated: true, completion: nil)
+                shouldPresentLogIn = true
             default:
                 print("Failed to request profile information with error: \(error)")
             }
