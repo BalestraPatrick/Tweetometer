@@ -128,10 +128,6 @@ final class HomeViewController: UIViewController, UITableViewDelegate {
     
     // MARK: IBActions
     
-    @IBAction func showProfile(sender: AnyObject) {
-        
-    }
-    
     @IBAction func returnFromSegueActions(sender: UIStoryboardSegue) {
         
     }
