@@ -70,7 +70,7 @@ final class TimelineViewModel {
         return Observable.create { observer -> Disposable in
             if let client = self.session.client {
                 Twitter.sharedInstance()
-                    .rx_loadTimeline(100, client: client)
+                    .rx_loadTimeline(1, client: client)
                     .subscribe(onNext: { timeline in
                         do {
                             let tweets: AnyObject = try NSJSONSerialization.JSONObjectWithData(timeline, options: .AllowFragments)
@@ -83,8 +83,7 @@ final class TimelineViewModel {
                                 observer.onCompleted()
                             } else {
                                 observer.onError(JSONError.UnknownError)
-                            }
-                            
+                            } 
                         } catch {
                             observer.onError(error)
                         }
