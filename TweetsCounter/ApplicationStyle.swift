@@ -66,7 +66,7 @@ extension UITableView {
             // Do not forget to call dg_stopLoading() at the end
             self!.dg_stopLoading()
             }, loadingView: loadingView)
-        self.dg_setPullToRefreshFillColor(UIColor(red: 57/255.0, green: 67/255.0, blue: 89/255.0, alpha: 1.0))
+        self.dg_setPullToRefreshFillColor(UIColor().menuDarkBlueColor())
         self.dg_setPullToRefreshBackgroundColor(self.backgroundColor!)
     }
     

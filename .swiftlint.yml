@@ -3,8 +3,7 @@ disabled_rules: # rule identifiers to exclude from running
   - trailing_newline
   - force_cast
   - variable_name
-  # - comma
-  # - control_statement
+  - line_length
   # Find all the available rules by running:
   # swiftlint rules
 included: # paths to include during linting. `--path` is ignored if present.

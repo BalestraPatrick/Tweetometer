@@ -14,8 +14,12 @@ extension UIColor {
         return UIColor(red: 0.114, green: 0.631, blue: 0.949, alpha: 1.0)
     }
     
-    func backgroundGreenColor() -> UIColor {
-        return UIColor(red: 0.015, green: 0.717, blue: 0.404, alpha: 1.0)
+    func menuDarkBlueColor() -> UIColor {
+        return UIColor(red: 0.223, green: 0.262, blue: 0.349, alpha: 1.0)
+    }
+    
+    func transparentMenuDarkBlueColor() -> UIColor {
+        return UIColor(red: 0.223, green: 0.262, blue: 0.349, alpha: 0.5)
     }
     
 }

@@ -55,6 +55,8 @@ final class HomeViewController: UIViewController, UITableViewDelegate {
             let menuPopOver = segue.destinationViewController as! MenuPopOverViewController
             menuPopOver.modalPresentationStyle = UIModalPresentationStyle.Popover
             menuPopOver.popoverPresentationController!.delegate = self
+            menuPopOver.view.backgroundColor = UIColor().menuDarkBlueColor()
+
         }
     }
     

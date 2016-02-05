@@ -15,6 +15,7 @@ class MenuPopOverViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.alwaysBounceVertical = false
+        view.backgroundColor = UIColor().menuDarkBlueColor()
         preferredContentSize = CGSize(width: 200, height: 44 * options.count)
     }
     
@@ -29,6 +30,13 @@ class MenuPopOverViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(TableViewCell.MenuPopOverCellIdentifier.rawValue, forIndexPath: indexPath) as UITableViewCell
         let option = options[indexPath.row]
+        cell.backgroundColor = UIColor.clearColor()
+        cell.textLabel?.textColor = UIColor.whiteColor()
+        
+        var bgColorView = UIView()
+        bgColorView.backgroundColor = UIColor().transparentMenuDarkBlueColor()
+        cell.selectedBackgroundView = bgColorView
+        
         cell.textLabel?.text = option.title
         cell.imageView?.image = UIImage(named: option.image)
         return cell
