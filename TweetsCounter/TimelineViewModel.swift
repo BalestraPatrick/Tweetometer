@@ -66,11 +66,11 @@ final class TimelineViewModel {
     /// Request the user timeline for the currently authenticated user.
     ///
     /// - returns: Timeline object with all the users tweets.
-    func requestTimeline() -> Observable<[SectionModel<String, User>]> {
+    func requestTimeline(beforeID: String?) -> Observable<[SectionModel<String, User>]> {
         return Observable.create { observer -> Disposable in
             if let client = self.session.client {
                 Twitter.sharedInstance()
-                    .rx_loadTimeline(1, client: client)
+                    .rx_loadTimeline(200, beforeID: nil, client: client)
                     .subscribe(onNext: { timeline in
                         do {
                             let tweets: AnyObject = try NSJSONSerialization.JSONObjectWithData(timeline, options: .AllowFragments)

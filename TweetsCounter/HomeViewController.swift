@@ -106,7 +106,7 @@ final class HomeViewController: UIViewController, UITableViewDelegate {
             return cell
         }
         
-        viewModel.requestTimeline()
+        viewModel.requestTimeline(nil)
             .bindTo(tableView.rx_itemsWithDataSource(dataSource))
             .addDisposableTo(disposeBag)
         
