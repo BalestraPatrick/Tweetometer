@@ -26,6 +26,14 @@ extension HomeViewController {
     
 }
 
+extension MenuPopOverViewController {
+    func applyStyle() {
+        tableView.alwaysBounceVertical = false
+        view.backgroundColor = UIColor().menuDarkBlueColor()
+        preferredContentSize = CGSize(width: 200, height: 44 * options.count)
+    }
+}
+
 extension HomeViewController: UIPopoverPresentationControllerDelegate {
  
     func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {

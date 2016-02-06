@@ -56,7 +56,7 @@ final class HomeViewController: UIViewController, UITableViewDelegate {
             menuPopOver.modalPresentationStyle = UIModalPresentationStyle.Popover
             menuPopOver.popoverPresentationController!.delegate = self
             menuPopOver.view.backgroundColor = UIColor().menuDarkBlueColor()
-
+            menuPopOver.popoverPresentationController!.backgroundColor = UIColor().menuDarkBlueColor()
         }
     }
     

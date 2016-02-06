@@ -8,12 +8,12 @@
 
 import UIKit
 
+struct Option {
+    let image: String
+    let title: String
+}
+
 class MenuOptionsDataSource {
-    
-    struct Option {
-        let image: String
-        let title: String
-    }
     
     var options: [Option]
     

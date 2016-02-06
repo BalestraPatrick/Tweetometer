@@ -11,12 +11,10 @@ import UIKit
 class MenuPopOverViewController: UITableViewController {
     
     let options = MenuOptionsDataSource().options
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.alwaysBounceVertical = false
-        view.backgroundColor = UIColor().menuDarkBlueColor()
-        preferredContentSize = CGSize(width: 200, height: 44 * options.count)
+        applyStyle()
     }
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -28,17 +26,9 @@ class MenuPopOverViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(TableViewCell.MenuPopOverCellIdentifier.rawValue, forIndexPath: indexPath) as UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(TableViewCell.MenuPopOverCellIdentifier.rawValue, forIndexPath: indexPath) as! MenuOptionTableViewCell
         let option = options[indexPath.row]
-        cell.backgroundColor = UIColor.clearColor()
-        cell.textLabel?.textColor = UIColor.whiteColor()
-        
-        var bgColorView = UIView()
-        bgColorView.backgroundColor = UIColor().transparentMenuDarkBlueColor()
-        cell.selectedBackgroundView = bgColorView
-        
-        cell.textLabel?.text = option.title
-        cell.imageView?.image = UIImage(named: option.image)
+        cell.configureCell(option)
         return cell
     }
 }
