@@ -57,6 +57,8 @@ final class HomeViewController: UIViewController, UITableViewDelegate {
             menuPopOver.popoverPresentationController!.delegate = self
             menuPopOver.view.backgroundColor = UIColor().menuDarkBlueColor()
             menuPopOver.popoverPresentationController!.backgroundColor = UIColor().menuDarkBlueColor()
+        } else if segue.identifier == StoryboardSegue.Main.UserDetail.rawValue {
+            
         }
     }
     
@@ -105,21 +107,12 @@ final class HomeViewController: UIViewController, UITableViewDelegate {
             cell.numberOfTweets = user.tweets?.count ?? 0
             cell.downloadableImage = self?.imageService.imageFromURL(user.profileImageURL!) ?? Observable.empty()
             cell.index = indexPath.row
+            cell.accessoryView = UIImageView(image: UIImage(named: "detail"))
             return cell
         }
         
         viewModel.requestTimeline(nil)
             .bindTo(tableView.rx_itemsWithDataSource(dataSource))
-            .addDisposableTo(disposeBag)
-        
-        tableView
-            .rx_itemSelected
-            .map { indexPath in
-                return (indexPath, self.dataSource.itemAtIndexPath(indexPath))
-            }
-            .subscribeNext { indexPath, model in
-                // TODO: push new view on stack with all the tweets of a user
-            }
             .addDisposableTo(disposeBag)
         
         tableView

@@ -25,6 +25,7 @@ final class ProfilePictureButton: UIButton {
         layer.borderWidth = 1.0
         imageView?.contentMode = .ScaleAspectFit
         layer.masksToBounds = true
+        accessibilityLabel = "Profile Picture"
     }
     
 }

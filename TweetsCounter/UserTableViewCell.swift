@@ -85,7 +85,7 @@ final class UserTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+        accessibilityElements = [profilePictureImageView, screenNameLabel, usernameLabel, followersLabel, followingLabel, numberOfTweetsLabel]
     }
     
     override func setSelected(selected: Bool, animated: Bool) {

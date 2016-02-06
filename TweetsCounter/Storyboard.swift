@@ -61,5 +61,6 @@ struct StoryboardScene {
 struct StoryboardSegue {
     enum Main : String, StoryboardSegueType {
         case MenuPopOver = "MenuPopOver"
+        case UserDetail = "UserDetail"
     }
 }

@@ -52,6 +52,7 @@ extension UINavigationBar {
     
     func applyStyle() {
         barTintColor = UIColor().backgroundBlueColor()
+        tintColor = UIColor.whiteColor()
         titleTextAttributes = [NSForegroundColorAttributeName : UIColor.whiteColor(),
             NSFontAttributeName: UIFont.systemFontOfSize(18, weight: 0.1)]
         setBackgroundImage(UIImage(), forBarMetrics: .Default)
