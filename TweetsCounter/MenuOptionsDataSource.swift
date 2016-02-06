@@ -13,7 +13,7 @@ struct Option {
     let title: String
 }
 
-class MenuOptionsDataSource {
+final class MenuOptionsDataSource {
     
     var options: [Option]
     

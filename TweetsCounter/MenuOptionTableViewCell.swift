@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MenuOptionTableViewCell: UITableViewCell {
+final class MenuOptionTableViewCell: UITableViewCell {
     
     override func setHighlighted(highlighted: Bool, animated: Bool) {
         super.setHighlighted(highlighted, animated: animated)
