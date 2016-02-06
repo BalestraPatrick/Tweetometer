@@ -16,7 +16,6 @@ import Stash
 
 final class TimelineViewModel {
     
-    
     let stash: Stash?
     var session = TwitterSession()
     let disposebag = DisposeBag()

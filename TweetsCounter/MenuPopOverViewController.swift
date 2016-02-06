@@ -31,4 +31,9 @@ class MenuPopOverViewController: UITableViewController {
         cell.configureCell(option)
         return cell
     }
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        // TODO: perform selected option
+        dismissViewControllerAnimated(true, completion: nil)
+    }
 }
