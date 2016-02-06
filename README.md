@@ -1,10 +1,13 @@
-# TweetsCounter
+# Tweetometer
 
 ![](https://travis-ci.org/BalestraPatrick/TweetsCounter.svg?branch=master)
 
-Tweets Counter is an app to see who is tweeting a lot in your Twitter timeline. It often happens to me that I check my timeline and I see a few hundreds tweets in just a few hours and I wonder "Who is spamming my timeline?". 
+![](Screenshots/image1.png)
 
-This is a WIP. The project is written in Swift 2.0 and it uses the Fabric SDK to access Twitter's API.
+Tweetometer is an app to see who is tweeting in your Twitter timeline. It often happens to me that I check my timeline and I see a few hundreds tweets in just a few hours and I wonder "Who is spamming my timeline?". 
+
+This is a WIP that I started to learn new technologies such as FRP and the MVVM pattern. The project is written in Swift 2.0 and it uses the Fabric SDK to access Twitter's API. I'm also using the [RxSwift](https://github.com/ReactiveX/RxSwift) framework.
+
 
 ### Usage
 This project uses [CocoaPods](https://github.com/CocoaPods/CocoaPods/) to manage the dependencies. If you want to run the project, you first need to install the pods by doing `pod install`.
