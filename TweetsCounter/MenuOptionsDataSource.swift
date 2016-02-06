@@ -18,8 +18,8 @@ class MenuOptionsDataSource {
     var options: [Option]
     
     init () {
-        self.options = [Option(image: "Refresh", title: "Refresh"),
-                        Option(image: "Logout", title: "Logout"),
-                        Option(image: "About", title: "About"),]
+        self.options = [Option(image: "refresh", title: "Refresh"),
+                        Option(image: "logout", title: "Logout"),
+                        Option(image: "info", title: "About")]
     }
 }
