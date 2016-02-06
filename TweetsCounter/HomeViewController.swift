@@ -70,7 +70,6 @@ final class HomeViewController: UIViewController, UITableViewDelegate {
                     }
                     .addDisposableTo(disposeBag)
             }
-            
         }
     }
     
