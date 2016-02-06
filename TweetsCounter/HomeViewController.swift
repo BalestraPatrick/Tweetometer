@@ -58,6 +58,18 @@ final class HomeViewController: UIViewController, UITableViewDelegate {
             menuPopOver.view.backgroundColor = UIColor().menuDarkBlueColor()
             menuPopOver.popoverPresentationController!.backgroundColor = UIColor().menuDarkBlueColor()
         } else if segue.identifier == StoryboardSegue.Main.UserDetail.rawValue {
+            let userDetail = segue.destinationViewController as? UserDetailViewController
+            if let userDetail = userDetail {
+                tableView
+                    .rx_itemSelected
+                    .map { indexPath in
+                        return (indexPath, self.dataSource.itemAtIndexPath(indexPath))
+                    }
+                    .subscribeNext { indexPath, selectedUser in
+                        userDetail.selectedUser = selectedUser
+                    }
+                    .addDisposableTo(disposeBag)
+            }
             
         }
     }

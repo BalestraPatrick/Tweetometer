@@ -93,6 +93,7 @@
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="1234 Followers" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JHa-b5-EON">
                                                     <rect key="frame" x="68" y="51" width="103" height="15"/>
+                                                    <accessibility key="accessibilityConfiguration" label="Followers count"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="15" id="9q9-iv-uck"/>
                                                     </constraints>
@@ -237,6 +238,7 @@
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="u4C-qs-5mp" customClass="ProfilePictureButton" customModule="TweetsCounter" customModuleProvider="target">
                                 <rect key="frame" x="20" y="7" width="30" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <accessibility key="accessibilityConfiguration" label="Profile Picture"/>
                             </button>
                         </barButtonItem>
                         <view key="titleView" contentMode="scaleToFill" id="OhV-Zt-nsQ">

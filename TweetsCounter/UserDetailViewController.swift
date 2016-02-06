@@ -8,9 +8,15 @@
 
 import UIKit
 
-class UserDetailViewController: UIViewController {
+final class UserDetailViewController: UIViewController {
+    
+    var selectedUser: User?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        applyStyle()
+        
+        guard let user = selectedUser else { return }
+        title = user.screenName
     }
 }

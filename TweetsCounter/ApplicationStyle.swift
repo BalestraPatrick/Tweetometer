@@ -27,10 +27,18 @@ extension HomeViewController {
 }
 
 extension MenuPopOverViewController {
+    
     func applyStyle() {
         tableView.alwaysBounceVertical = false
         view.backgroundColor = UIColor().menuDarkBlueColor()
         preferredContentSize = CGSize(width: 200, height: 44 * options.count)
+    }
+}
+
+extension UserDetailViewController {
+   
+    func applyStyle() {
+        view.backgroundColor = UIColor().backgroundBlueColor()
     }
 }
 
