@@ -12,7 +12,7 @@ import TwitterKit
 
 struct User: Equatable, Unboxable {
     
-    var userID: Int
+    var userID: String
     var followersCount: Int
     var followingCount: Int
     var statusesCount: Int
@@ -23,7 +23,7 @@ struct User: Equatable, Unboxable {
     var tweets: [Tweet]?
     
     init(unboxer: Unboxer) {
-        userID = unboxer.unbox("id")
+        userID = unboxer.unbox("id_str")
         followersCount = unboxer.unbox("followers_count")
         followingCount = unboxer.unbox("friends_count")
         statusesCount = unboxer.unbox("statuses_count")

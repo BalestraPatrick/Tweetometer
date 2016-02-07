@@ -30,7 +30,7 @@ class TimelineParserTests: XCTestCase {
             let users = t.users
             XCTAssertEqual(users.count, 1)
             let user = users.first!
-            XCTAssertEqual(user.userID, 7213362)
+            XCTAssertEqual(user.userID, "7213362")
             XCTAssertEqual(user.followersCount, 6149)
             XCTAssertEqual(user.followingCount, 402)
             XCTAssertEqual(user.statusesCount, 92563)
@@ -41,7 +41,7 @@ class TimelineParserTests: XCTestCase {
             let tweets = user.tweets
             XCTAssertEqual(tweets?.count, 1)
             let tweet = tweets?.first!
-            XCTAssertEqual(tweet?.tweetID, 695645083652075520)
+            XCTAssertEqual(tweet?.tweetID, "695645083652075520")
             let createdAt = NSDate(timeIntervalSince1970: 1454689687)
             XCTAssertEqual(tweet?.createdAt, createdAt)
             XCTAssertEqual(tweet?.text, "RT @moonpolysoft: Good interview question: explain the movie Primer to me.")

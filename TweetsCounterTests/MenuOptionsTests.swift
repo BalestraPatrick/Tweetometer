@@ -16,10 +16,10 @@ class MenuOptionsTests: XCTestCase {
         
         XCTAssertEqual(options.count, 3)
         XCTAssertEqual(options[0].title, "Refresh")
-        XCTAssertEqual(options[0].image, "Refresh")
+        XCTAssertEqual(options[0].image, "refresh")
         XCTAssertEqual(options[1].title, "Logout")
-        XCTAssertEqual(options[1].image, "Logout")
+        XCTAssertEqual(options[1].image, "logout")
         XCTAssertEqual(options[2].title, "About")
-        XCTAssertEqual(options[2].image, "About")
+        XCTAssertEqual(options[2].image, "info")
     }
 }

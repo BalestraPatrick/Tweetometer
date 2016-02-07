@@ -28,8 +28,6 @@ final class TimelineViewModel {
         } catch {
             stash = nil
         }
-        
-        
     }
 
     /// Request the profile information for the currently authenticated user.
@@ -77,7 +75,7 @@ final class TimelineViewModel {
                             
                             let parser = TimelineParser(jsonTweets: tweetsArray)
                             if let t = parser.timeline {
-                                let items = [SectionModel(model: "First section", items: t.users)]
+                                let items = [SectionModel(model: "", items: t.users)]
                                 observer.onNext(items)
                                 observer.onCompleted()
                             } else {

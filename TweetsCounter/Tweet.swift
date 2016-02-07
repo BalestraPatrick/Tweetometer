@@ -12,7 +12,7 @@ import Unbox
 
 struct Tweet: Equatable, Unboxable {
     
-    var tweetID: Int
+    var tweetID: String
     var createdAt: NSDate
     var text: String
     var language: String
@@ -28,8 +28,7 @@ struct Tweet: Equatable, Unboxable {
         }
         
         createdAt = unboxer.unbox("created_at", formatter: NSDateFormatter.twitterDateFormatter())
-        
-        tweetID = unboxer.unbox("id")
+        tweetID =  unboxer.unbox("id_str")
         text = unboxer.unbox("text")
         language = unboxer.unbox("lang")
         
