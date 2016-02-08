@@ -84,8 +84,8 @@ final class HomeViewController: UIViewController, UITableViewDelegate {
             // Load the user profile information
             viewModel.requestProfileInformation().subscribeNext { [weak self] _ in
                 // Load the user profile picture
-                self!.viewModel.requestProfilePicture()
-                    .bindNext { self!.profileButton.image = $0 }
+                self?.viewModel.requestProfilePicture()
+                    .bindNext { self?.profileButton.image = $0 }
                     .addDisposableTo(self!.disposeBag)
             }.addDisposableTo(disposeBag)
         } catch {
