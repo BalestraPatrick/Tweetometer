@@ -10,6 +10,7 @@ import UIKit
 import RxSwift
 import RxDataSources
 import NSObject_Rx
+import DGElasticPullToRefresh
 
 final class HomeViewController: UIViewController, UITableViewDelegate {
     
@@ -27,6 +28,7 @@ final class HomeViewController: UIViewController, UITableViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         applyStyle()
+        addPullToRefresh()
         setTitleViewContent(200)
         startRequests()
     }
@@ -123,7 +125,7 @@ final class HomeViewController: UIViewController, UITableViewDelegate {
             cell.accessoryView = UIImageView(image: UIImage(named: "detail"))
             return cell
         }
-        
+
         viewModel.requestTimeline(nil)
             .bindTo(tableView.rx_itemsWithDataSource(dataSource))
             .addDisposableTo(rx_disposeBag)
@@ -132,6 +134,19 @@ final class HomeViewController: UIViewController, UITableViewDelegate {
             .rx_setDelegate(self)
             .addDisposableTo(rx_disposeBag)
         
+    }
+    
+    func addPullToRefresh() {
+        let loadingView = DGElasticPullToRefreshLoadingViewCircle()
+        loadingView.tintColor = UIColor.whiteColor()
+        tableView.dg_addPullToRefreshWithActionHandler({ [weak self] in
+//            self?.loadTableView()
+//            self?.viewModel.requestTimeline(nil)
+            self?.tableView.reloadData()
+//            self?.tableView.dg_stopLoading()
+            }, loadingView: loadingView)
+        tableView.dg_setPullToRefreshFillColor(UIColor().menuDarkBlueColor())
+        tableView.dg_setPullToRefreshBackgroundColor(view.backgroundColor!)
     }
     
     // MARK: IBActions

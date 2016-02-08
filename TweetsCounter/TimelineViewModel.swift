@@ -64,6 +64,7 @@ final class TimelineViewModel: NSObject {
     ///
     /// - returns: Timeline object with all the users tweets.
     func requestTimeline(beforeID: String?) -> Observable<[SectionModel<String, User>]> {
+        
         return Observable.create { observer -> Disposable in
             if let client = self.session.client {
                 Twitter.sharedInstance()
