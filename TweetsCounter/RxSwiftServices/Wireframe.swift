@@ -35,7 +35,7 @@ class DefaultWireframe: Wireframe {
     }
     
     static func presentAlert(message: String) {
-        let alertView = UIAlertController(title: "RxExample", message: message, preferredStyle: .Alert)
+        let alertView = UIAlertController(title: message, message: nil, preferredStyle: .Alert)
         alertView.addAction(UIAlertAction(title: "OK", style: .Cancel) { _ in
             })
         rootViewController().presentViewController(alertView, animated: true, completion: nil)
