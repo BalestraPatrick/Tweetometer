@@ -7,12 +7,11 @@
 //
 
 import UIKit
-import DGElasticPullToRefresh
 
 extension HomeViewController {
     
     func applyStyle() {
-        view.backgroundColor = UIColor().backgroundBlueColor()
+        view.backgroundColor = UIColor.backgroundBlueColor()
         navigationController?.navigationBar.applyStyle()
         tableView.separatorStyle = .None
         tableView.applyStyle()
@@ -38,7 +37,7 @@ extension MenuPopOverViewController {
 extension UserDetailViewController {
    
     func applyStyle() {
-        view.backgroundColor = UIColor().backgroundBlueColor()
+        view.backgroundColor = UIColor.backgroundBlueColor()
     }
 }
 
@@ -59,14 +58,14 @@ extension HomeViewController: UITabBarDelegate {
 extension UINavigationBar {
     
     func applyStyle() {
-        barTintColor = UIColor().backgroundBlueColor()
+        barTintColor = UIColor.backgroundBlueColor()
         tintColor = UIColor.whiteColor()
         titleTextAttributes = [NSForegroundColorAttributeName : UIColor.whiteColor(),
             NSFontAttributeName: UIFont.systemFontOfSize(18, weight: 0.1)]
         setBackgroundImage(UIImage(), forBarMetrics: .Default)
         shadowImage = UIImage()
         translucent = false
-        backgroundColor = UIColor().backgroundBlueColor()
+        backgroundColor = UIColor.backgroundBlueColor()
     }
 }
 
@@ -76,15 +75,6 @@ extension UITableView {
         backgroundView = nil
         backgroundColor = UIColor.clearColor()
         tableFooterView = UIView()
-        let loadingView = DGElasticPullToRefreshLoadingViewCircle()
-        loadingView.tintColor = UIColor.whiteColor()
-        self.dg_addPullToRefreshWithActionHandler({ [weak self] () -> Void in
-            // Add your logic here
-            // Do not forget to call dg_stopLoading() at the end
-            self!.dg_stopLoading()
-            }, loadingView: loadingView)
-        self.dg_setPullToRefreshFillColor(UIColor().menuDarkBlueColor())
-        self.dg_setPullToRefreshBackgroundColor(self.backgroundColor!)
     }
     
 }

@@ -10,7 +10,7 @@ import UIKit
 
 extension UIColor {
     
-    func backgroundBlueColor() -> UIColor {
+    static func backgroundBlueColor() -> UIColor {
         return UIColor(red: 0.114, green: 0.631, blue: 0.949, alpha: 1.0)
     }
     
