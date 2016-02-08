@@ -87,7 +87,7 @@ final class HomeViewController: UIViewController, UITableViewDelegate {
                     .bindNext { self?.profileButton.image = $0 }
                     .addDisposableTo(self!.rx_disposeBag)
                 }, onError: { error in
-                    ErrorDisplayer().displayError(error)
+                    ErrorDisplayer().display(error)
                 }, onCompleted: nil, onDisposed: nil)
                 .addDisposableTo(rx_disposeBag)
             
