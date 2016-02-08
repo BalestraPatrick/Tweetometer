@@ -5,6 +5,8 @@ PODS:
   - DGElasticPullToRefresh (1.0.3)
   - Fabric (1.6.3)
   - Keys (1.0.0)
+  - NSObject+Rx (1.2.0):
+    - RxSwift (~> 2.0.0)
   - ObjectMapper (1.1.1)
   - RxAlamofire (1.1.1):
     - RxAlamofire/Core (= 1.1.1)
@@ -30,6 +32,7 @@ DEPENDENCIES:
   - DGElasticPullToRefresh
   - Fabric
   - Keys (from `Pods/CocoaPodsKeys`)
+  - NSObject+Rx
   - ObjectMapper
   - RxAlamofire
   - RxCocoa
@@ -50,6 +53,7 @@ SPEC CHECKSUMS:
   DGElasticPullToRefresh: 040f39ae69840b3261d163fe6735c5901bf851e9
   Fabric: cbe0ca6c9531bba17910052f6f105fcbc5fa7f67
   Keys: 9c35bf00f612ee1d48556f4a4b9b4551e224e90f
+  NSObject+Rx: 552d0a5bb78087b0faf9f8a066148577f1231426
   ObjectMapper: 4143abed1dbd49b73d75092fe8fa1c88ed6434b7
   RxAlamofire: 5900f3842dd7bad9ca620bfb5917b9c984db5cca
   RxCocoa: 79b5feb8378545336e756a0a33fcf5e95050b71c
@@ -60,6 +64,6 @@ SPEC CHECKSUMS:
   TwitterKit: b5821570887ec2d77650fa232eaec175665dc443
   Unbox: af6e75fddb73ee790c80114bf7b6edef56a0dcd8
 
-PODFILE CHECKSUM: 9f2d973488b35130779dcba323a0bd8e485871ee
+PODFILE CHECKSUM: b35f93e4a7a8d5a5c4f92fee89bf56be056ff54a
 
 COCOAPODS: 1.0.0.beta.2

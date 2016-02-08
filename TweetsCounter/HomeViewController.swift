@@ -9,6 +9,7 @@
 import UIKit
 import RxSwift
 import RxDataSources
+import NSObject_Rx
 
 final class HomeViewController: UIViewController, UITableViewDelegate {
     
@@ -18,7 +19,6 @@ final class HomeViewController: UIViewController, UITableViewDelegate {
     @IBOutlet weak var profileButton: ProfilePictureButton!
     
     let dataSource = RxTableViewSectionedReloadDataSource<SectionModel<String, User>>()
-    let disposeBag = DisposeBag()
     let imageService = DefaultImageService.sharedImageService
     
     var viewModel = TimelineViewModel()
@@ -67,7 +67,7 @@ final class HomeViewController: UIViewController, UITableViewDelegate {
                     .subscribeNext { indexPath, selectedUser in
                         userDetail.selectedUser = selectedUser
                     }
-                    .addDisposableTo(disposeBag)
+                    .addDisposableTo(rx_disposeBag)
             }
         }
     }
@@ -82,12 +82,16 @@ final class HomeViewController: UIViewController, UITableViewDelegate {
             loadTableView()
 
             // Load the user profile information
+            viewModel.requestProfilePicture().subscribeError { error in
+                
+            }.addDisposableTo(rx_disposeBag)
+            
             viewModel.requestProfileInformation().subscribeNext { [weak self] _ in
                 // Load the user profile picture
                 self?.viewModel.requestProfilePicture()
                     .bindNext { self?.profileButton.image = $0 }
-                    .addDisposableTo(self!.disposeBag)
-            }.addDisposableTo(disposeBag)
+                    .addDisposableTo(self!.rx_disposeBag)
+            }.addDisposableTo(rx_disposeBag)
         } catch {
             switch error {
             case TwitterRequestError.NotAuthenticated:
@@ -123,11 +127,11 @@ final class HomeViewController: UIViewController, UITableViewDelegate {
         
         viewModel.requestTimeline(nil)
             .bindTo(tableView.rx_itemsWithDataSource(dataSource))
-            .addDisposableTo(disposeBag)
+            .addDisposableTo(rx_disposeBag)
         
         tableView
             .rx_setDelegate(self)
-            .addDisposableTo(disposeBag)
+            .addDisposableTo(rx_disposeBag)
         
     }
     

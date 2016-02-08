@@ -9,6 +9,7 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import NSObject_Rx
 
 final class UserTableViewCell: UITableViewCell {
     
@@ -21,13 +22,12 @@ final class UserTableViewCell: UITableViewCell {
     
     var index = 0
     
-    var disposeBag = DisposeBag()
     var downloadableImage: Observable<DownloadableImage>? {
         didSet {
             self.downloadableImage?
                 .asDriver(onErrorJustReturn: DownloadableImage.OfflinePlaceholder)
                 .drive(profilePictureImageView.rxex_downloadableImageAnimated(kCATransitionFade))
-                .addDisposableTo(disposeBag)
+                .addDisposableTo(rx_disposeBag)
         }
     }
     

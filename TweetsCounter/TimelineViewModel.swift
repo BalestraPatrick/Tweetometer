@@ -13,16 +13,16 @@ import RxDataSources
 import Alamofire
 import TwitterKit
 import Stash
+import NSObject_Rx
 
-final class TimelineViewModel {
+final class TimelineViewModel: NSObject {
     
     let stash: Stash?
     var session = TwitterSession()
-    let disposebag = DisposeBag()
     
     var userID: String?
     
-    init() {
+    override init() {
         do {
             stash = try Stash(name: cacheName, rootPath: NSTemporaryDirectory())
         } catch {
@@ -51,7 +51,7 @@ final class TimelineViewModel {
                             // TODO: Use Error Type
                             observer.onError(error)
                         }, onCompleted: nil, onDisposed: nil)
-                    .addDisposableTo(self.disposebag)
+                    .addDisposableTo(self.rx_disposeBag)
             } catch {
                 // Throw the error in the callback to present the login view controller
                 observer.onError(TwitterRequestError.NotAuthenticated)
@@ -87,7 +87,7 @@ final class TimelineViewModel {
                         }, onError: { error in
                             observer.onError(error)
                         }, onCompleted: nil, onDisposed: nil)
-                    .addDisposableTo(self.disposebag)
+                    .addDisposableTo(self.rx_disposeBag)
             } else {
                 observer.onError(TwitterRequestError.NotAuthenticated)
             }
@@ -117,7 +117,7 @@ final class TimelineViewModel {
                         observer.onNext(image)
                         observer.onCompleted()
                     }
-                    .addDisposableTo(self.disposebag)
+                    .addDisposableTo(self.rx_disposeBag)
             } else {
                 observer.onError(TwitterRequestError.NotAuthenticated)
             }

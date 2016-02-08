@@ -8,10 +8,10 @@
 
 import UIKit
 import RxSwift
+import NSObject_Rx
 
 final class ProfilePictureButton: UIButton {
     
-    var disposeBag = DisposeBag()
     var image = UIImage() {
         didSet {
             self.setBackgroundImage(image, forState: .Normal)

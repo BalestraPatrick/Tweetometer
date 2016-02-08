@@ -22,6 +22,7 @@ target "TweetsCounter" do
     pod 'RxCocoa'
     pod 'RxDataSources'
     pod 'RxAlamofire'
+    pod 'NSObject+Rx'
     
     pod 'Alamofire'
     pod 'Stash'
