@@ -19,7 +19,7 @@ final class HomeViewController: UIViewController, UITableViewDelegate {
     @IBOutlet weak var subtitleLabel: UILabel!
     @IBOutlet weak var profileButton: ProfilePictureButton!
     
-    let dataSource = RxTableViewSectionedReloadDataSource<SectionModel<String, User>>()
+    let dataSource = RxTableViewSectionedAnimatedDataSource<AnimatableSectionModel<String, User>>()
     let imageService = DefaultImageService.sharedImageService
     
     var viewModel = TimelineViewModel()
@@ -58,6 +58,7 @@ final class HomeViewController: UIViewController, UITableViewDelegate {
             menuPopOver.popoverPresentationController!.delegate = self
             menuPopOver.view.backgroundColor = UIColor().menuDarkBlueColor()
             menuPopOver.popoverPresentationController!.backgroundColor = UIColor().menuDarkBlueColor()
+            menuPopOver.homeViewController = self
         } else if segue.identifier == StoryboardSegue.Main.UserDetail.rawValue {
             let userDetail = segue.destinationViewController as? UserDetailViewController
             if let userDetail = userDetail {
@@ -67,7 +68,7 @@ final class HomeViewController: UIViewController, UITableViewDelegate {
                         return (indexPath, self.dataSource.itemAtIndexPath(indexPath))
                     }
                     .subscribeNext { indexPath, selectedUser in
-                        userDetail.selectedUser = selectedUser
+                        userDetail.selectedUser = selectedUser.value
                     }
                     .addDisposableTo(rx_disposeBag)
             }
@@ -115,19 +116,19 @@ final class HomeViewController: UIViewController, UITableViewDelegate {
             cell.profilePictureImageView.layer.borderColor = UIColor.whiteColor().CGColor
             cell.profilePictureImageView.layer.borderWidth = 1.0
             cell.profilePictureImageView.layer.masksToBounds = true
-            cell.screenName = user.name
-            cell.username = user.screenName
-            cell.numberOfFollowers = user.followersCount
-            cell.numberOfFollowing = user.followingCount
-            cell.numberOfTweets = user.tweets?.count ?? 0
-            cell.downloadableImage = self?.imageService.imageFromURL(user.profileImageURL!) ?? Observable.empty()
+            cell.screenName = user.value.name
+            cell.username = user.value.screenName
+            cell.numberOfFollowers = user.value.followersCount
+            cell.numberOfFollowing = user.value.followingCount
+            cell.numberOfTweets = user.value.tweets?.count ?? 0
+            cell.downloadableImage = self?.imageService.imageFromURL(user.value.profileImageURL!) ?? Observable.empty()
             cell.index = indexPath.row
             cell.accessoryView = UIImageView(image: UIImage(named: "detail"))
             return cell
         }
 
         viewModel.requestTimeline(nil)
-            .bindTo(tableView.rx_itemsWithDataSource(dataSource))
+            .bindTo(tableView.rx_itemsAnimatedWithDataSource(dataSource))
             .addDisposableTo(rx_disposeBag)
         
         tableView
@@ -136,14 +137,26 @@ final class HomeViewController: UIViewController, UITableViewDelegate {
         
     }
     
+    func reloadTimeline() {
+        viewModel.requestTimeline(nil)
+            .subscribe(onNext: { [weak self] (section) -> Void in
+                print("next \(section)")
+                self?.tableView.reloadData()
+                self?.tableView.dg_stopLoading()
+            }, onError: { [weak self] (error) -> Void in
+                print(error)
+                self?.tableView.dg_stopLoading()
+            }, onCompleted: nil, onDisposed: nil)
+            .addDisposableTo(rx_disposeBag)
+    }
+    
     func addPullToRefresh() {
         let loadingView = DGElasticPullToRefreshLoadingViewCircle()
         loadingView.tintColor = UIColor.whiteColor()
         tableView.dg_addPullToRefreshWithActionHandler({ [weak self] in
-//            self?.loadTableView()
-            self?.viewModel.requestTimeline(nil)
-//            self?.tableView.reloadData()
-//            self?.tableView.dg_stopLoading()
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(1.5 * Double(NSEC_PER_SEC))), dispatch_get_main_queue(), {
+                self?.tableView.dg_stopLoading()
+            })
             }, loadingView: loadingView)
         tableView.dg_setPullToRefreshFillColor(UIColor().menuDarkBlueColor())
         tableView.dg_setPullToRefreshBackgroundColor(view.backgroundColor!)

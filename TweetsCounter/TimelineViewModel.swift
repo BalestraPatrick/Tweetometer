@@ -63,9 +63,9 @@ final class TimelineViewModel: NSObject {
     /// Request the user timeline for the currently authenticated user.
     ///
     /// - returns: Timeline object with all the users tweets.
-    func requestTimeline(beforeID: String?) -> Observable<[SectionModel<String, User>]> {
-        
+    func requestTimeline(beforeID: String?) -> Observable<[AnimatableSectionModel<String, User>]> {
         return Observable.create { observer -> Disposable in
+            print(self.session.client)
             if let client = self.session.client {
                 Twitter.sharedInstance()
                     .rx_loadTimeline(200, beforeID: nil, client: client)
@@ -76,7 +76,7 @@ final class TimelineViewModel: NSObject {
                             
                             let parser = TimelineParser(jsonTweets: tweetsArray)
                             if let t = parser.timeline {
-                                let items = [SectionModel(model: "", items: t.users)]
+                                let items = [AnimatableSectionModel(model: "", items: t.users)]
                                 observer.onNext(items)
                                 observer.onCompleted()
                             } else {

@@ -10,7 +10,7 @@ import Foundation
 import Unbox
 import TwitterKit
 
-struct User: Equatable, Unboxable {
+struct User: Equatable, Hashable, Unboxable {
     
     var userID: String
     var followersCount: Int
@@ -21,6 +21,12 @@ struct User: Equatable, Unboxable {
     var description: String
     var profileImageURL: NSURL?
     var tweets: [Tweet]?
+    
+    var hashValue: Int {
+        get {
+            return userID.hashValue
+        }
+    }
     
     init(unboxer: Unboxer) {
         userID = unboxer.unbox("id_str")

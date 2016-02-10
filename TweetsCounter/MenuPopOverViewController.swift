@@ -11,6 +11,7 @@ import UIKit
 class MenuPopOverViewController: UITableViewController {
     
     let options = MenuOptionsDataSource().options
+    var homeViewController: HomeViewController?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,7 +34,21 @@ class MenuPopOverViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        // TODO: perform selected option
+        switch (indexPath.row) {
+        case 0:
+            homeViewController?.reloadTimeline()
+        case 1:
+            // TODO
+            break
+        case 2:
+            // TODO:
+            break
+        case 3:
+            // TODO:
+            break
+        default:
+            break
+        }
         dismissViewControllerAnimated(true, completion: nil)
     }
 }
