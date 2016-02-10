@@ -20,6 +20,7 @@ final class MenuOptionsDataSource {
     init () {
         self.options = [Option(image: "refresh", title: "Refresh"),
                         Option(image: "logout", title: "Logout"),
+                        Option(image: "settings", title: "Settings"),
                         Option(image: "info", title: "About")]
     }
 }

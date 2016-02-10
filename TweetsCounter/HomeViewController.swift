@@ -141,8 +141,8 @@ final class HomeViewController: UIViewController, UITableViewDelegate {
         loadingView.tintColor = UIColor.whiteColor()
         tableView.dg_addPullToRefreshWithActionHandler({ [weak self] in
 //            self?.loadTableView()
-//            self?.viewModel.requestTimeline(nil)
-            self?.tableView.reloadData()
+            self?.viewModel.requestTimeline(nil)
+//            self?.tableView.reloadData()
 //            self?.tableView.dg_stopLoading()
             }, loadingView: loadingView)
         tableView.dg_setPullToRefreshFillColor(UIColor().menuDarkBlueColor())
