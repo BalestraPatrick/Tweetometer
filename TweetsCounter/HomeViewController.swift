@@ -140,8 +140,7 @@ final class HomeViewController: UIViewController, UITableViewDelegate {
     func reloadTimeline() {
         viewModel.requestTimeline(nil)
             .subscribe(onNext: { [weak self] (section) -> Void in
-                print("next \(section)")
-                self?.tableView.reloadData()
+//                self?.tableView.reloadData()
                 self?.tableView.dg_stopLoading()
             }, onError: { [weak self] (error) -> Void in
                 print(error)
@@ -154,9 +153,7 @@ final class HomeViewController: UIViewController, UITableViewDelegate {
         let loadingView = DGElasticPullToRefreshLoadingViewCircle()
         loadingView.tintColor = UIColor.whiteColor()
         tableView.dg_addPullToRefreshWithActionHandler({ [weak self] in
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(1.5 * Double(NSEC_PER_SEC))), dispatch_get_main_queue(), {
-                self?.tableView.dg_stopLoading()
-            })
+            self?.reloadTimeline()
             }, loadingView: loadingView)
         tableView.dg_setPullToRefreshFillColor(UIColor().menuDarkBlueColor())
         tableView.dg_setPullToRefreshBackgroundColor(view.backgroundColor!)

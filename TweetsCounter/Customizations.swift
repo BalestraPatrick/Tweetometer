@@ -33,3 +33,8 @@ extension NSDateFormatter {
         return formatter
     }
 }
+
+// Fix for bug in  DGElasticPullToRefresh: https://github.com/gontovnik/DGElasticPullToRefresh/issues/24#issuecomment-182840115
+extension UIScrollView {
+    func dg_stopScrollingAnimation() {}
+}
