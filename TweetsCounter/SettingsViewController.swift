@@ -10,4 +10,14 @@ import UIKit
 
 final class SettingsViewController: UIViewController {
     
+    @IBOutlet weak var titleLabel: UILabel!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        applyStyle()
+    }
+    
+    @IBAction func dismiss(sender: AnyObject) {
+        dismissViewControllerAnimated(true, completion: nil)
+    }
 }

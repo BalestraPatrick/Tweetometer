@@ -139,14 +139,16 @@ final class HomeViewController: UIViewController, UITableViewDelegate {
     
     func reloadTimeline() {
         viewModel.requestTimeline(nil)
-            .subscribe(onNext: { [weak self] (section) -> Void in
-//                self?.tableView.reloadData()
+            .subscribe(onNext: { [weak self] section in
                 self?.tableView.dg_stopLoading()
-            }, onError: { [weak self] (error) -> Void in
-                print(error)
+            }, onError: { [weak self] error in
                 self?.tableView.dg_stopLoading()
+                ErrorDisplayer().display(error)
             }, onCompleted: nil, onDisposed: nil)
             .addDisposableTo(rx_disposeBag)
+//        viewModel.requestTimeline(nil)
+//            .bindTo(tableView.rx_itemsAnimatedWithDataSource(dataSource))
+//            .addDisposableTo(rx_disposeBag)
     }
     
     func addPullToRefresh() {

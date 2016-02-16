@@ -34,21 +34,23 @@ class MenuPopOverViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        switch (indexPath.row) {
-        case 0:
-            homeViewController?.reloadTimeline()
-        case 1:
-            // TODO
+        switch indexPath.row {
+        case MenuOptions.Refresh.rawValue:
+            homeViewController?.tableView.startAnimating()
+//            homeViewController?.reloadTimeline()
+        case MenuOptions.Logout.rawValue:
+
             break
-        case 2:
-            // TODO:
+        case MenuOptions.Settings.rawValue:
+            dismissViewControllerAnimated(true, completion: {
+                self.homeViewController?.presentViewController(StoryboardScene.Main.settingsViewController(), animated: true, completion: nil)
+            })
             break
-        case 3:
-            // TODO:
+        case MenuOptions.About.rawValue:
+
             break
         default:
             break
         }
-        dismissViewControllerAnimated(true, completion: nil)
     }
 }

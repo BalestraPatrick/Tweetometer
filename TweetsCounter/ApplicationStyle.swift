@@ -25,6 +25,13 @@ extension HomeViewController {
     
 }
 
+extension SettingsViewController {
+    
+    func applyStyle() {
+        
+    }
+}
+
 extension MenuPopOverViewController {
     
     func applyStyle() {

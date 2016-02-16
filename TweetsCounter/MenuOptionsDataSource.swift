@@ -13,6 +13,13 @@ struct Option {
     let title: String
 }
 
+enum MenuOptions: Int {
+    case Refresh
+    case Logout
+    case Settings
+    case About
+}
+
 final class MenuOptionsDataSource {
     
     var options: [Option]
