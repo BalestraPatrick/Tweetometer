@@ -28,7 +28,7 @@ extension HomeViewController {
 extension SettingsViewController {
     
     func applyStyle() {
-        
+//        tweetsStepper.tintColor = UIColor.whiteColor()
     }
 }
 

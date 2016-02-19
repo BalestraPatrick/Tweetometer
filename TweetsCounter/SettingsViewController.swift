@@ -7,14 +7,21 @@
 //
 
 import UIKit
+import ValueStepper
 
 final class SettingsViewController: UIViewController {
     
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var tweetsStepper: ValueStepper!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tweetsStepper.valueType = .Integer
         applyStyle()
+    }
+    
+    @IBAction func stepperChanged(sender: ValueStepper) {
+        print(String(sender.value))
     }
     
     @IBAction func dismiss(sender: AnyObject) {

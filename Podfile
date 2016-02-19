@@ -29,6 +29,7 @@ target "TweetsCounter" do
     pod 'ObjectMapper'
     pod 'Unbox'
     pod 'DGElasticPullToRefresh'
+    pod 'ValueStepper'
 end
 
 target "TweetsCounterTests" do
