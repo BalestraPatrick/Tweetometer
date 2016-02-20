@@ -1,6 +1,6 @@
 # Tweetometer
 
-![](https://travis-ci.org/BalestraPatrick/TweetsCounter.svg?branch=master)
+[![CI Status](http://img.shields.io/travis/BalestraPatrick/Tweetometer.svg?style=flat)](https://travis-ci.org/BalestraPatrick/Tweetometer)
 
 ![](Screenshots/image1.png)
 
