@@ -20,6 +20,7 @@ PODS:
     - RxSwift (~> 2.2)
   - RxSwift (2.2.0)
   - Stash (0.5.0)
+  - SwiftyUserDefaults (2.0.0)
   - TwitterCore (1.15.1):
     - Fabric
   - TwitterKit (1.15.1):
@@ -40,6 +41,7 @@ DEPENDENCIES:
   - RxDataSources
   - RxSwift
   - Stash
+  - SwiftyUserDefaults
   - TwitterCore
   - TwitterKit
   - Unbox
@@ -62,6 +64,7 @@ SPEC CHECKSUMS:
   RxDataSources: dc37b814dd4efd761e1e65521b977677e4197614
   RxSwift: b8a749f2204c6c7a5c29b306a9c3bc11d5b87c5b
   Stash: 14be1c144a3c077d858e1180e22ab96eb79ab2ba
+  SwiftyUserDefaults: 1266e9734c68bcfbac8294ee84173dc8ba6db312
   TwitterCore: 12983a7464e34afbbf18881347898a9db526ac71
   TwitterKit: b5821570887ec2d77650fa232eaec175665dc443
   Unbox: b6e468b47b5d941b197c1ea53e9c179528b454ed

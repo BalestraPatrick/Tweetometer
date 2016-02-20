@@ -14,14 +14,18 @@ final class SettingsViewController: UIViewController {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var tweetsStepper: ValueStepper!
     
+    let settings = SettingsManager.sharedManager
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        tweetsStepper.numberFormatter.maximumFractionDigits = 0
         applyStyle()
+        
+        tweetsStepper.value = Double(settings.numberOfAnalyzedTweets)
+        tweetsStepper.numberFormatter.maximumFractionDigits = 0
     }
     
     @IBAction func stepperChanged(sender: ValueStepper) {
-        print(String(sender.value))
+        settings.numberOfAnalyzedTweets = Int(sender.value)
     }
     
     @IBAction func dismiss(sender: AnyObject) {
