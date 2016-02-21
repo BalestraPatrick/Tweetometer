@@ -8,60 +8,6 @@
 
 import UIKit
 
-extension HomeViewController {
-    
-    func applyStyle() {
-        view.backgroundColor = UIColor.backgroundBlueColor()
-        navigationController?.navigationBar.applyStyle()
-        tableView.separatorStyle = .None
-        tableView.applyStyle()
-        
-    }
-    
-    func setTitleViewContent(numberOfTweets: Int) {
-        titleLabel.text = "Tweetometer"
-        subtitleLabel.text = "Of the last \(numberOfTweets) tweets of your timeline"
-    }
-    
-}
-
-extension SettingsViewController {
-    
-    func applyStyle() {
-//        tweetsStepper.tintColor = UIColor.whiteColor()
-    }
-}
-
-extension MenuPopOverViewController {
-    
-    func applyStyle() {
-        tableView.alwaysBounceVertical = false
-        view.backgroundColor = UIColor().menuDarkBlueColor()
-        preferredContentSize = CGSize(width: 200, height: 44 * options.count)
-    }
-}
-
-extension UserDetailViewController {
-   
-    func applyStyle() {
-        view.backgroundColor = UIColor.backgroundBlueColor()
-    }
-}
-
-extension HomeViewController: UIPopoverPresentationControllerDelegate {
- 
-    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
-        return UIModalPresentationStyle.None
-    }
-}
-
-extension HomeViewController: UITabBarDelegate {
-    
-    func tableView(tableView: UITableView, editingStyleForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCellEditingStyle {
-        return .None
-    }
-}
-
 extension UINavigationBar {
     
     func applyStyle() {

@@ -21,16 +21,18 @@ final class HomeViewController: UIViewController, UITableViewDelegate {
     
     let dataSource = RxTableViewSectionedAnimatedDataSource<AnimatableSectionModel<String, User>>()
     let imageService = DefaultImageService.sharedImageService
+    let viewModel = TimelineViewModel()
+    let settingsManager = SettingsManager.sharedManager
     
-    var viewModel = TimelineViewModel()
     var shouldPresentLogIn = false
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         applyStyle()
         addPullToRefresh()
-        setTitleViewContent(200)
         startRequests()
+        setTitleViewContent(settingsManager.numberOfAnalyzedTweets)
+        settingsManager.delegate = self
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -81,9 +83,9 @@ final class HomeViewController: UIViewController, UITableViewDelegate {
         do {
             // Check is a user is already logged in. If not, we present the Login View Controller
             try viewModel.session.isUserLoggedIn()
-
+            
             loadTableView()
-
+            
             // First request the profile information to get the profile picture URL and then request user profile picture
             viewModel.requestProfileInformation().subscribe(onNext: { [weak self] image in
                 self?.viewModel.requestProfilePicture()
@@ -126,7 +128,7 @@ final class HomeViewController: UIViewController, UITableViewDelegate {
             cell.accessoryView = UIImageView(image: UIImage(named: "detail"))
             return cell
         }
-
+        
         viewModel.requestTimeline(nil)
             .bindTo(tableView.rx_itemsAnimatedWithDataSource(dataSource))
             .addDisposableTo(rx_disposeBag)
@@ -141,14 +143,14 @@ final class HomeViewController: UIViewController, UITableViewDelegate {
         viewModel.requestTimeline(nil)
             .subscribe(onNext: { [weak self] section in
                 self?.tableView.dg_stopLoading()
-            }, onError: { [weak self] error in
-                self?.tableView.dg_stopLoading()
-                ErrorDisplayer().display(error)
-            }, onCompleted: nil, onDisposed: nil)
+                }, onError: { [weak self] error in
+                    self?.tableView.dg_stopLoading()
+                    ErrorDisplayer().display(error)
+                }, onCompleted: nil, onDisposed: nil)
             .addDisposableTo(rx_disposeBag)
-//        viewModel.requestTimeline(nil)
-//            .bindTo(tableView.rx_itemsAnimatedWithDataSource(dataSource))
-//            .addDisposableTo(rx_disposeBag)
+        //        viewModel.requestTimeline(nil)
+        //            .bindTo(tableView.rx_itemsAnimatedWithDataSource(dataSource))
+        //            .addDisposableTo(rx_disposeBag)
     }
     
     func addPullToRefresh() {

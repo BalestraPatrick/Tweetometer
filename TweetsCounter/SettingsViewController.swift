@@ -18,7 +18,6 @@ final class SettingsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        applyStyle()
         
         tweetsStepper.value = Double(settings.numberOfAnalyzedTweets)
         tweetsStepper.numberFormatter.maximumFractionDigits = 0

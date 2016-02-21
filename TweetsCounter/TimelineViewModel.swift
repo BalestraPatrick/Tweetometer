@@ -18,6 +18,7 @@ import NSObject_Rx
 final class TimelineViewModel: NSObject {
     
     let stash: Stash?
+    let settingsManager = SettingsManager.sharedManager
     var session = TwitterSession()
     
     var userID: String?
@@ -68,7 +69,7 @@ final class TimelineViewModel: NSObject {
             print(self.session.client)
             if let client = self.session.client {
                 Twitter.sharedInstance()
-                    .rx_loadTimeline(200, beforeID: nil, client: client)
+                    .rx_loadTimeline(self.settingsManager.numberOfAnalyzedTweets, beforeID: nil, client: client)
                     .subscribe(onNext: { timeline in
                         do {
                             let tweets: AnyObject = try NSJSONSerialization.JSONObjectWithData(timeline, options: .AllowFragments)

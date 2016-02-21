@@ -9,17 +9,28 @@
 import UIKit
 import SwiftyUserDefaults
 
-let numberOfAnalyzedTweetsKey = "numberOfAnalyzedTweets"
+protocol SettingsDelegate: class {
+    func numberOfAnalyzedTweetsDidChange(value: Int)
+}
+
+struct Key {
+    static let NumberOfAnalyzedTweets = "numberOfAnalyzedTweets"
+}
+
 
 final class SettingsManager {
     
     /// Shared manager instance
     static let sharedManager = SettingsManager()
     
+    /// Delegate used to be notified when a setting changes.
+    weak var delegate: SettingsDelegate?
+    
     /// Number of tweets to be retrieved and analyzed. Default value is 200.
-    var numberOfAnalyzedTweets: Int = Defaults[numberOfAnalyzedTweetsKey].int ?? 200 {
+    var numberOfAnalyzedTweets: Int = Defaults[Key.NumberOfAnalyzedTweets].int ?? 200 {
         didSet {
-            Defaults[numberOfAnalyzedTweetsKey] = numberOfAnalyzedTweets
+            Defaults[Key.NumberOfAnalyzedTweets] = numberOfAnalyzedTweets
+            delegate?.numberOfAnalyzedTweetsDidChange(numberOfAnalyzedTweets)
         }
     }
 }
