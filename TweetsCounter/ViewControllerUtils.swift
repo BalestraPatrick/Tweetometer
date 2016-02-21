@@ -15,7 +15,6 @@ extension HomeViewController {
         navigationController?.navigationBar.applyStyle()
         tableView.separatorStyle = .None
         tableView.applyStyle()
-        
     }
     
     func setTitleViewContent(numberOfTweets: Int) {
@@ -59,5 +58,10 @@ extension UserDetailViewController {
     
     func applyStyle() {
         view.backgroundColor = UIColor.backgroundBlueColor()
+    }
+    
+    func setTitleViewContent(name: String, screenName: String) {
+        titleLabel.text = name
+        subtitleLabel.text = "@\(screenName)"
     }
 }

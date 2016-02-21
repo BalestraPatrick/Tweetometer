@@ -10,6 +10,9 @@ import UIKit
 
 final class UserDetailViewController: UIViewController {
     
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var subtitleLabel: UILabel!
+    
     var selectedUser: User?
     
     override func viewDidLoad() {
@@ -17,6 +20,6 @@ final class UserDetailViewController: UIViewController {
         applyStyle()
         
         guard let user = selectedUser else { return }
-        title = user.screenName
+        setTitleViewContent(user.name, screenName: user.screenName)
     }
 }

@@ -12,7 +12,7 @@ class MenuPopOverViewController: UITableViewController {
     
     let options = MenuOptionsDataSource().options
     var homeViewController: HomeViewController?
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         applyStyle()
@@ -36,10 +36,11 @@ class MenuPopOverViewController: UITableViewController {
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         switch indexPath.row {
         case MenuOptions.Refresh.rawValue:
-            homeViewController?.tableView.startAnimating()
+            // TODO: implement manual refreshing
+            print("TODO")
 //            homeViewController?.reloadTimeline()
         case MenuOptions.Logout.rawValue:
-
+            
             break
         case MenuOptions.Settings.rawValue:
             dismissViewControllerAnimated(true, completion: {
@@ -47,7 +48,7 @@ class MenuPopOverViewController: UITableViewController {
             })
             break
         case MenuOptions.About.rawValue:
-
+            
             break
         default:
             break
