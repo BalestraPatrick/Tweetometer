@@ -284,15 +284,21 @@
         <scene sceneID="kNi-L6-ALA">
             <objects>
                 <viewController id="WlY-wj-dbD" customClass="UserDetailViewController" customModule="TweetsCounter" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="zUk-wf-UrS"/>
-                        <viewControllerLayoutGuide type="bottom" id="BeN-Wk-vMi"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="K0Z-yb-8sq">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="qge-SP-VPC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TweetCell" id="qAR-wb-vTY" customClass="TweetTableViewCell" customModule="TweetsCounter" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qAR-wb-vTY" id="00K-uK-z4v">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                    </tableView>
                     <navigationItem key="navigationItem" id="BHy-jC-wAA">
                         <nil key="title"/>
                         <view key="titleView" contentMode="scaleToFill" id="XxA-KA-MPQ">
@@ -317,6 +323,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="subtitleLabel" destination="hDz-A4-jpE" id="fwp-f2-ANp"/>
+                        <outlet property="tableView" destination="qge-SP-VPC" id="KC7-Eb-9rz"/>
                         <outlet property="titleLabel" destination="Di9-TO-8x9" id="8Gf-vl-do7"/>
                     </connections>
                 </viewController>

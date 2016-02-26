@@ -35,6 +35,7 @@ struct TwitterEndpoints {
 enum TableViewCell: String {
     case UserCellIdentifier = "UserCell"
     case MenuPopOverCellIdentifier = "MenuPopOverCell"
+    case TweetCellIdentifier = "TweetCell"
 }
 
 let cacheName = "TweetsCounter"

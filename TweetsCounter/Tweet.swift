@@ -10,7 +10,7 @@ import Foundation
 import TwitterKit
 import Unbox
 
-struct Tweet: Equatable, Unboxable {
+struct Tweet: Equatable, Hashable, Unboxable {
     
     var tweetID: String
     var createdAt: NSDate
@@ -18,6 +18,12 @@ struct Tweet: Equatable, Unboxable {
     var language: String
     var screenName: String
     var author: User?
+    
+    var hashValue: Int {
+        get {
+            return tweetID.hashValue
+        }
+    }
     
     init(unboxer: Unboxer) {
         
