@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SafariServices
 
 enum AppOpener: String {
     case Twitter = "twitter"
@@ -33,6 +34,10 @@ class LinkOpener {
         print(urlComponents.URL)
         
         guard let url = urlComponents.URL else { return }
-        UIApplication.sharedApplication().openURL(url)
+//        UIApplication.sharedApplication().openURL(url)
+    }
+    
+    func openInSafari(url: NSURL) -> SFSafariViewController {
+        return SFSafariViewController(URL: url)
     }
 }

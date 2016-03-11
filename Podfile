@@ -30,6 +30,7 @@ target "TweetsCounter" do
     pod 'Unbox'
     pod 'ValueStepper'
     pod 'SwiftyUserDefaults'
+    pod 'ActiveLabel'
 end
 
 target "TweetsCounterTests" do

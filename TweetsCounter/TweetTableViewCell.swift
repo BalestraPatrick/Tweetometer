@@ -7,10 +7,11 @@
 //
 
 import UIKit
+import ActiveLabel
 
 class TweetTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var tweetLabel: UILabel!
+    @IBOutlet weak var tweetLabel: ActiveLabel!
     @IBOutlet weak var dateLabel: UILabel!
     
     override func awakeFromNib() {
@@ -18,11 +19,27 @@ class TweetTableViewCell: UITableViewCell {
         backgroundColor = UIColor.clearColor()
         tweetLabel.textColor = UIColor.whiteColor()
         dateLabel.textColor = UIColor.whiteColor()
+        
+        setUpTwitterElementHandlers()
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
+    }
+    
+    func setUpTwitterElementHandlers() {
+        tweetLabel.handleURLTap { url in
+            
+        }
+        
+        tweetLabel.handleHashtagTap { hashtag in
+            
+        }
+        
+        tweetLabel.handleMentionTap { mention in
+            
+        }
     }
 
 }
