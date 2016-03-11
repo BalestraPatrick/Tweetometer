@@ -28,7 +28,6 @@ target "TweetsCounter" do
     pod 'Stash'
     pod 'ObjectMapper'
     pod 'Unbox'
-    pod 'DGElasticPullToRefresh'
     pod 'ValueStepper'
     pod 'SwiftyUserDefaults'
 end

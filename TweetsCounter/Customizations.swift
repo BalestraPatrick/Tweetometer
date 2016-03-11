@@ -34,6 +34,20 @@ extension NSDateFormatter {
     }
 }
 
+extension NSDate {
+    
+    func tweetDateFormatted() -> String {
+        let minutes = NSCalendar.currentCalendar().components(NSCalendarUnit.Minute, fromDate: self, toDate: NSDate(), options: []).minute
+        if minutes < 60 {
+            return "\(minutes)m"
+        } else if minutes < 60 * 24 {
+            return "\(minutes / 24)h"
+        } else {
+            return "\(minutes / (60 * 24))d"
+        }
+    }
+}
+
 // Fix for bug in  DGElasticPullToRefresh: https://github.com/gontovnik/DGElasticPullToRefresh/issues/24#issuecomment-182840115
 extension UIScrollView {
     func dg_stopScrollingAnimation() {}

@@ -10,7 +10,6 @@ import UIKit
 import RxSwift
 import RxDataSources
 import NSObject_Rx
-import DGElasticPullToRefresh
 
 final class HomeViewController: UIViewController, UITableViewDelegate {
     
@@ -29,7 +28,6 @@ final class HomeViewController: UIViewController, UITableViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         applyStyle()
-        addPullToRefresh()
         startRequests()
         setTitleViewContent(settingsManager.numberOfAnalyzedTweets)
         settingsManager.delegate = self
@@ -46,11 +44,7 @@ final class HomeViewController: UIViewController, UITableViewDelegate {
             })
         }
     }
-    
-    deinit {
-        tableView.dg_removePullToRefresh()
-    }
-    
+
     // MARK: Storyboard Segues
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -142,25 +136,12 @@ final class HomeViewController: UIViewController, UITableViewDelegate {
     func reloadTimeline() {
         viewModel.requestTimeline(nil)
             .subscribe(onNext: { [weak self] section in
-                self?.tableView.dg_stopLoading()
+     
                 }, onError: { [weak self] error in
-                    self?.tableView.dg_stopLoading()
+
                     ErrorDisplayer().display(error)
                 }, onCompleted: nil, onDisposed: nil)
             .addDisposableTo(rx_disposeBag)
-        //        viewModel.requestTimeline(nil)
-        //            .bindTo(tableView.rx_itemsAnimatedWithDataSource(dataSource))
-        //            .addDisposableTo(rx_disposeBag)
-    }
-    
-    func addPullToRefresh() {
-        let loadingView = DGElasticPullToRefreshLoadingViewCircle()
-        loadingView.tintColor = UIColor.whiteColor()
-        tableView.dg_addPullToRefreshWithActionHandler({ [weak self] in
-            self?.reloadTimeline()
-            }, loadingView: loadingView)
-        tableView.dg_setPullToRefreshFillColor(UIColor().menuDarkBlueColor())
-        tableView.dg_setPullToRefreshBackgroundColor(view.backgroundColor!)
     }
     
     // MARK: IBActions

@@ -10,15 +10,19 @@ import UIKit
 
 class TweetTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var tweetLabel: UILabel!
+    @IBOutlet weak var dateLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        backgroundColor = UIColor.clearColor()
+        tweetLabel.textColor = UIColor.whiteColor()
+        dateLabel.textColor = UIColor.whiteColor()
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
-        // Configure the view for the selected state
     }
 
 }

@@ -2,7 +2,6 @@ PODS:
   - Alamofire (3.2.1)
   - Crashlytics (3.7.0):
     - Fabric (~> 1.6.3)
-  - DGElasticPullToRefresh (1.0.3)
   - Fabric (1.6.6)
   - Keys (1.0.0)
   - NSObject+Rx (1.2.1):
@@ -31,7 +30,6 @@ PODS:
 DEPENDENCIES:
   - Alamofire
   - Crashlytics
-  - DGElasticPullToRefresh
   - Fabric
   - Keys (from `Pods/CocoaPodsKeys`)
   - NSObject+Rx
@@ -54,7 +52,6 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   Alamofire: f11d8624a05f5d39e0c99309b3e600a3ba64298a
   Crashlytics: c3a2333dea9e2733d2777f730910321fc9e25c0d
-  DGElasticPullToRefresh: 040f39ae69840b3261d163fe6735c5901bf851e9
   Fabric: 1abc1e59f11fa39ede6f690ef7309d8563e3ec59
   Keys: 7d2ff6ff42f6903358267ce56e9392f83c31acfe
   NSObject+Rx: 5d032a7f161602dec6b82dcf12731e91ce15b8da

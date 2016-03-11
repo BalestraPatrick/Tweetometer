@@ -19,6 +19,7 @@ final class UserDetailViewController: UIViewController, UITableViewDelegate {
     
     let viewModel = UserViewModel()
     let dataSource = RxTableViewSectionedAnimatedDataSource<AnimatableSectionModel<String, Tweet>>()
+    let linkOpener = LinkOpener()
 
     var selectedUser: User?
     
@@ -34,13 +35,15 @@ final class UserDetailViewController: UIViewController, UITableViewDelegate {
     }
     
     func loadTableView() {
+        tableView.estimatedRowHeight = 50.0
         tableView.rowHeight = UITableViewAutomaticDimension
         
         dataSource.configureCell = { (table, indexPath, tweet) in
             guard let cell = table.dequeueReusableCellWithIdentifier(TableViewCell.TweetCellIdentifier.rawValue) as? TweetTableViewCell else {
                 fatalError("Could not create cell with identifier \(TableViewCell.UserCellIdentifier.rawValue) in UITableView: \(table)")
             }
-            // TODO: customization
+            cell.tweetLabel.text = tweet.value.text
+            cell.dateLabel.text = tweet.value.createdAt.tweetDateFormatted()
             return cell
         }
         
@@ -51,5 +54,12 @@ final class UserDetailViewController: UIViewController, UITableViewDelegate {
         tableView
             .rx_setDelegate(self)
             .addDisposableTo(rx_disposeBag)
+    }
+    
+    @IBAction func openIn(sender: UIBarButtonItem) {
+        guard let user = selectedUser else {
+            return
+        }
+        linkOpener.openUser(user)
     }
 }
