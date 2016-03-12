@@ -18,6 +18,8 @@ final class HomeViewController: UIViewController, UITableViewDelegate {
     @IBOutlet weak var subtitleLabel: UILabel!
     @IBOutlet weak var profileButton: ProfilePictureButton!
     
+    weak var delegate: HomeViewControllerDelegate!
+    
     let dataSource = RxTableViewSectionedAnimatedDataSource<AnimatableSectionModel<String, User>>()
     let imageService = DefaultImageService.sharedImageService
     let viewModel = TimelineViewModel()
@@ -56,8 +58,7 @@ final class HomeViewController: UIViewController, UITableViewDelegate {
             menuPopOver.popoverPresentationController!.backgroundColor = UIColor().menuDarkBlueColor()
             menuPopOver.homeViewController = self
         } else if segue.identifier == StoryboardSegue.Main.UserDetail.rawValue {
-            let userDetail = segue.destinationViewController as? UserDetailViewController
-            if let userDetail = userDetail {
+            if let userDetail = segue.destinationViewController as? UserDetailViewController {
                 tableView
                     .rx_itemSelected
                     .map { indexPath in
@@ -67,6 +68,8 @@ final class HomeViewController: UIViewController, UITableViewDelegate {
                         userDetail.selectedUser = selectedUser.value
                     }
                     .addDisposableTo(rx_disposeBag)
+                
+                delegate.pushDetail(userDetail)
             }
         }
     }

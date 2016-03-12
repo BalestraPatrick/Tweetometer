@@ -12,15 +12,18 @@ import Alamofire
 @UIApplicationMain class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
-    var coordinator: AppCoordinator?
+    
+    private lazy var appCoordinator: AppCoordinator = {
+        return AppCoordinator(window: self.window!)
+    }()
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         _ = FabricSetUp(environment: .Debug)
-        
-        // TODO: refactor to Storyboard.swift file
+        window = UIWindow(frame: UIScreen.mainScreen().bounds)
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        coordinator = AppCoordinator(navigationViewController: storyboard.instantiateInitialViewController() as! UINavigationController)
-        coordinator?.start()
+        let initialViewController = storyboard.instantiateInitialViewController()
+        window?.rootViewController = initialViewController
+        appCoordinator.start()
         return true
     }
     

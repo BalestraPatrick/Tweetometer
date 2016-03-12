@@ -13,6 +13,7 @@ class TweetTableViewCell: UITableViewCell {
 
     @IBOutlet weak var tweetLabel: ActiveLabel!
     @IBOutlet weak var dateLabel: UILabel!
+    weak var delegate: UserDetailViewControllerDelegate!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -30,7 +31,7 @@ class TweetTableViewCell: UITableViewCell {
     
     func setUpTwitterElementHandlers() {
         tweetLabel.handleURLTap { url in
-            
+            self.delegate.presentSafari(url)
         }
         
         tweetLabel.handleHashtagTap { hashtag in

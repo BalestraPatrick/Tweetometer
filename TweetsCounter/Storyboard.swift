@@ -12,8 +12,8 @@ extension StoryboardSceneType {
         return UIStoryboard(name: self.storyboardName, bundle: nil)
     }
     
-    static func initialViewController() -> UINavigationController {
-        return storyboard().instantiateInitialViewController()! as! UINavigationController
+    static func initialViewController() -> UIViewController {
+        return storyboard().instantiateInitialViewController()!
     }
 }
 
@@ -41,6 +41,11 @@ struct StoryboardScene {
     enum Main : String, StoryboardSceneType {
         static let storyboardName = "Main"
         
+        case Home = "Home"
+        static func homeViewController() -> HomeViewController {
+            return Main.Home.viewController() as! HomeViewController
+        }
+        
         case MenuPopOver = "MenuPopOver"
         static func menuPopOverViewController() -> MenuPopOverViewController {
             return Main.MenuPopOver.viewController() as! MenuPopOverViewController
@@ -54,6 +59,11 @@ struct StoryboardScene {
         case TwitterLogin = "TwitterLogin"
         static func twitterLoginViewController() -> TwitterLoginViewController {
             return Main.TwitterLogin.viewController() as! TwitterLoginViewController
+        }
+        
+        case UserDetail = "UserDetail"
+        static func userDetailViewController() -> UserDetailViewController {
+            return Main.UserDetail.viewController() as! UserDetailViewController
         }
     }
 }

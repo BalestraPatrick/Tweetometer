@@ -23,6 +23,8 @@ final class UserDetailViewController: UIViewController, UITableViewDelegate {
 
     var selectedUser: User?
     
+    weak var delegate: UserDetailViewControllerDelegate!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         applyStyle()
@@ -42,6 +44,7 @@ final class UserDetailViewController: UIViewController, UITableViewDelegate {
             guard let cell = table.dequeueReusableCellWithIdentifier(TableViewCell.TweetCellIdentifier.rawValue) as? TweetTableViewCell else {
                 fatalError("Could not create cell with identifier \(TableViewCell.UserCellIdentifier.rawValue) in UITableView: \(table)")
             }
+            cell.delegate = self.delegate
             cell.tweetLabel.text = tweet.value.text
             cell.dateLabel.text = tweet.value.createdAt.tweetDateFormatted()
             return cell
