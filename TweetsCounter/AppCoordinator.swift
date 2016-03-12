@@ -18,7 +18,6 @@ class AppCoordinator: NSObject {
         return self.window.rootViewController as! UINavigationController
     }()
     
-    
     init(window: UIWindow) {
         // Grab the initial view controller from Storyboard
         let initialViewController = StoryboardScene.Main.initialViewController()
@@ -34,10 +33,6 @@ class AppCoordinator: NSObject {
             childCoordinators.append(homeCoordinator)
             homeCoordinator.start()
         }
-    }
-    
-    func showSafariViewController(url: NSURL) {
-        
     }
 
 }
