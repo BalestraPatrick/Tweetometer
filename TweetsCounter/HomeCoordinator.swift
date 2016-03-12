@@ -28,7 +28,6 @@ class HomeCoordinator: HomeViewControllerDelegate {
     // MARK: HomeViewControllerDelegate
     
     func pushDetail(controller: UserDetailViewController) {
-        print(controller)
         let userDetailCoordinator = UserDetailCoordinator(controller: controller)
         childCoordinators.append(userDetailCoordinator)
         userDetailCoordinator.start()

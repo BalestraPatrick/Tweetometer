@@ -11,11 +11,13 @@ import UIKit
 class AppCoordinator: NSObject {
     
     let window: UIWindow
+
+    var childCoordinators = Array<AnyObject>()
+
     lazy var rootViewController: UINavigationController = {
         return self.window.rootViewController as! UINavigationController
     }()
     
-    var childCoordinators = Array<AnyObject>()
     
     init(window: UIWindow) {
         // Grab the initial view controller from Storyboard
