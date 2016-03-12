@@ -10,6 +10,7 @@ import UIKit
 
 protocol UserDetailViewControllerDelegate: class {
     func presentSafari(url: NSURL)
+    func openUser(user: String)
 }
 
 class UserDetailCoordinator: UserDetailViewControllerDelegate {
@@ -32,6 +33,10 @@ class UserDetailCoordinator: UserDetailViewControllerDelegate {
         // TODO: fix status bar color in SFSafariViewController
         let safari = linkOpener.openInSafari(url)
         controller.presentViewController(safari, animated: true, completion: nil)
+    }
+    
+    func openUser(user: String) {
+        linkOpener.openUser(user)
     }
 }
 

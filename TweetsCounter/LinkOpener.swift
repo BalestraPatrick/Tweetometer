@@ -24,17 +24,15 @@ class LinkOpener {
     
     var urlComponents = NSURLComponents()
     
-    
     init() {
         urlComponents.scheme = defaultApp.rawValue
-        urlComponents.path = "BalestraPatrick/timeline"
     }
     
-    func openUser(user: User) {
+    func openUser(user: String) {
+        urlComponents.path = "BalestraPatrick/user_profile/\(user)"
         print(urlComponents.URL)
-        
         guard let url = urlComponents.URL else { return }
-//        UIApplication.sharedApplication().openURL(url)
+        UIApplication.sharedApplication().openURL(url)
     }
     
     func openInSafari(url: NSURL) -> SFSafariViewController {

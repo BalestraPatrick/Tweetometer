@@ -60,9 +60,8 @@ final class UserDetailViewController: UIViewController, UITableViewDelegate {
     }
     
     @IBAction func openIn(sender: UIBarButtonItem) {
-        guard let user = selectedUser else {
-            return
+        if let user = selectedUser {
+            delegate.openUser(user.screenName)
         }
-        linkOpener.openUser(user)
     }
 }
