@@ -20,9 +20,6 @@ import Alamofire
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         _ = FabricSetUp(environment: .Debug)
         window = UIWindow(frame: UIScreen.mainScreen().bounds)
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let initialViewController = storyboard.instantiateInitialViewController()
-        window?.rootViewController = initialViewController
         appCoordinator.start()
         return true
     }

@@ -21,6 +21,8 @@ class AppCoordinator: NSObject {
     
     init(window: UIWindow) {
         // Grab the initial view controller from Storyboard
+        let initialViewController = StoryboardScene.Main.initialViewController()
+        window.rootViewController = initialViewController
         self.window = window
         self.childCoordinators = []
     }
