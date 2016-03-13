@@ -26,11 +26,11 @@ class LinkOpener {
     
     init() {
         urlComponents.scheme = defaultApp.rawValue
+        urlComponents.host = "BalestraPatrick" // TODO: add name of currently logged in user here
     }
     
     func openUser(user: String) {
-        urlComponents.path = "BalestraPatrick/user_profile/\(user)"
-        print(urlComponents.URL)
+        urlComponents.path = "/user_profile/\(user)"
         guard let url = urlComponents.URL else { return }
         UIApplication.sharedApplication().openURL(url)
     }
