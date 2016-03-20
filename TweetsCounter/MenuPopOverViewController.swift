@@ -47,9 +47,6 @@ class MenuPopOverViewController: UITableViewController {
                 self.homeViewController?.presentViewController(StoryboardScene.Main.settingsViewController(), animated: true, completion: nil)
             })
             break
-        case MenuOptions.About.rawValue:
-            
-            break
         default:
             break
         }

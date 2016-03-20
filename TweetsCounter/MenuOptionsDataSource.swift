@@ -17,7 +17,6 @@ enum MenuOptions: Int {
     case Refresh
     case Logout
     case Settings
-    case About
 }
 
 final class MenuOptionsDataSource {
@@ -27,7 +26,6 @@ final class MenuOptionsDataSource {
     init () {
         self.options = [Option(image: "refresh", title: "Refresh"),
                         Option(image: "logout", title: "Logout"),
-                        Option(image: "settings", title: "Settings"),
-                        Option(image: "info", title: "About")]
+                        Option(image: "settings", title: "Settings")]
     }
 }
