@@ -32,6 +32,11 @@ struct TwitterEndpoints {
     
 }
 
+struct Links {
+    static let developerAddress = "http://www.patrickbalestra.com"
+    static let githubAddress = "http://www.github.com/BalestraPatrick/Tweetometer"
+}
+
 enum TableViewCell: String {
     case UserCellIdentifier = "UserCell"
     case MenuPopOverCellIdentifier = "MenuPopOverCell"

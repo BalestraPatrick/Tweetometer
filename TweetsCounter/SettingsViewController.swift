@@ -39,13 +39,13 @@ final class SettingsViewController: UIViewController {
     }
     
     @IBAction func developedBy(sender: AnyObject) {
-        let url = NSURL(string: "http://www.patrickbalestra.com")!
+        let url = NSURL(string: Links.developerAddress)!
         let safari = linkOpener.openInSafari(url)
         presentViewController(safari, animated: true, completion: nil)
     }
     
     @IBAction func openGithub(sender: AnyObject) {
-        let url = NSURL(string: "http://www.github.com/BalestraPatrick/Tweetometer")!
+        let url = NSURL(string: Links.githubAddress)!
         let safari = linkOpener.openInSafari(url)
         presentViewController(safari, animated: true, completion: nil)
     }
