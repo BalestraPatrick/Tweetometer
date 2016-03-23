@@ -26,7 +26,7 @@ PODS:
   - TwitterKit (1.15.3):
     - TwitterCore (= 1.15.3)
   - Unbox (1.3.1)
-  - ValueStepper (0.4)
+  - ValueStepper (0.5)
 
 DEPENDENCIES:
   - ActiveLabel
@@ -68,6 +68,6 @@ SPEC CHECKSUMS:
   TwitterCore: cce24b3c798993ccde72787ea79ea9a478b284e4
   TwitterKit: 43600f2d2848c227739efea5b2939585e69339c3
   Unbox: b6e468b47b5d941b197c1ea53e9c179528b454ed
-  ValueStepper: 2d74861dcd9a04acd91384767473a926c539b331
+  ValueStepper: bab3fa0ccdf8b6e54dc46652ac38509306b23a90
 
 COCOAPODS: 0.39.0
