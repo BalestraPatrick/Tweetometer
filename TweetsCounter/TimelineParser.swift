@@ -83,7 +83,8 @@ public final class TimelineParser {
     /// - returns: A Timeline object containing an array of users.
     private func buildTimelineFromTweets(tweets: [Tweet], users: [User]) -> Timeline {
         // Build list of authors with array of tweets in each user
-        var orderedUsers = users.flatMap { (var user) -> User? in
+        var orderedUsers = users.flatMap { (user) -> User? in
+            var user = user
             let allTweetsOfUser = tweets.flatMap({ (tweet) -> Tweet? in
                 if tweet.author == user {
                     return tweet

@@ -40,9 +40,9 @@ final class UserDetailViewController: UIViewController, UITableViewDelegate {
         tableView.estimatedRowHeight = 50.0
         tableView.rowHeight = UITableViewAutomaticDimension
         
-        dataSource.configureCell = { (table, indexPath, tweet) in
-            guard let cell = table.dequeueReusableCellWithIdentifier(TableViewCell.TweetCellIdentifier.rawValue) as? TweetTableViewCell else {
-                fatalError("Could not create cell with identifier \(TableViewCell.UserCellIdentifier.rawValue) in UITableView: \(table)")
+        dataSource.configureCell = { (dataSource, tableView, indexPath, tweet) in
+            guard let cell = self.tableView.dequeueReusableCellWithIdentifier(TableViewCell.TweetCellIdentifier.rawValue) as? TweetTableViewCell else {
+                fatalError("Could not create cell with identifier \(TableViewCell.UserCellIdentifier.rawValue) in UITableView: \(tableView)")
             }
             cell.delegate = self.delegate
             cell.tweetLabel.text = tweet.value.text

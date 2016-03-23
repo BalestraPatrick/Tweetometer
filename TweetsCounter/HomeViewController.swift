@@ -105,10 +105,10 @@ final class HomeViewController: UIViewController, UITableViewDelegate {
     
     func loadTableView() {
         tableView.rowHeight = 75.0
-        
-        dataSource.configureCell = { [weak self] (table, indexPath, user) in
-            guard let cell = table.dequeueReusableCellWithIdentifier(TableViewCell.UserCellIdentifier.rawValue) as? UserTableViewCell else {
-                fatalError("Could not create cell with identifier \(TableViewCell.UserCellIdentifier.rawValue) in UITableView: \(table)")
+
+        dataSource.configureCell = { [weak self] (dataSource, tableView, indexPath, user) in
+            guard let cell = tableView.dequeueReusableCellWithIdentifier(TableViewCell.UserCellIdentifier.rawValue) as? UserTableViewCell else {
+                fatalError("Could not create cell with identifier \(TableViewCell.UserCellIdentifier.rawValue) in UITableView: \(tableView)")
             }
             cell.backgroundColor = indexPath.row % 2 == 0 ? UIColor(white: 1.0, alpha: 0.2) : UIColor(white: 1.0, alpha: 0.1)
             cell.profilePictureImageView.layer.cornerRadius = cell.profilePictureImageView.frame.size.width / 2
