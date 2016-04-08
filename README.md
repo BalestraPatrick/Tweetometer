@@ -19,7 +19,7 @@ $ pod keys set FABRIC_BUILD_SECRET YOUR_BUILD_SECRET_HERE</pre>
 
 
 ### Contribution
-You're welcome to improve and add new features to the app!
+You're welcome to improve and add new features to the app.
 
 ### Author
 I'm Patrick Balestra, [@BalestraPatrick](http://www.twitter.com/BalestraPatrick) on Twitter.
