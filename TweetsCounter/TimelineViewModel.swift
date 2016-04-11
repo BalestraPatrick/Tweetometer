@@ -107,7 +107,7 @@ final class TimelineViewModel: NSObject {
                 observer.onCompleted()
             } else if let _ = self.session.client, let user = self.session.user {
                 // Download profile image of the logged in user if not cached
-                request(Method.GET, (user.profileImageLargeURL)!)
+                request(Method.GET, (user.profileImageLargeURL))
                     .flatMap {
                         $0.validate(statusCode: 200 ..< 300).rx_data()
                     }
