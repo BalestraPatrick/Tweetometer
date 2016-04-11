@@ -13,6 +13,9 @@ class TweetTableViewCell: UITableViewCell {
 
     @IBOutlet weak var tweetLabel: ActiveLabel!
     @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var retweetsCountLabel: UILabel!
+    @IBOutlet weak var likesCountLabel: UILabel!
+    
     weak var delegate: UserDetailViewControllerDelegate!
     
     override func awakeFromNib() {

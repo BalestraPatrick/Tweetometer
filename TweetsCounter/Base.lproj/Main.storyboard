@@ -289,7 +289,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TweetCell" rowHeight="74" id="qAR-wb-vTY" customClass="TweetTableViewCell" customModule="TweetsCounter" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="TweetCell" rowHeight="74" id="qAR-wb-vTY" customClass="TweetTableViewCell" customModule="TweetsCounter" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="92" width="600" height="74"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qAR-wb-vTY" id="00K-uK-z4v">
@@ -426,6 +426,8 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="dateLabel" destination="lS1-U3-t8J" id="stm-EH-rKz"/>
+                                    <outlet property="likesCountLabel" destination="MWg-10-7X9" id="Cws-oA-5Po"/>
+                                    <outlet property="retweetsCountLabel" destination="Wc7-xs-rkN" id="whc-yj-wwc"/>
                                     <outlet property="tweetLabel" destination="kIQ-FQ-S91" id="P3P-ff-vRU"/>
                                 </connections>
                             </tableViewCell>

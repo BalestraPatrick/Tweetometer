@@ -36,6 +36,8 @@ class UserDetailCoordinator: UserDetailViewControllerDelegate {
     }
     
     func openUser(user: String) {
+        // TODO: Check preferred way to open link
+        
         linkOpener.openUser(user)
     }
 }

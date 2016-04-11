@@ -17,6 +17,9 @@ struct Tweet: Equatable, Hashable, Unboxable {
     var text: String
     var language: String
     var screenName: String
+    var retweetsCount: Int
+    var likesCount: Int
+    
     var author: User?
     
     var hashValue: Int {
@@ -46,6 +49,10 @@ struct Tweet: Equatable, Hashable, Unboxable {
             screenName = ""
             print("Failed to unbox author user with JSON: \(userJSON)")
         }
+        
+        retweetsCount = unboxer.unbox("retweet_count")
+        likesCount = unboxer.unbox("favorite_count")
+        
     }
     
 }

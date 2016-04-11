@@ -47,6 +47,8 @@ final class UserDetailViewController: UIViewController, UITableViewDelegate {
             cell.delegate = self.delegate
             cell.tweetLabel.text = tweet.value.text
             cell.dateLabel.text = tweet.value.createdAt.tweetDateFormatted()
+            cell.retweetsCountLabel.text = "\(tweet.value.retweetsCount)"
+            cell.likesCountLabel.text = "\(tweet.value.likesCount)"
             return cell
         }
         
