@@ -103,6 +103,10 @@ final class HomeViewController: UIViewController, UITableViewDelegate {
         }
     }
     
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return .LightContent
+    }
+    
     func loadTableView() {
         tableView.rowHeight = 75.0
 

@@ -32,6 +32,11 @@ final class SettingsViewController: UIViewController {
         githubButton.layer.cornerRadius = 5.0
         githubButton.layer.borderColor = UIColor.whiteColor().CGColor
         githubButton.layer.borderWidth = 1.0
+        
+    }
+    
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return .LightContent
     }
     
     @IBAction func stepperChanged(sender: ValueStepper) {

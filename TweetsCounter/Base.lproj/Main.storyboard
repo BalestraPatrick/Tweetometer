@@ -703,6 +703,7 @@ Version 1.0 </string>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="h9p-wL-MEQ"/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <connections>
                         <outlet property="developedByButton" destination="to0-xg-Qo9" id="M9I-jR-g0a"/>
                         <outlet property="githubButton" destination="KQz-JN-yHc" id="QXp-23-ErM"/>
