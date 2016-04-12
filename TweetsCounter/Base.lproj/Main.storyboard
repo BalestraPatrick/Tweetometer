@@ -334,12 +334,12 @@
                                             <rect key="frame" x="0.0" y="26" width="600" height="48"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="mLk-bD-f1f">
-                                                    <rect key="frame" x="226" y="0.0" width="149" height="48"/>
+                                                    <rect key="frame" x="224" y="0.0" width="152" height="48"/>
                                                     <subviews>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0qn-uD-3d5">
-                                                            <rect key="frame" x="0.0" y="9" width="73" height="30"/>
+                                                            <rect key="frame" x="0.0" y="9" width="76" height="30"/>
                                                             <subviews>
-                                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="RetweetIcon" translatesAutoresizingMaskIntoConstraints="NO" id="WNA-Gr-emu">
+                                                                <imageView userInteractionEnabled="NO" alpha="0.90000000000000002" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="RetweetIcon" translatesAutoresizingMaskIntoConstraints="NO" id="WNA-Gr-emu">
                                                                     <rect key="frame" x="15" y="0.0" width="30" height="30"/>
                                                                     <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                                     <constraints>
@@ -348,7 +348,7 @@
                                                                     </constraints>
                                                                 </imageView>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wc7-xs-rkN">
-                                                                    <rect key="frame" x="45" y="4" width="18" height="21"/>
+                                                                    <rect key="frame" x="48" y="4" width="18" height="21"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" relation="lessThanOrEqual" constant="100" id="L5W-eT-UdO"/>
                                                                     </constraints>
@@ -359,19 +359,25 @@
                                                             </subviews>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                             <constraints>
+                                                                <constraint firstItem="Wc7-xs-rkN" firstAttribute="leading" secondItem="WNA-Gr-emu" secondAttribute="trailing" id="NE5-Wb-KXs"/>
                                                                 <constraint firstItem="WNA-Gr-emu" firstAttribute="centerY" secondItem="0qn-uD-3d5" secondAttribute="centerY" id="Y25-sM-c2B"/>
                                                                 <constraint firstItem="Wc7-xs-rkN" firstAttribute="centerY" secondItem="0qn-uD-3d5" secondAttribute="centerY" id="f3q-xq-msS"/>
                                                                 <constraint firstAttribute="height" constant="30" id="gSA-ZP-Ryf"/>
                                                                 <constraint firstAttribute="trailing" secondItem="Wc7-xs-rkN" secondAttribute="trailing" constant="10" id="oKc-HQ-h5h"/>
                                                                 <constraint firstItem="WNA-Gr-emu" firstAttribute="top" secondItem="0qn-uD-3d5" secondAttribute="top" id="t1o-Lg-Fdw"/>
-                                                                <constraint firstItem="Wc7-xs-rkN" firstAttribute="leading" secondItem="WNA-Gr-emu" secondAttribute="trailing" id="vQH-CR-8lL"/>
+                                                                <constraint firstItem="Wc7-xs-rkN" firstAttribute="leading" secondItem="WNA-Gr-emu" secondAttribute="trailing" constant="3" id="vQH-CR-8lL"/>
                                                                 <constraint firstItem="WNA-Gr-emu" firstAttribute="leading" secondItem="0qn-uD-3d5" secondAttribute="leading" constant="15" id="zoo-Hz-Qbu"/>
                                                             </constraints>
+                                                            <variation key="default">
+                                                                <mask key="constraints">
+                                                                    <exclude reference="NE5-Wb-KXs"/>
+                                                                </mask>
+                                                            </variation>
                                                         </view>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Uhw-6V-p9C">
-                                                            <rect key="frame" x="73" y="9" width="76" height="30"/>
+                                                            <rect key="frame" x="76" y="9" width="76" height="30"/>
                                                             <subviews>
-                                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="HeartIcon" translatesAutoresizingMaskIntoConstraints="NO" id="WBF-8A-THl">
+                                                                <imageView userInteractionEnabled="NO" alpha="0.90000000000000002" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="HeartIcon" translatesAutoresizingMaskIntoConstraints="NO" id="WBF-8A-THl">
                                                                     <rect key="frame" x="15" y="0.0" width="30" height="30"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="30" id="TLU-Ht-hVR"/>
