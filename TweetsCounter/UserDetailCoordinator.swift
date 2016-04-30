@@ -30,14 +30,11 @@ class UserDetailCoordinator: UserDetailViewControllerDelegate {
     // MARK: HomeViewControllerDelegate
     
     func presentSafari(url: NSURL) {
-        // TODO: fix status bar color in SFSafariViewController
         let safari = linkOpener.openInSafari(url)
         controller.presentViewController(safari, animated: true, completion: nil)
     }
     
     func openUser(user: String) {
-        // TODO: Check preferred way to open link
-        
         linkOpener.openUser(user)
     }
 }

@@ -74,5 +74,10 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>tweetbot</string>
+		<string>twitter</string>
+	</array>
 </dict>
 </plist>
