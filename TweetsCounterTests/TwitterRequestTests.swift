@@ -6,9 +6,10 @@
 //  Copyright © 2015 Patrick Balestra. All rights reserved.
 //
 
-@testable import TweetsCounter
 import XCTest
+@testable import TweetsCounter
 
 class TwitterRequestTests: XCTestCase {
+
     
 }
