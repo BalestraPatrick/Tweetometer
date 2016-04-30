@@ -13,6 +13,8 @@ final class SettingsViewController: UIViewController {
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var tweetsStepper: ValueStepper!
+    @IBOutlet weak var twitterClientControl: UISegmentedControl!
+    
     @IBOutlet weak var developedByButton: UIButton!
     @IBOutlet weak var githubButton: UIButton!
     
@@ -25,6 +27,8 @@ final class SettingsViewController: UIViewController {
         tweetsStepper.value = Double(settings.numberOfAnalyzedTweets)
         tweetsStepper.numberFormatter.maximumFractionDigits = 0
         
+        twitterClientControl.selectedSegmentIndex = TwitterClient.toIndex(settings.preferredTwitterClient)
+        
         developedByButton.layer.cornerRadius = 5.0
         developedByButton.layer.borderColor = UIColor.whiteColor().CGColor
         developedByButton.layer.borderWidth = 1.0
@@ -35,12 +39,26 @@ final class SettingsViewController: UIViewController {
         
     }
     
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        // Check if Twitter and Tweetbot apps are installed to enable them in the UI
+        let twitterResult = UIApplication.sharedApplication().canOpenURL(NSURL(string: "twitter://")!)
+        let tweetbotResult = UIApplication.sharedApplication().canOpenURL(NSURL(string: "tweetbot://")!)
+        
+        twitterClientControl.setEnabled(twitterResult, forSegmentAtIndex: 1)
+        twitterClientControl.setEnabled(tweetbotResult, forSegmentAtIndex: 2)
+    }
+    
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
         return .LightContent
     }
     
     @IBAction func stepperChanged(sender: ValueStepper) {
         settings.numberOfAnalyzedTweets = Int(sender.value)
+    }
+    
+    @IBAction func clientChanged(sender: UISegmentedControl) {
+        settings.preferredTwitterClient = TwitterClient.fromIndex(sender.selectedSegmentIndex)
     }
     
     @IBAction func developedBy(sender: AnyObject) {

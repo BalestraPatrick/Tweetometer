@@ -35,6 +35,7 @@ class UserDetailCoordinator: UserDetailViewControllerDelegate {
     }
     
     func openUser(user: String) {
+        linkOpener.coordinator = self
         linkOpener.openUser(user)
     }
 }

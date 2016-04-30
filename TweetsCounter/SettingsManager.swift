@@ -20,9 +20,26 @@ struct Key {
 
 
 enum TwitterClient {
-    case Tweetbot
+    case Web
     case Twitter
-    case Safari
+    case Tweetbot
+    
+    static func fromIndex(index: Int) -> TwitterClient {
+        switch index {
+        case 0: return .Web
+        case 1: return .Twitter
+        case 2: return .Tweetbot
+        default: return .Web
+        }
+    }
+    
+    static func toIndex(option: TwitterClient) -> Int {
+        switch option {
+        case .Web: return 0
+        case .Twitter: return 1
+        case .Tweetbot: return 2
+        }
+    }
 }
 
 final class SettingsManager {
@@ -43,7 +60,7 @@ final class SettingsManager {
     
     var preferredTwitterClient: TwitterClient {
         didSet {
-            Defaults[Key.PreferredTwitterClient] = preferredTwitterClient
+            Defaults[Key.PreferredTwitterClient] = TwitterClient.toIndex(preferredTwitterClient)
         }
     }
     
@@ -54,10 +71,10 @@ final class SettingsManager {
             switch v {
             case 0:  preferredTwitterClient = .Tweetbot
             case 1: preferredTwitterClient = .Twitter
-            default: preferredTwitterClient = .Safari
+            default: preferredTwitterClient = .Web
             }
         } else {
-            preferredTwitterClient = .Safari
+            preferredTwitterClient = .Web
         }
     }
     

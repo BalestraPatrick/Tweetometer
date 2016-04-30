@@ -33,6 +33,7 @@
 		AE6352151C66226800799157 /* UserDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6352141C66226800799157 /* UserDetailViewController.swift */; };
 		AE6675901C3C13D500DD47AB /* users_show.json in Resources */ = {isa = PBXBuildFile; fileRef = AE66758F1C3C13D500DD47AB /* users_show.json */; };
 		AE67B86D1C5017CD00BFB697 /* TwitterKit-Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE67B86C1C5017CD00BFB697 /* TwitterKit-Rx.swift */; };
+		AE791C2F1CD4E24D00F98F61 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE791C2E1CD4E24D00F98F61 /* Pods.framework */; };
 		AE9670071C945ADF00189697 /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9670061C945ADF00189697 /* HomeCoordinator.swift */; };
 		AE96700A1C94604700189697 /* UserDetailCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9670091C94604700189697 /* UserDetailCoordinator.swift */; };
 		AEA2F4971C2806C700777304 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA2F4961C2806C700777304 /* Utils.swift */; };
@@ -61,7 +62,6 @@
 		AEF1D6671C3B046B000AAEAC /* FabricSetUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF1D6661C3B046B000AAEAC /* FabricSetUp.swift */; };
 		AEF1F20D1C64EB8900591E46 /* MenuOptionsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF1F20C1C64EB8900591E46 /* MenuOptionsDataSource.swift */; };
 		AEF1F20F1C64EE9B00591E46 /* MenuOptionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF1F20E1C64EE9B00591E46 /* MenuOptionsTests.swift */; };
-		F651BC89F7DA9E78720D5B82 /* Pods_TweetsCounterTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 834CD7A0B0E56E16907A50F2 /* Pods_TweetsCounterTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -119,6 +119,7 @@
 		AE6352141C66226800799157 /* UserDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDetailViewController.swift; sourceTree = "<group>"; };
 		AE66758F1C3C13D500DD47AB /* users_show.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = users_show.json; sourceTree = "<group>"; };
 		AE67B86C1C5017CD00BFB697 /* TwitterKit-Rx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TwitterKit-Rx.swift"; sourceTree = "<group>"; };
+		AE791C2E1CD4E24D00F98F61 /* Pods.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Pods.framework; path = "Pods/../build/Debug-iphoneos/Pods.framework"; sourceTree = "<group>"; };
 		AE9670061C945ADF00189697 /* HomeCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeCoordinator.swift; sourceTree = "<group>"; };
 		AE9670091C94604700189697 /* UserDetailCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDetailCoordinator.swift; sourceTree = "<group>"; };
 		AEA2F4961C2806C700777304 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
@@ -173,7 +174,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F651BC89F7DA9E78720D5B82 /* Pods_TweetsCounterTests.framework in Frameworks */,
+				AE791C2F1CD4E24D00F98F61 /* Pods.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -190,6 +191,7 @@
 		75DDA918902E9559544BBC6E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				AE791C2E1CD4E24D00F98F61 /* Pods.framework */,
 				AEE20A6C1BEE1AAF00A029CF /* Pods.framework */,
 				AEE20A6A1BEE1AA900A029CF /* RxAlamofire.framework */,
 				AE26EDEF1BEE1293000E9829 /* RxAlamofire.framework */,
@@ -577,7 +579,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TweetsCounterTests/Pods-TweetsCounterTests-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		A568DB61DA929C2C6317255C /* Check Pods Manifest.lock */ = {
@@ -635,7 +637,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TweetsCounterTests/Pods-TweetsCounterTests-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		E3F710A4460A72813C456433 /* Embed Pods Frameworks */ = {
@@ -883,6 +885,10 @@
 			baseConfigurationReference = 34AE481C292EA4DEE24CFFDE /* Pods.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos",
+				);
 				INFOPLIST_FILE = TweetsCounterTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.patrickbalestra.TweetsCounterTests;
@@ -895,6 +901,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos",
+				);
 				INFOPLIST_FILE = TweetsCounterTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.patrickbalestra.TweetsCounterTests;

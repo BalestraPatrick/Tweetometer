@@ -9,44 +9,45 @@
 import UIKit
 import SafariServices
 
-enum AppOpener: String {
-    case Twitter = "twitter"
-    case Tweetbot = "tweetbot"
-}
-
 class LinkOpener {
     
-    var defaultApp: AppOpener = .Tweetbot {
-        didSet {
-            urlComponents.scheme = defaultApp.rawValue
-        }
-    }
-    
+    /// Store preferred user client from the settings
+    var client = SettingsManager.sharedManager.preferredTwitterClient
+    /// User detail coordinator needed to present a SafariViewController on the current view controller
+    var coordinator: UserDetailCoordinator?
+    /// Describes the URL Scheme components
     var urlComponents = NSURLComponents()
     
-    init() {
-        urlComponents.scheme = defaultApp.rawValue
-    }
-    
+    /// Opens the a Twitter user in the default client.
+    ///
+    /// - parameter user: Screen-name of the user.
     func openUser(user: String) {
-        switch defaultApp {
+        switch client {
         case .Tweetbot:
-            // Tweetbot URL scheme requires the currently logged in user sccreen_name
-            urlComponents.host = "BalestraPatrick" // TODO: add name of currently logged in user here
+            urlComponents.scheme = "tweetbot"
             urlComponents.path = "/user_profile/\(user)"
         case .Twitter:
-            // Twitter URL scheme doesn't require the currently logged in user sccreen_name
-            urlComponents.host = ""
+            urlComponents.scheme = "twitter"
             urlComponents.path = "/user?screen_name=\(user)"
+        case .Web:
+            let url = NSURL(string: "https://www.twitter.com/\(user)")
+            if let url = url, let coordinator = coordinator {
+                coordinator.presentSafari(url)
+                return
+            }
         }
-
+                
+        // Try to open the URL
         if let stringURL = urlComponents.string?.stringByRemovingPercentEncoding, let url = NSURL(string: stringURL) {
             UIApplication.sharedApplication().openURL(url)
-        } else {
-//            TODO
         }
     }
     
+    /// Initializes a Safari view controller object to present in the future.
+    ///
+    /// - parameter url: URL of the page to load in Safari.
+    ///
+    /// - returns: The view controller to be used.
     func openInSafari(url: NSURL) -> SFSafariViewController {
         return SFSafariViewController(URL: url)
     }
