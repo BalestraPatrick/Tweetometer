@@ -9,8 +9,12 @@
 import UIKit
 import SwiftyUserDefaults
 
-protocol SettingsDelegate: class {
+protocol SettingsDelegateTweets: class {
     func numberOfAnalyzedTweetsDidChange(value: Int)
+}
+
+protocol SettingsDelegateClient: class {
+    func twitterClientDiDChange(value: TwitterClient)
 }
 
 struct Key {
@@ -48,7 +52,9 @@ final class SettingsManager {
     static let sharedManager = SettingsManager()
     
     /// Delegate used to be notified when a setting changes.
-    weak var delegate: SettingsDelegate?
+    weak var delegate: SettingsDelegateTweets?
+    
+    weak var clientDelegate: SettingsDelegateClient?
     
     /// Number of tweets to be retrieved and analyzed. Default value is 200.
     var numberOfAnalyzedTweets: Int {
@@ -61,11 +67,13 @@ final class SettingsManager {
     var preferredTwitterClient: TwitterClient {
         didSet {
             Defaults[Key.PreferredTwitterClient] = TwitterClient.toIndex(preferredTwitterClient)
+            clientDelegate?.twitterClientDiDChange(preferredTwitterClient)
         }
     }
     
     init() {
         numberOfAnalyzedTweets = Defaults[Key.NumberOfAnalyzedTweets].int ?? 200
+        preferredTwitterClient = TwitterClient.fromIndex(Defaults[Key.PreferredTwitterClient].int ?? 0)
         
         if let v = Defaults[Key.PreferredTwitterClient].int {
             switch v {

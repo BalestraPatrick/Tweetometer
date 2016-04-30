@@ -38,10 +38,17 @@ extension HomeViewController: UITabBarDelegate {
     }
 }
 
-extension HomeViewController: SettingsDelegate {
+extension HomeViewController: SettingsDelegateTweets {
     
     func numberOfAnalyzedTweetsDidChange(value: Int) {
         setTitleViewContent(value)
+    }
+}
+
+extension SettingsViewController: SettingsDelegateClient {
+    
+    func twitterClientDiDChange(value: TwitterClient) {
+        twitterClientControl.selectedSegmentIndex = TwitterClient.toIndex(value)
     }
 }
 
