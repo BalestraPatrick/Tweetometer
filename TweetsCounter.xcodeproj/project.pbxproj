@@ -44,6 +44,7 @@
 		AEC5C1E01C2C992300C4F007 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEC5C1DF1C2C992300C4F007 /* User.swift */; };
 		AEC95CF21C81AED900811BAC /* LinkOpener.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEC95CF11C81AED900811BAC /* LinkOpener.swift */; };
 		AED0A1F61C5E01BA002D40A4 /* ApplicationStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED0A1F51C5E01BA002D40A4 /* ApplicationStyle.swift */; };
+		AEDC61E91CD4D665005324C6 /* LinkOpenerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEDC61E81CD4D665005324C6 /* LinkOpenerTests.swift */; };
 		AEE4D8081BF9BFD100C9CA08 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE4D8071BF9BFD100C9CA08 /* Constants.swift */; };
 		AEE4ED1D1C624C1B0023A80F /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE4ED131C624C1B0023A80F /* ActivityIndicator.swift */; };
 		AEE4ED1E1C624C1B0023A80F /* Dependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE4ED141C624C1B0023A80F /* Dependencies.swift */; };
@@ -60,7 +61,6 @@
 		AEF1D6671C3B046B000AAEAC /* FabricSetUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF1D6661C3B046B000AAEAC /* FabricSetUp.swift */; };
 		AEF1F20D1C64EB8900591E46 /* MenuOptionsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF1F20C1C64EB8900591E46 /* MenuOptionsDataSource.swift */; };
 		AEF1F20F1C64EE9B00591E46 /* MenuOptionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF1F20E1C64EE9B00591E46 /* MenuOptionsTests.swift */; };
-		D03D64EE98C2B1716E4838B1 /* Pods_TweetsCounter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32E72F4C5791B4D5DDEA0CF4 /* Pods_TweetsCounter.framework */; };
 		F651BC89F7DA9E78720D5B82 /* Pods_TweetsCounterTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 834CD7A0B0E56E16907A50F2 /* Pods_TweetsCounterTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -82,11 +82,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		01FB18B6171420481195C3AF /* Pods-TweetsCounterTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TweetsCounterTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TweetsCounterTests/Pods-TweetsCounterTests.debug.xcconfig"; sourceTree = "<group>"; };
 		32E72F4C5791B4D5DDEA0CF4 /* Pods_TweetsCounter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TweetsCounter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		34AE481C292EA4DEE24CFFDE /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
-		44F5F7033161A4368CC20DE9 /* Pods-TweetsCounter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TweetsCounter.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TweetsCounter/Pods-TweetsCounter.debug.xcconfig"; sourceTree = "<group>"; };
-		5F7E2A19A566A94B966B75F6 /* Pods-TweetsCounterTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TweetsCounterTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TweetsCounterTests/Pods-TweetsCounterTests.release.xcconfig"; sourceTree = "<group>"; };
 		67C77320631F3B1590F08929 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		834CD7A0B0E56E16907A50F2 /* Pods_TweetsCounterTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TweetsCounterTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE07A0D51C5D4AD400514B1C /* UserTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
@@ -140,6 +137,7 @@
 		AEC5C1DF1C2C992300C4F007 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		AEC95CF11C81AED900811BAC /* LinkOpener.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkOpener.swift; sourceTree = "<group>"; };
 		AED0A1F51C5E01BA002D40A4 /* ApplicationStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationStyle.swift; sourceTree = "<group>"; };
+		AEDC61E81CD4D665005324C6 /* LinkOpenerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkOpenerTests.swift; sourceTree = "<group>"; };
 		AEE20A6A1BEE1AA900A029CF /* RxAlamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxAlamofire.framework; path = "Pods/../build/Debug-iphoneos/RxAlamofire.framework"; sourceTree = "<group>"; };
 		AEE20A6C1BEE1AAF00A029CF /* Pods.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Pods.framework; path = "Pods/../build/Debug-iphoneos/Pods.framework"; sourceTree = "<group>"; };
 		AEE4D8071BF9BFD100C9CA08 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -160,7 +158,6 @@
 		AEF1F20E1C64EE9B00591E46 /* MenuOptionsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuOptionsTests.swift; sourceTree = "<group>"; };
 		AEF1F2121C64F10000591E46 /* TimelineParserTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelineParserTests.swift; sourceTree = "<group>"; };
 		B560E69F32810C963EEC14D4 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		F001CBFBBDEED134CEB7AFA1 /* Pods-TweetsCounter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TweetsCounter.release.xcconfig"; path = "Pods/Target Support Files/Pods-TweetsCounter/Pods-TweetsCounter.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,7 +165,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D03D64EE98C2B1716E4838B1 /* Pods_TweetsCounter.framework in Frameworks */,
 				0160407ADD8C355E6E84A299 /* Pods.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -316,6 +312,7 @@
 				AEF1F2121C64F10000591E46 /* TimelineParserTests.swift */,
 				AEF1F20E1C64EE9B00591E46 /* MenuOptionsTests.swift */,
 				AE277E021BD4E6DB004E151C /* TwitterRequestTests.swift */,
+				AEDC61E81CD4D665005324C6 /* LinkOpenerTests.swift */,
 				AEA2F4981C28088E00777304 /* Helpers */,
 				AE6675911C3C13DB00DD47AB /* JSON */,
 				AE277E041BD4E6DB004E151C /* Info.plist */,
@@ -410,10 +407,6 @@
 		B3544585ADE20AABE2EB8BC7 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				01FB18B6171420481195C3AF /* Pods-TweetsCounterTests.debug.xcconfig */,
-				5F7E2A19A566A94B966B75F6 /* Pods-TweetsCounterTests.release.xcconfig */,
-				44F5F7033161A4368CC20DE9 /* Pods-TweetsCounter.debug.xcconfig */,
-				F001CBFBBDEED134CEB7AFA1 /* Pods-TweetsCounter.release.xcconfig */,
 				34AE481C292EA4DEE24CFFDE /* Pods.debug.xcconfig */,
 				67C77320631F3B1590F08929 /* Pods.release.xcconfig */,
 			);
@@ -627,7 +620,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TweetsCounter/Pods-TweetsCounter-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		C83011E2A88FF3AD3407E622 /* Copy Pods Resources */ = {
@@ -657,7 +650,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TweetsCounter/Pods-TweetsCounter-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -717,6 +710,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AEA2F4971C2806C700777304 /* Utils.swift in Sources */,
+				AEDC61E91CD4D665005324C6 /* LinkOpenerTests.swift in Sources */,
 				AE067FFC1C650C09008C325B /* TimelineParserTests.swift in Sources */,
 				AE277E031BD4E6DB004E151C /* TwitterRequestTests.swift in Sources */,
 				AEF1F20F1C64EE9B00591E46 /* MenuOptionsTests.swift in Sources */,
@@ -768,6 +762,7 @@
 /* Begin XCBuildConfiguration section */
 		AE277E101BD4E6DB004E151C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 34AE481C292EA4DEE24CFFDE /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -849,7 +844,7 @@
 		};
 		AE277E131BD4E6DB004E151C /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 44F5F7033161A4368CC20DE9 /* Pods-TweetsCounter.debug.xcconfig */;
+			baseConfigurationReference = 34AE481C292EA4DEE24CFFDE /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -868,7 +863,6 @@
 		};
 		AE277E141BD4E6DB004E151C /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 44F5F7033161A4368CC20DE9 /* Pods-TweetsCounter.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -886,6 +880,7 @@
 		};
 		AE277E161BD4E6DB004E151C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 34AE481C292EA4DEE24CFFDE /* Pods.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = TweetsCounterTests/Info.plist;
@@ -910,6 +905,7 @@
 		};
 		AE277E191BD4E6DB004E151C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 34AE481C292EA4DEE24CFFDE /* Pods.debug.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = TweetsCounterUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";

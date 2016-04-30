@@ -12,7 +12,7 @@ plugin 'cocoapods-keys', {
     ]
 }
 
-target "TweetsCounter" do
+
     pod 'Fabric'
     pod 'Crashlytics'
     pod 'TwitterKit'
@@ -31,8 +31,4 @@ target "TweetsCounter" do
     pod 'ValueStepper'
     pod 'SwiftyUserDefaults'
     pod 'ActiveLabel'
-end
 
-target "TweetsCounterTests" do
-    
-end
