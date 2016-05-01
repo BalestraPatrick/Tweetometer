@@ -9,6 +9,7 @@
 import UIKit
 import RxSwift
 import NSObject_Rx
+import PullToRefresh
 
 final class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -19,6 +20,8 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
     
     let viewModel = TimelineViewModel()
     let settingsManager = SettingsManager.sharedManager
+    let refresher = PullToRefresh()
+    
     var dataSource = [User]()
     var shouldPresentLogIn = false
     weak var delegate: HomeViewControllerDelegate!
@@ -30,6 +33,10 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
         setTitleViewContent(settingsManager.numberOfAnalyzedTweets)
         settingsManager.delegate = self
         tableView.rowHeight = 75.0
+        
+        tableView.addPullToRefresh(refresher, action: {
+            self.requestTimeline()
+        })
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -79,12 +86,7 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
                 }, onCompleted: nil, onDisposed: nil)
                 .addDisposableTo(rx_disposeBag)
             
-            viewModel.requestTimeline(nil).subscribe(onNext: { users in
-                self.reloadTableViewWithDataSource(users)
-                }, onError: { error in
-                    ErrorDisplayer().display(error)
-                }, onCompleted: nil, onDisposed: nil)
-                .addDisposableTo(rx_disposeBag)
+            requestTimeline()
         } catch {
             switch error {
             case TwitterRequestError.NotAuthenticated:
@@ -95,9 +97,22 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
         }
     }
     
+    func requestTimeline() {
+        tableView.startRefreshing()
+        UIApplication.sharedApplication().networkActivityIndicatorVisible = true
+        viewModel.requestTimeline(nil).subscribe(onNext: { users in
+            self.reloadTableViewWithDataSource(users)
+            }, onError: { error in
+                ErrorDisplayer().display(error)
+            }, onCompleted: nil, onDisposed: nil)
+            .addDisposableTo(rx_disposeBag)
+    }
+    
     func reloadTableViewWithDataSource(users: [User]) {
         dataSource = users
         tableView.reloadData()
+        tableView.endRefreshing()
+        UIApplication.sharedApplication().networkActivityIndicatorVisible = false
     }
     
     // MARK: UITableViewDataSource

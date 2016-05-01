@@ -41,9 +41,7 @@ final class UserDetailViewController: UIViewController, UITableViewDelegate {
         tableView.rowHeight = UITableViewAutomaticDimension
         
         dataSource.configureCell = { (dataSource, tableView, indexPath, tweet) in
-            guard let cell = self.tableView.dequeueReusableCellWithIdentifier(TableViewCell.TweetCellIdentifier.rawValue) as? TweetTableViewCell else {
-                fatalError("Could not create cell with identifier \(TableViewCell.UserCellIdentifier.rawValue) in UITableView: \(tableView)")
-            }
+            let cell = self.tableView.dequeueReusableCellWithIdentifier(TableViewCell.TweetCellIdentifier.rawValue, forIndexPath: indexPath) as! TweetTableViewCell
             cell.delegate = self.delegate
             cell.tweetLabel.text = tweet.value.text
             cell.dateLabel.text = tweet.value.createdAt.tweetDateFormatted()
