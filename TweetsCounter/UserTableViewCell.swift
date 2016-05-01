@@ -20,14 +20,11 @@ final class UserTableViewCell: UITableViewCell {
     @IBOutlet private weak var followingLabel: UILabel!
     @IBOutlet private weak var numberOfTweetsLabel: UILabel!
     
-    var index = 0
+    let imageService = DefaultImageService.sharedImageService
     
-    var downloadableImage: Observable<DownloadableImage>? {
+    var index = 0 {
         didSet {
-            self.downloadableImage?
-                .asDriver(onErrorJustReturn: DownloadableImage.OfflinePlaceholder)
-                .drive(profilePictureImageView.rxex_downloadableImageAnimated(kCATransitionFade))
-                .addDisposableTo(rx_disposeBag)
+            backgroundColor = index % 2 == 0 ? UIColor(white: 1.0, alpha: 0.2) : UIColor(white: 1.0, alpha: 0.1)
         }
     }
     
@@ -46,10 +43,10 @@ final class UserTableViewCell: UITableViewCell {
     var numberOfFollowers: Int = 0 {
         didSet {
             let numberAttributes = [NSForegroundColorAttributeName : UIColor.whiteColor(),
-                NSFontAttributeName : UIFont.systemFontOfSize(15, weight: UIFontWeightLight)]
+                                    NSFontAttributeName : UIFont.systemFontOfSize(15, weight: UIFontWeightLight)]
             let attributedString = NSMutableAttributedString(string: String(numberOfFollowers), attributes: numberAttributes)
             let followersAttributes = [NSForegroundColorAttributeName : UIColor.whiteColor(),
-                NSFontAttributeName : UIFont.systemFontOfSize(11, weight: UIFontWeightThin)]
+                                       NSFontAttributeName : UIFont.systemFontOfSize(11, weight: UIFontWeightThin)]
             let followersWord = NSAttributedString(string: " Followers", attributes: followersAttributes)
             attributedString.appendAttributedString(followersWord)
             followersLabel.attributedText = attributedString
@@ -59,10 +56,10 @@ final class UserTableViewCell: UITableViewCell {
     var numberOfFollowing: Int = 0 {
         didSet {
             let numberAttributes = [NSForegroundColorAttributeName : UIColor.whiteColor(),
-                NSFontAttributeName : UIFont.systemFontOfSize(15, weight: UIFontWeightLight)]
+                                    NSFontAttributeName : UIFont.systemFontOfSize(15, weight: UIFontWeightLight)]
             let attributedString = NSMutableAttributedString(string: String(numberOfFollowing), attributes: numberAttributes)
             let followersAttributes = [NSForegroundColorAttributeName : UIColor.whiteColor(),
-                NSFontAttributeName : UIFont.systemFontOfSize(11, weight: UIFontWeightThin)]
+                                       NSFontAttributeName : UIFont.systemFontOfSize(11, weight: UIFontWeightThin)]
             let followersWord = NSAttributedString(string: " Following", attributes: followersAttributes)
             attributedString.appendAttributedString(followersWord)
             followingLabel.attributedText = attributedString
@@ -72,10 +69,10 @@ final class UserTableViewCell: UITableViewCell {
     var numberOfTweets: Int = 0 {
         didSet {
             let numberAttributes = [NSForegroundColorAttributeName : UIColor.whiteColor(),
-                NSFontAttributeName : UIFont.systemFontOfSize(20, weight: UIFontWeightLight)]
+                                    NSFontAttributeName : UIFont.systemFontOfSize(20, weight: UIFontWeightLight)]
             let attributedString = NSMutableAttributedString(string: String(numberOfTweets), attributes: numberAttributes)
             let followersAttributes = [NSForegroundColorAttributeName : UIColor.whiteColor(),
-                NSFontAttributeName : UIFont.systemFontOfSize(15, weight: UIFontWeightThin)]
+                                       NSFontAttributeName : UIFont.systemFontOfSize(15, weight: UIFontWeightThin)]
             let word = numberOfTweets > 1 ? " Tweets" : " Tweet"
             let followersWord = NSAttributedString(string: word, attributes: followersAttributes)
             attributedString.appendAttributedString(followersWord)
@@ -83,8 +80,25 @@ final class UserTableViewCell: UITableViewCell {
         }
     }
     
+    var downloadableImage: Observable<DownloadableImage>? {
+        didSet {
+            self.downloadableImage?
+                .asDriver(onErrorJustReturn: DownloadableImage.OfflinePlaceholder)
+                .drive(profilePictureImageView.rxex_downloadableImageAnimated(kCATransitionFade))
+                .addDisposableTo(rx_disposeBag)
+        }
+    }
+    
+    // MARK: UITableViewCell Lifecycle
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        profilePictureImageView.layer.cornerRadius = profilePictureImageView.frame.size.width / 2
+        profilePictureImageView.layer.borderColor = UIColor.whiteColor().CGColor
+        profilePictureImageView.layer.borderWidth = 1.0
+        profilePictureImageView.layer.masksToBounds = true
+        
+        accessoryView = UIImageView(image: UIImage(named: "detail"))
         accessibilityElements = [profilePictureImageView, screenNameLabel, usernameLabel, followersLabel, followingLabel, numberOfTweetsLabel]
     }
     
@@ -100,6 +114,16 @@ final class UserTableViewCell: UITableViewCell {
         } else {
             self.backgroundColor = index % 2 == 0 ? UIColor(white: 1.0, alpha: 0.2) : UIColor(white: 1.0, alpha: 0.1)
         }
+    }
+    
+    func configure(user: User, indexPath: NSIndexPath) {
+        screenName = user.name
+        username = user.screenName
+        numberOfFollowers = user.followersCount
+        numberOfFollowing = user.followingCount
+        numberOfTweets = user.tweets?.count ?? 0
+        downloadableImage = imageService.imageFromURL(user.profileImageURL!) ?? Observable.empty()
+        index = indexPath.row
     }
     
 }

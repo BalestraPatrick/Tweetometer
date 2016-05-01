@@ -22,6 +22,10 @@ extension HomeViewController {
         subtitleLabel.text = "Of the last \(numberOfTweets) tweets of your timeline"
     }
     
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return .LightContent
+    }
+    
 }
 
 extension HomeViewController: UIPopoverPresentationControllerDelegate {

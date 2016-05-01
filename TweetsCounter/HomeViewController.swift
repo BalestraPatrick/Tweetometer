@@ -8,24 +8,20 @@
 
 import UIKit
 import RxSwift
-import RxDataSources
 import NSObject_Rx
 
-final class HomeViewController: UIViewController, UITableViewDelegate {
+final class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var subtitleLabel: UILabel!
     @IBOutlet weak var profileButton: ProfilePictureButton!
     
-    weak var delegate: HomeViewControllerDelegate!
-    
-    let dataSource = RxTableViewSectionedAnimatedDataSource<AnimatableSectionModel<String, User>>()
-    let imageService = DefaultImageService.sharedImageService
     let viewModel = TimelineViewModel()
     let settingsManager = SettingsManager.sharedManager
-    
+    var dataSource = [User]()
     var shouldPresentLogIn = false
+    weak var delegate: HomeViewControllerDelegate!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,11 +29,11 @@ final class HomeViewController: UIViewController, UITableViewDelegate {
         startRequests()
         setTitleViewContent(settingsManager.numberOfAnalyzedTweets)
         settingsManager.delegate = self
+        tableView.rowHeight = 75.0
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        
         if shouldPresentLogIn {
             let logInViewController = StoryboardScene.Main.twitterLoginViewController()
             logInViewController.homeViewController = self
@@ -46,7 +42,7 @@ final class HomeViewController: UIViewController, UITableViewDelegate {
             })
         }
     }
-
+    
     // MARK: Storyboard Segues
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -58,17 +54,9 @@ final class HomeViewController: UIViewController, UITableViewDelegate {
             menuPopOver.popoverPresentationController!.backgroundColor = UIColor().menuDarkBlueColor()
             menuPopOver.homeViewController = self
         } else if segue.identifier == StoryboardSegue.Main.UserDetail.rawValue {
-            if let userDetail = segue.destinationViewController as? UserDetailViewController {
-                tableView
-                    .rx_itemSelected
-                    .map { indexPath in
-                        return (indexPath, self.dataSource.itemAtIndexPath(indexPath))
-                    }
-                    .subscribeNext { indexPath, selectedUser in
-                        userDetail.selectedUser = selectedUser.value
-                    }
-                    .addDisposableTo(rx_disposeBag)
-                
+            if let userDetail = segue.destinationViewController as? UserDetailViewController, let cell = sender as? UITableViewCell, let indexPath = tableView.indexPathForCell(cell) {
+                let selectedUser = dataSource[indexPath.row]
+                userDetail.selectedUser = selectedUser
                 delegate.pushDetail(userDetail)
             }
         }
@@ -81,8 +69,6 @@ final class HomeViewController: UIViewController, UITableViewDelegate {
             // Check is a user is already logged in. If not, we present the Login View Controller
             try viewModel.session.isUserLoggedIn()
             
-            loadTableView()
-            
             // First request the profile information to get the profile picture URL and then request user profile picture
             viewModel.requestProfileInformation().subscribe(onNext: { [weak self] image in
                 self?.viewModel.requestProfilePicture()
@@ -93,6 +79,12 @@ final class HomeViewController: UIViewController, UITableViewDelegate {
                 }, onCompleted: nil, onDisposed: nil)
                 .addDisposableTo(rx_disposeBag)
             
+            viewModel.requestTimeline(nil).subscribe(onNext: { users in
+                self.reloadTableViewWithDataSource(users)
+                }, onError: { error in
+                    ErrorDisplayer().display(error)
+                }, onCompleted: nil, onDisposed: nil)
+                .addDisposableTo(rx_disposeBag)
         } catch {
             switch error {
             case TwitterRequestError.NotAuthenticated:
@@ -103,57 +95,27 @@ final class HomeViewController: UIViewController, UITableViewDelegate {
         }
     }
     
-    override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        return .LightContent
+    func reloadTableViewWithDataSource(users: [User]) {
+        dataSource = users
+        tableView.reloadData()
     }
     
-    func loadTableView() {
-        tableView.rowHeight = 75.0
-
-        dataSource.configureCell = { [weak self] (dataSource, tableView, indexPath, user) in
-            guard let cell = tableView.dequeueReusableCellWithIdentifier(TableViewCell.UserCellIdentifier.rawValue) as? UserTableViewCell else {
-                fatalError("Could not create cell with identifier \(TableViewCell.UserCellIdentifier.rawValue) in UITableView: \(tableView)")
-            }
-            cell.backgroundColor = indexPath.row % 2 == 0 ? UIColor(white: 1.0, alpha: 0.2) : UIColor(white: 1.0, alpha: 0.1)
-            cell.profilePictureImageView.layer.cornerRadius = cell.profilePictureImageView.frame.size.width / 2
-            cell.profilePictureImageView.layer.borderColor = UIColor.whiteColor().CGColor
-            cell.profilePictureImageView.layer.borderWidth = 1.0
-            cell.profilePictureImageView.layer.masksToBounds = true
-            cell.screenName = user.value.name
-            cell.username = user.value.screenName
-            cell.numberOfFollowers = user.value.followersCount
-            cell.numberOfFollowing = user.value.followingCount
-            cell.numberOfTweets = user.value.tweets?.count ?? 0
-            cell.downloadableImage = self?.imageService.imageFromURL(user.value.profileImageURL!) ?? Observable.empty()
-            cell.index = indexPath.row
-            cell.accessoryView = UIImageView(image: UIImage(named: "detail"))
-            return cell
+    // MARK: UITableViewDataSource
+    
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return dataSource.count
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCellWithIdentifier(TableViewCell.UserCellIdentifier.rawValue) as? UserTableViewCell else {
+            fatalError("Could not create cell with identifier \(TableViewCell.UserCellIdentifier.rawValue) in UITableView: \(tableView)")
         }
-        
-        viewModel.requestTimeline(nil)
-            .bindTo(tableView.rx_itemsAnimatedWithDataSource(dataSource))
-            .addDisposableTo(rx_disposeBag)
-        
-        tableView
-            .rx_setDelegate(self)
-            .addDisposableTo(rx_disposeBag)
-        
-    }
-    
-    func reloadTimeline() {
-        viewModel.requestTimeline(nil)
-            .subscribe(onNext: { [weak self] section in
-     
-                }, onError: { [weak self] error in
-
-                    ErrorDisplayer().display(error)
-                }, onCompleted: nil, onDisposed: nil)
-            .addDisposableTo(rx_disposeBag)
-    }
-    
-    // MARK: IBActions
-    
-    @IBAction func returnFromSegueActions(sender: UIStoryboardSegue) {
-        
+        let user = dataSource[indexPath.row]
+        cell.configure(user, indexPath: indexPath)
+        return cell
     }
 }
