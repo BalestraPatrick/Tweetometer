@@ -63,7 +63,7 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
         } else if segue.identifier == StoryboardSegue.Main.UserDetail.rawValue {
             if let userDetail = segue.destinationViewController as? UserDetailViewController, let cell = sender as? UITableViewCell, let indexPath = tableView.indexPathForCell(cell) {
                 let selectedUser = dataSource[indexPath.row]
-                userDetail.selectedUser = selectedUser
+                userDetail.user = selectedUser
                 delegate.pushDetail(userDetail)
             }
         }

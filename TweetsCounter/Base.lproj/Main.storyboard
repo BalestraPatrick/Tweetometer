@@ -292,8 +292,58 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="UserDetailsCell" rowHeight="95" id="UUf-IX-oke" customClass="UserDetailsTableViewCell" customModule="TweetsCounter" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="92" width="600" height="95"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="UUf-IX-oke" id="gt5-nd-Gjb">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="94.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="HL1-ms-NtI">
+                                            <rect key="frame" x="10" y="10" width="75" height="75"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="75" id="5qa-pH-vpp"/>
+                                                <constraint firstAttribute="width" constant="75" id="Ij9-Gi-WJb"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="San Francisco, USA" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jaE-Pv-RLh">
+                                            <rect key="frame" x="95" y="10" width="495" height="75"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="75" id="7VI-t4-Ad9"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="7VI-t4-Ad9"/>
+                                                </mask>
+                                            </variation>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="jaE-Pv-RLh" secondAttribute="trailing" constant="10" id="13W-68-5Dz"/>
+                                        <constraint firstItem="HL1-ms-NtI" firstAttribute="top" secondItem="gt5-nd-Gjb" secondAttribute="top" constant="10" id="ArT-Jt-rfU"/>
+                                        <constraint firstItem="jaE-Pv-RLh" firstAttribute="leading" secondItem="HL1-ms-NtI" secondAttribute="trailing" constant="10" id="Cg8-74-Kjc"/>
+                                        <constraint firstAttribute="bottom" secondItem="jaE-Pv-RLh" secondAttribute="bottom" constant="10" id="Nii-Be-hJL"/>
+                                        <constraint firstAttribute="bottom" secondItem="HL1-ms-NtI" secondAttribute="bottom" constant="10" id="ObN-jI-Fm5"/>
+                                        <constraint firstItem="HL1-ms-NtI" firstAttribute="leading" secondItem="gt5-nd-Gjb" secondAttribute="leading" constant="10" id="c7P-SN-cDB"/>
+                                        <constraint firstItem="jaE-Pv-RLh" firstAttribute="height" secondItem="HL1-ms-NtI" secondAttribute="height" id="leD-9j-wJn"/>
+                                        <constraint firstItem="jaE-Pv-RLh" firstAttribute="top" secondItem="gt5-nd-Gjb" secondAttribute="top" constant="10" id="m3K-KC-Y8W"/>
+                                    </constraints>
+                                    <variation key="default">
+                                        <mask key="constraints">
+                                            <exclude reference="leD-9j-wJn"/>
+                                        </mask>
+                                    </variation>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="descriptionLabel" destination="jaE-Pv-RLh" id="38y-au-4Ad"/>
+                                    <outlet property="profileImage" destination="HL1-ms-NtI" id="Bq9-cD-p3b"/>
+                                </connections>
+                            </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="TweetCell" rowHeight="74" id="qAR-wb-vTY" customClass="TweetTableViewCell" customModule="TweetsCounter" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="92" width="600" height="74"/>
+                                <rect key="frame" x="0.0" y="187" width="600" height="74"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qAR-wb-vTY" id="00K-uK-z4v">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="73.5"/>
@@ -441,6 +491,9 @@
                                 </connections>
                             </tableViewCell>
                         </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="WlY-wj-dbD" id="icC-VL-v4L"/>
+                        </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="BHy-jC-wAA">
                         <nil key="title"/>

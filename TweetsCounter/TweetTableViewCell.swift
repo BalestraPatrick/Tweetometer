@@ -10,7 +10,7 @@ import UIKit
 import ActiveLabel
 
 class TweetTableViewCell: UITableViewCell {
-
+    
     @IBOutlet weak var tweetLabel: ActiveLabel!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var retweetsCountLabel: UILabel!
@@ -26,10 +26,9 @@ class TweetTableViewCell: UITableViewCell {
         
         setUpTwitterElementHandlers()
     }
-
+    
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
     }
     
     func setUpTwitterElementHandlers() {
@@ -45,5 +44,12 @@ class TweetTableViewCell: UITableViewCell {
             
         }
     }
-
+    
+    func configure(tweet: Tweet) {
+        tweetLabel.text = tweet.text
+        dateLabel.text = tweet.createdAt.tweetDateFormatted()
+        retweetsCountLabel.text = "\(tweet.retweetsCount)"
+        likesCountLabel.text = "\(tweet.likesCount)"
+    }
+    
 }

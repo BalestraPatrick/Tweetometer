@@ -11,56 +11,67 @@ import RxSwift
 import RxDataSources
 import NSObject_Rx
 
-final class UserDetailViewController: UIViewController, UITableViewDelegate {
+final class UserDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var subtitleLabel: UILabel!
     
     let viewModel = UserViewModel()
-    let dataSource = RxTableViewSectionedAnimatedDataSource<AnimatableSectionModel<String, Tweet>>()
     let linkOpener = LinkOpener()
-
-    var selectedUser: User?
     
+    var user: User?
     weak var delegate: UserDetailViewControllerDelegate!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         applyStyle()
         
-        guard let user = selectedUser else { return }
+        guard let user = user else { return }
+        print(user.description)
         setTitleViewContent(user.name, screenName: user.screenName)
         viewModel.user = user
-        
-        loadTableView()
-    }
-    
-    func loadTableView() {
         tableView.estimatedRowHeight = 50.0
         tableView.rowHeight = UITableViewAutomaticDimension
-        
-        dataSource.configureCell = { (dataSource, tableView, indexPath, tweet) in
-            let cell = self.tableView.dequeueReusableCellWithIdentifier(TableViewCell.TweetCellIdentifier.rawValue, forIndexPath: indexPath) as! TweetTableViewCell
-            cell.delegate = self.delegate
-            cell.tweetLabel.text = tweet.value.text
-            cell.dateLabel.text = tweet.value.createdAt.tweetDateFormatted()
-            cell.retweetsCountLabel.text = "\(tweet.value.retweetsCount)"
-            cell.likesCountLabel.text = "\(tweet.value.likesCount)"
-            return cell
-        }
-        
-        viewModel.tweets()
-            .bindTo(tableView.rx_itemsAnimatedWithDataSource(dataSource))
-            .addDisposableTo(rx_disposeBag)
-
-        tableView
-            .rx_setDelegate(self)
-            .addDisposableTo(rx_disposeBag)
     }
     
+    // MARK: UITableViewDataSource
+    
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 2
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        switch section {
+        case 0: return 1
+        case 1: return user?.tweets?.count ?? 0
+        default: return 0
+        }
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        switch (indexPath.section, indexPath.row) {
+        case (0, _):
+            let cell = tableView.dequeueReusableCellWithIdentifier(TableViewCell.UserDetailsCellIdentifier.rawValue, forIndexPath: indexPath) as! UserDetailsTableViewCell
+            if let user = user {
+                cell.configure(user)
+            }
+            return cell
+        default:
+            let cell = tableView.dequeueReusableCellWithIdentifier(TableViewCell.TweetCellIdentifier.rawValue, forIndexPath: indexPath) as! TweetTableViewCell
+            if let user = user, let tweets = user.tweets {
+                let tweet = tweets[indexPath.row]
+                cell.configure(tweet)
+                cell.delegate = delegate
+            }
+            return cell
+        }
+    }
+    
+    // MARK: IBActions
+    
     @IBAction func openIn(sender: UIBarButtonItem) {
-        if let user = selectedUser {
+        if let user = user {
             delegate.openUser(user.screenName)
         }
     }

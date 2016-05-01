@@ -13,7 +13,7 @@ import RxDataSources
 import NSObject_Rx
 
 class UserViewModel: NSObject {
-
+    
     enum TweetError: ErrorType {
         case JSONError
         case UserNotSet
@@ -33,7 +33,7 @@ class UserViewModel: NSObject {
         }
     }
     
-    func tweets() -> Observable<[AnimatableSectionModel<String, Tweet>]> {
+    func tweets() -> Observable<[Tweet]> {
         return Observable.create { observer in
             guard let user = self.user else {
                 observer.onError(TweetError.JSONError)
@@ -43,7 +43,7 @@ class UserViewModel: NSObject {
                 observer.onError(TweetError.JSONError)
                 return AnonymousDisposable { }
             }
-            observer.onNext([AnimatableSectionModel(model: "", items: tweets)])
+            observer.onNext(tweets)
             observer.onCompleted()
             return AnonymousDisposable { }
         }

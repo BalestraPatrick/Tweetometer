@@ -41,6 +41,7 @@ enum TableViewCell: String {
     case UserCellIdentifier = "UserCell"
     case MenuPopOverCellIdentifier = "MenuPopOverCell"
     case TweetCellIdentifier = "TweetCell"
+    case UserDetailsCellIdentifier = "UserDetailsCell"
 }
 
 let cacheName = "TweetsCounter"
