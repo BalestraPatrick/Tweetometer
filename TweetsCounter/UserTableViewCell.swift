@@ -13,7 +13,7 @@ import NSObject_Rx
 
 final class UserTableViewCell: UITableViewCell {
     
-    @IBOutlet weak var profilePictureImageView: UIImageView!
+    @IBOutlet weak var profilePictureImageView: ProfilePictureImageView!
     @IBOutlet private weak var screenNameLabel: UILabel!
     @IBOutlet private weak var usernameLabel: UILabel!
     @IBOutlet private weak var followersLabel: UILabel!
@@ -92,11 +92,6 @@ final class UserTableViewCell: UITableViewCell {
     // MARK: UITableViewCell Lifecycle
     override func awakeFromNib() {
         super.awakeFromNib()
-        
-        profilePictureImageView.layer.cornerRadius = profilePictureImageView.frame.size.width / 2
-        profilePictureImageView.layer.borderColor = UIColor.whiteColor().CGColor
-        profilePictureImageView.layer.borderWidth = 1.0
-        profilePictureImageView.layer.masksToBounds = true
         
         accessoryView = UIImageView(image: UIImage(named: "detail"))
         accessibilityElements = [profilePictureImageView, screenNameLabel, usernameLabel, followersLabel, followingLabel, numberOfTweetsLabel]

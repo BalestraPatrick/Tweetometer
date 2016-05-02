@@ -61,7 +61,7 @@ final class UserDetailViewController: UIViewController, UITableViewDelegate, UIT
             let cell = tableView.dequeueReusableCellWithIdentifier(TableViewCell.TweetCellIdentifier.rawValue, forIndexPath: indexPath) as! TweetTableViewCell
             if let user = user, let tweets = user.tweets {
                 let tweet = tweets[indexPath.row]
-                cell.configure(tweet)
+                cell.configure(tweet, indexPath: indexPath)
                 cell.delegate = delegate
             }
             return cell

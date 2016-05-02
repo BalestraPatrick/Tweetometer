@@ -11,10 +11,12 @@ import RxSwift
 
 class UserDetailsTableViewCell: UITableViewCell {
     
-    @IBOutlet weak var profileImage: UIImageView!
+    @IBOutlet weak var profileImage: ProfilePictureImageView!
     @IBOutlet weak var descriptionLabel: UILabel!
     
     let imageService = DefaultImageService.sharedImageService
+    var userDescription: String = ""
+    var userWebsite: String = ""
     
     var downloadableImage: Observable<DownloadableImage>? {
         didSet {
@@ -25,8 +27,23 @@ class UserDetailsTableViewCell: UITableViewCell {
         }
     }
     
+    var descriptionAttributedString: Int = 0 {
+        didSet {
+            let numberAttributes = [NSForegroundColorAttributeName : UIColor.whiteColor(),
+                                    NSFontAttributeName : UIFont.systemFontOfSize(15, weight: UIFontWeightLight)]
+            let attributedString = NSMutableAttributedString(string: String(userDescription), attributes: numberAttributes)
+            let followersAttributes = [NSForegroundColorAttributeName : UIColor.whiteColor(),
+                                       NSFontAttributeName : UIFont.systemFontOfSize(11, weight: UIFontWeightThin)]
+            let followersWord = NSAttributedString(string: " Followers", attributes: followersAttributes)
+            attributedString.appendAttributedString(followersWord)
+            descriptionLabel.attributedText = attributedString
+        }
+    }
+    
     func configure(user: User) {
-        descriptionLabel.text = user.description
+        backgroundColor = UIColor.backgroundBlueColor()
+        userDescription = user.description
+//        userWebsite = user.
         downloadableImage = imageService.imageFromURL(user.profileImageURL!) ?? Observable.empty()
     }
     

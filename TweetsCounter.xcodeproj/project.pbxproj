@@ -46,6 +46,7 @@
 		AEC95CF21C81AED900811BAC /* LinkOpener.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEC95CF11C81AED900811BAC /* LinkOpener.swift */; };
 		AED0A1F61C5E01BA002D40A4 /* ApplicationStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED0A1F51C5E01BA002D40A4 /* ApplicationStyle.swift */; };
 		AEDC61E91CD4D665005324C6 /* LinkOpenerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEDC61E81CD4D665005324C6 /* LinkOpenerTests.swift */; };
+		AEE22BAB1CD72DF1003CA241 /* ProfilePictureImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE22BAA1CD72DF1003CA241 /* ProfilePictureImageView.swift */; };
 		AEE4D8081BF9BFD100C9CA08 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE4D8071BF9BFD100C9CA08 /* Constants.swift */; };
 		AEE4ED1D1C624C1B0023A80F /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE4ED131C624C1B0023A80F /* ActivityIndicator.swift */; };
 		AEE4ED1E1C624C1B0023A80F /* Dependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE4ED141C624C1B0023A80F /* Dependencies.swift */; };
@@ -142,6 +143,7 @@
 		AEDC61E81CD4D665005324C6 /* LinkOpenerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkOpenerTests.swift; sourceTree = "<group>"; };
 		AEE20A6A1BEE1AA900A029CF /* RxAlamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxAlamofire.framework; path = "Pods/../build/Debug-iphoneos/RxAlamofire.framework"; sourceTree = "<group>"; };
 		AEE20A6C1BEE1AAF00A029CF /* Pods.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Pods.framework; path = "Pods/../build/Debug-iphoneos/Pods.framework"; sourceTree = "<group>"; };
+		AEE22BAA1CD72DF1003CA241 /* ProfilePictureImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfilePictureImageView.swift; sourceTree = "<group>"; };
 		AEE4D8071BF9BFD100C9CA08 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		AEE4ED131C624C1B0023A80F /* ActivityIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		AEE4ED141C624C1B0023A80F /* Dependencies.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dependencies.swift; sourceTree = "<group>"; };
@@ -266,6 +268,7 @@
 				AEF598E61CD679B40055E88C /* UserDetailsTableViewCell.swift */,
 				AE0FA7C61C0DEBDE00EDB0A1 /* ProfilePictureButton.swift */,
 				AE6352121C66178400799157 /* MenuOptionTableViewCell.swift */,
+				AEE22BAA1CD72DF1003CA241 /* ProfilePictureImageView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -676,6 +679,7 @@
 				AE15F36C1C62A1BD00EE2F82 /* MenuPopOverViewController.swift in Sources */,
 				AEC5C1DE1C2C949A00C4F007 /* Tweet.swift in Sources */,
 				AE6352131C66178400799157 /* MenuOptionTableViewCell.swift in Sources */,
+				AEE22BAB1CD72DF1003CA241 /* ProfilePictureImageView.swift in Sources */,
 				AEE4ED251C624C1B0023A80F /* UIImageView+DownloadableImage.swift in Sources */,
 				AE2F0DC61C93751100F10122 /* AppCoordinator.swift in Sources */,
 				AE35A2F41C52B4A4001E1D88 /* SettingsViewController.swift in Sources */,

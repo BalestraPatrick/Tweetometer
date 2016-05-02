@@ -20,9 +20,10 @@ class TweetTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        backgroundColor = UIColor.clearColor()
-        tweetLabel.textColor = UIColor.whiteColor()
-        dateLabel.textColor = UIColor.whiteColor()
+        tweetLabel.textColor = UIColor.blackColor()
+        dateLabel.textColor = UIColor.blackColor()
+        retweetsCountLabel.textColor = UIColor.blackColor()
+        likesCountLabel.textColor = UIColor.blackColor()
         
         setUpTwitterElementHandlers()
     }
@@ -45,11 +46,12 @@ class TweetTableViewCell: UITableViewCell {
         }
     }
     
-    func configure(tweet: Tweet) {
+    func configure(tweet: Tweet, indexPath: NSIndexPath) {
         tweetLabel.text = tweet.text
         dateLabel.text = tweet.createdAt.tweetDateFormatted()
         retweetsCountLabel.text = "\(tweet.retweetsCount)"
         likesCountLabel.text = "\(tweet.likesCount)"
+        backgroundColor = indexPath.row % 2 == 0 ? UIColor.whiteColor() : UIColor(white: 0.97, alpha: 1.0)
     }
     
 }
