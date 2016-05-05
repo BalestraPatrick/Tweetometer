@@ -41,18 +41,16 @@ struct Tweet: Equatable, Hashable, Unboxable {
         text = unboxer.unbox("text")
         language = unboxer.unbox("lang")
         
-        let userJSON: Dictionary<String, AnyObject> = unboxer.unbox("user")
-        author = Unbox(userJSON)
+        author = unboxer.unbox("user")
         if let author = author {
             screenName = author.screenName
         } else {
             screenName = ""
-            print("Failed to unbox author user with JSON: \(userJSON)")
+            print("Failed to unbox author user with JSON")
         }
         
         retweetsCount = unboxer.unbox("retweet_count")
         likesCount = unboxer.unbox("favorite_count")
-        
     }
     
 }

@@ -48,7 +48,7 @@ public final class TimelineParser {
         for tweet in jsonTweets {
             if let tweet = tweet as? Dictionary<String, AnyObject> {
                 do {
-                    let tweet: Tweet = try UnboxOrThrow(tweet)
+                    let tweet: Tweet = try Unbox(tweet)
                     tweets.append(tweet)
                 } catch {
                     print("Error in unboxing tweet: \(tweet) with error: \(error)")

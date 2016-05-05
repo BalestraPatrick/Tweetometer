@@ -16,7 +16,7 @@ PODS:
     - RxSwift (~> 2.1)
   - RxCocoa (2.4):
     - RxSwift (~> 2.4)
-  - RxDataSources (0.6.2):
+  - RxDataSources (0.8):
     - RxCocoa (~> 2.2)
     - RxSwift (~> 2.2)
   - RxSwift (2.4)
@@ -26,7 +26,7 @@ PODS:
     - Fabric
   - TwitterKit (2.0.2):
     - TwitterCore (= 2.0.2)
-  - Unbox (1.4)
+  - Unbox (1.5.1)
   - ValueStepper (0.5)
 
 DEPENDENCIES:
@@ -64,13 +64,13 @@ SPEC CHECKSUMS:
   PullToRefresher: e17cc032b48148824a77fbf4bce5beb81933071a
   RxAlamofire: 250b7846cedbd189d6190e4f83caa01ee1f1eceb
   RxCocoa: 7d6cd877de99f5640306b3d6cf87f580c1d91b61
-  RxDataSources: 9ae26211019e6afb7391125940d719b4326e94a4
+  RxDataSources: 8755a221c065930a75cf24020f6f2c63713c486e
   RxSwift: 67b9ef4e8b34fb394e200e754c6a09cc16559f94
   Stash: 14be1c144a3c077d858e1180e22ab96eb79ab2ba
   SwiftyUserDefaults: e7c8197a9d4068702e7f2406a968cae413b8de27
   TwitterCore: 0f44d8980a6879d5205dcb4e010d15e643e56fa0
   TwitterKit: c4e40f289a3d7cc9fab9f241edd7502385468b65
-  Unbox: 34a7f7a978553a2b57f226251c70ada170fbb16b
+  Unbox: 19c40286c5ec71c49b8a37180646a7e132a07b83
   ValueStepper: bab3fa0ccdf8b6e54dc46652ac38509306b23a90
 
 COCOAPODS: 0.39.0

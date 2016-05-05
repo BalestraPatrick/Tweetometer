@@ -22,6 +22,7 @@ struct User: Equatable, Hashable, Unboxable {
     var profileImageURL: NSURL?
     var tweets: [Tweet]?
     var location: String
+    var displayURL: String
     
     var hashValue: Int {
         get {
@@ -30,7 +31,6 @@ struct User: Equatable, Hashable, Unboxable {
     }
     
     init(unboxer: Unboxer) {
-        print(unboxer.dictionary)
         userID = unboxer.unbox("id_str")
         followersCount = unboxer.unbox("followers_count")
         followingCount = unboxer.unbox("friends_count")
@@ -39,6 +39,7 @@ struct User: Equatable, Hashable, Unboxable {
         name = unboxer.unbox("name")
         description = unboxer.unbox("description")
         location = unboxer.unbox("location")
+        displayURL = unboxer.unbox("entities.url.urls.0.expanded_url", isKeyPath: true)
         profileImageURL = convertMediumToBiggerProfilePicture(unboxer.unbox("profile_image_url_https"))
     }
     
