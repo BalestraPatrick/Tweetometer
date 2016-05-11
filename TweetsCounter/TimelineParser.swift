@@ -40,7 +40,7 @@ public final class TimelineParser {
     /// - parameter jsonTweets: Array of JSON tweets.
     ///
     /// - throws: Error if JSON parsing fails.
-    ///
+    //
     /// - returns: Array of Tweet objects.
     private func parseTweets(jsonTweets: JSONTweets) throws -> [Tweet] {
         var tweets = [Tweet]()
