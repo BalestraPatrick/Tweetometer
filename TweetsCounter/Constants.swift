@@ -10,8 +10,8 @@ import Foundation
 
 struct TwitterEndpoints {
     
-    let timeline: NSURLComponents = {
-        let components = NSURLComponents()
+    let timeline: URLComponents = {
+        var components = URLComponents()
         components.scheme = "https"
         components.host = "api.twitter.com"
         components.path = "/1.1/statuses/home_timeline.json"
@@ -22,8 +22,8 @@ struct TwitterEndpoints {
         return timeline.string!
     }
     
-    let profile: NSURLComponents = {
-        let components = NSURLComponents()
+    let profile: URLComponents = {
+        var components = URLComponents()
         components.scheme = "https"
         components.host = "api.twitter.com"
         components.path = "users/show.json"

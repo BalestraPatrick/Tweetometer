@@ -13,45 +13,45 @@ extension HomeViewController {
     func applyStyle() {
         view.backgroundColor = UIColor.backgroundBlueColor()
         navigationController?.navigationBar.applyStyle()
-        tableView.separatorStyle = .None
+        tableView.separatorStyle = .none
         tableView.applyStyle()
     }
     
-    func setTitleViewContent(numberOfTweets: Int) {
+    func setTitleViewContent(_ numberOfTweets: Int) {
         titleLabel.text = "Tweetometer"
         subtitleLabel.text = "Of the last \(numberOfTweets) tweets of your timeline"
     }
     
-    override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        return .LightContent
+    override var preferredStatusBarStyle : UIStatusBarStyle {
+        return .lightContent
     }
     
 }
 
 extension HomeViewController: UIPopoverPresentationControllerDelegate {
     
-    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
-        return UIModalPresentationStyle.None
+    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
+        return UIModalPresentationStyle.none
     }
 }
 
 extension HomeViewController: UITabBarDelegate {
     
-    func tableView(tableView: UITableView, editingStyleForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCellEditingStyle {
-        return .None
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
+        return .none
     }
 }
 
 extension HomeViewController: SettingsDelegateTweets {
     
-    func numberOfAnalyzedTweetsDidChange(value: Int) {
+    func numberOfAnalyzedTweetsDidChange(_ value: Int) {
         setTitleViewContent(value)
     }
 }
 
 extension SettingsViewController: SettingsDelegateClient {
     
-    func twitterClientDiDChange(value: TwitterClient) {
+    func twitterClientDiDChange(_ value: TwitterClient) {
         twitterClientControl.selectedSegmentIndex = TwitterClient.toIndex(value)
     }
 }
@@ -71,7 +71,7 @@ extension UserDetailViewController {
         view.backgroundColor = UIColor.backgroundBlueColor()
     }
     
-    func setTitleViewContent(name: String, screenName: String) {
+    func setTitleViewContent(_ name: String, screenName: String) {
         titleLabel.text = name
         subtitleLabel.text = "@\(screenName)"
     }

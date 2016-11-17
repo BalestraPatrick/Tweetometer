@@ -9,8 +9,8 @@ import Foundation
 import RxSwift
 import TwitterKit
 
-private enum TwitterError: ErrorType {
-    case Unknown
+private enum TwitterError: Error {
+    case unknown
 }
 
 public extension Twitter {
@@ -20,17 +20,17 @@ public extension Twitter {
     /// - parameter client:  API client used to load the request.
     ///
     /// - returns: The Twitter user session.
-    public func rx_logIn(client: TWTRAPIClient) -> Observable<TWTRSession> {
+    public func rx_logIn(_ client: TWTRAPIClient) -> Observable<TWTRSession> {
         return Observable.create { (observer: AnyObserver<TWTRSession>) -> Disposable in
-            self.logInWithCompletion { session, error in
+            self.logIn { session, error in
                 guard let session = session else {
-                    observer.onError(error ?? TwitterError.Unknown)
+                    observer.onError(error ?? TwitterError.unknown)
                     return
                 }
                 observer.onNext(session)
                 observer.onCompleted()
             }
-            return AnonymousDisposable { }
+            return Disposables.create { }
         }
     }
     
@@ -40,17 +40,17 @@ public extension Twitter {
     /// - parameter client:  API client used to load the request.
     ///
     /// - returns: An Observable of the user.
-    public func rx_loadUserWithID(userID: String, client: TWTRAPIClient) -> Observable<TWTRUser> {
+    public func rx_loadUserWithID(_ userID: String, client: TWTRAPIClient) -> Observable<TWTRUser> {
         return Observable.create { (observer: AnyObserver<TWTRUser>) -> Disposable in
-            client.loadUserWithID(userID) { user, error in
+            client.loadUser(withID: userID) { user, error in
                 guard let user = user else {
-                    observer.onError(error ?? TwitterError.Unknown)
+                    observer.onError(error ?? TwitterError.unknown)
                     return
                 }
                 observer.onNext(user)
                 observer.onCompleted()
             }
-            return AnonymousDisposable { }
+            return Disposables.create { }
         }
     }
     
@@ -60,17 +60,17 @@ public extension Twitter {
     /// - parameter client:   API client used to load the request.
     ///
     /// - returns: A single tweet.
-    public func rx_loadTweetWithID(tweetID: String, client: TWTRAPIClient) -> Observable<TWTRTweet> {
+    public func rx_loadTweetWithID(_ tweetID: String, client: TWTRAPIClient) -> Observable<TWTRTweet> {
         return Observable.create { (observer: AnyObserver<TWTRTweet>) -> Disposable in
-            client.loadTweetWithID(tweetID, completion: { tweet, error in
+            client.loadTweet(withID: tweetID, completion: { tweet, error in
                 guard let tweet = tweet else {
-                    observer.onError(error ?? TwitterError.Unknown)
+                    observer.onError(error ?? TwitterError.unknown)
                     return
                 }
                 observer.onNext(tweet)
                 observer.onCompleted()
             })
-            return AnonymousDisposable { }
+            return Disposables.create { }
         }
     }
     
@@ -80,17 +80,17 @@ public extension Twitter {
     /// - parameter client:  API client used to load the request.
     ///
     /// - returns: An array of Tweets.
-    public func rx_loadTweetsWithIDs(ids: Array<String>, client: TWTRAPIClient) -> Observable<Array<TWTRTweet>> {
+    public func rx_loadTweetsWithIDs(_ ids: Array<String>, client: TWTRAPIClient) -> Observable<Array<TWTRTweet>> {
         return Observable.create { (observer: AnyObserver<Array<TWTRTweet>>) -> Disposable in
-            client.loadTweetsWithIDs(ids, completion: { tweets, error in
+            client.loadTweets(withIDs: ids, completion: { tweets, error in
                 guard let tweets = tweets else {
-                    observer.onError(error ?? TwitterError.Unknown)
+                    observer.onError(error ?? TwitterError.unknown)
                     return
                 }
                 observer.onNext(tweets)
                 observer.onCompleted()
             })
-            return AnonymousDisposable { }
+            return Disposables.create { }
         }
     }
     
@@ -100,20 +100,20 @@ public extension Twitter {
     /// - parameter client:  API client used to load the request.
     ///
     /// - returns: The timeline data.
-    public func rx_loadTimeline(count: Int, beforeID: String?, client: TWTRAPIClient) -> Observable<NSData> {
-        return Observable.create { (observer: AnyObserver<NSData>) -> Disposable in
+    public func rx_loadTimeline(_ count: Int, beforeID: String?, client: TWTRAPIClient) -> Observable<Data> {
+        return Observable.create { (observer: AnyObserver<Data>) -> Disposable in
             let httpMethod = "GET"
             let url = "https://api.twitter.com/1.1/statuses/home_timeline.json"
             var parameters = ["count" : String(count), "include_entities" : "false", "exclude_replies" : "false"]
             if let beforeID = beforeID {
                 parameters["beforeID"] = beforeID
             }
-            
-            _ = self.rx_URLRequestWithMethod(httpMethod, url: url, parameters: parameters, client: client)
+
+            _ = self.rx_URLRequestWithMethod(httpMethod, url: url, parameters: parameters as [String : AnyObject], client: client)
                 .subscribe(
                     onNext: { data in
-                        guard let timeline = data as? NSData else {
-                            observer.onError(TwitterError.Unknown)
+                        guard let timeline = data as? Data else {
+                            observer.onError(TwitterError.unknown)
                             return
                         }
                         observer.onNext(timeline)
@@ -121,7 +121,7 @@ public extension Twitter {
                     }, onError: { error in
                         observer.onError(error)
                     }, onCompleted: nil, onDisposed: nil)
-            return AnonymousDisposable { }
+            return Disposables.create { }
         }
     }
     
@@ -133,19 +133,19 @@ public extension Twitter {
     /// - parameter client:  API client used to load the request.
     ///
     /// - returns: The received object.
-    public func rx_URLRequestWithMethod(method: String, url: String, parameters: [String : AnyObject], client: TWTRAPIClient)
+    public func rx_URLRequestWithMethod(_ method: String, url: String, parameters: [String : AnyObject], client: TWTRAPIClient)
         -> Observable<AnyObject> {
             return Observable.create { (observer: AnyObserver<AnyObject>) -> Disposable in
-                let request = client.URLRequestWithMethod(method, URL: url, parameters: parameters, error: nil)
+                let request = client.urlRequest(withMethod: method, url: url, parameters: parameters, error: nil)
                 client.sendTwitterRequest(request) { response, data, connectionError in
                     guard let data = data else {
-                        observer.onError(connectionError ?? TwitterError.Unknown)
+                        observer.onError(connectionError ?? TwitterError.unknown)
                         return
                     }
-                    observer.onNext(data)
+                    observer.onNext(data as AnyObject)
                     observer.onCompleted()
                 }
-                return AnonymousDisposable { }
+                return Disposables.create { }
             }
     }
     

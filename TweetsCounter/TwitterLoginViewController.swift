@@ -20,12 +20,12 @@ public final class TwitterLoginViewController: UIViewController {
         // Add login button to view
         let logInButton = TWTRLogInButton { session, error in
             if let e = error {
-                self.resultLabel.text = e.localizedFailureReason
+                self.resultLabel.text = e.localizedDescription
             } else {
                 if let home = self.homeViewController {
                     home.startRequests()
                 }
-                self.dismissViewControllerAnimated(true, completion: nil)
+                self.dismiss(animated: true, completion: nil)
             }
         }
         

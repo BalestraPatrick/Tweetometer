@@ -13,19 +13,19 @@ import TwitterKit
 import Keys
 
 enum AppEnvironment {
-    case Debug
-    case UnitTest
+    case debug
+    case unitTest
 }
 
 class FabricSetUp: NSObject {
     
     init(environment: AppEnvironment) {
-        Twitter.sharedInstance().startWithConsumerKey(TweetscounterKeys().fABRIC_API_KEY(), consumerSecret: TweetscounterKeys().fABRIC_BUILD_SECRET())
+        Twitter.sharedInstance().start(withConsumerKey: TweetscounterKeys().fABRIC_API_KEY(), consumerSecret: TweetscounterKeys().fABRIC_BUILD_SECRET())
         
         switch environment {
-        case .Debug:
+        case .debug:
             Fabric.with([Crashlytics.sharedInstance(), Twitter.sharedInstance()])
-        case .UnitTest:
+        case .unitTest:
             Fabric.with([Twitter.sharedInstance()])
         }
     }

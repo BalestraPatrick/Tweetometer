@@ -12,23 +12,23 @@ import RxAlamofire
 import RxDataSources
 import Alamofire
 import TwitterKit
-import Stash
+//import Stash
 import NSObject_Rx
 
 final class TimelineViewModel: NSObject {
     
-    let stash: Stash?
+//    let stash: Stash?
     let settingsManager = SettingsManager.sharedManager
     var session = TwitterSession()
     
     var userID: String?
     
     override init() {
-        do {
-            stash = try Stash(name: cacheName, rootPath: NSTemporaryDirectory())
-        } catch {
-            stash = nil
-        }
+//        do {
+//            stash = try Stash(name: cacheName, rootPath: NSTemporaryDirectory())
+//        } catch {
+//            stash = nil
+//        }
     }
 
     /// Request the profile information for the currently authenticated user.
@@ -38,7 +38,7 @@ final class TimelineViewModel: NSObject {
         return Observable.create { observer -> Disposable in
             do {
                 let userID = try self.session.isUserLoggedIn()
-                Twitter.sharedInstance().sessionStore.sessionForUserID(userID)
+                Twitter.sharedInstance().sessionStore.session(forUserID: userID)
 
                 Twitter.sharedInstance()
                     .rx_loadUserWithID(userID, client: self.session.client!)
@@ -55,23 +55,23 @@ final class TimelineViewModel: NSObject {
                     .addDisposableTo(self.rx_disposeBag)
             } catch {
                 // Throw the error in the callback to present the login view controller
-                observer.onError(TwitterRequestError.NotAuthenticated)
+                observer.onError(TwitterRequestError.notAuthenticated)
             }
-            return AnonymousDisposable {}
+            return Disposables.create {}
         }
     }
     
     /// Request the user timeline for the currently authenticated user.
     ///
     /// - returns: Timeline object with all the users tweets.
-    func requestTimeline(beforeID: String?) -> Observable<[User]> {
+    func requestTimeline(_ beforeID: String?) -> Observable<[User]> {
         return Observable.create { observer -> Disposable in
             if let client = self.session.client {
                 Twitter.sharedInstance()
                     .rx_loadTimeline(self.settingsManager.numberOfAnalyzedTweets, beforeID: nil, client: client)
                     .subscribe(onNext: { timeline in
                         do {
-                            let tweets: AnyObject = try NSJSONSerialization.JSONObjectWithData(timeline, options: .AllowFragments)
+                            let tweets: Any = try JSONSerialization.jsonObject(with: timeline, options: .allowFragments)
                             guard let tweetsArray = tweets as? Array<AnyObject> else { fatalError("Could not downcast to array") }
                             
                             let parser = TimelineParser(jsonTweets: tweetsArray)
@@ -80,7 +80,7 @@ final class TimelineViewModel: NSObject {
                                 observer.onNext(items)
                                 observer.onCompleted()
                             } else {
-                                observer.onError(JSONError.UnknownError)
+                                observer.onError(JSONError.unknownError)
                             } 
                         } catch {
                             observer.onError(error)
@@ -90,9 +90,9 @@ final class TimelineViewModel: NSObject {
                         }, onCompleted: nil, onDisposed: nil)
                     .addDisposableTo(self.rx_disposeBag)
             } else {
-                observer.onError(TwitterRequestError.NotAuthenticated)
+                observer.onError(TwitterRequestError.notAuthenticated)
             }
-            return AnonymousDisposable {}
+            return Disposables.create {}
         }
     }
     
@@ -101,28 +101,29 @@ final class TimelineViewModel: NSObject {
     /// - returns: User profile image.
     func requestProfilePicture() -> Observable<UIImage> {
         return Observable.create { observer -> Disposable in
-            if let image = self.stash?[StashCacheIdentifier.profilePicture] as? UIImage {
-                observer.onNext(image)
-                observer.onCompleted()
-            } else if let _ = self.session.client, let user = self.session.user {
+//            if let image = self.stash?[StashCacheIdentifier.profilePicture] as? UIImage {
+//                observer.onNext(image)
+//                observer.onCompleted()
+//            } else
+                if let _ = self.session.client, let user = self.session.user {
                 // Download profile image of the logged in user if not cached
-                request(Method.GET, (user.profileImageLargeURL))
-                    .flatMap {
-                        $0.validate(statusCode: 200 ..< 300).rx_data()
-                    }
-                    .observeOn(MainScheduler.instance)
-                    .subscribe {
-                        guard let data = $0.element else { return }
-                        let image = UIImage(data: data)!
-                        self.stash?[StashCacheIdentifier.profilePicture] = image
-                        observer.onNext(image)
-                        observer.onCompleted()
-                    }
-                    .addDisposableTo(self.rx_disposeBag)
+//                request(HTTPMethod.get, (user.profileImageLargeURL))
+//                    .flatMap {
+//                        $0.validate(statusCode: 200 ..< 300).rx_data()
+//                    }
+//                    .observeOn(MainScheduler.instance)
+//                    .subscribe {
+//                        guard let data = $0.element else { return }
+//                        let image = UIImage(data: data)!
+////                        self.stash?[StashCacheIdentifier.profilePicture] = image
+//                        observer.onNext(image)
+//                        observer.onCompleted()
+//                    }
+//                    .addDisposableTo(self.rx_disposeBag)
             } else {
-                observer.onError(TwitterRequestError.NotAuthenticated)
+                observer.onError(TwitterRequestError.notAuthenticated)
             }
-            return AnonymousDisposable {}
+            return Disposables.create {}
         }
     }
 }

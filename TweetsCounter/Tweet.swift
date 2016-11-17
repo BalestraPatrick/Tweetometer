@@ -13,7 +13,7 @@ import Unbox
 struct Tweet: Equatable, Hashable, Unboxable {
     
     var tweetID: String
-    var createdAt: NSDate
+    var createdAt: Date
     var text: String
     var language: String
     var screenName: String
@@ -30,18 +30,20 @@ struct Tweet: Equatable, Hashable, Unboxable {
     
     init(unboxer: Unboxer) {
         
-        let retweeted: Bool = unboxer.unbox("retweeted")
+        let retweeted: Bool = try! unboxer.unbox(key: "retweeted")
         if retweeted {
             // TODO
             print("Retweeted")
         }
         
-        createdAt = unboxer.unbox("created_at", formatter: NSDateFormatter.twitterDateFormatter())
-        tweetID =  unboxer.unbox("id_str")
-        text = unboxer.unbox("text")
-        language = unboxer.unbox("lang")
+        createdAt = try! unboxer.unbox(key: "created_at", formatter: DateFormatter.twitterDateFormatter())
+        tweetID = try! unboxer.unbox(key: "id_str")
+        text = try! unboxer.unbox(key: "text")
+        language = try! unboxer.unbox(key: "lang")
         
-        author = unboxer.unbox("user")
+        let userID: String = try! unboxer.unbox(key: "in_reply_to_user_id")
+        author = try! unboxer.unbox(key: "user")
+
         if let author = author {
             screenName = author.screenName
         } else {
@@ -49,8 +51,8 @@ struct Tweet: Equatable, Hashable, Unboxable {
             print("Failed to unbox author user with JSON")
         }
         
-        retweetsCount = unboxer.unbox("retweet_count")
-        likesCount = unboxer.unbox("favorite_count")
+        retweetsCount = try! unboxer.unbox(key: "retweet_count")
+        likesCount = try! unboxer.unbox(key: "favorite_count")
     }
     
 }

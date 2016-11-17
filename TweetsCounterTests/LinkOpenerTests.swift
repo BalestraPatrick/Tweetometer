@@ -26,7 +26,7 @@ class LinkOpenerTests: XCTestCase {
     }
     
     func testOpenInSafari() {
-        XCTAssertNotNil(opener.openInSafari(NSURL(string: "http://www.google.com")!))
+        XCTAssertNotNil(opener.openInSafari(URL(string: "http://www.google.com")!))
     }
     
 }

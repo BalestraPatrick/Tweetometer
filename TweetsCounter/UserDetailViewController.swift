@@ -37,11 +37,11 @@ final class UserDetailViewController: UIViewController, UITableViewDelegate, UIT
     
     // MARK: UITableViewDataSource
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 2
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0: return 1
         case 1: return user?.tweets?.count ?? 0
@@ -49,16 +49,16 @@ final class UserDetailViewController: UIViewController, UITableViewDelegate, UIT
         }
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch (indexPath.section, indexPath.row) {
         case (0, _):
-            let cell = tableView.dequeueReusableCellWithIdentifier(TableViewCell.UserDetailsCellIdentifier.rawValue, forIndexPath: indexPath) as! UserDetailsTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: TableViewCell.UserDetailsCellIdentifier.rawValue, for: indexPath) as! UserDetailsTableViewCell
             if let user = user {
                 cell.configure(user)
             }
             return cell
         default:
-            let cell = tableView.dequeueReusableCellWithIdentifier(TableViewCell.TweetCellIdentifier.rawValue, forIndexPath: indexPath) as! TweetTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: TableViewCell.TweetCellIdentifier.rawValue, for: indexPath) as! TweetTableViewCell
             if let user = user, let tweets = user.tweets {
                 let tweet = tweets[indexPath.row]
                 cell.configure(tweet, indexPath: indexPath)
@@ -70,7 +70,7 @@ final class UserDetailViewController: UIViewController, UITableViewDelegate, UIT
     
     // MARK: IBActions
     
-    @IBAction func openIn(sender: UIBarButtonItem) {
+    @IBAction func openIn(_ sender: UIBarButtonItem) {
         if let user = user {
             delegate.openUser(user.screenName)
         }

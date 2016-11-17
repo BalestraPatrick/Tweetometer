@@ -10,19 +10,19 @@ import UIKit
 
 final class MenuOptionTableViewCell: UITableViewCell {
     
-    override func setHighlighted(highlighted: Bool, animated: Bool) {
+    override func setHighlighted(_ highlighted: Bool, animated: Bool) {
         super.setHighlighted(highlighted, animated: animated)
         if highlighted {
             self.backgroundColor = UIColor(white: 1.0, alpha: 0.1)
         } else {
-            self.backgroundColor = UIColor.clearColor()
+            self.backgroundColor = UIColor.clear
         }
     }
     
-    func configureCell(option: Option) {
-        backgroundColor = UIColor.clearColor()
-        textLabel?.textColor = UIColor.whiteColor()
-        layoutMargins = UIEdgeInsetsZero
+    func configureCell(_ option: Option) {
+        backgroundColor = UIColor.clear
+        textLabel?.textColor = UIColor.white
+        layoutMargins = UIEdgeInsets.zero
         textLabel?.text = option.title
         imageView?.image = UIImage(named: option.image)
     }

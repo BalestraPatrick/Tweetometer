@@ -9,8 +9,8 @@
 import UIKit
 
 protocol UserDetailViewControllerDelegate: class {
-    func presentSafari(url: NSURL)
-    func openUser(user: String)
+    func presentSafari(_ url: URL)
+    func openUser(_ user: String)
 }
 
 class UserDetailCoordinator: UserDetailViewControllerDelegate {
@@ -29,12 +29,12 @@ class UserDetailCoordinator: UserDetailViewControllerDelegate {
     
     // MARK: HomeViewControllerDelegate
     
-    func presentSafari(url: NSURL) {
+    func presentSafari(_ url: URL) {
         let safari = linkOpener.openInSafari(url)
-        controller.presentViewController(safari, animated: true, completion: nil)
+        controller.present(safari, animated: true, completion: nil)
     }
     
-    func openUser(user: String) {
+    func openUser(_ user: String) {
         linkOpener.coordinator = self
         linkOpener.openUser(user)
     }

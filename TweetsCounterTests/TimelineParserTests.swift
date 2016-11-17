@@ -20,9 +20,9 @@ class TimelineParserTests: XCTestCase {
     }
     
     func testParseTweets() {
-        let jsonPath = NSBundle(forClass: self.dynamicType).pathForResource("timeline_tweets", ofType: "json")
-        let timelineData = NSData(contentsOfFile: jsonPath!)!
-        let tweets: AnyObject = try! NSJSONSerialization.JSONObjectWithData(timelineData, options: .AllowFragments)
+        let jsonPath = Bundle(for: type(of: self)).path(forResource: "timeline_tweets", ofType: "json")
+        let timelineData = try! Data(contentsOf: URL(fileURLWithPath: jsonPath!))
+        let tweets: AnyObject = try! JSONSerialization.jsonObject(with: timelineData, options: .allowFragments) as AnyObject
         guard let tweetsArray = tweets as? Array<AnyObject> else { XCTFail("Could not downcast to array"); return }
         
         let parser = TimelineParser(jsonTweets: tweetsArray)
@@ -37,12 +37,12 @@ class TimelineParserTests: XCTestCase {
             XCTAssertEqual(user.screenName, "Javi")
             XCTAssertEqual(user.name, "Javi.swift")
             XCTAssertEqual(user.description, "@Fabric Swift Engineer @Twitter. Previously @Pebble. Functional Programming enthusiast. Rubik\'s Cube speed solver. Chess player. Made @watch_chess.")
-            XCTAssertEqual(user.profileImageURL, NSURL(string: "https://pbs.twimg.com/profile_images/551121750100955136/ZphnhOpS_bigger.jpeg"))
+            XCTAssertEqual(user.profileImageURL, URL(string: "https://pbs.twimg.com/profile_images/551121750100955136/ZphnhOpS_bigger.jpeg"))
             let tweets = user.tweets
             XCTAssertEqual(tweets?.count, 1)
             let tweet = tweets?.first!
             XCTAssertEqual(tweet?.tweetID, "695645083652075520")
-            let createdAt = NSDate(timeIntervalSince1970: 1454689687)
+            let createdAt = Date(timeIntervalSince1970: 1454689687)
             XCTAssertEqual(tweet?.createdAt, createdAt)
             XCTAssertEqual(tweet?.text, "RT @moonpolysoft: Good interview question: explain the movie Primer to me.")
             XCTAssertEqual(tweet?.language, "en")

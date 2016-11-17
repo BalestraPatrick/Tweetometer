@@ -9,7 +9,7 @@
 import UIKit
 
 protocol HomeViewControllerDelegate: class {
-    func pushDetail(controller: UserDetailViewController)
+    func pushDetail(_ controller: UserDetailViewController)
 }
 
 class HomeCoordinator: HomeViewControllerDelegate {
@@ -27,7 +27,7 @@ class HomeCoordinator: HomeViewControllerDelegate {
     
     // MARK: HomeViewControllerDelegate
     
-    func pushDetail(controller: UserDetailViewController) {
+    func pushDetail(_ controller: UserDetailViewController) {
         let userDetailCoordinator = UserDetailCoordinator(controller: controller)
         childCoordinators.append(userDetailCoordinator)
         userDetailCoordinator.start()

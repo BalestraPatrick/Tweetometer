@@ -24,26 +24,26 @@ extension UIColor {
     
 }
 
-extension NSDateFormatter {
+extension DateFormatter {
 
-    static func twitterDateFormatter() -> NSDateFormatter {
-        let formatter = NSDateFormatter()
-        formatter.locale = NSLocale(localeIdentifier: "en_US_POSIX")
+    static func twitterDateFormatter() -> DateFormatter {
+        let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "en_US_POSIX")
         formatter.dateFormat = "EEE MMM dd HH:mm:ss Z yyyy"
         return formatter
     }
 }
 
-extension NSDate {
+extension Date {
     
     func tweetDateFormatted() -> String {
-        let minutes = NSCalendar.currentCalendar().components(NSCalendarUnit.Minute, fromDate: self, toDate: NSDate(), options: []).minute
-        if minutes < 60 {
+        let minutes = (Calendar.current as NSCalendar).components(NSCalendar.Unit.minute, from: self, to: Date(), options: []).minute
+        if minutes! < 60 {
             return "\(minutes)m"
-        } else if minutes < 60 * 24 {
-            return "\(minutes / 24)h"
+        } else if minutes! < 60 * 24 {
+            return "\(minutes! / 24)h"
         } else {
-            return "\(minutes / (60 * 24))d"
+            return "\(minutes! / (60 * 24))d"
         }
     }
 }

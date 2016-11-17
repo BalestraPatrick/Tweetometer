@@ -8,9 +8,33 @@
 
 import UIKit
 import Unbox
+// FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
+// Consider refactoring the code to use the non-optional operators.
+fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l < r
+  case (nil, _?):
+    return true
+  default:
+    return false
+  }
+}
 
-enum JSONError: ErrorType {
-    case UnknownError
+// FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
+// Consider refactoring the code to use the non-optional operators.
+fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l > r
+  default:
+    return rhs < lhs
+  }
+}
+
+
+enum JSONError: Error {
+    case unknownError
 }
 
 public final class TimelineParser {
@@ -31,7 +55,7 @@ public final class TimelineParser {
             let users = parseUsersFromTweets(tweets)
             timeline = buildTimelineFromTweets(tweets, users: users)
         } catch {
-            
+            print("Failed unwrapping: \(jsonTweets)")
         }
     }
     
@@ -42,17 +66,17 @@ public final class TimelineParser {
     /// - throws: Error if JSON parsing fails.
     //
     /// - returns: Array of Tweet objects.
-    private func parseTweets(jsonTweets: JSONTweets) throws -> [Tweet] {
+    fileprivate func parseTweets(_ jsonTweets: JSONTweets) throws -> [Tweet] {
         var tweets = [Tweet]()
         // Parse JSON tweets to Tweet objects
         for tweet in jsonTweets {
             if let tweet = tweet as? Dictionary<String, AnyObject> {
                 do {
-                    let tweet: Tweet = try Unbox(tweet)
+                    let tweet: Tweet = try unbox(dictionary: tweet)
                     tweets.append(tweet)
                 } catch {
                     print("Error in unboxing tweet: \(tweet) with error: \(error)")
-                    throw JSONError.UnknownError
+                    throw JSONError.unknownError
                 }
             }
         }
@@ -64,11 +88,11 @@ public final class TimelineParser {
     /// - parameter tweets: All the received tweets.
     ///
     /// - returns: Array containing the authors of tweets.
-    private func parseUsersFromTweets(tweets: [Tweet]) -> [User] {
+    fileprivate func parseUsersFromTweets(_ tweets: [Tweet]) -> [User] {
         var users = [User]()
         // Build array of tweet authors
         for tweet in tweets {
-            if let a = tweet.author where !users.contains(a) {
+            if let a = tweet.author, !users.contains(a) {
                 users.append(a)
             }
         }
@@ -81,7 +105,7 @@ public final class TimelineParser {
     /// - parameter users:  Array containing users.
     ///
     /// - returns: A Timeline object containing an array of users.
-    private func buildTimelineFromTweets(tweets: [Tweet], users: [User]) -> Timeline {
+    fileprivate func buildTimelineFromTweets(_ tweets: [Tweet], users: [User]) -> Timeline {
         // Build list of authors with array of tweets in each user
         var orderedUsers = users.flatMap { (user) -> User? in
             var user = user
@@ -96,7 +120,7 @@ public final class TimelineParser {
         }
         
         // Sort users by highest number of tweets
-        orderedUsers.sortInPlace { user1, user2 in
+        orderedUsers.sort { user1, user2 in
             return user1.tweets?.count > user2.tweets?.count
         }
         

@@ -11,14 +11,14 @@ import UIKit
 extension UINavigationBar {
     
     func applyStyle() {
-        barStyle = .Black
+        barStyle = .black
         barTintColor = UIColor.backgroundBlueColor()
-        tintColor = UIColor.whiteColor()
-        titleTextAttributes = [NSForegroundColorAttributeName : UIColor.whiteColor(),
-            NSFontAttributeName: UIFont.systemFontOfSize(18, weight: 0.1)]
-        setBackgroundImage(UIImage(), forBarMetrics: .Default)
+        tintColor = UIColor.white
+        titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white,
+            NSFontAttributeName: UIFont.systemFont(ofSize: 18, weight: 0.1)]
+        setBackgroundImage(UIImage(), for: .default)
         shadowImage = UIImage()
-        translucent = false
+        isTranslucent = false
         backgroundColor = UIColor.backgroundBlueColor()
     }
 }
@@ -27,7 +27,7 @@ extension UITableView {
     
     func applyStyle() {
         backgroundView = nil
-        backgroundColor = UIColor.clearColor()
+        backgroundColor = UIColor.clear
         tableFooterView = UIView()
     }
     

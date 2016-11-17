@@ -1,5 +1,5 @@
 source 'https://github.com/CocoaPods/Specs.git'
-platform :ios, '9.0'
+platform :ios, '10.0'
 inhibit_all_warnings!
 use_frameworks!
 
@@ -24,7 +24,6 @@ target 'TweetsCounter' do
  pod 'NSObject+Rx'
     
  pod 'Alamofire'
- pod 'Stash'
  pod 'ObjectMapper'
  pod 'Unbox'
  pod 'ValueStepper'
@@ -37,4 +36,3 @@ target 'TweetsCounter' do
 
  end
 end
-

@@ -18,33 +18,33 @@ class MenuPopOverViewController: UITableViewController {
         applyStyle()
     }
     
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return options.count
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(TableViewCell.MenuPopOverCellIdentifier.rawValue, forIndexPath: indexPath) as! MenuOptionTableViewCell
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: TableViewCell.MenuPopOverCellIdentifier.rawValue, for: indexPath) as! MenuOptionTableViewCell
         let option = options[indexPath.row]
         cell.configureCell(option)
         return cell
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.row {
-        case MenuOptions.Refresh.rawValue:
-            dismissViewControllerAnimated(true, completion: { 
+        case MenuOptions.refresh.rawValue:
+            dismiss(animated: true, completion: { 
                 self.homeViewController?.requestTimeline()
             })
-        case MenuOptions.Logout.rawValue:
+        case MenuOptions.logout.rawValue:
             
             break
-        case MenuOptions.Settings.rawValue:
-            dismissViewControllerAnimated(true, completion: {
-                self.homeViewController?.presentViewController(StoryboardScene.Main.settingsViewController(), animated: true, completion: nil)
+        case MenuOptions.settings.rawValue:
+            dismiss(animated: true, completion: {
+                self.homeViewController?.present(StoryboardScene.Main.settingsViewController(), animated: true, completion: nil)
             })
             break
         default:

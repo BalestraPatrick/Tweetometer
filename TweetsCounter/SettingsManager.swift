@@ -10,11 +10,11 @@ import UIKit
 import SwiftyUserDefaults
 
 protocol SettingsDelegateTweets: class {
-    func numberOfAnalyzedTweetsDidChange(value: Int)
+    func numberOfAnalyzedTweetsDidChange(_ value: Int)
 }
 
 protocol SettingsDelegateClient: class {
-    func twitterClientDiDChange(value: TwitterClient)
+    func twitterClientDiDChange(_ value: TwitterClient)
 }
 
 struct Key {
@@ -24,24 +24,24 @@ struct Key {
 
 
 enum TwitterClient {
-    case Web
-    case Twitter
-    case Tweetbot
+    case web
+    case twitter
+    case tweetbot
     
-    static func fromIndex(index: Int) -> TwitterClient {
+    static func fromIndex(_ index: Int) -> TwitterClient {
         switch index {
-        case 0: return .Web
-        case 1: return .Twitter
-        case 2: return .Tweetbot
-        default: return .Web
+        case 0: return .web
+        case 1: return .twitter
+        case 2: return .tweetbot
+        default: return .web
         }
     }
     
-    static func toIndex(option: TwitterClient) -> Int {
+    static func toIndex(_ option: TwitterClient) -> Int {
         switch option {
-        case .Web: return 0
-        case .Twitter: return 1
-        case .Tweetbot: return 2
+        case .web: return 0
+        case .twitter: return 1
+        case .tweetbot: return 2
         }
     }
 }
@@ -77,12 +77,12 @@ final class SettingsManager {
         
         if let v = Defaults[Key.PreferredTwitterClient].int {
             switch v {
-            case 0:  preferredTwitterClient = .Tweetbot
-            case 1: preferredTwitterClient = .Twitter
-            default: preferredTwitterClient = .Web
+            case 0:  preferredTwitterClient = .tweetbot
+            case 1: preferredTwitterClient = .twitter
+            default: preferredTwitterClient = .web
             }
         } else {
-            preferredTwitterClient = .Web
+            preferredTwitterClient = .web
         }
     }
     

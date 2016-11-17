@@ -11,8 +11,8 @@ import RxSwift
 
 class ErrorDisplayer: NSObject {
 
-    func display(error: ErrorType) {
+    func display(_ error: Error) {
         let error = error as NSError
-        DefaultWireframe.presentAlert(error.localizedDescription)
+//        DefaultWireframe.presentAlert(error.localizedDescription)
     }
 }

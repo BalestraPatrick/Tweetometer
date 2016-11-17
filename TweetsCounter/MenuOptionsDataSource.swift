@@ -14,9 +14,9 @@ struct Option {
 }
 
 enum MenuOptions: Int {
-    case Refresh
-    case Logout
-    case Settings
+    case refresh
+    case logout
+    case settings
 }
 
 final class MenuOptionsDataSource {

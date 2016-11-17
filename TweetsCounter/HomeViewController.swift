@@ -39,12 +39,12 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
         })
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         if shouldPresentLogIn {
             let logInViewController = StoryboardScene.Main.twitterLoginViewController()
             logInViewController.homeViewController = self
-            presentViewController(logInViewController, animated: true, completion: {
+            present(logInViewController, animated: true, completion: {
                 self.shouldPresentLogIn = false
             })
         }
@@ -52,16 +52,16 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
     
     // MARK: Storyboard Segues
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == StoryboardSegue.Main.MenuPopOver.rawValue {
-            let menuPopOver = segue.destinationViewController as! MenuPopOverViewController
-            menuPopOver.modalPresentationStyle = UIModalPresentationStyle.Popover
+            let menuPopOver = segue.destination as! MenuPopOverViewController
+            menuPopOver.modalPresentationStyle = UIModalPresentationStyle.popover
             menuPopOver.popoverPresentationController!.delegate = self
             menuPopOver.view.backgroundColor = UIColor().menuDarkBlueColor()
             menuPopOver.popoverPresentationController!.backgroundColor = UIColor().menuDarkBlueColor()
             menuPopOver.homeViewController = self
         } else if segue.identifier == StoryboardSegue.Main.UserDetail.rawValue {
-            if let userDetail = segue.destinationViewController as? UserDetailViewController, let cell = sender as? UITableViewCell, let indexPath = tableView.indexPathForCell(cell) {
+            if let userDetail = segue.destination as? UserDetailViewController, let cell = sender as? UITableViewCell, let indexPath = tableView.indexPath(for: cell) {
                 let selectedUser = dataSource[indexPath.row]
                 userDetail.user = selectedUser
                 delegate.pushDetail(userDetail)
@@ -89,7 +89,7 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
             requestTimeline()
         } catch {
             switch error {
-            case TwitterRequestError.NotAuthenticated:
+            case TwitterRequestError.notAuthenticated:
                 shouldPresentLogIn = true
             default:
                 print("Failed to request profile information with error: \(error)")
@@ -98,8 +98,8 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     func requestTimeline() {
-        tableView.startRefreshing()
-        UIApplication.sharedApplication().networkActivityIndicatorVisible = true
+        tableView.startRefreshing(at: Position.top)
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
         viewModel.requestTimeline(nil).subscribe(onNext: { users in
             self.reloadTableViewWithDataSource(users)
             }, onError: { error in
@@ -108,25 +108,25 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
             .addDisposableTo(rx_disposeBag)
     }
     
-    func reloadTableViewWithDataSource(users: [User]) {
+    func reloadTableViewWithDataSource(_ users: [User]) {
         dataSource = users
         tableView.reloadData()
-        tableView.endRefreshing()
-        UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+        tableView.endRefreshing(at: Position.top)
+        UIApplication.shared.isNetworkActivityIndicatorVisible = false
     }
     
     // MARK: UITableViewDataSource
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return dataSource.count
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCellWithIdentifier(TableViewCell.UserCellIdentifier.rawValue) as? UserTableViewCell else {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: TableViewCell.UserCellIdentifier.rawValue) as? UserTableViewCell else {
             fatalError("Could not create cell with identifier \(TableViewCell.UserCellIdentifier.rawValue) in UITableView: \(tableView)")
         }
         let user = dataSource[indexPath.row]

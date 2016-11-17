@@ -30,50 +30,50 @@ final class SettingsViewController: UIViewController {
         twitterClientControl.selectedSegmentIndex = TwitterClient.toIndex(settings.preferredTwitterClient)
         
         developedByButton.layer.cornerRadius = 5.0
-        developedByButton.layer.borderColor = UIColor.whiteColor().CGColor
+        developedByButton.layer.borderColor = UIColor.white.cgColor
         developedByButton.layer.borderWidth = 1.0
         
         githubButton.layer.cornerRadius = 5.0
-        githubButton.layer.borderColor = UIColor.whiteColor().CGColor
+        githubButton.layer.borderColor = UIColor.white.cgColor
         githubButton.layer.borderWidth = 1.0
         
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         // Check if Twitter and Tweetbot apps are installed to enable them in the UI
-        let twitterResult = UIApplication.sharedApplication().canOpenURL(NSURL(string: "twitter://")!)
-        let tweetbotResult = UIApplication.sharedApplication().canOpenURL(NSURL(string: "tweetbot://")!)
+        let twitterResult = UIApplication.shared.canOpenURL(URL(string: "twitter://")!)
+        let tweetbotResult = UIApplication.shared.canOpenURL(URL(string: "tweetbot://")!)
         
-        twitterClientControl.setEnabled(twitterResult, forSegmentAtIndex: 1)
-        twitterClientControl.setEnabled(tweetbotResult, forSegmentAtIndex: 2)
+        twitterClientControl.setEnabled(twitterResult, forSegmentAt: 1)
+        twitterClientControl.setEnabled(tweetbotResult, forSegmentAt: 2)
     }
     
-    override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        return .LightContent
+    override var preferredStatusBarStyle : UIStatusBarStyle {
+        return .lightContent
     }
     
-    @IBAction func stepperChanged(sender: ValueStepper) {
+    @IBAction func stepperChanged(_ sender: ValueStepper) {
         settings.numberOfAnalyzedTweets = Int(sender.value)
     }
     
-    @IBAction func clientChanged(sender: UISegmentedControl) {
+    @IBAction func clientChanged(_ sender: UISegmentedControl) {
         settings.preferredTwitterClient = TwitterClient.fromIndex(sender.selectedSegmentIndex)
     }
     
-    @IBAction func developedBy(sender: AnyObject) {
-        let url = NSURL(string: Links.developerAddress)!
+    @IBAction func developedBy(_ sender: AnyObject) {
+        let url = URL(string: Links.developerAddress)!
         let safari = linkOpener.openInSafari(url)
-        presentViewController(safari, animated: true, completion: nil)
+        present(safari, animated: true, completion: nil)
     }
     
-    @IBAction func openGithub(sender: AnyObject) {
-        let url = NSURL(string: Links.githubAddress)!
+    @IBAction func openGithub(_ sender: AnyObject) {
+        let url = URL(string: Links.githubAddress)!
         let safari = linkOpener.openInSafari(url)
-        presentViewController(safari, animated: true, completion: nil)
+        present(safari, animated: true, completion: nil)
     }
     
-    @IBAction func dismiss(sender: AnyObject) {
-        dismissViewControllerAnimated(true, completion: nil)
+    @IBAction func dismiss(_ sender: AnyObject) {
+        self.dismiss(animated: true, completion: nil)
     }
 }

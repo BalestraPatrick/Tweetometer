@@ -16,21 +16,21 @@ class LinkOpener {
     /// User detail coordinator needed to present a SafariViewController on the current view controller
     var coordinator: UserDetailCoordinator?
     /// Describes the URL Scheme components
-    var urlComponents = NSURLComponents()
+    var urlComponents = URLComponents()
     
     /// Opens the a Twitter user in the default client.
     ///
     /// - parameter user: Screen-name of the user.
-    func openUser(user: String) {
+    func openUser(_ user: String) {
         switch client {
-        case .Tweetbot:
+        case .tweetbot:
             urlComponents.scheme = "tweetbot"
             urlComponents.path = "/user_profile/\(user)"
-        case .Twitter:
+        case .twitter:
             urlComponents.scheme = "twitter"
             urlComponents.path = "/user?screen_name=\(user)"
-        case .Web:
-            let url = NSURL(string: "https://www.twitter.com/\(user)")
+        case .web:
+            let url = URL(string: "https://www.twitter.com/\(user)")
             if let url = url, let coordinator = coordinator {
                 coordinator.presentSafari(url)
                 return
@@ -38,8 +38,8 @@ class LinkOpener {
         }
                 
         // Try to open the URL
-        if let stringURL = urlComponents.string?.stringByRemovingPercentEncoding, let url = NSURL(string: stringURL) {
-            UIApplication.sharedApplication().openURL(url)
+        if let stringURL = urlComponents.string!.removingPercentEncoding, let url = URL(string: stringURL) {
+            UIApplication.shared.openURL(url)
         }
     }
     
@@ -48,7 +48,7 @@ class LinkOpener {
     /// - parameter url: URL of the page to load in Safari.
     ///
     /// - returns: The view controller to be used.
-    func openInSafari(url: NSURL) -> SFSafariViewController {
-        return SFSafariViewController(URL: url)
+    func openInSafari(_ url: URL) -> SFSafariViewController {
+        return SFSafariViewController(url: url)
     }
 }

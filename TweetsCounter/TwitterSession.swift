@@ -9,9 +9,9 @@
 import Foundation
 import TwitterKit
 
-enum TwitterRequestError: ErrorType {
-    case NotAuthenticated
-    case Unknown
+enum TwitterRequestError: Error {
+    case notAuthenticated
+    case unknown
 }
 
 final class TwitterSession {
@@ -25,7 +25,7 @@ final class TwitterSession {
             client = TWTRAPIClient(userID: userID)
             return userID
         } else {
-            throw TwitterRequestError.NotAuthenticated
+            throw TwitterRequestError.notAuthenticated
         }
     }
 }

@@ -19,7 +19,7 @@ struct User: Equatable, Hashable, Unboxable {
     var screenName: String
     var name: String
     var description: String
-    var profileImageURL: NSURL?
+    var profileImageURL: URL?
     var tweets: [Tweet]?
     var location: String
     var displayURL: String
@@ -31,21 +31,21 @@ struct User: Equatable, Hashable, Unboxable {
     }
     
     init(unboxer: Unboxer) {
-        userID = unboxer.unbox("id_str")
-        followersCount = unboxer.unbox("followers_count")
-        followingCount = unboxer.unbox("friends_count")
-        statusesCount = unboxer.unbox("statuses_count")
-        screenName = unboxer.unbox("screen_name")
-        name = unboxer.unbox("name")
-        description = unboxer.unbox("description")
-        location = unboxer.unbox("location")
-        displayURL = unboxer.unbox("entities.url.urls.0.expanded_url", isKeyPath: true)
-        profileImageURL = convertMediumToBiggerProfilePicture(unboxer.unbox("profile_image_url_https"))
+        userID = try! unboxer.unbox(key: "id_str")
+        followersCount = try! unboxer.unbox(key: "followers_count")
+        followingCount = try! unboxer.unbox(key: "friends_count")
+        statusesCount = try! unboxer.unbox(key: "statuses_count")
+        screenName = try! unboxer.unbox(key: "screen_name")
+        name = try! unboxer.unbox(key: "name")
+        description = try! unboxer.unbox(key: "description")
+        location = try! unboxer.unbox(key: "location")
+        displayURL = try! unboxer.unbox(keyPath: "entities.url.urls.0.expanded_url")
+        profileImageURL = convertMediumToBiggerProfilePicture(try! unboxer.unbox(key: "profile_image_url_https"))
     }
     
-    private func convertMediumToBiggerProfilePicture(URL: String) -> NSURL {
-        let biggerURLString = URL.stringByReplacingOccurrencesOfString("normal", withString: "bigger")
-        let biggerURL = NSURL(string: biggerURLString)!
+    fileprivate func convertMediumToBiggerProfilePicture(_ URL: String) -> Foundation.URL {
+        let biggerURLString = URL.replacingOccurrences(of: "normal", with: "bigger")
+        let biggerURL = Foundation.URL(string: biggerURLString)!
         return biggerURL
     }
 }

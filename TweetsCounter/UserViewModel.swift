@@ -14,9 +14,9 @@ import NSObject_Rx
 
 class UserViewModel: NSObject {
     
-    enum TweetError: ErrorType {
-        case JSONError
-        case UserNotSet
+    enum TweetError: Error {
+        case jsonError
+        case userNotSet
     }
     
     var user: User?
@@ -24,28 +24,28 @@ class UserViewModel: NSObject {
     func userData() -> Observable<(String, String)> {
         return Observable.create { observer in
             guard let user = self.user else {
-                observer.onError(TweetError.UserNotSet)
-                return AnonymousDisposable { }
+                observer.onError(TweetError.userNotSet)
+                return Disposables.create { }
             }
             observer.onNext((user.name, user.screenName))
             observer.onCompleted()
-            return AnonymousDisposable { }
+            return Disposables.create { }
         }
     }
     
     func tweets() -> Observable<[Tweet]> {
         return Observable.create { observer in
             guard let user = self.user else {
-                observer.onError(TweetError.JSONError)
-                return AnonymousDisposable { }
+                observer.onError(TweetError.jsonError)
+                return Disposables.create { }
             }
             guard let tweets = user.tweets else {
-                observer.onError(TweetError.JSONError)
-                return AnonymousDisposable { }
+                observer.onError(TweetError.jsonError)
+                return Disposables.create { }
             }
             observer.onNext(tweets)
             observer.onCompleted()
-            return AnonymousDisposable { }
+            return Disposables.create { }
         }
     }
 }
