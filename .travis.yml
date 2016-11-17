@@ -1,16 +1,16 @@
 before_install:
   - gem install cocoapods-keys
-  - brew update
+  # - brew update
   - brew install swiftlint
 
 cache:
   - bundler
   - cocoapods
 
-rvm: 2.2.2
+# rvm: 2.2.2
 osx_image: xcode8.1
 language: objective-c
 xcode_workspace: TweetsCounter.xcworkspace
 xcode_scheme: TweetsCounter
 script:
-  - set -o pipefail && xcodebuild test -workspace TweetsCounter.xcworkspace -scheme TweetsCounter -destination 'platform=iOS Simulator,name=iPhone 6,OS=9.2' ONLY_ACTIVE_ARCH=NO | xcpretty
+  - set -o pipefail && xcodebuild test -workspace TweetsCounter.xcworkspace -scheme TweetsCounter -destination 'platform=iOS Simulator,name=iPhone 7,OS=10.0' ONLY_ACTIVE_ARCH=NO | xcpretty
