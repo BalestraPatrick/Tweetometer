@@ -30,5 +30,4 @@ extension UITableView {
         backgroundColor = UIColor.clear
         tableFooterView = UIView()
     }
-    
 }

@@ -12,24 +12,13 @@ import RxAlamofire
 import RxDataSources
 import Alamofire
 import TwitterKit
-//import Stash
 import NSObject_Rx
 
 final class TimelineViewModel: NSObject {
-    
-//    let stash: Stash?
+
     let settingsManager = SettingsManager.sharedManager
     var session = TwitterSession()
-    
     var userID: String?
-    
-    override init() {
-//        do {
-//            stash = try Stash(name: cacheName, rootPath: NSTemporaryDirectory())
-//        } catch {
-//            stash = nil
-//        }
-    }
 
     /// Request the profile information for the currently authenticated user.
     ///

@@ -15,17 +15,12 @@ extension HomeViewController {
         navigationController?.navigationBar.applyStyle()
         tableView.separatorStyle = .none
         tableView.applyStyle()
-    }
-    
-    func setTitleViewContent(_ numberOfTweets: Int) {
-        titleLabel.text = "Tweetometer"
-        subtitleLabel.text = "Of the last \(numberOfTweets) tweets of your timeline"
+        titleLabel.text = "Your Timeline Stats"
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
-    
 }
 
 extension HomeViewController: UIPopoverPresentationControllerDelegate {
@@ -45,7 +40,7 @@ extension HomeViewController: UITabBarDelegate {
 extension HomeViewController: SettingsDelegateTweets {
     
     func numberOfAnalyzedTweetsDidChange(_ value: Int) {
-        setTitleViewContent(value)
+        
     }
 }
 

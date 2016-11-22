@@ -11,7 +11,6 @@ import TwitterKit
 
 public final class TwitterLoginViewController: UIViewController {
     
-    @IBOutlet weak var resultLabel: UILabel!
     weak var homeViewController: HomeViewController?
     
     override public func viewDidLoad() {
@@ -20,17 +19,18 @@ public final class TwitterLoginViewController: UIViewController {
         // Add login button to view
         let logInButton = TWTRLogInButton { session, error in
             if let e = error {
-                self.resultLabel.text = e.localizedDescription
-            } else {
-                if let home = self.homeViewController {
-                    home.startRequests()
-                }
-                self.dismiss(animated: true, completion: nil)
+                return print(e)
+            } else if let home = self.homeViewController {
+                home.startRequests()
             }
+            self.dismiss(animated: true, completion: nil)
         }
-        
+
         logInButton.center = self.view.center
         self.view.addSubview(logInButton)
     }
-    
+
+    public override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
 }

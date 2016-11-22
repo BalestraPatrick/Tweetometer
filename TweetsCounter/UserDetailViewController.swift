@@ -28,7 +28,6 @@ final class UserDetailViewController: UIViewController, UITableViewDelegate, UIT
         applyStyle()
         
         guard let user = user else { return }
-        print(user.description)
         setTitleViewContent(user.name, screenName: user.screenName)
         viewModel.user = user
         tableView.estimatedRowHeight = 50.0

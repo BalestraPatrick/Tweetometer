@@ -15,7 +15,6 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var subtitleLabel: UILabel!
     @IBOutlet weak var profileButton: ProfilePictureButton!
     
     let viewModel = TimelineViewModel()
@@ -30,7 +29,6 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
         super.viewDidLoad()
         applyStyle()
         startRequests()
-        setTitleViewContent(settingsManager.numberOfAnalyzedTweets)
         settingsManager.delegate = self
         tableView.rowHeight = 75.0
         
@@ -73,16 +71,16 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
     
     func startRequests() {
         do {
-            // Check is a user is already logged in. If not, we present the Login View Controller
+            // Check is a user is already logged in. If not, we present the Login view controller
             _ = try viewModel.session.isUserLoggedIn()
             
             // First request the profile information to get the profile picture URL and then request user profile picture
-            viewModel.requestProfileInformation().subscribe(onNext: { [weak self] image in
+            viewModel.requestProfileInformation().subscribe(onNext: { [weak self] user in
                 self?.viewModel.requestProfilePicture()
                     .bindNext { self?.profileButton.image = $0 }
                     .addDisposableTo(self!.rx_disposeBag)
                 }, onError: { error in
-                    ErrorDisplayer().display(error)
+                    // TODO: handle error
                 }, onCompleted: nil, onDisposed: nil)
                 .addDisposableTo(rx_disposeBag)
             
@@ -103,7 +101,7 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
         viewModel.requestTimeline(nil).subscribe(onNext: { users in
             self.reloadTableViewWithDataSource(users)
             }, onError: { error in
-                ErrorDisplayer().display(error)
+                // TODO: handle error
             }, onCompleted: nil, onDisposed: nil)
             .addDisposableTo(rx_disposeBag)
     }
