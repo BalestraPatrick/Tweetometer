@@ -39,7 +39,7 @@ class LinkOpener {
                 
         // Try to open the URL
         if let stringURL = urlComponents.string!.removingPercentEncoding, let url = URL(string: stringURL) {
-            UIApplication.shared.openURL(url)
+            UIApplication.shared.open(url, options: [:])
         }
     }
     

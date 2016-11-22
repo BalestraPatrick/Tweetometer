@@ -22,7 +22,6 @@ struct Key {
     static let PreferredTwitterClient = "preferredTwitterClient"
 }
 
-
 enum TwitterClient {
     case web
     case twitter

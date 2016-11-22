@@ -49,7 +49,7 @@ final class SettingsViewController: UIViewController {
         twitterClientControl.setEnabled(tweetbotResult, forSegmentAt: 2)
     }
     
-    override var preferredStatusBarStyle : UIStatusBarStyle {
+    override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
     

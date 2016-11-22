@@ -74,7 +74,7 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
     func startRequests() {
         do {
             // Check is a user is already logged in. If not, we present the Login View Controller
-            try viewModel.session.isUserLoggedIn()
+            _ = try viewModel.session.isUserLoggedIn()
             
             // First request the profile information to get the profile picture URL and then request user profile picture
             viewModel.requestProfileInformation().subscribe(onNext: { [weak self] image in

@@ -8,30 +8,6 @@
 
 import UIKit
 import Unbox
-// FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
-// Consider refactoring the code to use the non-optional operators.
-fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
-  switch (lhs, rhs) {
-  case let (l?, r?):
-    return l < r
-  case (nil, _?):
-    return true
-  default:
-    return false
-  }
-}
-
-// FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
-// Consider refactoring the code to use the non-optional operators.
-fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
-  switch (lhs, rhs) {
-  case let (l?, r?):
-    return l > r
-  default:
-    return rhs < lhs
-  }
-}
-
 
 enum JSONError: Error {
     case unknownError
@@ -121,7 +97,7 @@ public final class TimelineParser {
         
         // Sort users by highest number of tweets
         orderedUsers.sort { user1, user2 in
-            return user1.tweets?.count > user2.tweets?.count
+            return user1.tweets!.count > user2.tweets!.count
         }
         
         let timeline = Timeline(users: orderedUsers)

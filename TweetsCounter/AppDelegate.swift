@@ -43,7 +43,5 @@ import Alamofire
     func applicationWillTerminate(_ application: UIApplication) {
         
     }
-    
-    
 }
 

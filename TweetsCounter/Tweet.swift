@@ -42,7 +42,7 @@ struct Tweet: Equatable, Hashable, Unboxable {
         language = try! unboxer.unbox(key: "lang")
         
         let userID: String = try! unboxer.unbox(key: "in_reply_to_user_id")
-        author = try! unboxer.unbox(key: "user")
+        author = unboxer.unbox(key: "user")
 
         if let author = author {
             screenName = author.screenName

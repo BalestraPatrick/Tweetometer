@@ -1,6 +1,6 @@
 PODS:
   - ActiveLabel (0.7.0)
-  - Alamofire (4.1.0)
+  - Alamofire (4.2.0)
   - Crashlytics (3.8.3):
     - Fabric (~> 1.6.3)
   - Fabric (1.6.11)
@@ -21,10 +21,10 @@ PODS:
     - RxSwift (~> 3.0)
   - RxSwift (3.0.1)
   - SwiftyUserDefaults (3.0.0)
-  - TwitterCore (2.6.0):
+  - TwitterCore (2.6.1):
     - Fabric
-  - TwitterKit (2.6.0):
-    - TwitterCore (= 2.6.0)
+  - TwitterKit (2.6.1):
+    - TwitterCore (= 2.6.1)
   - Unbox (2.2.0)
   - ValueStepper (1.0)
 
@@ -53,7 +53,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   ActiveLabel: eb405c5b99275be52fac161f7a55cab1dd672c54
-  Alamofire: e266cf991b933498df791e645e0d8ac294492153
+  Alamofire: aa2e09d871c9160ac53c90e83c68064a94e3dfbe
   Crashlytics: 2b6dbe138a42395577cfa73dfa1aa7248cadf39e
   Fabric: 5911403591946b8228ab1c51d98f1d7137e863c6
   Keys: 9c35bf00f612ee1d48556f4a4b9b4551e224e90f
@@ -65,11 +65,11 @@ SPEC CHECKSUMS:
   RxDataSources: 824693e84d00781d0a5e5cedc1ff95ce9250aacd
   RxSwift: af5680055c4ad04480189c52d28385b1029493a6
   SwiftyUserDefaults: 0f1d45fc3aafb9064dac661e367f8f83fe21a4b4
-  TwitterCore: 150e8d2538b867bdde9ef9b61c6b755c2523c25e
-  TwitterKit: 3d72f0b25f2cc281f996e976928d2defe28702cb
+  TwitterCore: a8aea8bdaf2abd6572c8f264707a4ea4dc2d0eab
+  TwitterKit: d38c08d31dfd4ba604f95deca6cf8e174b5cbd96
   Unbox: 03d7128ce429987986bc08d967e9d5e0da158946
   ValueStepper: a1a275491e3a1ab6fe80a589ce04781d4a795fb3
 
-PODFILE CHECKSUM: 818ae7c152cd1ceadf8dace5ee0cd2990156f3c1
+PODFILE CHECKSUM: b08e63ac37c70a0148bb8f9599fae1f2c79e4da8
 
 COCOAPODS: 1.1.1

@@ -22,7 +22,7 @@ extension HomeViewController {
         subtitleLabel.text = "Of the last \(numberOfTweets) tweets of your timeline"
     }
     
-    override var preferredStatusBarStyle : UIStatusBarStyle {
+    override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
     
