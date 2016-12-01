@@ -6,7 +6,7 @@
 //  Copyright © 2015 Patrick Balestra. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
 struct Timeline {
     

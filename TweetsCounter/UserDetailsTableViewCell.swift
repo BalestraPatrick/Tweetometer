@@ -7,25 +7,14 @@
 //
 
 import UIKit
-import RxSwift
 
 class UserDetailsTableViewCell: UITableViewCell {
     
     @IBOutlet weak var profileImage: ProfilePictureImageView!
     @IBOutlet weak var descriptionLabel: UILabel!
-    
-//    let imageService = DefaultImageService.sharedImageService
+
     var userDescription: String = ""
     var userWebsite: String = ""
-    
-//    var downloadableImage: Observable<DownloadableImage>? {
-//        didSet {
-//            self.downloadableImage?
-//                .asDriver(onErrorJustReturn: DownloadableImage.OfflinePlaceholder)
-//                .drive(profileImage.rxex_downloadableImageAnimated(kCATransitionFade))
-//                .addDisposableTo(rx_disposeBag)
-//        }
-//    }
 
     var descriptionAttributedString: Int = 0 {
         didSet {
@@ -43,8 +32,6 @@ class UserDetailsTableViewCell: UITableViewCell {
     func configure(_ user: User) {
         backgroundColor = UIColor.backgroundBlueColor()
         userDescription = user.description
-//        userWebsite = user.
-//        downloadableImage = imageService.imageFromURL(user.profileImageURL!) ?? Observable.empty()
     }
     
 }

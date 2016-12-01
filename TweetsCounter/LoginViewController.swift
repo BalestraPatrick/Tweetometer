@@ -9,10 +9,8 @@
 import UIKit
 import TwitterKit
 
-public final class TwitterLoginViewController: UIViewController {
-    
-    weak var homeViewController: HomeViewController?
-    
+public final class LoginViewController: UIViewController {
+        
     override public func viewDidLoad() {
         super.viewDidLoad()
         
@@ -20,9 +18,8 @@ public final class TwitterLoginViewController: UIViewController {
         let logInButton = TWTRLogInButton { session, error in
             if let e = error {
                 return print(e)
-            } else if let home = self.homeViewController {
-                home.startRequests()
             }
+            print(session)
             self.dismiss(animated: true, completion: nil)
         }
 

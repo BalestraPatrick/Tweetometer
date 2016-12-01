@@ -7,28 +7,24 @@
 //
 
 import UIKit
-import RxSwift
-import NSObject_Rx
 import PullToRefresh
 
 final class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var subtitleLabel: UILabel!
     @IBOutlet weak var profileButton: ProfilePictureButton!
     
-    let viewModel = TimelineViewModel()
     let settingsManager = SettingsManager.sharedManager
     let refresher = PullToRefresh()
     
     var dataSource = [User]()
-    var shouldPresentLogIn = false
     weak var delegate: HomeViewControllerDelegate!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         applyStyle()
-        startRequests()
         settingsManager.delegate = self
         tableView.rowHeight = 75.0
         
@@ -39,15 +35,11 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        if shouldPresentLogIn {
-            let logInViewController = StoryboardScene.Main.twitterLoginViewController()
-            logInViewController.homeViewController = self
-            present(logInViewController, animated: true, completion: {
-                self.shouldPresentLogIn = false
-            })
-        }
+        let logInViewController = StoryboardScene.Main.twitterLoginViewController()
+        present(logInViewController, animated: true, completion: {
+        })
     }
-    
+
     // MARK: Storyboard Segues
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -68,42 +60,10 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     // MARK: Data Request
-    
-    func startRequests() {
-        do {
-            // Check is a user is already logged in. If not, we present the Login view controller
-            _ = try viewModel.session.isUserLoggedIn()
-            
-            // First request the profile information to get the profile picture URL and then request user profile picture
-            viewModel.requestProfileInformation().subscribe(onNext: { [weak self] user in
-                self?.viewModel.requestProfilePicture()
-                    .bindNext { self?.profileButton.image = $0 }
-                    .addDisposableTo(self!.rx_disposeBag)
-                }, onError: { error in
-                    // TODO: handle error
-                }, onCompleted: nil, onDisposed: nil)
-                .addDisposableTo(rx_disposeBag)
-            
-            requestTimeline()
-        } catch {
-            switch error {
-            case TwitterRequestError.notAuthenticated:
-                shouldPresentLogIn = true
-            default:
-                print("Failed to request profile information with error: \(error)")
-            }
-        }
-    }
-    
+
     func requestTimeline() {
         tableView.startRefreshing(at: Position.top)
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
-        viewModel.requestTimeline(nil).subscribe(onNext: { users in
-            self.reloadTableViewWithDataSource(users)
-            }, onError: { error in
-                // TODO: handle error
-            }, onCompleted: nil, onDisposed: nil)
-            .addDisposableTo(rx_disposeBag)
     }
     
     func reloadTableViewWithDataSource(_ users: [User]) {

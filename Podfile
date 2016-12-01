@@ -17,14 +17,7 @@ target 'TweetsCounter' do
  pod 'TwitterKit'
  pod 'TwitterCore'
     
- pod 'RxSwift'
- pod 'RxCocoa'
- pod 'RxDataSources'
- pod 'RxAlamofire'
- pod 'NSObject+Rx'
-    
  pod 'Alamofire'
- pod 'ObjectMapper'
  pod 'Unbox'
  pod 'ValueStepper'
  pod 'SwiftyUserDefaults'
@@ -33,6 +26,5 @@ target 'TweetsCounter' do
 
  target 'TweetsCounterTests' do
     inherit! :search_paths
-
  end
 end

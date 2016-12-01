@@ -7,9 +7,6 @@
 //
 
 import UIKit
-import RxSwift
-import RxDataSources
-import NSObject_Rx
 
 final class UserDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -17,7 +14,6 @@ final class UserDetailViewController: UIViewController, UITableViewDelegate, UIT
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var subtitleLabel: UILabel!
     
-    let viewModel = UserViewModel()
     let linkOpener = LinkOpener()
     
     var user: User?
@@ -29,7 +25,6 @@ final class UserDetailViewController: UIViewController, UITableViewDelegate, UIT
         
         guard let user = user else { return }
         setTitleViewContent(user.name, screenName: user.screenName)
-        viewModel.user = user
         tableView.estimatedRowHeight = 50.0
         tableView.rowHeight = UITableViewAutomaticDimension
     }

@@ -5,21 +5,7 @@ PODS:
     - Fabric (~> 1.6.3)
   - Fabric (1.6.11)
   - Keys (1.0.0)
-  - NSObject+Rx (2.0.0):
-    - RxSwift
-  - ObjectMapper (2.2.1)
   - PullToRefresher (2.0.2)
-  - RxAlamofire (3.0.0):
-    - RxAlamofire/Core (= 3.0.0)
-  - RxAlamofire/Core (3.0.0):
-    - Alamofire (~> 4.0)
-    - RxSwift (~> 3.0)
-  - RxCocoa (3.0.1):
-    - RxSwift (~> 3.0)
-  - RxDataSources (1.0.0):
-    - RxCocoa (~> 3.0)
-    - RxSwift (~> 3.0)
-  - RxSwift (3.0.1)
   - SwiftyUserDefaults (3.0.0)
   - TwitterCore (2.6.1):
     - Fabric
@@ -34,13 +20,7 @@ DEPENDENCIES:
   - Crashlytics
   - Fabric
   - Keys (from `Pods/CocoaPodsKeys`)
-  - NSObject+Rx
-  - ObjectMapper
   - PullToRefresher
-  - RxAlamofire
-  - RxCocoa
-  - RxDataSources
-  - RxSwift
   - SwiftyUserDefaults
   - TwitterCore
   - TwitterKit
@@ -57,19 +37,13 @@ SPEC CHECKSUMS:
   Crashlytics: 2b6dbe138a42395577cfa73dfa1aa7248cadf39e
   Fabric: 5911403591946b8228ab1c51d98f1d7137e863c6
   Keys: 9c35bf00f612ee1d48556f4a4b9b4551e224e90f
-  NSObject+Rx: 2a9cd801d9c847e6d2486cbad8d7701b67834e70
-  ObjectMapper: 41e43e1a89f8060ef5ea5d04ba852e269a621d68
   PullToRefresher: 5e101a8c3523e67ee0291375ba932ef59e0853c2
-  RxAlamofire: 0b1fa48f545fffe7f7a28af2086bcaa3b5946cc9
-  RxCocoa: 15a52fc590dcc700cb4a690a633b5c5184ce3a78
-  RxDataSources: 824693e84d00781d0a5e5cedc1ff95ce9250aacd
-  RxSwift: af5680055c4ad04480189c52d28385b1029493a6
   SwiftyUserDefaults: 0f1d45fc3aafb9064dac661e367f8f83fe21a4b4
   TwitterCore: a8aea8bdaf2abd6572c8f264707a4ea4dc2d0eab
   TwitterKit: d38c08d31dfd4ba604f95deca6cf8e174b5cbd96
   Unbox: 03d7128ce429987986bc08d967e9d5e0da158946
   ValueStepper: a1a275491e3a1ab6fe80a589ce04781d4a795fb3
 
-PODFILE CHECKSUM: b08e63ac37c70a0148bb8f9599fae1f2c79e4da8
+PODFILE CHECKSUM: 9b2422f404ff9298893ddd6c9bac0c5dfa5477a0
 
 COCOAPODS: 1.1.1

@@ -56,9 +56,9 @@ struct StoryboardScene {
             return Main.Settings.viewController() as! SettingsViewController
         }
         
-        case TwitterLogin = "TwitterLogin"
-        static func twitterLoginViewController() -> TwitterLoginViewController {
-            return Main.TwitterLogin.viewController() as! TwitterLoginViewController
+        case Login = "Login"
+        static func LoginViewController() -> LoginViewController {
+            return Main.Login.viewController() as! LoginViewController
         }
         
         case UserDetail = "UserDetail"
