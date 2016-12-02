@@ -6,8 +6,9 @@
 //  Copyright © 2015 Patrick Balestra. All rights reserved.
 //
 
-import Foundation
+import UIKit
 import TwitterKit
+import AlamofireImage
 
 enum TwitterRequestError: Error {
     case notAuthenticated
@@ -16,17 +17,27 @@ enum TwitterRequestError: Error {
 
 final class TwitterSession {
     
-    static var client: TWTRAPIClient?
-    var user: TWTRUser?
-    
-    ///  Check the session user ID to see if there is an user logged in.
-    static func isUserLoggedIn() -> Bool {
+    private var client: TWTRAPIClient?
+
+
+    init() {
         if let userID = Twitter.sharedInstance().sessionStore.session()?.userID {
             client = TWTRAPIClient(userID: userID)
-            return true
         }
-        return false
+    }
+    
+    ///  Check the session user ID to see if there is an user logged in.
+    func isUserLoggedIn() -> Bool {
+        return client != nil
     }
 
-    
+    func getProfilePicture(completion: @escaping (URL) -> ()) {
+        if let client = client, let userID = client.userID {
+            client.loadUser(withID: userID) { user, error in
+                if let stringURL = user?.profileImageLargeURL {
+                    return completion(URL(string: stringURL)!)
+                }
+            }
+        }
+    }
 }

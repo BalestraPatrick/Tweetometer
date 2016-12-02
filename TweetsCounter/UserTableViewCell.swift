@@ -16,8 +16,6 @@ final class UserTableViewCell: UITableViewCell {
     @IBOutlet fileprivate weak var followersLabel: UILabel!
     @IBOutlet fileprivate weak var followingLabel: UILabel!
     @IBOutlet fileprivate weak var numberOfTweetsLabel: UILabel!
-    
-//    let imageService = DefaultImageService.sharedImageService
 
     var index = 0 {
         didSet {

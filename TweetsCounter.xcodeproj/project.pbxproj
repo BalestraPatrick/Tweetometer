@@ -12,11 +12,12 @@
 		AE055BA21DF03CE600442A2E /* LoginCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE055BA11DF03CE600442A2E /* LoginCoordinator.swift */; };
 		AE067FFC1C650C09008C325B /* TimelineParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF1F2121C64F10000591E46 /* TimelineParserTests.swift */; };
 		AE07A0D61C5D4AD400514B1C /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE07A0D51C5D4AD400514B1C /* UserTableViewCell.swift */; };
-		AE0FA7C71C0DEBDE00EDB0A1 /* ProfilePictureButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0FA7C61C0DEBDE00EDB0A1 /* ProfilePictureButton.swift */; };
+		AE0FA7C71C0DEBDE00EDB0A1 /* ProfilePictureButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0FA7C61C0DEBDE00EDB0A1 /* ProfilePictureButtonItem.swift */; };
 		AE0FA7CD1C0EDC7E00EDB0A1 /* Customizations.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0FA7CC1C0EDC7E00EDB0A1 /* Customizations.swift */; };
 		AE0FA7D41C0F03E800EDB0A1 /* Timeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0FA7D31C0F03E800EDB0A1 /* Timeline.swift */; };
 		AE15F36C1C62A1BD00EE2F82 /* MenuPopOverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE15F36B1C62A1BD00EE2F82 /* MenuPopOverViewController.swift */; };
 		AE1FF7501C7927D7001C8F87 /* SettingsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1FF74F1C7927D7001C8F87 /* SettingsManager.swift */; };
+		AE247A751DF1C61300C87A29 /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE247A741DF1C61300C87A29 /* Images.swift */; };
 		AE277DEE1BD4E6DB004E151C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE277DED1BD4E6DB004E151C /* AppDelegate.swift */; };
 		AE277DF01BD4E6DB004E151C /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE277DEF1BD4E6DB004E151C /* HomeViewController.swift */; };
 		AE277DF31BD4E6DB004E151C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE277DF11BD4E6DB004E151C /* Main.storyboard */; };
@@ -79,11 +80,12 @@
 		AE07A0D51C5D4AD400514B1C /* UserTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
 		AE0C38421BE58815003A858F /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		AE0C38481BE589B8003A858F /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
-		AE0FA7C61C0DEBDE00EDB0A1 /* ProfilePictureButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfilePictureButton.swift; sourceTree = "<group>"; };
+		AE0FA7C61C0DEBDE00EDB0A1 /* ProfilePictureButtonItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfilePictureButtonItem.swift; sourceTree = "<group>"; };
 		AE0FA7CC1C0EDC7E00EDB0A1 /* Customizations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Customizations.swift; sourceTree = "<group>"; };
 		AE0FA7D31C0F03E800EDB0A1 /* Timeline.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Timeline.swift; sourceTree = "<group>"; };
 		AE15F36B1C62A1BD00EE2F82 /* MenuPopOverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuPopOverViewController.swift; sourceTree = "<group>"; };
 		AE1FF74F1C7927D7001C8F87 /* SettingsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsManager.swift; sourceTree = "<group>"; };
+		AE247A741DF1C61300C87A29 /* Images.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
 		AE26EDEF1BEE1293000E9829 /* RxAlamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxAlamofire.framework; path = "Pods/../build/Debug-iphoneos/RxAlamofire.framework"; sourceTree = "<group>"; };
 		AE277DEA1BD4E6DB004E151C /* TweetsCounter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TweetsCounter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE277DED1BD4E6DB004E151C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -233,6 +235,7 @@
 				AEE4D8071BF9BFD100C9CA08 /* Constants.swift */,
 				AEE8C9AC1C0DB2D40047A6A6 /* Storyboard.swift */,
 				AE35A2F51C52C146001E1D88 /* DismissFromSettingsSegue.swift */,
+				AE247A741DF1C61300C87A29 /* Images.swift */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -252,7 +255,7 @@
 				AE07A0D51C5D4AD400514B1C /* UserTableViewCell.swift */,
 				AEAFB1051C7A0E270030AB33 /* TweetTableViewCell.swift */,
 				AEF598E61CD679B40055E88C /* UserDetailsTableViewCell.swift */,
-				AE0FA7C61C0DEBDE00EDB0A1 /* ProfilePictureButton.swift */,
+				AE0FA7C61C0DEBDE00EDB0A1 /* ProfilePictureButtonItem.swift */,
 				AE6352121C66178400799157 /* MenuOptionTableViewCell.swift */,
 				AEE22BAA1CD72DF1003CA241 /* ProfilePictureImageView.swift */,
 			);
@@ -649,13 +652,14 @@
 				AEF598E71CD679B40055E88C /* UserDetailsTableViewCell.swift in Sources */,
 				AEE8C9AD1C0DB2D40047A6A6 /* Storyboard.swift in Sources */,
 				AEE8C9AA1C0D97C50047A6A6 /* TwitterSession.swift in Sources */,
-				AE0FA7C71C0DEBDE00EDB0A1 /* ProfilePictureButton.swift in Sources */,
+				AE0FA7C71C0DEBDE00EDB0A1 /* ProfilePictureButtonItem.swift in Sources */,
 				AEF1F20D1C64EB8900591E46 /* MenuOptionsDataSource.swift in Sources */,
 				AEB280951C79FC0C009C64EE /* ViewControllerUtils.swift in Sources */,
 				AEE4D8081BF9BFD100C9CA08 /* Constants.swift in Sources */,
 				AE96700A1C94604700189697 /* UserDetailCoordinator.swift in Sources */,
 				AE1FF7501C7927D7001C8F87 /* SettingsManager.swift in Sources */,
 				AE9670071C945ADF00189697 /* HomeCoordinator.swift in Sources */,
+				AE247A751DF1C61300C87A29 /* Images.swift in Sources */,
 				AE0FA7D41C0F03E800EDB0A1 /* Timeline.swift in Sources */,
 				AE6352151C66226800799157 /* UserDetailViewController.swift in Sources */,
 			);

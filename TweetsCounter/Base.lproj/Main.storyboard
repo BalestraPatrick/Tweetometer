@@ -25,7 +25,7 @@
                                 <rect key="frame" x="0.0" y="28" width="200" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ZJr-Mc-ZnX" id="sf7-qW-yEv">
-                                    <rect key="frame" x="0.0" y="0.0" width="200" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="200" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="0Ir-kN-Uni">
@@ -78,7 +78,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="75"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="te9-gm-mVz" id="1CI-Gc-lpG">
-                                            <rect key="frame" x="0.0" y="0.0" width="342" height="74.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="75"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="sgz-4k-7PW" customClass="ProfilePictureImageView" customModule="TweetsCounter" customModuleProvider="target">
@@ -243,7 +243,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="qij-GM-89B">
                         <nil key="title"/>
-                        <barButtonItem key="leftBarButtonItem" id="FhS-OA-b3v">
+                        <barButtonItem key="leftBarButtonItem" id="FhS-OA-b3v" customClass="ProfilePictureButtonItem" customModule="TweetsCounter" customModuleProvider="target">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="u4C-qs-5mp" customClass="ProfilePictureButton" customModule="TweetsCounter" customModuleProvider="target">
                                 <rect key="frame" x="16" y="7" width="30" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -286,7 +286,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="profileButton" destination="u4C-qs-5mp" id="3bg-Tv-aEt"/>
+                        <outlet property="profilePictureItem" destination="FhS-OA-b3v" id="JLW-Vg-maX"/>
                         <outlet property="subtitleLabel" destination="RNX-vJ-6ef" id="dKc-hT-bEB"/>
                         <outlet property="tableView" destination="rso-oX-7fS" id="Aqk-H5-NCc"/>
                         <outlet property="titleLabel" destination="f3d-NS-fIP" id="9zj-ni-TDf"/>

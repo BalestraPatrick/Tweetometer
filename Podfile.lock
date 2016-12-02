@@ -1,6 +1,8 @@
 PODS:
   - ActiveLabel (0.7.0)
   - Alamofire (4.2.0)
+  - AlamofireImage (3.2.0):
+    - Alamofire (~> 4.1)
   - Crashlytics (3.8.3):
     - Fabric (~> 1.6.3)
   - Fabric (1.6.11)
@@ -17,6 +19,7 @@ PODS:
 DEPENDENCIES:
   - ActiveLabel
   - Alamofire
+  - AlamofireImage
   - Crashlytics
   - Fabric
   - Keys (from `Pods/CocoaPodsKeys`)
@@ -34,6 +37,7 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   ActiveLabel: eb405c5b99275be52fac161f7a55cab1dd672c54
   Alamofire: aa2e09d871c9160ac53c90e83c68064a94e3dfbe
+  AlamofireImage: 157ed682cc81d3b9db4fb90c1f12180ac552d93b
   Crashlytics: 2b6dbe138a42395577cfa73dfa1aa7248cadf39e
   Fabric: 5911403591946b8228ab1c51d98f1d7137e863c6
   Keys: 9c35bf00f612ee1d48556f4a4b9b4551e224e90f
@@ -44,6 +48,6 @@ SPEC CHECKSUMS:
   Unbox: 03d7128ce429987986bc08d967e9d5e0da158946
   ValueStepper: a1a275491e3a1ab6fe80a589ce04781d4a795fb3
 
-PODFILE CHECKSUM: 9b2422f404ff9298893ddd6c9bac0c5dfa5477a0
+PODFILE CHECKSUM: 22772a7d5b537e53c4e9b0dddee9d31a0025babc
 
 COCOAPODS: 1.1.1

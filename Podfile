@@ -18,6 +18,7 @@ target 'TweetsCounter' do
  pod 'TwitterCore'
     
  pod 'Alamofire'
+ pod 'AlamofireImage'
  pod 'Unbox'
  pod 'ValueStepper'
  pod 'SwiftyUserDefaults'

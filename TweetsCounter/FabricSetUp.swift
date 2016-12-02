@@ -14,18 +14,18 @@ import Keys
 
 enum AppEnvironment {
     case debug
-    case unitTest
+    case testing
 }
 
 class FabricSetUp: NSObject {
     
     init(environment: AppEnvironment) {
         Twitter.sharedInstance().start(withConsumerKey: TweetscounterKeys().fABRIC_API_KEY(), consumerSecret: TweetscounterKeys().fABRIC_BUILD_SECRET())
-        
+
         switch environment {
         case .debug:
             Fabric.with([Crashlytics.sharedInstance(), Twitter.sharedInstance()])
-        case .unitTest:
+        case .testing:
             Fabric.with([Twitter.sharedInstance()])
         }
     }

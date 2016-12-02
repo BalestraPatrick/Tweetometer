@@ -11,7 +11,7 @@ import UIKit
 extension HomeViewController {
     
     func applyStyle() {
-        view.backgroundColor = UIColor.backgroundBlueColor()
+//        view.backgroundColor = UIColor.backgroundBlueColor()
         navigationController?.navigationBar.applyStyle()
         tableView.separatorStyle = .none
         tableView.applyStyle()

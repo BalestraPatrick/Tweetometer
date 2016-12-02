@@ -14,8 +14,9 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var subtitleLabel: UILabel!
-    @IBOutlet weak var profileButton: ProfilePictureButton!
-    
+    @IBOutlet weak var profilePictureItem: ProfilePictureButtonItem!
+
+    lazy var session = TwitterSession()
     let settingsManager = SettingsManager.sharedManager
     let refresher = PullToRefresh()
     
@@ -27,7 +28,7 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
         applyStyle()
         settingsManager.delegate = self
         tableView.rowHeight = 75.0
-        
+
         tableView.addPullToRefresh(refresher, action: {
             self.requestTimeline()
         })
@@ -37,10 +38,13 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
         super.viewDidAppear(animated)
 
         // Check if a user is logged in
-        if TwitterSession.isUserLoggedIn() == false {
+        if session.isUserLoggedIn() == false {
             coordinator.presentLogin()
         } else {
-            
+            // Request profile picture
+            session.getProfilePicture(completion: { [weak self] url in
+                self?.profilePictureItem.imageView.af_setImage(withURL: url, placeholderImage: UIImage(asset: .placeholder))
+            })
         }
     }
 
