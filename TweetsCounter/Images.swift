@@ -4,7 +4,7 @@ import Foundation
 import UIKit
 
 extension UIImage {
-    enum Asset : String {
+    enum Asset: String {
         case close = "close"
         case detail = "detail"
         case heartIcon = "HeartIcon"

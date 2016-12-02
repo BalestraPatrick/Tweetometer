@@ -17,16 +17,22 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
     @IBOutlet weak var profilePictureItem: ProfilePictureButtonItem!
 
     lazy var session = TwitterSession()
-    let settingsManager = SettingsManager.sharedManager
+//    let settingsManager = SettingsManager.sharedManager
     let refresher = PullToRefresh()
     
-    var dataSource = [User]()
+    var dataSource = [User]() {
+        didSet {
+            tableView.reloadData()
+            UIApplication.shared.isNetworkActivityIndicatorVisible = false
+//            tableView.endRefreshing(at: Position.top)
+        }
+    }
     weak var coordinator: HomeCoordinatorDelegate!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         applyStyle()
-        settingsManager.delegate = self
+//        settingsManager.delegate = self
         tableView.rowHeight = 75.0
 
         tableView.addPullToRefresh(refresher, action: {
@@ -41,10 +47,9 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
         if session.isUserLoggedIn() == false {
             coordinator.presentLogin()
         } else {
-            // Request profile picture
-            session.getProfilePicture(completion: { [weak self] url in
-                self?.profilePictureItem.imageView.af_setImage(withURL: url, placeholderImage: UIImage(asset: .placeholder))
-            })
+            // Start requests
+            requestProfilePicture()
+            requestTimeline()
         }
     }
 
@@ -69,18 +74,21 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
     
     // MARK: Data Request
 
+    func requestProfilePicture() {
+        // Request profile picture
+        session.getProfilePicture {  url in
+            guard let url = url else { return }
+            self.profilePictureItem.imageView.af_setImage(withURL: url, placeholderImage: UIImage(asset: .placeholder))
+        }
+    }
+
     func requestTimeline() {
-        tableView.startRefreshing(at: Position.top)
-        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        // Request tweets.
+        session.getTimeline { users, error in
+            self.dataSource = users
+        }
     }
-    
-    func reloadTableViewWithDataSource(_ users: [User]) {
-        dataSource = users
-        tableView.reloadData()
-        tableView.endRefreshing(at: Position.top)
-        UIApplication.shared.isNetworkActivityIndicatorVisible = false
-    }
-    
+
     // MARK: UITableViewDataSource
     
     func numberOfSections(in tableView: UITableView) -> Int {

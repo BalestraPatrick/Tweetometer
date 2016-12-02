@@ -37,10 +37,10 @@ final class UserTableViewCell: UITableViewCell {
     
     var numberOfFollowers: Int = 0 {
         didSet {
-            let numberAttributes = [NSForegroundColorAttributeName : UIColor.white,
+            let numberAttributes = [NSForegroundColorAttributeName : UIColor.black,
                                     NSFontAttributeName : UIFont.systemFont(ofSize: 15, weight: UIFontWeightLight)]
             let attributedString = NSMutableAttributedString(string: String(numberOfFollowers), attributes: numberAttributes)
-            let followersAttributes = [NSForegroundColorAttributeName : UIColor.white,
+            let followersAttributes = [NSForegroundColorAttributeName : UIColor.black,
                                        NSFontAttributeName : UIFont.systemFont(ofSize: 11, weight: UIFontWeightThin)]
             let followersWord = NSAttributedString(string: " Followers", attributes: followersAttributes)
             attributedString.append(followersWord)
@@ -50,10 +50,10 @@ final class UserTableViewCell: UITableViewCell {
     
     var numberOfFollowing: Int = 0 {
         didSet {
-            let numberAttributes = [NSForegroundColorAttributeName : UIColor.white,
+            let numberAttributes = [NSForegroundColorAttributeName : UIColor.black,
                                     NSFontAttributeName : UIFont.systemFont(ofSize: 15, weight: UIFontWeightLight)]
             let attributedString = NSMutableAttributedString(string: String(numberOfFollowing), attributes: numberAttributes)
-            let followersAttributes = [NSForegroundColorAttributeName : UIColor.white,
+            let followersAttributes = [NSForegroundColorAttributeName : UIColor.black,
                                        NSFontAttributeName : UIFont.systemFont(ofSize: 11, weight: UIFontWeightThin)]
             let followersWord = NSAttributedString(string: " Following", attributes: followersAttributes)
             attributedString.append(followersWord)
@@ -63,10 +63,10 @@ final class UserTableViewCell: UITableViewCell {
     
     var numberOfTweets: Int = 0 {
         didSet {
-            let numberAttributes = [NSForegroundColorAttributeName : UIColor.white,
+            let numberAttributes = [NSForegroundColorAttributeName : UIColor.black,
                                     NSFontAttributeName : UIFont.systemFont(ofSize: 20, weight: UIFontWeightLight)]
             let attributedString = NSMutableAttributedString(string: String(numberOfTweets), attributes: numberAttributes)
-            let followersAttributes = [NSForegroundColorAttributeName : UIColor.white,
+            let followersAttributes = [NSForegroundColorAttributeName : UIColor.black,
                                        NSFontAttributeName : UIFont.systemFont(ofSize: 15, weight: UIFontWeightThin)]
             let word = numberOfTweets > 1 ? " Tweets" : " Tweet"
             let followersWord = NSAttributedString(string: word, attributes: followersAttributes)
@@ -101,7 +101,7 @@ final class UserTableViewCell: UITableViewCell {
     override func setHighlighted(_ highlighted: Bool, animated: Bool) {
         super.setHighlighted(highlighted, animated: animated)
         if highlighted {
-            self.backgroundColor = UIColor(white: 1.0, alpha: 0.0)
+            self.backgroundColor = UIColor.white
         } else {
             self.backgroundColor = index % 2 == 0 ? UIColor(white: 1.0, alpha: 0.2) : UIColor(white: 1.0, alpha: 0.1)
         }
