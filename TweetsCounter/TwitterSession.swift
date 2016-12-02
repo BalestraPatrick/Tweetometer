@@ -19,7 +19,6 @@ final class TwitterSession {
     
     private var client: TWTRAPIClient?
 
-
     init() {
         if let userID = Twitter.sharedInstance().sessionStore.session()?.userID {
             client = TWTRAPIClient(userID: userID)

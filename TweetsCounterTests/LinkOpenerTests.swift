@@ -14,13 +14,13 @@ class LinkOpenerTests: XCTestCase {
     let opener = LinkOpener()
     
     func testTweetbotURLScheme() {
-        opener.client = .Tweetbot
+        opener.client = .tweetbot
         opener.openUser("BalestraPatrick")
         XCTAssertEqual(opener.urlComponents.string!, "tweetbot:/user_profile/BalestraPatrick", "Tweetbot URL Scheme is wrong")
     }
     
     func testTwitterURLScheme() {
-        opener.client = .Twitter
+        opener.client = .twitter
         opener.openUser("BalestraPatrick")
         XCTAssertEqual(opener.urlComponents.string!, "twitter:/user%3Fscreen_name=BalestraPatrick", "Twitter URL Scheme is wrong")
     }
