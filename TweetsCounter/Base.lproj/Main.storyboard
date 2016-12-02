@@ -251,7 +251,7 @@
                             </button>
                         </barButtonItem>
                         <view key="titleView" contentMode="scaleToFill" id="OhV-Zt-nsQ">
-                            <rect key="frame" x="68" y="6" width="240" height="33"/>
+                            <rect key="frame" x="67.5" y="5.5" width="240" height="33"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f3d-NS-fIP">
@@ -407,7 +407,7 @@
                                             <rect key="frame" x="0.0" y="26" width="375" height="48"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="mLk-bD-f1f">
-                                                    <rect key="frame" x="112" y="0.0" width="152" height="48"/>
+                                                    <rect key="frame" x="111.5" y="0.0" width="152" height="48"/>
                                                     <subviews>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0qn-uD-3d5">
                                                             <rect key="frame" x="0.0" y="9" width="76" height="30"/>
@@ -421,7 +421,7 @@
                                                                     </constraints>
                                                                 </imageView>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wc7-xs-rkN">
-                                                                    <rect key="frame" x="48" y="4" width="18" height="21"/>
+                                                                    <rect key="frame" x="48" y="4" width="18" height="20.5"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" relation="lessThanOrEqual" constant="100" id="L5W-eT-UdO"/>
                                                                     </constraints>
@@ -458,7 +458,7 @@
                                                                     </constraints>
                                                                 </imageView>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="25" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MWg-10-7X9">
-                                                                    <rect key="frame" x="45" y="4" width="21" height="21"/>
+                                                                    <rect key="frame" x="45" y="4" width="21" height="20.5"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" relation="lessThanOrEqual" constant="100" id="eTP-oN-fy6"/>
                                                                     </constraints>
@@ -518,7 +518,7 @@
                     <navigationItem key="navigationItem" id="BHy-jC-wAA">
                         <nil key="title"/>
                         <view key="titleView" contentMode="scaleToFill" id="XxA-KA-MPQ">
-                            <rect key="frame" x="53" y="6" width="240" height="33"/>
+                            <rect key="frame" x="53" y="5.5" width="240" height="33"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Di9-TO-8x9">
@@ -836,10 +836,10 @@ Version 1.0 </string>
             </objects>
             <point key="canvasLocation" x="427" y="926"/>
         </scene>
-        <!--Twitter Login View Controller-->
+        <!--Login View Controller-->
         <scene sceneID="Gb4-SI-36J">
             <objects>
-                <viewController storyboardIdentifier="TwitterLogin" id="G6B-Kp-BNF" customClass="TwitterLoginViewController" customModule="TweetsCounter" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Login" id="G6B-Kp-BNF" customClass="LoginViewController" customModule="TweetsCounter" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="CdZ-7i-uyy"/>
                         <viewControllerLayoutGuide type="bottom" id="SIM-Lw-ilQ"/>
@@ -849,12 +849,12 @@ Version 1.0 </string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please login with your Twitter account." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DAf-T3-Tbp">
-                                <rect key="frame" x="36" y="209.5" width="303" height="48"/>
+                                <rect key="frame" x="36" y="210" width="303" height="48"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="9on-L4-s0s"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="20"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="default">
                                     <mask key="constraints">
@@ -862,23 +862,40 @@ Version 1.0 </string>
                                     </mask>
                                 </variation>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="GA4-BO-2eY">
-                                <rect key="frame" x="156" y="135.5" width="64" height="64"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="64" id="N0K-8R-sys"/>
-                                    <constraint firstAttribute="width" constant="64" id="pE2-Kv-hZ6"/>
-                                </constraints>
-                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="SDO-ee-46F">
+                                <rect key="frame" x="163" y="293.5" width="49" height="80"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yHF-0q-YkM" customClass="TWTRLogInButton">
+                                        <rect key="frame" x="1.5" y="0.0" width="46" height="30"/>
+                                        <state key="normal" title="Button">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Dh-YF-CXR">
+                                        <rect key="frame" x="0.0" y="50" width="49" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                        <state key="normal" title="Cancel">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="cancel:" destination="G6B-Kp-BNF" eventType="touchUpInside" id="6bd-8B-Jbb"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
-                        <color key="backgroundColor" red="0.29504310344827589" green="0.13065732758620691" blue="0.63782327586206899" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="DAf-T3-Tbp" secondAttribute="trailing" constant="20" id="1Cu-Cn-P1y"/>
                             <constraint firstItem="DAf-T3-Tbp" firstAttribute="leading" secondItem="XA5-k3-P0y" secondAttribute="leadingMargin" constant="20" id="1EY-M7-X8O"/>
-                            <constraint firstItem="GA4-BO-2eY" firstAttribute="centerX" secondItem="XA5-k3-P0y" secondAttribute="centerX" id="7wa-wq-Rk5"/>
-                            <constraint firstItem="DAf-T3-Tbp" firstAttribute="top" secondItem="GA4-BO-2eY" secondAttribute="bottom" constant="10" id="SQt-z5-Q5w"/>
+                            <constraint firstItem="SDO-ee-46F" firstAttribute="centerX" secondItem="XA5-k3-P0y" secondAttribute="centerX" id="owW-7J-kPQ"/>
                             <constraint firstItem="DAf-T3-Tbp" firstAttribute="centerY" secondItem="XA5-k3-P0y" secondAttribute="centerY" constant="-100" id="pzJ-Lg-1Sb"/>
+                            <constraint firstItem="SDO-ee-46F" firstAttribute="centerY" secondItem="XA5-k3-P0y" secondAttribute="centerY" id="s7A-e2-q8I"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="logInButton" destination="yHF-0q-YkM" id="sS3-he-ml5"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Hu3-dA-3VD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

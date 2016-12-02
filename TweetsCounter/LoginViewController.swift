@@ -10,24 +10,26 @@ import UIKit
 import TwitterKit
 
 public final class LoginViewController: UIViewController {
-        
+
+    @IBOutlet weak var logInButton: TWTRLogInButton!
+    weak var coordinator: LoginCoordinatorDelegate!
+
     override public func viewDidLoad() {
         super.viewDidLoad()
         
-        // Add login button to view
-        let logInButton = TWTRLogInButton { session, error in
+        // Twitter login button initialization
+        logInButton.logInCompletion = { [unowned self] session, error in
             if let e = error {
                 return print(e)
             }
             print(session)
-            self.dismiss(animated: true, completion: nil)
+            self.coordinator.dismiss()
         }
-
-        logInButton.center = self.view.center
-        self.view.addSubview(logInButton)
     }
 
-    public override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
+    // MARK: - IBActions
+
+    @IBAction func cancel(_ sender: UIButton) {
+        coordinator.dismiss()
     }
 }

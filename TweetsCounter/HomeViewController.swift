@@ -20,7 +20,7 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
     let refresher = PullToRefresh()
     
     var dataSource = [User]()
-    weak var delegate: HomeViewControllerDelegate!
+    weak var coordinator: HomeCoordinatorDelegate!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,12 +32,16 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
             self.requestTimeline()
         })
     }
-    
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        let logInViewController = StoryboardScene.Main.twitterLoginViewController()
-        present(logInViewController, animated: true, completion: {
-        })
+
+        // Check if a user is logged in
+        if TwitterSession.isUserLoggedIn() == false {
+            coordinator.presentLogin()
+        } else {
+            
+        }
     }
 
     // MARK: Storyboard Segues
@@ -54,7 +58,7 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
             if let userDetail = segue.destination as? UserDetailViewController, let cell = sender as? UITableViewCell, let indexPath = tableView.indexPath(for: cell) {
                 let selectedUser = dataSource[indexPath.row]
                 userDetail.user = selectedUser
-                delegate.pushDetail(userDetail)
+                coordinator.pushDetail(userDetail)
             }
         }
     }

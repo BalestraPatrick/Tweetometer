@@ -16,16 +16,17 @@ enum TwitterRequestError: Error {
 
 final class TwitterSession {
     
-    var client: TWTRAPIClient?
+    static var client: TWTRAPIClient?
     var user: TWTRUser?
     
     ///  Check the session user ID to see if there is an user logged in.
-    func isUserLoggedIn() throws -> String {
+    static func isUserLoggedIn() -> Bool {
         if let userID = Twitter.sharedInstance().sessionStore.session()?.userID {
             client = TWTRAPIClient(userID: userID)
-            return userID
-        } else {
-            throw TwitterRequestError.notAuthenticated
+            return true
         }
+        return false
     }
+
+    
 }

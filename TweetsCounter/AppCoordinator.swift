@@ -34,5 +34,4 @@ class AppCoordinator: NSObject {
             homeCoordinator.start()
         }
     }
-
 }

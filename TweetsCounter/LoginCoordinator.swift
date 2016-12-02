@@ -6,37 +6,35 @@
 //  Copyright © 2016 Patrick Balestra. All rights reserved.
 //
 
-import Foundation
+import UIKit
+import TwitterKit
 
-protocol LoginViewControllerDelegate: class {
-    func presentSafari(_ url: URL)
-    func openUser(_ user: String)
+protocol LoginCoordinatorDelegate: class {
+    func dismiss()
 }
 
-class LoginCoordinator: LoginViewControllerDelegate {
+final class LoginCoordinator: LoginCoordinatorDelegate {
 
-    let controller: LoginViewController
+    lazy var loginViewController: LoginViewController = {
+        return StoryboardScene.Main.LoginViewController()
+    }()
+
     var childCoordinators = Array<AnyObject>()
-    let linkOpener = LinkOpener()
 
-    init(controller: UserDetailViewController) {
-        self.controller = controller
+    let parent: UIViewController
+
+    init(parent: UIViewController) {
+        self.parent = parent
     }
 
     func start() {
-        controller.delegate = self
+        loginViewController.coordinator = self
+        parent.present(loginViewController, animated: true)
     }
 
-    // MARK: HomeViewControllerDelegate
+    // MARK: LoginCoordinatorDelegate
 
-    func presentSafari(_ url: URL) {
-        let safari = linkOpener.openInSafari(url)
-        controller.present(safari, animated: true, completion: nil)
-    }
-
-    func openUser(_ user: String) {
-        linkOpener.coordinator = self
-        linkOpener.openUser(user)
+    func dismiss() {
+        loginViewController.dismiss(animated: true)
     }
 }
-

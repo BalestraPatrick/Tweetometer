@@ -8,11 +8,12 @@
 
 import UIKit
 
-protocol HomeViewControllerDelegate: class {
+protocol HomeCoordinatorDelegate: class {
     func pushDetail(_ controller: UserDetailViewController)
+    func presentLogin()
 }
 
-class HomeCoordinator: HomeViewControllerDelegate {
+class HomeCoordinator: HomeCoordinatorDelegate {
 
     let controller: HomeViewController
     var childCoordinators = Array<AnyObject>()
@@ -22,14 +23,20 @@ class HomeCoordinator: HomeViewControllerDelegate {
     }
     
     func start() {
-        controller.delegate = self
+        controller.coordinator = self
     }
     
-    // MARK: HomeViewControllerDelegate
+    // MARK: HomeCoordinatorDelegate
     
     func pushDetail(_ controller: UserDetailViewController) {
         let userDetailCoordinator = UserDetailCoordinator(controller: controller)
         childCoordinators.append(userDetailCoordinator)
         userDetailCoordinator.start()
+    }
+
+    func presentLogin() {
+        let loginCoordinator = LoginCoordinator(parent: controller)
+        childCoordinators.append(loginCoordinator)
+        loginCoordinator.start()
     }
 }
