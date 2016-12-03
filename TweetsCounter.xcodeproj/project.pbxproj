@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		6C08DD7FAC987D5764FAF58F /* Pods_TweetsCounterTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC5890ECC3D4BEB0CA8F5752 /* Pods_TweetsCounterTests.framework */; };
 		7AEFD12F657047C2B18E31C7 /* Pods_TweetsCounter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AEFE6C9C9FE0D9D5AB2D24D /* Pods_TweetsCounter.framework */; };
+		AE04479A1DF3040700FEE093 /* NSAttributedString+User.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0447991DF3040700FEE093 /* NSAttributedString+User.swift */; };
 		AE055BA21DF03CE600442A2E /* LoginCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE055BA11DF03CE600442A2E /* LoginCoordinator.swift */; };
 		AE067FFC1C650C09008C325B /* TimelineParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF1F2121C64F10000591E46 /* TimelineParserTests.swift */; };
 		AE07A0D61C5D4AD400514B1C /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE07A0D51C5D4AD400514B1C /* UserTableViewCell.swift */; };
@@ -76,6 +77,7 @@
 		43CA954E008249C141231D6D /* Pods-TweetsCounterTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TweetsCounterTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TweetsCounterTests/Pods-TweetsCounterTests.debug.xcconfig"; sourceTree = "<group>"; };
 		5F64E6DB302CDF9C64FE1348 /* Pods-TweetsCounter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TweetsCounter.release.xcconfig"; path = "Pods/Target Support Files/Pods-TweetsCounter/Pods-TweetsCounter.release.xcconfig"; sourceTree = "<group>"; };
 		8AEFE6C9C9FE0D9D5AB2D24D /* Pods_TweetsCounter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TweetsCounter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AE0447991DF3040700FEE093 /* NSAttributedString+User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSAttributedString+User.swift"; sourceTree = "<group>"; };
 		AE055BA11DF03CE600442A2E /* LoginCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginCoordinator.swift; sourceTree = "<group>"; };
 		AE07A0D51C5D4AD400514B1C /* UserTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
 		AE0C38421BE58815003A858F /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
@@ -223,6 +225,7 @@
 				AE0FA7CC1C0EDC7E00EDB0A1 /* Customizations.swift */,
 				AED0A1F51C5E01BA002D40A4 /* ApplicationStyle.swift */,
 				AEB280941C79FC0C009C64EE /* ViewControllerUtils.swift */,
+				AE0447991DF3040700FEE093 /* NSAttributedString+User.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -642,6 +645,7 @@
 				AEE22BAB1CD72DF1003CA241 /* ProfilePictureImageView.swift in Sources */,
 				AE2F0DC61C93751100F10122 /* AppCoordinator.swift in Sources */,
 				AE35A2F41C52B4A4001E1D88 /* SettingsViewController.swift in Sources */,
+				AE04479A1DF3040700FEE093 /* NSAttributedString+User.swift in Sources */,
 				AE3E81BE1BF8B40600A51804 /* LoginViewController.swift in Sources */,
 				AE277DEE1BD4E6DB004E151C /* AppDelegate.swift in Sources */,
 				AED0A1F61C5E01BA002D40A4 /* ApplicationStyle.swift in Sources */,
@@ -969,7 +973,7 @@
 					"$(PROJECT_DIR)/build/Debug-iphoneos",
 				);
 				INFOPLIST_FILE = TweetsCounterTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.patrickbalestra.TweetsCounterTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0.1;
@@ -987,7 +991,7 @@
 					"$(PROJECT_DIR)/build/Debug-iphoneos",
 				);
 				INFOPLIST_FILE = TweetsCounterTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.patrickbalestra.TweetsCounterTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0.1;

@@ -11,10 +11,9 @@ import Foundation
 struct Timeline {
     
     /// Users sorted by the highest number of tweets
-    var users: [User]
-    
-    init(users: [User]) {
-        self.users = users
-    }
+    var users = [User]()
+
+    /// 
+    var maxID: String? = nil
 }
 

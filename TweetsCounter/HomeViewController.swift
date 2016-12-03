@@ -15,6 +15,7 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var subtitleLabel: UILabel!
     @IBOutlet weak var profilePictureItem: ProfilePictureButtonItem!
+    @IBOutlet weak var emptyStateLabel: UILabel!
 
     lazy var session = TwitterSession()
 //    let settingsManager = SettingsManager.sharedManager
@@ -22,9 +23,10 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
     
     var dataSource = [User]() {
         didSet {
+            emptyStateLabel.isHidden = dataSource.count != 0
             tableView.reloadData()
             UIApplication.shared.isNetworkActivityIndicatorVisible = false
-//            tableView.endRefreshing(at: Position.top)
+            tableView.endRefreshing(at: Position.top)
         }
     }
     weak var coordinator: HomeCoordinatorDelegate!
@@ -54,7 +56,7 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
     }
 
     // MARK: Storyboard Segues
-    
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == StoryboardSegue.Main.MenuPopOver.rawValue {
             let menuPopOver = segue.destination as! MenuPopOverViewController
@@ -84,9 +86,12 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
 
     func requestTimeline() {
         // Request tweets.
-        session.getTimeline { users, error in
-            self.dataSource = users
+        session.getTimeline(before: "777508788022763520") { timeline, error in
+            if let timeline = timeline {
+                self.dataSource = timeline.users
+            }
         }
+
     }
 
     // MARK: UITableViewDataSource

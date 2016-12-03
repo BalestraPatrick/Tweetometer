@@ -20,6 +20,7 @@ enum TwitterError: Error {
 final class TwitterSession {
     
     private var client: TWTRAPIClient?
+    private var timelineParser = TimelineParser()
 
     init() {
         if let userID = Twitter.sharedInstance().sessionStore.session()?.userID {
@@ -41,28 +42,46 @@ final class TwitterSession {
         }
     }
 
-    func getTimeline(completion: @escaping ([User], TwitterError?) -> ()) {
-        guard let client = client else { return completion([], .notAuthenticated) }
+//    func startStreamingTweets(completion: @escaping ([User], TwitterError?) -> Void) {
+//        var maxID: String? = nil
+//        let queue = OperationQueue()
+//
+//
+//        let request = BlockOperation {
+//            print("Requesting tweets: \(maxID)")
+//            self.getTimeline(before: maxID) { tweets, error in
+//                guard error == nil else { return completion([], error) }
+//                self.timelineParser = TimelineParser(jsonTweets: tweets)
+//                if let timeline = self.timelineParser?.timeline {
+//                    // Do something with users
+//                    maxID = timeline.maxID
+//                    print("Received new tweets: \(maxID)")
+//                    queue.addOperation(request)
+//                }
+//            }
+//        }
+//        queue.addOperation(request)
+//
+//    }
+
+    func getTimeline(before maxID: String?, completion: @escaping (Timeline?, TwitterError?) -> Void) {
+        guard let client = client else { return completion(nil, .notAuthenticated) }
         let url = "https://api.twitter.com/1.1/statuses/home_timeline.json"
         var parameters = ["count" : String(describing: 200), "include_entities" : "false", "exclude_replies" : "false"]
-//        if let beforeID = beforeID {
-//            parameters["beforeID"] = beforeID
-//        }
+        if let maxID = maxID {
+            parameters["max_id"] = maxID
+        }
 
         let request = client.urlRequest(withMethod: "GET", url: url, parameters: parameters, error: nil)
         client.sendTwitterRequest(request) { response, data, connectionError in
-            guard let data = data else { return completion([], .invalidResponse) }
-
+            guard let data = data else { return completion(nil, .invalidResponse) }
             do {
                 let tweets: Any = try JSONSerialization.jsonObject(with: data, options: .allowFragments)
-                guard let tweetsArray = tweets as? Array<AnyObject> else { fatalError("Could not downcast to array") }
-                let parser = TimelineParser(jsonTweets: tweetsArray)
-                if let users = parser.timeline?.users {
-                    return completion(users, nil)
-                }
-                return completion([], .failedAnalysis)
+                guard let timeline = tweets as? Array<AnyObject> else { return completion(nil, .invalidResponse) }
+                self.timelineParser.analyze(timeline)
+                return completion(self.timelineParser.timeline, nil)
             } catch {
-                return completion([], .invalidResponse)
+                return completion(nil, .invalidResponse)
             }
         }
     }

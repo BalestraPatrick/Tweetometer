@@ -19,7 +19,7 @@ final class UserTableViewCell: UITableViewCell {
 
     var index = 0 {
         didSet {
-            backgroundColor = index % 2 == 0 ? UIColor(white: 1.0, alpha: 0.2) : UIColor(white: 1.0, alpha: 0.1)
+            backgroundColor = index % 2 == 0 ? UIColor.white : UIColor(white: 0.97, alpha: 1.0)
         }
     }
     
@@ -37,52 +37,21 @@ final class UserTableViewCell: UITableViewCell {
     
     var numberOfFollowers: Int = 0 {
         didSet {
-            let numberAttributes = [NSForegroundColorAttributeName : UIColor.black,
-                                    NSFontAttributeName : UIFont.systemFont(ofSize: 15, weight: UIFontWeightLight)]
-            let attributedString = NSMutableAttributedString(string: String(numberOfFollowers), attributes: numberAttributes)
-            let followersAttributes = [NSForegroundColorAttributeName : UIColor.black,
-                                       NSFontAttributeName : UIFont.systemFont(ofSize: 11, weight: UIFontWeightThin)]
-            let followersWord = NSAttributedString(string: " Followers", attributes: followersAttributes)
-            attributedString.append(followersWord)
-            followersLabel.attributedText = attributedString
+            followersLabel.attributedText = NSAttributedString.followersAttributes(with: numberOfFollowers)
         }
     }
     
     var numberOfFollowing: Int = 0 {
         didSet {
-            let numberAttributes = [NSForegroundColorAttributeName : UIColor.black,
-                                    NSFontAttributeName : UIFont.systemFont(ofSize: 15, weight: UIFontWeightLight)]
-            let attributedString = NSMutableAttributedString(string: String(numberOfFollowing), attributes: numberAttributes)
-            let followersAttributes = [NSForegroundColorAttributeName : UIColor.black,
-                                       NSFontAttributeName : UIFont.systemFont(ofSize: 11, weight: UIFontWeightThin)]
-            let followersWord = NSAttributedString(string: " Following", attributes: followersAttributes)
-            attributedString.append(followersWord)
-            followingLabel.attributedText = attributedString
+            followingLabel.attributedText = NSAttributedString.followingAttributes(with: numberOfFollowing)
         }
     }
     
     var numberOfTweets: Int = 0 {
         didSet {
-            let numberAttributes = [NSForegroundColorAttributeName : UIColor.black,
-                                    NSFontAttributeName : UIFont.systemFont(ofSize: 20, weight: UIFontWeightLight)]
-            let attributedString = NSMutableAttributedString(string: String(numberOfTweets), attributes: numberAttributes)
-            let followersAttributes = [NSForegroundColorAttributeName : UIColor.black,
-                                       NSFontAttributeName : UIFont.systemFont(ofSize: 15, weight: UIFontWeightThin)]
-            let word = numberOfTweets > 1 ? " Tweets" : " Tweet"
-            let followersWord = NSAttributedString(string: word, attributes: followersAttributes)
-            attributedString.append(followersWord)
-            numberOfTweetsLabel.attributedText = attributedString
+            numberOfTweetsLabel.attributedText = NSAttributedString.tweetsAttributes(with: numberOfTweets)
         }
     }
-    
-//    var downloadableImage: Observable<DownloadableImage>? {
-//        didSet {
-//            self.downloadableImage?
-//                .asDriver(onErrorJustReturn: DownloadableImage.offlinePlaceholder)
-//                .drive(profilePictureImageView.rxex_downloadableImageAnimated(kCATransitionFade))
-//                .addDisposableTo(rx_disposeBag)
-//        }
-//    }
 
     // MARK: UITableViewCell Lifecycle
     
@@ -113,8 +82,8 @@ final class UserTableViewCell: UITableViewCell {
         numberOfFollowers = user.followersCount
         numberOfFollowing = user.followingCount
         numberOfTweets = user.tweets?.count ?? 0
-//        downloadableImage = imageService.imageFromURL(user.profileImageURL! as NSURL) ?? Observable.empty()
+        profilePictureImageView.af_setImage(withURL: user.profileImageURL!)
         index = indexPath.row
     }
-    
+
 }

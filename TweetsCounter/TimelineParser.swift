@@ -15,26 +15,17 @@ enum JSONError: Error {
 
 public final class TimelineParser {
     
-    typealias JSONTweets = [AnyObject]
+    typealias JSONArray = [AnyObject]
     
     /// Final timeline object passed to our view model
-    var timeline: Timeline?
-    
-    /// Initializers receiving the JSON array of tweets.
-    ///
-    /// - parameter jsonTweets: Array of JSON tweets.
-    ///
-    /// - returns: A class instance.
-    init(jsonTweets: JSONTweets) {
-        do {
-            let tweets = try parseTweets(jsonTweets)
-            let users = parseUsersFromTweets(tweets)
-            timeline = buildTimelineFromTweets(tweets, users: users)
-        } catch {
-            print("Failed unwrapping: \(jsonTweets)")
-        }
+    var timeline = Timeline()
+
+    func analyze(_ timeline: JSONArray) {
+        let tweets = parse(tweets: timeline)
+        let users = parse(usersFromTweets: tweets)
+        updateTimeline(tweets: tweets, users: users)
     }
-    
+
     /// Parse JSON array of Tweets to decode them to Tweet objects.
     ///
     /// - parameter jsonTweets: Array of JSON tweets.
@@ -42,7 +33,7 @@ public final class TimelineParser {
     /// - throws: Error if JSON parsing fails.
     //
     /// - returns: Array of Tweet objects.
-    fileprivate func parseTweets(_ jsonTweets: JSONTweets) throws -> [Tweet] {
+    fileprivate func parse(tweets jsonTweets: JSONArray) -> [Tweet] {
         var tweets = [Tweet]()
         // Parse JSON tweets to Tweet objects
         for tweet in jsonTweets {
@@ -52,7 +43,6 @@ public final class TimelineParser {
                     tweets.append(tweet)
                 } catch {
                     print("Error in unboxing tweet: \(tweet) with error: \(error)")
-                    throw JSONError.unknownError
                 }
             }
         }
@@ -64,7 +54,7 @@ public final class TimelineParser {
     /// - parameter tweets: All the received tweets.
     ///
     /// - returns: Array containing the authors of tweets.
-    fileprivate func parseUsersFromTweets(_ tweets: [Tweet]) -> [User] {
+    fileprivate func parse(usersFromTweets tweets: [Tweet]) -> [User] {
         var users = [User]()
         // Build array of tweet authors
         for tweet in tweets {
@@ -81,7 +71,7 @@ public final class TimelineParser {
     /// - parameter users:  Array containing users.
     ///
     /// - returns: A Timeline object containing an array of users.
-    fileprivate func buildTimelineFromTweets(_ tweets: [Tweet], users: [User]) -> Timeline {
+    fileprivate func updateTimeline(tweets: [Tweet], users: [User]) {
         // Build list of authors with array of tweets in each user
         var orderedUsers = users.flatMap { (user) -> User? in
             var user = user
@@ -99,8 +89,9 @@ public final class TimelineParser {
         orderedUsers.sort { user1, user2 in
             return user1.tweets!.count > user2.tweets!.count
         }
-        
-        let timeline = Timeline(users: orderedUsers)
-        return timeline
+
+        // TODO: merge users in subsequent requests with already analyzed tweets
+        timeline.users.append(contentsOf: orderedUsers)
+        timeline.maxID = tweets.last!.tweetID
     }
 }
