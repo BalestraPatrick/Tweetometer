@@ -20,7 +20,7 @@ struct User: Equatable, Hashable, Unboxable {
     var name: String
     var description: String
     var profileImageURL: URL?
-    var tweets: [Tweet]?
+    var tweets = [Tweet]()
     var location: String
     var displayURL: String
     

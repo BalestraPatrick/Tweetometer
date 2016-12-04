@@ -81,7 +81,7 @@ final class UserTableViewCell: UITableViewCell {
         username = user.screenName
         numberOfFollowers = user.followersCount
         numberOfFollowing = user.followingCount
-        numberOfTweets = user.tweets?.count ?? 0
+        numberOfTweets = user.tweets.count
         profilePictureImageView.af_setImage(withURL: user.profileImageURL!)
         index = indexPath.row
     }

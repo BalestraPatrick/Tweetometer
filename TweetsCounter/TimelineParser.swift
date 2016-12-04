@@ -87,11 +87,10 @@ public final class TimelineParser {
         
         // Sort users by highest number of tweets
         orderedUsers.sort { user1, user2 in
-            return user1.tweets!.count > user2.tweets!.count
+            return user1.tweets.count > user2.tweets.count
         }
 
-        // TODO: merge users in subsequent requests with already analyzed tweets
-        timeline.users.append(contentsOf: orderedUsers)
+        timeline.merge(newUsers: orderedUsers)
         timeline.maxID = tweets.last!.tweetID
     }
 }

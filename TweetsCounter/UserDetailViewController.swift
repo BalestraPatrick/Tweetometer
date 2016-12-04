@@ -38,7 +38,7 @@ final class UserDetailViewController: UIViewController, UITableViewDelegate, UIT
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0: return 1
-        case 1: return user?.tweets?.count ?? 0
+        case 1: return user?.tweets.count ?? 0
         default: return 0
         }
     }
@@ -53,8 +53,8 @@ final class UserDetailViewController: UIViewController, UITableViewDelegate, UIT
             return cell
         default:
             let cell = tableView.dequeueReusableCell(withIdentifier: TableViewCell.TweetCellIdentifier.rawValue, for: indexPath) as! TweetTableViewCell
-            if let user = user, let tweets = user.tweets {
-                let tweet = tweets[indexPath.row]
+            if let user = user {
+                let tweet = user.tweets[indexPath.row]
                 cell.configure(tweet, indexPath: indexPath)
                 cell.delegate = delegate
             }

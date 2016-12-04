@@ -14,13 +14,18 @@ enum TwitterError: Error {
     case notAuthenticated
     case unknown
     case invalidResponse
+    case rateLimitExceeded
     case failedAnalysis
 }
 
 final class TwitterSession {
+
+    typealias TimelineUpdate = (Timeline?, TwitterError?) -> Void
     
     private var client: TWTRAPIClient?
     private var timelineParser = TimelineParser()
+    private var timelineUpdate: TimelineUpdate?
+    private var timelineRequestsCount = 0
 
     init() {
         if let userID = Twitter.sharedInstance().sessionStore.session()?.userID {
@@ -42,29 +47,8 @@ final class TwitterSession {
         }
     }
 
-//    func startStreamingTweets(completion: @escaping ([User], TwitterError?) -> Void) {
-//        var maxID: String? = nil
-//        let queue = OperationQueue()
-//
-//
-//        let request = BlockOperation {
-//            print("Requesting tweets: \(maxID)")
-//            self.getTimeline(before: maxID) { tweets, error in
-//                guard error == nil else { return completion([], error) }
-//                self.timelineParser = TimelineParser(jsonTweets: tweets)
-//                if let timeline = self.timelineParser?.timeline {
-//                    // Do something with users
-//                    maxID = timeline.maxID
-//                    print("Received new tweets: \(maxID)")
-//                    queue.addOperation(request)
-//                }
-//            }
-//        }
-//        queue.addOperation(request)
-//
-//    }
-
-    func getTimeline(before maxID: String?, completion: @escaping (Timeline?, TwitterError?) -> Void) {
+    func getTimeline(before maxID: String?, completion: @escaping TimelineUpdate) {
+        timelineUpdate = completion
         guard let client = client else { return completion(nil, .notAuthenticated) }
         let url = "https://api.twitter.com/1.1/statuses/home_timeline.json"
         var parameters = ["count" : String(describing: 200), "include_entities" : "false", "exclude_replies" : "false"]
@@ -73,13 +57,26 @@ final class TwitterSession {
         }
 
         let request = client.urlRequest(withMethod: "GET", url: url, parameters: parameters, error: nil)
-        client.sendTwitterRequest(request) { response, data, connectionError in
+        client.sendTwitterRequest(request) { response, data, error in
+            if let error = error as? NSError {
+                switch error.code {
+                case 88: return completion(nil, .rateLimitExceeded)
+                default: return completion(nil, .invalidResponse)
+                }
+            }
             guard let data = data else { return completion(nil, .invalidResponse) }
             do {
                 let tweets: Any = try JSONSerialization.jsonObject(with: data, options: .allowFragments)
                 guard let timeline = tweets as? Array<AnyObject> else { return completion(nil, .invalidResponse) }
                 self.timelineParser.analyze(timeline)
-                return completion(self.timelineParser.timeline, nil)
+                self.timelineRequestsCount += 1
+                if let update = self.timelineUpdate {
+                    update(self.timelineParser.timeline, nil)
+                    if self.timelineRequestsCount >= 4 {
+                        return
+                    }
+                    self.getTimeline(before: self.timelineParser.timeline.maxID, completion: update)
+                }
             } catch {
                 return completion(nil, .invalidResponse)
             }

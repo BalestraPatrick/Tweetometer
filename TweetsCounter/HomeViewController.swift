@@ -42,6 +42,10 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
         })
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+    }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
@@ -89,6 +93,13 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
         session.getTimeline(before: "777508788022763520") { timeline, error in
             if let timeline = timeline {
                 self.dataSource = timeline.users
+            } else if let error = error {
+                switch error {
+                case .rateLimitExceeded:
+                    self.emptyStateLabel.text = "Rate Limit Exceeded ❌"
+                default:
+                    break
+                }
             }
         }
 
