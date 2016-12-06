@@ -16,13 +16,16 @@ target 'TweetsCounter' do
  pod 'Crashlytics'
  pod 'TwitterKit'
  pod 'TwitterCore'
+ pod 'RealmSwift'
     
  pod 'Alamofire'
  pod 'AlamofireImage'
  pod 'Unbox'
  pod 'ValueStepper'
  pod 'SwiftyUserDefaults'
+ # Used to tap hashtags and links
  pod 'ActiveLabel'
+ # Custom pull to refresh component
  pod 'PullToRefresher'
 
  target 'TweetsCounterTests' do

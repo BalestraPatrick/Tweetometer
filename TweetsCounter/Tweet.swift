@@ -7,8 +7,12 @@
 //
 
 import Foundation
-import TwitterKit
 import Unbox
+import RealmSwift
+
+//class Tweet: Object {
+//
+//}
 
 struct Tweet: Equatable, Hashable, Unboxable {
     
@@ -36,11 +40,13 @@ struct Tweet: Equatable, Hashable, Unboxable {
     }
 
     // MARK: Equatable
+
     static func == (lhs: Tweet, rhs: Tweet) -> Bool {
         return lhs.tweetID == rhs.tweetID
     }
 
     // MARK: Hashable
+
     var hashValue: Int {
         get {
             return tweetID.hashValue
