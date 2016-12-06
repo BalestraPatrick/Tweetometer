@@ -67,8 +67,12 @@ final class TwitterSession {
             guard let data = data else { return completion(nil, .invalidResponse) }
             do {
                 let tweets: Any = try JSONSerialization.jsonObject(with: data, options: .allowFragments)
-                guard let timeline = tweets as? Array<AnyObject> else { return completion(nil, .invalidResponse) }
-                self.timelineParser.analyze(timeline)
+                guard let timeline = tweets as? JSONArray else { return completion(nil, .invalidResponse) }
+
+                self.timelineParser.parse(timeline)
+//                self.timelineParser.analyze(timeline)
+                
+
                 self.timelineRequestsCount += 1
                 if let update = self.timelineUpdate {
                     update(self.timelineParser.timeline, nil)

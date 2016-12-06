@@ -814,7 +814,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = B8D941EE5F74C95636A57DB0 /* Pods-TweetsCounter.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = TweetsCounter/TweetsCounter.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -891,7 +891,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5F64E6DB302CDF9C64FE1348 /* Pods-TweetsCounter.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = TweetsCounter/TweetsCounter.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";

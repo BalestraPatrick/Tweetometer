@@ -8,6 +8,7 @@
 
 import UIKit
 import PullToRefresh
+import RealmSwift
 
 final class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -18,9 +19,11 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
     @IBOutlet weak var emptyStateLabel: UILabel!
 
     lazy var session = TwitterSession()
+    var notificationToken: NotificationToken?
 //    let settingsManager = SettingsManager.sharedManager
     let refresher = PullToRefresh()
-    
+
+    var results: Results<Tweet>?
     var dataSource = [User]() {
         didSet {
             emptyStateLabel.isHidden = dataSource.count != 0
@@ -45,9 +48,9 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-    }
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+        let realm = try! Realm()
+        results = realm.objects(Tweet.self)
+        notificationToken = results?.addNotificationBlock(tableView.applyChanges)
 
         // Check if a user is logged in
         if session.isUserLoggedIn() == false {
@@ -57,6 +60,10 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
             requestProfilePicture()
             requestTimeline()
         }
+    }
+
+    deinit {
+        notificationToken?.stop()
     }
 
     // MARK: Storyboard Segues
@@ -90,7 +97,7 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
 
     func requestTimeline() {
         // Request tweets.
-        session.getTimeline(before: "777508788022763520") { timeline, error in
+        session.getTimeline(before: nil) { timeline, error in
             if let timeline = timeline {
                 self.dataSource = timeline.users
             } else if let error = error {
@@ -112,15 +119,32 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return dataSource.count
+        return results?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: TableViewCell.UserCellIdentifier.rawValue) as? UserTableViewCell else {
             fatalError("Could not create cell with identifier \(TableViewCell.UserCellIdentifier.rawValue) in UITableView: \(tableView)")
         }
-        let user = dataSource[indexPath.row]
-        cell.configure(user, indexPath: indexPath)
+//        let user = dataSource[indexPath.row]
+//        cell.configure(user, indexPath: indexPath)
         return cell
+    }
+}
+
+extension UITableView {
+
+    func applyChanges<T>(changes: RealmCollectionChange<T>) {
+        switch changes {
+        case .initial: reloadData()
+        case .update(_, let deletions, let insertions, let updates):
+            let fromRow = { IndexPath(row: $0, section: 0) }
+            beginUpdates()
+            insertRows(at: insertions.map(fromRow), with: .automatic)
+            reloadRows(at: updates.map(fromRow), with: .none)
+            deleteRows(at: deletions.map(fromRow), with: .automatic)
+            endUpdates()
+        default: break
+        }
     }
 }

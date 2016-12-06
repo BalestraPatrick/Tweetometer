@@ -18,7 +18,7 @@ PODS:
     - Fabric
   - TwitterKit (2.6.1):
     - TwitterCore (= 2.6.1)
-  - Unbox (2.2.0)
+  - Unbox (2.3.0)
   - ValueStepper (1.0)
 
 DEPENDENCIES:
@@ -53,9 +53,9 @@ SPEC CHECKSUMS:
   SwiftyUserDefaults: 0f1d45fc3aafb9064dac661e367f8f83fe21a4b4
   TwitterCore: a8aea8bdaf2abd6572c8f264707a4ea4dc2d0eab
   TwitterKit: d38c08d31dfd4ba604f95deca6cf8e174b5cbd96
-  Unbox: 03d7128ce429987986bc08d967e9d5e0da158946
+  Unbox: 5ba1966ebe99b5d568d432626323331eedd33458
   ValueStepper: a1a275491e3a1ab6fe80a589ce04781d4a795fb3
 
-PODFILE CHECKSUM: 6745c68b1369237ec6147780f5c67e1ca805f743
+PODFILE CHECKSUM: e0352d28edd504e72d944100d68353b1295d4702
 
 COCOAPODS: 1.1.1
