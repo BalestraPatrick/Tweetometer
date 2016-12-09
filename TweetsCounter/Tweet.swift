@@ -53,7 +53,6 @@ class Tweet: Object, Unboxable {
         let user = realm.object(ofType: User.self, forPrimaryKey: userId)
         if user == nil {
             let newUser: User = try unboxer.unbox(key: "user")
-            print("Just created a new user with id: \(userId)")
             try realm.write {
                 realm.add(newUser)
             }

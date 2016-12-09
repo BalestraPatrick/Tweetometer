@@ -24,12 +24,8 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
     let refresher = PullToRefresh()
 
     var users: Results<User>?
-    var dataSource = [User]() {
-        didSet {
 //            emptyStateLabel.isHidden = dataSource.count != 0
-            UIApplication.shared.isNetworkActivityIndicatorVisible = false
-        }
-    }
+//            UIApplication.shared.isNetworkActivityIndicatorVisible = false
     weak var coordinator: HomeCoordinatorDelegate!
     
     override func viewDidLoad() {

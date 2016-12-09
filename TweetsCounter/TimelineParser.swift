@@ -23,10 +23,6 @@ public final class TimelineParser {
     init() {
         do {
             let realm = try Realm()
-            // Start fresh
-//            try realm.write {
-//                realm.delete(realm.objects(User.self))
-//            }
             tweets = realm.objects(Tweet.self)
         } catch {
             print(error)
@@ -59,6 +55,7 @@ public final class TimelineParser {
         for tweet in tweets {
             let user = realm.object(ofType: User.self, forPrimaryKey: tweet.userId)
             if let user = user {
+                print(user.tweets.count)
                 try realm.write {
                     user.tweets.append(tweet)
                 }

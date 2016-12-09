@@ -77,7 +77,6 @@ final class UserTableViewCell: UITableViewCell {
     }
     
     func configure(_ user: User, indexPath: IndexPath) {
-        print(user)
         screenName = user.name
         username = user.screenName
         numberOfFollowers = user.followersCount

@@ -22,7 +22,6 @@ public final class LoginViewController: UIViewController {
             if let e = error {
                 return print(e)
             }
-            print(session)
             self.coordinator.dismiss()
         }
     }
