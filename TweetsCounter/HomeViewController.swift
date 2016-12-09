@@ -23,13 +23,11 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
 //    let settingsManager = SettingsManager.sharedManager
     let refresher = PullToRefresh()
 
-    var results: Results<Tweet>?
+    var users: Results<User>?
     var dataSource = [User]() {
         didSet {
-            emptyStateLabel.isHidden = dataSource.count != 0
-            tableView.reloadData()
+//            emptyStateLabel.isHidden = dataSource.count != 0
             UIApplication.shared.isNetworkActivityIndicatorVisible = false
-            tableView.endRefreshing(at: Position.top)
         }
     }
     weak var coordinator: HomeCoordinatorDelegate!
@@ -49,8 +47,8 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
         super.viewWillAppear(animated)
 
         let realm = try! Realm()
-        results = realm.objects(Tweet.self)
-        notificationToken = results?.addNotificationBlock(tableView.applyChanges)
+        users = realm.objects(User.self).sorted(byProperty: "tweetsCount")
+        notificationToken = users?.addNotificationBlock(tableView.applyChanges)
 
         // Check if a user is logged in
         if session.isUserLoggedIn() == false {
@@ -77,8 +75,8 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
             menuPopOver.popoverPresentationController!.backgroundColor = UIColor().menuDarkBlueColor()
             menuPopOver.homeViewController = self
         } else if segue.identifier == StoryboardSegue.Main.UserDetail.rawValue {
-            if let userDetail = segue.destination as? UserDetailViewController, let cell = sender as? UITableViewCell, let indexPath = tableView.indexPath(for: cell) {
-                let selectedUser = dataSource[indexPath.row]
+            if let userDetail = segue.destination as? UserDetailViewController, let cell = sender as? UITableViewCell, let indexPath = tableView.indexPath(for: cell), let users = users {
+                let selectedUser = users[indexPath.row]
                 userDetail.user = selectedUser
                 coordinator.pushDetail(userDetail)
             }
@@ -97,19 +95,16 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
 
     func requestTimeline() {
         // Request tweets.
-        session.getTimeline(before: nil) { timeline, error in
-            if let timeline = timeline {
-                self.dataSource = timeline.users
-            } else if let error = error {
+        session.getTimeline(before: nil) { error in
+            if let error = error {
                 switch error {
                 case .rateLimitExceeded:
-                    self.emptyStateLabel.text = "Rate Limit Exceeded ❌"
+                    self.presentAlert(title: "Rate Limit Exceeded ❌")
                 default:
                     break
                 }
             }
         }
-
     }
 
     // MARK: UITableViewDataSource
@@ -119,15 +114,15 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return results?.count ?? 0
+        return users?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: TableViewCell.UserCellIdentifier.rawValue) as? UserTableViewCell else {
+        guard let users = users, let cell = tableView.dequeueReusableCell(withIdentifier: TableViewCell.UserCellIdentifier.rawValue) as? UserTableViewCell else {
             fatalError("Could not create cell with identifier \(TableViewCell.UserCellIdentifier.rawValue) in UITableView: \(tableView)")
         }
-//        let user = dataSource[indexPath.row]
-//        cell.configure(user, indexPath: indexPath)
+        let user = users[indexPath.row]
+        cell.configure(user, indexPath: indexPath)
         return cell
     }
 }
@@ -135,6 +130,7 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
 extension UITableView {
 
     func applyChanges<T>(changes: RealmCollectionChange<T>) {
+        endRefreshing(at: Position.top)
         switch changes {
         case .initial: reloadData()
         case .update(_, let deletions, let insertions, let updates):
@@ -146,5 +142,14 @@ extension UITableView {
             endUpdates()
         default: break
         }
+    }
+}
+
+extension UIViewController {
+
+    func presentAlert(title: String, message: String? = nil) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default))
+        present(alert, animated: true)
     }
 }

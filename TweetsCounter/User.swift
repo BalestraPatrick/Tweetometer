@@ -8,48 +8,56 @@
 
 import Foundation
 import Unbox
-import TwitterKit
+import RealmSwift
 
-struct User: Equatable, Hashable, Unboxable {
-    
-    var userID: String
-    var followersCount: Int
-    var followingCount: Int
-    var statusesCount: Int
-    var screenName: String
-    var name: String
-    var description: String
-    var profileImageURL: URL?
-    var tweets = [Tweet]()
-    var location: String
-    var displayURL: String
-    
-    var hashValue: Int {
-        get {
-            return userID.hashValue
+class User: Object, Unboxable {
+
+    dynamic var userId: String = ""
+    dynamic var followersCount: Int = 0
+    dynamic var followingCount: Int = 0
+    dynamic var statusesCount: Int = 0
+    dynamic var screenName: String = ""
+    dynamic var name: String = ""
+    dynamic var userDescription: String = ""
+    dynamic var profileImageURL: String? = nil
+    dynamic var tweetsCount: Int = 0
+    dynamic var location: String = ""
+    dynamic var displayURL: String = ""
+    var tweets = List<Tweet>()
+
+    override static func primaryKey() -> String? {
+        return "userId"
+    }
+
+    override static func indexedProperties() -> [String] {
+        return ["userId"]
+    }
+
+    override static func ignoredProperties() -> [String] {
+        return ["tweets"]
+    }
+
+    convenience required init(unboxer: Unboxer) {
+        self.init()
+        do {
+            userId = try unboxer.unbox(key: "id_str")
+            followersCount = try unboxer.unbox(key: "followers_count")
+            followingCount = try unboxer.unbox(key: "friends_count")
+            statusesCount = try unboxer.unbox(key: "statuses_count")
+            screenName = try unboxer.unbox(key: "screen_name")
+            name = try unboxer.unbox(key: "name")
+            userDescription = try unboxer.unbox(key: "description")
+            location = try unboxer.unbox(key: "location")
+            displayURL = try unboxer.unbox(keyPath: "entities.url.urls.0.expanded_url")
+            profileImageURL = convertToBiggerFormat(try! unboxer.unbox(key: "profile_image_url_https"))
+            tweetsCount = tweets.count
+        } catch {
+            print(error)
         }
     }
-    
-    init(unboxer: Unboxer) {
-        userID = try! unboxer.unbox(key: "id_str")
-        followersCount = try! unboxer.unbox(key: "followers_count")
-        followingCount = try! unboxer.unbox(key: "friends_count")
-        statusesCount = try! unboxer.unbox(key: "statuses_count")
-        screenName = try! unboxer.unbox(key: "screen_name")
-        name = try! unboxer.unbox(key: "name")
-        description = try! unboxer.unbox(key: "description")
-        location = try! unboxer.unbox(key: "location")
-        displayURL = try! unboxer.unbox(keyPath: "entities.url.urls.0.expanded_url")
-        profileImageURL = convertMediumToBiggerProfilePicture(try! unboxer.unbox(key: "profile_image_url_https"))
-    }
-    
-    fileprivate func convertMediumToBiggerProfilePicture(_ URL: String) -> Foundation.URL {
-        let biggerURLString = URL.replacingOccurrences(of: "normal", with: "bigger")
-        let biggerURL = Foundation.URL(string: biggerURLString)!
+
+    private func convertToBiggerFormat(_ URL: String) -> String {
+        let biggerURL = URL.replacingOccurrences(of: "normal", with: "bigger")
         return biggerURL
     }
-}
-
-func == (lhs: User, rhs: User) -> Bool {
-    return lhs.userID == rhs.userID
 }

@@ -32,44 +32,31 @@ class Tweet: Object, Unboxable {
 
     convenience required init(unboxer: Unboxer) {
         self.init()
-        tweetId = try! unboxer.unbox(key: "id_str")
-        createdAt = try! unboxer.unbox(key: "created_at", formatter: DateFormatter.twitterDateFormatter())
-        text = try! unboxer.unbox(key: "text")
-        language = try! unboxer.unbox(key: "lang")
-        retweed = try! unboxer.unbox(key: "retweeted")
-        retweetsCount = try! unboxer.unbox(key: "retweet_count")
-        likesCount = try! unboxer.unbox(key: "favorite_count")
-        //        let id: Int = try! unboxer.unbox(keyPath: "user.id")
-        //            author = unboxer.unbox(key: "user")
-        //            screenName = author?.screenName ?? ""
+        do {
+            userId = try unboxer.unbox(keyPath: "user.id")
+            tweetId = try unboxer.unbox(key: "id_str")
+            createdAt = try unboxer.unbox(key: "created_at", formatter: DateFormatter.twitterDateFormatter())
+            text = try unboxer.unbox(key: "text")
+            language = try unboxer.unbox(key: "lang")
+            retweed = try unboxer.unbox(key: "retweeted")
+            retweetsCount = try unboxer.unbox(key: "retweet_count")
+            likesCount = try unboxer.unbox(key: "favorite_count")
+            retweed = try unboxer.unbox(key: "retweeted")
+            try createUser(unboxer: unboxer)
+        } catch {
+            print(error)
+        }
     }
 
+    private func createUser(unboxer: Unboxer) throws {
+        let realm = try Realm()
+        let user = realm.object(ofType: User.self, forPrimaryKey: userId)
+        if user == nil {
+            let newUser: User = try unboxer.unbox(key: "user")
+            print("Just created a new user with id: \(userId)")
+            try realm.write {
+                realm.add(newUser)
+            }
+        }
+    }
 }
-
-//struct Tweet: Equatable, Hashable, Unboxable {
-//    
-//    let tweetID: String
-//    let createdAt: Date
-//    let text: String
-//    let language: String
-//    let screenName: String
-//    let retweetsCount: Int
-//    let likesCount: Int
-//    let retweeted: Bool
-//    let author: User?
-//    
-//
-//    // MARK: Equatable
-//
-//    static func == (lhs: Tweet, rhs: Tweet) -> Bool {
-//        return lhs.tweetID == rhs.tweetID
-//    }
-//
-//    // MARK: Hashable
-//
-//    var hashValue: Int {
-//        get {
-//            return tweetID.hashValue
-//        }
-//    }
-//}

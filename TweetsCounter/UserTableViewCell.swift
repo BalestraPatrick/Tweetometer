@@ -77,13 +77,16 @@ final class UserTableViewCell: UITableViewCell {
     }
     
     func configure(_ user: User, indexPath: IndexPath) {
+        print(user)
         screenName = user.name
         username = user.screenName
         numberOfFollowers = user.followersCount
         numberOfFollowing = user.followingCount
         numberOfTweets = user.tweets.count
-        profilePictureImageView.af_setImage(withURL: user.profileImageURL!)
         index = indexPath.row
+        if let stringURL = user.profileImageURL {
+            profilePictureImageView.af_setImage(withURL: URL(string: stringURL)!)
+        }
     }
 
 }
