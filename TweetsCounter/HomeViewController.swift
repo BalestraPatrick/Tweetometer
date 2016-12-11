@@ -18,14 +18,12 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
     @IBOutlet weak var profilePictureItem: ProfilePictureButtonItem!
     @IBOutlet weak var emptyStateLabel: UILabel!
 
-    lazy var session = TwitterSession()
-    var notificationToken: NotificationToken?
+    fileprivate lazy var session = TwitterSession()
+    fileprivate var notificationToken: NotificationToken?
 //    let settingsManager = SettingsManager.sharedManager
-    let refresher = PullToRefresh()
+    fileprivate let refresher = PullToRefresh()
 
     var users: Results<User>?
-//            emptyStateLabel.isHidden = dataSource.count != 0
-//            UIApplication.shared.isNetworkActivityIndicatorVisible = false
     weak var coordinator: HomeCoordinatorDelegate!
     
     override func viewDidLoad() {
@@ -34,13 +32,9 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
 //        settingsManager.delegate = self
         tableView.rowHeight = 75.0
 
-        tableView.addPullToRefresh(refresher, action: {
+        tableView.addPullToRefresh(refresher) {
             self.requestTimeline()
-        })
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+        }
 
         let realm = try! Realm()
         users = realm.objects(User.self).sorted(byProperty: "tweetsCount")
@@ -53,6 +47,8 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
             // Start requests
             requestProfilePicture()
             requestTimeline()
+            tableView.startRefreshing(at: .top)
+            UIApplication.shared.isNetworkActivityIndicatorVisible = true
         }
     }
 
@@ -126,6 +122,7 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
 extension UITableView {
 
     func applyChanges<T>(changes: RealmCollectionChange<T>) {
+        UIApplication.shared.isNetworkActivityIndicatorVisible = false
         endRefreshing(at: Position.top)
         switch changes {
         case .initial: reloadData()
@@ -141,11 +138,13 @@ extension UITableView {
     }
 }
 
-extension UIViewController {
+extension HomeViewController {
 
     func presentAlert(title: String, message: String? = nil) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default))
+        alert.addAction(UIAlertAction(title: "OK", style: .default) { _ in
+            self.tableView.endRefreshing(at: .top)
+        })
         present(alert, animated: true)
     }
 }

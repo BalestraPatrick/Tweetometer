@@ -15,8 +15,8 @@ typealias JSONArray = Array<JSON>
 
 public final class TimelineParser {
 
-    /// Final timeline object passed to our view model
-    var timeline = Timeline()
+    /// The Id of the oldest retrieved tweet.
+    var maxId: String? = nil
 
     var tweets: Results<Tweet>? = nil
 
@@ -31,35 +31,48 @@ public final class TimelineParser {
 
     func parse(_ tweets: JSONArray) {
         let realm = try! Realm()
+        var newTweets = [Tweet]()
         // Write to Realm
         do {
             for object in tweets {
                 let tweet: Tweet = try unbox(dictionary: object)
                 if realm.objects(Tweet.self).contains(where: { $0.tweetId == tweet.tweetId }) == false {
+                    findOldestTweetId(maxId: tweet.tweetId)
+                    newTweets.append(tweet)
                     try realm.write {
                         realm.add(tweet)
                     }
                 }
             }
 
-            // Analyze tweets and get users
-            try analyze()
+            // Analyze tweets and find users
+            try analyze(newTweets)
         } catch {
             print(error)
         }
     }
 
-    func analyze() throws {
-        guard let tweets = tweets else { return }
+    func analyze(_ newTweets: [Tweet]) throws {
+        guard newTweets.count > 0 else { return }
         let realm = try Realm()
-        for tweet in tweets {
+        for tweet in newTweets {
             let user = realm.object(ofType: User.self, forPrimaryKey: tweet.userId)
             if let user = user {
-                print(user.tweets.count)
+                print("New tweets: \(newTweets.count)")
                 try realm.write {
                     user.tweets.append(tweet)
                 }
             }
+        }
+    }
+
+    fileprivate func findOldestTweetId(maxId: String) {
+        guard let currentMaxId = self.maxId else {
+            return self.maxId = maxId
+        }
+
+        if maxId < currentMaxId {
+            self.maxId = maxId
         }
     }
 }

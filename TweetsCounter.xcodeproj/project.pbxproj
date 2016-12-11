@@ -15,7 +15,6 @@
 		AE07A0D61C5D4AD400514B1C /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE07A0D51C5D4AD400514B1C /* UserTableViewCell.swift */; };
 		AE0FA7C71C0DEBDE00EDB0A1 /* ProfilePictureButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0FA7C61C0DEBDE00EDB0A1 /* ProfilePictureButtonItem.swift */; };
 		AE0FA7CD1C0EDC7E00EDB0A1 /* Customizations.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0FA7CC1C0EDC7E00EDB0A1 /* Customizations.swift */; };
-		AE0FA7D41C0F03E800EDB0A1 /* Timeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0FA7D31C0F03E800EDB0A1 /* Timeline.swift */; };
 		AE15F36C1C62A1BD00EE2F82 /* MenuPopOverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE15F36B1C62A1BD00EE2F82 /* MenuPopOverViewController.swift */; };
 		AE1FF7501C7927D7001C8F87 /* SettingsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1FF74F1C7927D7001C8F87 /* SettingsManager.swift */; };
 		AE247A751DF1C61300C87A29 /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE247A741DF1C61300C87A29 /* Images.swift */; };
@@ -84,7 +83,6 @@
 		AE0C38481BE589B8003A858F /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
 		AE0FA7C61C0DEBDE00EDB0A1 /* ProfilePictureButtonItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfilePictureButtonItem.swift; sourceTree = "<group>"; };
 		AE0FA7CC1C0EDC7E00EDB0A1 /* Customizations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Customizations.swift; sourceTree = "<group>"; };
-		AE0FA7D31C0F03E800EDB0A1 /* Timeline.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Timeline.swift; sourceTree = "<group>"; };
 		AE15F36B1C62A1BD00EE2F82 /* MenuPopOverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuPopOverViewController.swift; sourceTree = "<group>"; };
 		AE1FF74F1C7927D7001C8F87 /* SettingsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsManager.swift; sourceTree = "<group>"; };
 		AE247A741DF1C61300C87A29 /* Images.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
@@ -363,7 +361,6 @@
 				AE1FF74F1C7927D7001C8F87 /* SettingsManager.swift */,
 				AEF1F20C1C64EB8900591E46 /* MenuOptionsDataSource.swift */,
 				AEC42BF81C5AAFC60008444D /* TimelineParser.swift */,
-				AE0FA7D31C0F03E800EDB0A1 /* Timeline.swift */,
 				AEC5C1DD1C2C949A00C4F007 /* Tweet.swift */,
 				AEC5C1DF1C2C992300C4F007 /* User.swift */,
 			);
@@ -664,7 +661,6 @@
 				AE1FF7501C7927D7001C8F87 /* SettingsManager.swift in Sources */,
 				AE9670071C945ADF00189697 /* HomeCoordinator.swift in Sources */,
 				AE247A751DF1C61300C87A29 /* Images.swift in Sources */,
-				AE0FA7D41C0F03E800EDB0A1 /* Timeline.swift in Sources */,
 				AE6352151C66226800799157 /* UserDetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -814,7 +810,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = B8D941EE5F74C95636A57DB0 /* Pods-TweetsCounter.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = TweetsCounter/TweetsCounter.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -891,7 +887,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5F64E6DB302CDF9C64FE1348 /* Pods-TweetsCounter.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = TweetsCounter/TweetsCounter.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
