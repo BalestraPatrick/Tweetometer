@@ -20,7 +20,8 @@ final class SettingsViewController: UIViewController {
     
     let settings = SettingsManager.sharedManager
     let linkOpener = LinkOpener()
-    
+    weak var coordinator: SettingsCoordinator!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -36,17 +37,9 @@ final class SettingsViewController: UIViewController {
         githubButton.layer.cornerRadius = 5.0
         githubButton.layer.borderColor = UIColor.white.cgColor
         githubButton.layer.borderWidth = 1.0
-        
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        // Check if Twitter and Tweetbot apps are installed to enable them in the UI
-        let twitterResult = UIApplication.shared.canOpenURL(URL(string: "twitter://")!)
-        let tweetbotResult = UIApplication.shared.canOpenURL(URL(string: "tweetbot://")!)
-        
-        twitterClientControl.setEnabled(twitterResult, forSegmentAt: 1)
-        twitterClientControl.setEnabled(tweetbotResult, forSegmentAt: 2)
+
+        twitterClientControl.setEnabled(linkOpener.isTwitterAvailable, forSegmentAt: 1)
+        twitterClientControl.setEnabled(linkOpener.isTweetbotAvailable, forSegmentAt: 2)
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {

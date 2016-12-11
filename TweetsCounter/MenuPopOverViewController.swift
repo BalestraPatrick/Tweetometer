@@ -11,7 +11,7 @@ import UIKit
 class MenuPopOverViewController: UITableViewController {
     
     let options = MenuOptionsDataSource().options
-    var homeViewController: HomeViewController?
+    weak var coordinator: MenuCoordinatorDelegate!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,17 +37,18 @@ class MenuPopOverViewController: UITableViewController {
         switch indexPath.row {
         case MenuOptions.refresh.rawValue:
             dismiss(animated: true) {
-                self.homeViewController?.requestTimeline()
+//                self.homeViewController?.tableView.startRefreshing(at: .top)
             }
         case MenuOptions.logout.rawValue:
             dismiss(animated: true) {
-                self.homeViewController?.tableView.startRefreshing(at: .top)
+
             }
             break
         case MenuOptions.settings.rawValue:
-            dismiss(animated: true) {
-                self.homeViewController?.present(StoryboardScene.Main.settingsViewController(), animated: true, completion: nil)
-            }
+            coordinator.presentSettings()
+//            dismiss(animated: true) {
+//                self.homeViewController?.present(StoryboardScene.Main.settingsViewController(), animated: true, completion: nil)
+//            }
         default:
             break
         }

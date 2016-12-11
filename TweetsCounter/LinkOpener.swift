@@ -9,14 +9,29 @@
 import UIKit
 import SafariServices
 
+private let twitterScheme = "twitter"
+private let tweetbotScheme = "tweetbot"
+
 class LinkOpener {
     
     /// Store preferred user client from the settings
     var client = SettingsManager.sharedManager.preferredTwitterClient
+
     /// User detail coordinator needed to present a SafariViewController on the current view controller
     var coordinator: UserDetailCoordinator?
+
     /// Describes the URL Scheme components
     var urlComponents = URLComponents()
+
+    /// Returns true if the Tweetbot app is available on device.
+    var isTweetbotAvailable: Bool = {
+        return UIApplication.shared.canOpenURL(URL(string: "\(tweetbotScheme)://")!)
+    }()
+
+    /// Returns true if the Twitter app is available on device.
+    var isTwitterAvailable: Bool = {
+        return UIApplication.shared.canOpenURL(URL(string: "\(twitterScheme)://")!)
+    }()
     
     /// Opens the a Twitter user in the default client.
     ///
@@ -24,10 +39,10 @@ class LinkOpener {
     func openUser(_ user: String) {
         switch client {
         case .tweetbot:
-            urlComponents.scheme = "tweetbot"
+            urlComponents.scheme = tweetbotScheme
             urlComponents.path = "/user_profile/\(user)"
         case .twitter:
-            urlComponents.scheme = "twitter"
+            urlComponents.scheme = twitterScheme
             urlComponents.path = "/user?screen_name=\(user)"
         case .web:
             let url = URL(string: "https://www.twitter.com/\(user)")

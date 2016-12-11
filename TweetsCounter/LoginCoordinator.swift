@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import TwitterKit
 
 protocol LoginCoordinatorDelegate: class {
     func dismiss()

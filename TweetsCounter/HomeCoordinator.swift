@@ -10,6 +10,7 @@ import UIKit
 
 protocol HomeCoordinatorDelegate: class {
     func pushDetail(_ controller: UserDetailViewController)
+    func presentMenu(_ controller: MenuPopOverViewController)
     func presentLogin()
 }
 
@@ -34,9 +35,23 @@ class HomeCoordinator: HomeCoordinatorDelegate {
         userDetailCoordinator.start()
     }
 
+    func presentMenu(_ controller: MenuPopOverViewController) {
+        let menuCoordinator = MenuCoordinator(parent: self, controller: controller)
+        childCoordinators.append(menuCoordinator)
+        menuCoordinator.start()
+    }
+
     func presentLogin() {
         let loginCoordinator = LoginCoordinator(parent: controller)
         childCoordinators.append(loginCoordinator)
         loginCoordinator.start()
+    }
+
+    // Navigation handles here but invoked from the MenuCoordinator.
+
+    func presentSettings() {
+        // TODO: remove menu coordinator
+        let settingsCoordinator = SettingsCoordinator(parent: controller)
+        settingsCoordinator.start()
     }
 }
