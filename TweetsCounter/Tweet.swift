@@ -17,7 +17,6 @@ class Tweet: Object, Unboxable {
     dynamic var tweetId: String = ""
     dynamic var text: String = ""
     dynamic var language: String = ""
-    dynamic var screenName: String = ""
     dynamic var retweetsCount: Int = 0
     dynamic var likesCount: Int = 0
     dynamic var retweed: Bool = false
@@ -49,7 +48,7 @@ class Tweet: Object, Unboxable {
     }
 
     private func createUser(unboxer: Unboxer) throws {
-        let realm = try Realm()
+        let realm = DataManager.realm()
         let user = realm.object(ofType: User.self, forPrimaryKey: userId)
         if user == nil {
             let newUser: User = try unboxer.unbox(key: "user")

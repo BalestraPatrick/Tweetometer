@@ -7,49 +7,53 @@
 //
 
 import XCTest
+import RealmSwift
 @testable import TweetsCounter
 
 class TimelineParserTests: XCTestCase {
-    
+
+    var realm: Realm!
+
     override func setUp() {
         super.setUp()
+         realm = DataManager.realm()
     }
     
     override func tearDown() {
         super.tearDown()
+        try! realm.write {
+            realm.deleteAll()
+        }
     }
     
     func testParseTweets() {
-        // TODO: test with in memory Realm
-//        let jsonPath = Bundle(for: type(of: self)).path(forResource: "timeline_tweets", ofType: "json")
-//        let timelineData = try! Data(contentsOf: URL(fileURLWithPath: jsonPath!))
-//        let tweets: AnyObject = try! JSONSerialization.jsonObject(with: timelineData, options: .allowFragments) as AnyObject
-//        guard let tweetsArray = tweets as? Array<AnyObject> else { XCTFail("Could not downcast to array"); return }
-//        
-//        let parser = TimelineParser()
-//        parser.analyze(tweetsArray as! [Tweet])
-//        try! parser.analyze(tweetsArray)
-//        let t = parser.timeline
-//        let users = t.users
-//        XCTAssertEqual(users.count, 1)
-//        let user = users.first!
-//        XCTAssertEqual(user.userID, "7213362")
-//        XCTAssertEqual(user.followersCount, 6149)
-//        XCTAssertEqual(user.followingCount, 402)
-//        XCTAssertEqual(user.statusesCount, 92563)
-//        XCTAssertEqual(user.screenName, "Javi")
-//        XCTAssertEqual(user.name, "Javi.swift")
-//        XCTAssertEqual(user.description, "@Fabric Swift Engineer @Twitter. Previously @Pebble. Functional Programming enthusiast. Rubik\'s Cube speed solver. Chess player. Made @watch_chess.")
-//        XCTAssertEqual(user.profileImageURL, URL(string: "https://pbs.twimg.com/profile_images/551121750100955136/ZphnhOpS_bigger.jpeg"))
-//        XCTAssertEqual(user.tweets.count, 1)
-//        let tweet = user.tweets.first!
-//        XCTAssertEqual(tweet.tweetID, "695645083652075520")
-//        let createdAt = Date(timeIntervalSince1970: 1454689687)
-//        XCTAssertEqual(tweet.createdAt, createdAt)
-//        XCTAssertEqual(tweet.text, "RT @moonpolysoft: Good interview question: explain the movie Primer to me.")
-//        XCTAssertEqual(tweet.language, "en")
-//        XCTAssertEqual(tweet.screenName, "Javi")
-//        XCTAssertNotNil(tweet.author)
-    }
+        let jsonPath = Bundle(for: type(of: self)).path(forResource: "timeline_tweets", ofType: "json")
+        let timelineData = try! Data(contentsOf: URL(fileURLWithPath: jsonPath!))
+        let tweets: AnyObject = try! JSONSerialization.jsonObject(with: timelineData, options: .allowFragments) as AnyObject
+        guard let tweetsArray = tweets as? JSONArray else { XCTFail("Could not downcast to array"); return }
 
+        let parser = TimelineParser()
+        parser.parse(tweetsArray)
+        let users = realm.objects(User.self)
+        print(realm.objects(Tweet.self).count)
+
+        XCTAssertEqual(users.count, 1)
+        let user = users.first!
+        XCTAssertEqual(user.userId, "7213362")
+        XCTAssertEqual(user.followersCount, 6149)
+        XCTAssertEqual(user.followingCount, 402)
+        XCTAssertEqual(user.statusesCount, 92563)
+        XCTAssertEqual(user.screenName, "Javi")
+        XCTAssertEqual(user.name, "Javi.swift")
+        XCTAssertEqual(user.userDescription, "@Fabric Swift Engineer @Twitter. Previously @Pebble. Functional Programming enthusiast. Rubik\'s Cube speed solver. Chess player. Made @watch_chess.")
+        XCTAssertEqual(user.profileImageURL, "https://pbs.twimg.com/profile_images/551121750100955136/ZphnhOpS_bigger.jpeg")
+        XCTAssertEqual(user.tweets.count, 1)
+        let tweet = user.tweets.first!
+        XCTAssertEqual(tweet.tweetId, "695645083652075520")
+        let createdAt = Date(timeIntervalSince1970: 1454689687)
+        XCTAssertEqual(tweet.createdAt, createdAt)
+        XCTAssertEqual(tweet.text, "RT @moonpolysoft: Good interview question: explain the movie Primer to me.")
+        XCTAssertEqual(tweet.language, "en")
+        XCTAssertEqual(user.screenName, "Javi")
+    }
 }

@@ -31,6 +31,8 @@
 		AE35A2F61C52C146001E1D88 /* DismissFromSettingsSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE35A2F51C52C146001E1D88 /* DismissFromSettingsSegue.swift */; };
 		AE3E81BE1BF8B40600A51804 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3E81BD1BF8B40600A51804 /* LoginViewController.swift */; };
 		AE5F0AE41C65056D00B0C157 /* timeline_tweets.json in Resources */ = {isa = PBXBuildFile; fileRef = AE5F0AE31C65056D00B0C157 /* timeline_tweets.json */; };
+		AE5F87271DFED16100310C1C /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5F87261DFED16100310C1C /* DataManager.swift */; };
+		AE5F87281DFED2F700310C1C /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5F87261DFED16100310C1C /* DataManager.swift */; };
 		AE6352131C66178400799157 /* MenuOptionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6352121C66178400799157 /* MenuOptionTableViewCell.swift */; };
 		AE6352151C66226800799157 /* UserDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6352141C66226800799157 /* UserDetailViewController.swift */; };
 		AE6675901C3C13D500DD47AB /* users_show.json in Resources */ = {isa = PBXBuildFile; fileRef = AE66758F1C3C13D500DD47AB /* users_show.json */; };
@@ -98,6 +100,7 @@
 		AE35A2F51C52C146001E1D88 /* DismissFromSettingsSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DismissFromSettingsSegue.swift; sourceTree = "<group>"; };
 		AE3E81BD1BF8B40600A51804 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		AE5F0AE31C65056D00B0C157 /* timeline_tweets.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = timeline_tweets.json; sourceTree = "<group>"; };
+		AE5F87261DFED16100310C1C /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		AE6352121C66178400799157 /* MenuOptionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuOptionTableViewCell.swift; sourceTree = "<group>"; };
 		AE6352141C66226800799157 /* UserDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDetailViewController.swift; sourceTree = "<group>"; };
 		AE66758F1C3C13D500DD47AB /* users_show.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = users_show.json; sourceTree = "<group>"; };
@@ -276,7 +279,7 @@
 				AE277DED1BD4E6DB004E151C /* AppDelegate.swift */,
 				AE07A0D81C5D4AF900514B1C /* View Controller */,
 				AEC5C1E11C2C992900C4F007 /* Model */,
-				AEE8C9AB1C0DAAB60047A6A6 /* Twitter */,
+				AEE8C9AB1C0DAAB60047A6A6 /* Network */,
 				AE9670081C945AE700189697 /* Coordinators */,
 				AE0FA7D11C0EE78100EDB0A1 /* Views */,
 				AE0FA7CE1C0EE6F900EDB0A1 /* Extensions */,
@@ -340,16 +343,17 @@
 				AEC42BF81C5AAFC60008444D /* TimelineParser.swift */,
 				AEC5C1DD1C2C949A00C4F007 /* Tweet.swift */,
 				AEC5C1DF1C2C992300C4F007 /* User.swift */,
+				AE5F87261DFED16100310C1C /* DataManager.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
 		};
-		AEE8C9AB1C0DAAB60047A6A6 /* Twitter */ = {
+		AEE8C9AB1C0DAAB60047A6A6 /* Network */ = {
 			isa = PBXGroup;
 			children = (
 				AEE8C9A91C0D97C50047A6A6 /* TwitterSession.swift */,
 			);
-			name = Twitter;
+			name = Network;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -588,6 +592,7 @@
 				AE6352131C66178400799157 /* MenuOptionTableViewCell.swift in Sources */,
 				AEE22BAB1CD72DF1003CA241 /* ProfilePictureImageView.swift in Sources */,
 				AE2F0DC61C93751100F10122 /* AppCoordinator.swift in Sources */,
+				AE5F87271DFED16100310C1C /* DataManager.swift in Sources */,
 				AE35A2F41C52B4A4001E1D88 /* SettingsViewController.swift in Sources */,
 				AE04479A1DF3040700FEE093 /* NSAttributedString+User.swift in Sources */,
 				AE3E81BE1BF8B40600A51804 /* LoginViewController.swift in Sources */,
@@ -622,6 +627,7 @@
 				AE067FFC1C650C09008C325B /* TimelineParserTests.swift in Sources */,
 				AE277E031BD4E6DB004E151C /* TwitterRequestTests.swift in Sources */,
 				AEF1F20F1C64EE9B00591E46 /* MenuOptionsTests.swift in Sources */,
+				AE5F87281DFED2F700310C1C /* DataManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

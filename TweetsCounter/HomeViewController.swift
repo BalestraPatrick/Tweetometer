@@ -36,7 +36,7 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
             self.requestTimeline()
         }
 
-        let realm = try! Realm()
+        let realm = DataManager.realm()
         users = realm.objects(User.self).sorted(byProperty: "tweetsCount")
         notificationToken = users?.addNotificationBlock(tableView.applyChanges)
 
@@ -123,7 +123,6 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
 extension UITableView {
 
     func applyChanges<T>(changes: RealmCollectionChange<T>) {
-        UIApplication.shared.isNetworkActivityIndicatorVisible = false
         endRefreshing(at: Position.top)
         switch changes {
         case .initial: reloadData()

@@ -21,16 +21,12 @@ public final class TimelineParser {
     var tweets: Results<Tweet>? = nil
 
     init() {
-        do {
-            let realm = try Realm()
-            tweets = realm.objects(Tweet.self)
-        } catch {
-            print(error)
-        }
+        let realm = DataManager.realm()
+        tweets = realm.objects(Tweet.self)
     }
 
     func parse(_ tweets: JSONArray) {
-        let realm = try! Realm()
+        let realm = DataManager.realm()
         var newTweets = [Tweet]()
         // Write to Realm
         do {
@@ -54,7 +50,7 @@ public final class TimelineParser {
 
     func analyze(_ newTweets: [Tweet]) throws {
         guard newTweets.count > 0 else { return }
-        let realm = try Realm()
+        let realm = DataManager.realm()
         for tweet in newTweets {
             let user = realm.object(ofType: User.self, forPrimaryKey: tweet.userId)
             if let user = user {
