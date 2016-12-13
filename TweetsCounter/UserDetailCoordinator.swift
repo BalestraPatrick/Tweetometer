@@ -8,12 +8,14 @@
 
 import Foundation
 
-protocol UserDetailViewControllerDelegate: class {
+protocol UserDetailCoordinatorDelegate: class {
     func presentSafari(_ url: URL)
-    func openUser(_ user: String)
+    func open(user: String)
+    func open(hashtag: String)
+    func open(mention: String)
 }
 
-class UserDetailCoordinator: UserDetailViewControllerDelegate {
+class UserDetailCoordinator: UserDetailCoordinatorDelegate {
     
     let controller: UserDetailViewController
     var childCoordinators = Array<AnyObject>()
@@ -22,9 +24,9 @@ class UserDetailCoordinator: UserDetailViewControllerDelegate {
     init(controller: UserDetailViewController) {
         self.controller = controller
     }
-    
+
     func start() {
-        controller.delegate = self
+        controller.coordinator = self
     }
     
     // MARK: HomeViewControllerDelegate
@@ -34,9 +36,16 @@ class UserDetailCoordinator: UserDetailViewControllerDelegate {
         controller.present(safari, animated: true, completion: nil)
     }
     
-    func openUser(_ user: String) {
+    func open(user: String) {
         linkOpener.coordinator = self
-        linkOpener.openUser(user)
+        linkOpener.open(user: user)
+    }
+
+    func open(hashtag: String) {
+        linkOpener.open(hashtag: hashtag)
+    }
+
+    func open(mention: String) {
+        linkOpener.open(mention: mention)
     }
 }
-

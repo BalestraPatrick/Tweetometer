@@ -16,7 +16,7 @@ class TweetTableViewCell: UITableViewCell {
     @IBOutlet weak var retweetsCountLabel: UILabel!
     @IBOutlet weak var likesCountLabel: UILabel!
     
-    weak var delegate: UserDetailViewControllerDelegate!
+    weak var coordinator: UserDetailCoordinatorDelegate!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -34,15 +34,15 @@ class TweetTableViewCell: UITableViewCell {
     
     func setUpTwitterElementHandlers() {
         tweetLabel.handleURLTap { url in
-            self.delegate.presentSafari(url)
+            self.coordinator.presentSafari(url)
         }
         
         tweetLabel.handleHashtagTap { hashtag in
-            
+            self.coordinator.open(hashtag: hashtag)
         }
         
         tweetLabel.handleMentionTap { mention in
-            
+            self.coordinator.open(mention: mention)
         }
     }
     

@@ -66,13 +66,11 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
             menuPopOver.view.backgroundColor = UIColor().menuDarkBlueColor()
             menuPopOver.popoverPresentationController!.backgroundColor = UIColor().menuDarkBlueColor()
             coordinator.presentMenu(menuPopOver)
-//            menuPopOver.homeViewController = self
         } else if segue.identifier == StoryboardSegue.Main.UserDetail.rawValue {
-            if let userDetail = segue.destination as? UserDetailViewController, let cell = sender as? UITableViewCell, let indexPath = tableView.indexPath(for: cell), let users = users {
-                let selectedUser = users[indexPath.row]
-                userDetail.user = selectedUser
-                coordinator.pushDetail(userDetail)
-            }
+            guard let userDetail = segue.destination as? UserDetailViewController, let cell = sender as? UITableViewCell, let indexPath = tableView.indexPath(for: cell), let users = users else { return }
+            let selectedUser = users[indexPath.row]
+            userDetail.user = selectedUser
+            coordinator.pushDetail(userDetail)
         }
     }
     

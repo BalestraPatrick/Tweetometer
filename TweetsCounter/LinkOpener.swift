@@ -32,11 +32,16 @@ class LinkOpener {
     var isTwitterAvailable: Bool = {
         return UIApplication.shared.canOpenURL(URL(string: "\(twitterScheme)://")!)
     }()
+
+    /// Returns true if Safari is available.
+    var isSafariAvailable: Bool = {
+        return UIApplication.shared.canOpenURL(URL(string: "http://www.google.com")!)
+    }()
     
     /// Opens the a Twitter user in the default client.
     ///
     /// - parameter user: Screen-name of the user.
-    func openUser(_ user: String) {
+    func open(user: String) {
         switch client {
         case .tweetbot:
             urlComponents.scheme = tweetbotScheme
@@ -53,11 +58,55 @@ class LinkOpener {
         }
                 
         // Try to open the URL
-        if let stringURL = urlComponents.string!.removingPercentEncoding, let url = URL(string: stringURL) {
-            UIApplication.shared.open(url, options: [:])
+        if let stringURL = urlComponents.string!.removingPercentEncoding, let url = URL(string: stringURL), isSafariAvailable {
+            UIApplication.shared.open(url)
         }
     }
-    
+
+    func open(hashtag: String) {
+        let url = URL(string: "https://twitter.com/search?q=\(hashtag)")
+        switch client {
+        case .tweetbot:
+            // TODO
+            break
+        case .twitter:
+            // TODO
+            break
+        case .web:
+            if let url = url, let coordinator = coordinator {
+                coordinator.presentSafari(url)
+                return
+            }
+        }
+
+        // Try to open the URL
+        if let url = url, isSafariAvailable {
+            UIApplication.shared.open(url)
+        }
+    }
+
+    func open(mention: String) {
+        let url = URL(string: "https://twitter.com/search?q=\(mention)")
+        switch client {
+        case .tweetbot:
+            // TODO
+            break
+        case .twitter:
+            // TODO
+            break
+        case .web:
+            if let url = url, let coordinator = coordinator {
+                coordinator.presentSafari(url)
+                return
+            }
+        }
+
+        // Try to open the URL
+        if let url = url, isSafariAvailable {
+            UIApplication.shared.open(url)
+        }
+    }
+
     /// Initializes a Safari view controller object to present in the future.
     ///
     /// - parameter url: URL of the page to load in Safari.

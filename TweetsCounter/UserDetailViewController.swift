@@ -17,7 +17,7 @@ final class UserDetailViewController: UIViewController, UITableViewDelegate, UIT
     let linkOpener = LinkOpener()
     
     var user: User?
-    weak var delegate: UserDetailViewControllerDelegate!
+    weak var coordinator: UserDetailCoordinator!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,7 +56,7 @@ final class UserDetailViewController: UIViewController, UITableViewDelegate, UIT
             if let user = user {
                 let tweet = user.tweets[indexPath.row]
                 cell.configure(tweet, indexPath: indexPath)
-                cell.delegate = delegate
+                cell.coordinator = coordinator
             }
             return cell
         }
@@ -66,7 +66,7 @@ final class UserDetailViewController: UIViewController, UITableViewDelegate, UIT
     
     @IBAction func openIn(_ sender: UIBarButtonItem) {
         if let user = user {
-            delegate.openUser(user.screenName)
+            coordinator.open(user: user.screenName)
         }
     }
 }
