@@ -59,19 +59,23 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
     // MARK: Storyboard Segues
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == StoryboardSegue.Main.MenuPopOver.rawValue {
-            let menuPopOver = segue.destination as! MenuPopOverViewController
+        guard let identifier = segue.identifier, let segueIdentifier = StoryboardSegue.Main(rawValue: identifier) else { return }
+
+        switch segueIdentifier {
+        case .menuPopOver:
+            guard let menuPopOver = segue.destination as? MenuPopOverViewController else { return }
             menuPopOver.modalPresentationStyle = UIModalPresentationStyle.popover
             menuPopOver.popoverPresentationController!.delegate = self
             menuPopOver.view.backgroundColor = UIColor().menuDarkBlueColor()
             menuPopOver.popoverPresentationController!.backgroundColor = UIColor().menuDarkBlueColor()
             coordinator.presentMenu(menuPopOver)
-        } else if segue.identifier == StoryboardSegue.Main.UserDetail.rawValue {
+        case .userDetail:
             guard let userDetail = segue.destination as? UserDetailViewController, let cell = sender as? UITableViewCell, let indexPath = tableView.indexPath(for: cell), let users = users else { return }
             let selectedUser = users[indexPath.row]
             userDetail.user = selectedUser
             coordinator.pushDetail(userDetail)
         }
+
     }
     
     // MARK: Data Request

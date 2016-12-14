@@ -41,36 +41,36 @@ struct StoryboardScene {
     enum Main : String, StoryboardSceneType {
         static let storyboardName = "Main"
         
-        case Home = "Home"
+        case home = "Home"
         static func homeViewController() -> HomeViewController {
-            return Main.Home.viewController() as! HomeViewController
+            return Main.home.viewController() as! HomeViewController
         }
         
-        case MenuPopOver = "MenuPopOver"
+        case menuPopOver = "MenuPopOver"
         static func menuPopOverViewController() -> MenuPopOverViewController {
-            return Main.MenuPopOver.viewController() as! MenuPopOverViewController
+            return Main.menuPopOver.viewController() as! MenuPopOverViewController
         }
         
-        case Settings = "Settings"
+        case settings = "Settings"
         static func settingsViewController() -> SettingsViewController {
-            return Main.Settings.viewController() as! SettingsViewController
+            return Main.settings.viewController() as! SettingsViewController
         }
         
-        case Login = "Login"
+        case login = "Login"
         static func LoginViewController() -> LoginViewController {
-            return Main.Login.viewController() as! LoginViewController
+            return Main.login.viewController() as! LoginViewController
         }
         
-        case UserDetail = "UserDetail"
+        case userDetail = "UserDetail"
         static func userDetailViewController() -> UserDetailViewController {
-            return Main.UserDetail.viewController() as! UserDetailViewController
+            return Main.userDetail.viewController() as! UserDetailViewController
         }
     }
 }
 
 struct StoryboardSegue {
     enum Main : String, StoryboardSegueType {
-        case MenuPopOver = "MenuPopOver"
-        case UserDetail = "UserDetail"
+        case menuPopOver
+        case userDetail
     }
 }
