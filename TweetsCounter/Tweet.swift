@@ -50,7 +50,15 @@ class Tweet: Object, Unboxable {
     private func createUser(unboxer: Unboxer) throws {
         let realm = DataManager.realm()
         let user = realm.object(ofType: User.self, forPrimaryKey: userId)
-        if user == nil {
+        // If the user exists, just update the tweetsCount property to correctly sort the list.
+        if let user = user {
+            try realm.write {
+                print("real tweets: \(user.tweets.count)")
+                user.tweetsCount = user.tweets.count
+                print("after tweets: \(user.tweetsCount)")
+            }
+        } else {
+            // If no user exists, create one.
             let newUser: User = try unboxer.unbox(key: "user")
             try realm.write {
                 realm.add(newUser)

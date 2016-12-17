@@ -67,7 +67,8 @@ class LinkOpener {
         let url = URL(string: "https://twitter.com/search?q=\(hashtag)")
         switch client {
         case .tweetbot:
-            // TODO
+            urlComponents.scheme = tweetbotScheme
+            urlComponents.path = "tweetbot://search?query=\(hashtag)"
             break
         case .twitter:
             // TODO
@@ -89,7 +90,8 @@ class LinkOpener {
         let url = URL(string: "https://twitter.com/search?q=\(mention)")
         switch client {
         case .tweetbot:
-            // TODO
+            urlComponents.scheme = tweetbotScheme
+            urlComponents.path = "tweetbot://user_profile/\(mention)"
             break
         case .twitter:
             // TODO
@@ -112,7 +114,7 @@ class LinkOpener {
     /// - parameter url: URL of the page to load in Safari.
     ///
     /// - returns: The view controller to be used.
-    func openInSafari(_ url: URL) -> SFSafariViewController {
+    internal func openInSafari(_ url: URL) -> SFSafariViewController {
         return SFSafariViewController(url: url)
     }
 }

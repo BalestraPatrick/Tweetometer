@@ -20,7 +20,7 @@ class User: Object, Unboxable {
     dynamic var name: String = ""
     dynamic var userDescription: String = ""
     dynamic var profileImageURL: String? = nil
-    dynamic var tweetsCount: Int = 0
+    dynamic var tweetsCount: Int = 1
     dynamic var location: String = ""
     dynamic var displayURL: String = ""
     var tweets = List<Tweet>()
@@ -50,7 +50,6 @@ class User: Object, Unboxable {
             location = try unboxer.unbox(key: "location")
             displayURL = try unboxer.unbox(keyPath: "entities.url.urls.0.expanded_url")
             profileImageURL = convertToBiggerFormat(try! unboxer.unbox(key: "profile_image_url_https"))
-            tweetsCount = tweets.count
         } catch {
             print(error)
         }

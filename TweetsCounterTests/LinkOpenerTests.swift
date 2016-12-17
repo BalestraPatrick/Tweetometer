@@ -24,7 +24,7 @@ class LinkOpenerTests: XCTestCase {
         opener.open(user: "BalestraPatrick")
         XCTAssertEqual(opener.urlComponents.string!, "twitter:/user%3Fscreen_name=BalestraPatrick", "Twitter URL Scheme is wrong")
     }
-    
+
     func testOpenInSafari() {
         XCTAssertNotNil(opener.openInSafari(URL(string: "http://www.google.com")!))
     }

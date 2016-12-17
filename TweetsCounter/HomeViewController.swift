@@ -20,7 +20,6 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
 
     fileprivate lazy var session = TwitterSession()
     fileprivate var notificationToken: NotificationToken?
-//    let settingsManager = SettingsManager.sharedManager
     fileprivate let refresher = PullToRefresh()
 
     var users: Results<User>?
@@ -29,15 +28,13 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
     override func viewDidLoad() {
         super.viewDidLoad()
         applyStyle()
-//        settingsManager.delegate = self
         tableView.rowHeight = 75.0
-
         tableView.addPullToRefresh(refresher) {
             self.requestTimeline()
         }
 
         let realm = DataManager.realm()
-        users = realm.objects(User.self).sorted(byProperty: "tweetsCount")
+        users = realm.objects(User.self).sorted(byProperty: "tweetsCount", ascending: false)
         notificationToken = users?.addNotificationBlock(tableView.applyChanges)
 
         // Check if a user is logged in
@@ -75,7 +72,6 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
             userDetail.user = selectedUser
             coordinator.pushDetail(userDetail)
         }
-
     }
     
     // MARK: Data Request
@@ -125,6 +121,7 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
 extension UITableView {
 
     func applyChanges<T>(changes: RealmCollectionChange<T>) {
+        UIApplication.shared.isNetworkActivityIndicatorVisible = false
         endRefreshing(at: Position.top)
         switch changes {
         case .initial: reloadData()
