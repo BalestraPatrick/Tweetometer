@@ -10,6 +10,10 @@ import Foundation
 import RealmSwift
 
 class DataManager {
+
+    /// Creates and in-memory Realm in case we are running in a unit testing target, otherwise uses a normal on-disk Realm.
+    ///
+    /// - Returns: An in-memory on an on-disk Realm depending on the environment. 
     class func realm() -> Realm {
         do {
             if let _ = NSClassFromString("XCTest") {

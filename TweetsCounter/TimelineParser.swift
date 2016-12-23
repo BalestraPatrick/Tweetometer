@@ -18,6 +18,9 @@ public final class TimelineParser {
     /// The Id of the oldest retrieved tweet.
     var maxId: String? = nil
 
+    /// Parse the JSON tweets into Tweet objects.
+    ///
+    /// - Parameter tweets: The array of JSON tweets.
     func parse(_ tweets: JSONArray) {
         let realm = DataManager.realm()
         var newTweets = [Tweet]()
@@ -35,19 +38,22 @@ public final class TimelineParser {
             }
 
             // Analyze tweets and find users
-            try analyze(newTweets)
+            analyze(newTweets)
         } catch {
             print(error)
         }
     }
 
-    func analyze(_ newTweets: [Tweet]) throws {
+    /// Link all tweets with their user.
+    ///
+    /// - Parameter newTweets: All the newly added Tweet objects.
+    func analyze(_ newTweets: [Tweet]) {
         guard newTweets.count > 0 else { return }
         let realm = DataManager.realm()
         for tweet in newTweets {
             let user = realm.object(ofType: User.self, forPrimaryKey: tweet.userId)
             if let user = user {
-                try realm.write {
+                try! realm.write {
                     user.tweets.append(tweet)
                     user.tweetsCount = user.tweets.count
                 }
@@ -55,6 +61,10 @@ public final class TimelineParser {
         }
     }
 
+
+    /// Find the oldest tweetId and save it for the next request.
+    ///
+    /// - Parameter maxId: The id of the oldest tweet retrieved.
     fileprivate func findOldestTweetId(maxId: String) {
         guard let currentMaxId = self.maxId else {
             return self.maxId = maxId

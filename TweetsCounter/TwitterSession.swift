@@ -21,7 +21,7 @@ enum TwitterError: Error {
 final class TwitterSession {
 
     typealias TimelineUpdate = (TwitterError?) -> Void
-    
+
     private var client: TWTRAPIClient?
     private var timelineParser = TimelineParser()
     private var timelineUpdate: TimelineUpdate?
@@ -40,7 +40,11 @@ final class TwitterSession {
         return client != nil
     }
 
-    func getProfilePicture(completion: @escaping (URL?) -> ()) {
+
+    /// Request the user's profile picture URL.
+    ///
+    /// - Parameter completion: The completion block that contains the profile picture URL.
+    func getProfilePictureURL(completion: @escaping (URL?) -> ()) {
         guard let client = client, let userID = client.userID else { return completion(nil) }
         client.loadUser(withID: userID) { user, error in
             if let stringURL = user?.profileImageLargeURL {
@@ -49,11 +53,18 @@ final class TwitterSession {
         }
     }
 
+    /// Log out the current user.
     func logOutUser() {
         guard let client = client, let userId = client.userID else { return }
         Twitter.sharedInstance().sessionStore.logOutUserID(userId)
     }
 
+
+    /// Get the timeline tweets of the current user.
+    ///
+    /// - Parameters:
+    ///   - maxId: The optional maximum tweetID used to return only the oldest tweets.
+    ///   - completion: The completion block containing an optional error.
     func getTimeline(before maxId: String?, completion: @escaping TimelineUpdate) {
         timelineUpdate = completion
         guard let client = client else { return completion(.notAuthenticated) }

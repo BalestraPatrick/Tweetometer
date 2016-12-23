@@ -40,20 +40,22 @@ class Tweet: Object, Unboxable {
             retweeted = try unboxer.unbox(key: "retweeted")
             retweetsCount = try unboxer.unbox(key: "retweet_count")
             likesCount = try unboxer.unbox(key: "favorite_count")
-            try createUser(unboxer: unboxer)
+            createUser(unboxer: unboxer)
         } catch {
             print(error)
         }
     }
 
-    private func createUser(unboxer: Unboxer) throws {
+    /// Create a user if its not in the Realm.
+    ///
+    /// - Parameter unboxer: The object used to decode the JSON.
+    private func createUser(unboxer: Unboxer) {
         let realm = DataManager.realm()
         let user = realm.object(ofType: User.self, forPrimaryKey: userId)
-        // If the user exists, just update the tweetsCount property to correctly sort the list.
+        // If no user is found with the userID, create it.
         if user == nil {
-            // If no user exists, create one.
             let newUser: User = try unboxer.unbox(key: "user")
-            try realm.write {
+            try! realm.write {
                 realm.add(newUser)
             }
         }
