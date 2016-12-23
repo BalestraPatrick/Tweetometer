@@ -18,13 +18,6 @@ public final class TimelineParser {
     /// The Id of the oldest retrieved tweet.
     var maxId: String? = nil
 
-    var tweets: Results<Tweet>? = nil
-
-    init() {
-        let realm = DataManager.realm()
-        tweets = realm.objects(Tweet.self)
-    }
-
     func parse(_ tweets: JSONArray) {
         let realm = DataManager.realm()
         var newTweets = [Tweet]()
@@ -54,9 +47,9 @@ public final class TimelineParser {
         for tweet in newTweets {
             let user = realm.object(ofType: User.self, forPrimaryKey: tweet.userId)
             if let user = user {
-                print("New tweets: \(newTweets.count)")
                 try realm.write {
                     user.tweets.append(tweet)
+                    user.tweetsCount = user.tweets.count
                 }
             }
         }

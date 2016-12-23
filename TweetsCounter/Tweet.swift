@@ -19,7 +19,7 @@ class Tweet: Object, Unboxable {
     dynamic var language: String = ""
     dynamic var retweetsCount: Int = 0
     dynamic var likesCount: Int = 0
-    dynamic var retweed: Bool = false
+    dynamic var retweeted: Bool = false
 
     override static func primaryKey() -> String? {
         return "tweetId"
@@ -37,10 +37,9 @@ class Tweet: Object, Unboxable {
             createdAt = try unboxer.unbox(key: "created_at", formatter: DateFormatter.twitterDateFormatter())
             text = try unboxer.unbox(key: "text")
             language = try unboxer.unbox(key: "lang")
-            retweed = try unboxer.unbox(key: "retweeted")
+            retweeted = try unboxer.unbox(key: "retweeted")
             retweetsCount = try unboxer.unbox(key: "retweet_count")
             likesCount = try unboxer.unbox(key: "favorite_count")
-            retweed = try unboxer.unbox(key: "retweeted")
             try createUser(unboxer: unboxer)
         } catch {
             print(error)
@@ -51,13 +50,7 @@ class Tweet: Object, Unboxable {
         let realm = DataManager.realm()
         let user = realm.object(ofType: User.self, forPrimaryKey: userId)
         // If the user exists, just update the tweetsCount property to correctly sort the list.
-        if let user = user {
-            try realm.write {
-                print("real tweets: \(user.tweets.count)")
-                user.tweetsCount = user.tweets.count
-                print("after tweets: \(user.tweetsCount)")
-            }
-        } else {
+        if user == nil {
             // If no user exists, create one.
             let newUser: User = try unboxer.unbox(key: "user")
             try realm.write {
