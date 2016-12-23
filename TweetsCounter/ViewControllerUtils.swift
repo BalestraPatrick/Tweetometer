@@ -54,7 +54,7 @@ extension MenuPopOverViewController {
     
     func applyStyle() {
         tableView.alwaysBounceVertical = false
-        view.backgroundColor = UIColor.menuDarkBlueColor()
+        view.backgroundColor = UIColor.menuDarkBlue()
         preferredContentSize = CGSize(width: 200, height: 44 * options.count)
     }
 }
@@ -62,7 +62,7 @@ extension MenuPopOverViewController {
 extension UserDetailViewController {
     
     func applyStyle() {
-        view.backgroundColor = UIColor.backgroundBlueColor()
+        view.backgroundColor = UIColor.backgroundBlue()
     }
     
     func setTitleViewContent(_ name: String, screenName: String) {

@@ -36,13 +36,9 @@ class MenuPopOverViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.row {
         case MenuOptions.refresh.rawValue:
-            dismiss(animated: true) {
-//                self.homeViewController?.tableView.startRefreshing(at: .top)
-            }
+            coordinator.refreshTimeline()
         case MenuOptions.logout.rawValue:
-            dismiss(animated: true) {
-
-            }
+            coordinator.logout()
             break
         case MenuOptions.settings.rawValue:
             coordinator.presentSettings()

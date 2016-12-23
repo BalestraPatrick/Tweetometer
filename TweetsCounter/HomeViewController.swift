@@ -10,6 +10,11 @@ import UIKit
 import PullToRefresh
 import RealmSwift
 
+enum TableViewStatus {
+    case refreshing
+    case notRefreshing
+}
+
 final class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var tableView: UITableView!
@@ -30,7 +35,7 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
         applyStyle()
         tableView.rowHeight = 75.0
         tableView.addPullToRefresh(refresher) {
-            self.requestTimeline()
+            self.refreshTimeline()
         }
 
         let realm = DataManager.realm()
@@ -43,9 +48,7 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
         } else {
             // Start requests
             requestProfilePicture()
-            requestTimeline()
-            tableView.startRefreshing(at: .top)
-            UIApplication.shared.isNetworkActivityIndicatorVisible = true
+            refreshTimeline()
         }
     }
 
@@ -62,9 +65,9 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
         case .menuPopOver:
             guard let menuPopOver = segue.destination as? MenuPopOverViewController else { return }
             menuPopOver.modalPresentationStyle = .popover
-            menuPopOver.view.backgroundColor = UIColor.menuDarkBlueColor()
+            menuPopOver.view.backgroundColor = UIColor.menuDarkBlue()
             menuPopOver.popoverPresentationController!.delegate = self
-            menuPopOver.popoverPresentationController!.backgroundColor = UIColor.menuDarkBlueColor()
+            menuPopOver.popoverPresentationController!.backgroundColor = UIColor.menuDarkBlue()
             coordinator.presentMenu(menuPopOver)
         case .userDetail:
             guard let userDetail = segue.destination as? UserDetailViewController, let cell = sender as? UITableViewCell, let indexPath = tableView.indexPath(for: cell), let users = users else { return }
@@ -75,6 +78,21 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     // MARK: Data Request
+
+    func refreshTimeline() {
+        setRefreshUI(to: .refreshing)
+        requestTimeline()
+    }
+
+    func setRefreshUI(to status: TableViewStatus) {
+        if case .refreshing = status {
+            tableView.startRefreshing(at: .top)
+            UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        } else {
+            tableView.endRefreshing(at: .top)
+            UIApplication.shared.isNetworkActivityIndicatorVisible = false
+        }
+    }
 
     func requestProfilePicture() {
         // Request profile picture
@@ -98,6 +116,16 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
                 }
             }
         }
+    }
+
+    // MARK: UI
+
+    func presentAlert(title: String, message: String? = nil) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default) { _ in
+            self.setRefreshUI(to: .notRefreshing)
+        })
+        present(alert, animated: true)
     }
 
     // MARK: UITableViewDataSource
@@ -136,16 +164,5 @@ extension UITableView {
             endUpdates()
         default: break
         }
-    }
-}
-
-extension HomeViewController {
-
-    func presentAlert(title: String, message: String? = nil) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default) { _ in
-            self.tableView.endRefreshing(at: .top)
-        })
-        present(alert, animated: true)
     }
 }

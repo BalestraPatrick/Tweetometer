@@ -12,14 +12,14 @@ extension UINavigationBar {
     
     func applyStyle() {
         barStyle = .black
-        barTintColor = UIColor.backgroundBlueColor()
+        barTintColor = UIColor.backgroundBlue()
         tintColor = UIColor.white
         titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white,
             NSFontAttributeName: UIFont.systemFont(ofSize: 18, weight: 0.1)]
         setBackgroundImage(UIImage(), for: .default)
         shadowImage = UIImage()
         isTranslucent = false
-        backgroundColor = UIColor.backgroundBlueColor()
+        backgroundColor = UIColor.backgroundBlue()
     }
 }
 

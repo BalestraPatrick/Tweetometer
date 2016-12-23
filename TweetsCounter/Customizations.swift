@@ -10,17 +10,30 @@ import UIKit
 
 extension UIColor {
     
-    static func backgroundBlueColor() -> UIColor {
+    static func backgroundBlue() -> UIColor {
         return UIColor(red: 0.114, green: 0.631, blue: 0.949, alpha: 1.0)
     }
     
-    static func menuDarkBlueColor() -> UIColor {
+    static func menuDarkBlue() -> UIColor {
         return UIColor(red: 0.223, green: 0.262, blue: 0.349, alpha: 1.0)
     }
     
-    static func transparentMenuDarkBlueColor() -> UIColor {
+    static func transparentMenuDarkBlue() -> UIColor {
         return UIColor(red: 0.223, green: 0.262, blue: 0.349, alpha: 0.5)
     }
+
+    static func userCellSelected() -> UIColor {
+        return UIColor(white: 0.9, alpha: 1.0)
+    }
+
+    static func userCellEven() -> UIColor {
+        return UIColor.white
+    }
+
+    static func userCellOdd() -> UIColor {
+        return UIColor(white: 0.97, alpha: 1.0)
+    }
+
 }
 
 extension DateFormatter {

@@ -322,21 +322,15 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="HL1-ms-NtI" customClass="ProfilePictureImageView" customModule="TweetsCounter" customModuleProvider="target">
-                                            <rect key="frame" x="10" y="10" width="75" height="75"/>
+                                            <rect key="frame" x="10" y="10" width="50" height="50"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="HL1-ms-NtI" secondAttribute="height" multiplier="1:1" id="4jn-dj-jap"/>
-                                                <constraint firstAttribute="height" constant="75" id="5qa-pH-vpp"/>
-                                                <constraint firstAttribute="width" constant="75" id="Ij9-Gi-WJb"/>
+                                                <constraint firstAttribute="height" constant="50" id="5qa-pH-vpp"/>
+                                                <constraint firstAttribute="width" constant="50" id="Ij9-Gi-WJb"/>
                                             </constraints>
-                                            <variation key="default">
-                                                <mask key="constraints">
-                                                    <exclude reference="5qa-pH-vpp"/>
-                                                    <exclude reference="Ij9-Gi-WJb"/>
-                                                </mask>
-                                            </variation>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="San Francisco, USA" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jaE-Pv-RLh">
-                                            <rect key="frame" x="95" y="10" width="270" height="75"/>
+                                            <rect key="frame" x="70" y="10" width="295" height="75"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="75" id="7VI-t4-Ad9"/>
                                             </constraints>
@@ -352,10 +346,10 @@
                                     </subviews>
                                     <constraints>
                                         <constraint firstAttribute="trailing" secondItem="jaE-Pv-RLh" secondAttribute="trailing" constant="10" id="13W-68-5Dz"/>
-                                        <constraint firstItem="HL1-ms-NtI" firstAttribute="top" secondItem="gt5-nd-Gjb" secondAttribute="top" constant="10" id="ArT-Jt-rfU"/>
                                         <constraint firstItem="jaE-Pv-RLh" firstAttribute="leading" secondItem="HL1-ms-NtI" secondAttribute="trailing" constant="10" id="Cg8-74-Kjc"/>
                                         <constraint firstAttribute="bottom" secondItem="jaE-Pv-RLh" secondAttribute="bottom" constant="10" id="Nii-Be-hJL"/>
-                                        <constraint firstAttribute="bottom" secondItem="HL1-ms-NtI" secondAttribute="bottom" constant="10" id="ObN-jI-Fm5"/>
+                                        <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="HL1-ms-NtI" secondAttribute="bottom" constant="10" id="aaD-gX-9Dk"/>
+                                        <constraint firstItem="HL1-ms-NtI" firstAttribute="top" secondItem="gt5-nd-Gjb" secondAttribute="top" constant="10" id="bvf-gV-kcy"/>
                                         <constraint firstItem="HL1-ms-NtI" firstAttribute="leading" secondItem="gt5-nd-Gjb" secondAttribute="leading" constant="10" id="c7P-SN-cDB"/>
                                         <constraint firstItem="jaE-Pv-RLh" firstAttribute="height" secondItem="HL1-ms-NtI" secondAttribute="height" id="leD-9j-wJn"/>
                                         <constraint firstItem="jaE-Pv-RLh" firstAttribute="top" secondItem="gt5-nd-Gjb" secondAttribute="top" constant="10" id="m3K-KC-Y8W"/>

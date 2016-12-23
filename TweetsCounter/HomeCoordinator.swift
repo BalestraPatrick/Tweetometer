@@ -12,6 +12,7 @@ protocol HomeCoordinatorDelegate: class {
     func pushDetail(_ controller: UserDetailViewController)
     func presentMenu(_ controller: MenuPopOverViewController)
     func presentLogin()
+    func refreshTimeline()
 }
 
 class HomeCoordinator: HomeCoordinatorDelegate {
@@ -47,11 +48,13 @@ class HomeCoordinator: HomeCoordinatorDelegate {
         loginCoordinator.start()
     }
 
-    // Navigation handles here but invoked from the MenuCoordinator.
-
     func presentSettings() {
         // TODO: remove menu coordinator
         let settingsCoordinator = SettingsCoordinator(parent: controller)
         settingsCoordinator.start()
+    }
+
+    func refreshTimeline() {
+        controller.refreshTimeline()
     }
 }

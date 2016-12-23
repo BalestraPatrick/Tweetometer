@@ -51,7 +51,7 @@ class TweetTableViewCell: UITableViewCell {
         dateLabel.text = tweet.createdAt.tweetDateFormatted()
         retweetsCountLabel.text = "\(tweet.retweetsCount)"
         likesCountLabel.text = "\(tweet.likesCount)"
-        backgroundColor = indexPath.row % 2 == 0 ? UIColor.white : UIColor(white: 0.97, alpha: 1.0)
+        backgroundColor = indexPath.row % 2 == 0 ? UIColor.userCellEven() : UIColor.userCellOdd()
     }
     
 }

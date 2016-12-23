@@ -54,12 +54,27 @@ final class UserTableViewCell: UITableViewCell {
     }
 
     // MARK: UITableViewCell Lifecycle
+
+    override func prepareForReuse() {
+        super.prepareForReuse()
+
+        profilePictureImageView.image = UIImage(asset: .placeholder)
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
         accessoryView = UIImageView(image: UIImage(named: "detail"))
         accessibilityElements = [profilePictureImageView, screenNameLabel, usernameLabel, followersLabel, followingLabel, numberOfTweetsLabel]
+    }
+
+    override func setHighlighted(_ highlighted: Bool, animated: Bool) {
+        super.setHighlighted(highlighted, animated: animated)
+        if highlighted {
+            backgroundColor = UIColor.userCellSelected()
+        } else {
+            backgroundColor = index % 2 == 0 ? UIColor.userCellEven() : UIColor.userCellOdd()
+        }
     }
     
     func configure(_ user: User, indexPath: IndexPath) {
@@ -69,10 +84,9 @@ final class UserTableViewCell: UITableViewCell {
         numberOfFollowing = user.followingCount
         numberOfTweets = user.tweets.count
         index = indexPath.row
-        backgroundColor = indexPath.row % 2 == 0 ? UIColor.white : UIColor(white: 0.97, alpha: 1.0)
-        if let stringURL = user.profileImageURL {
-            profilePictureImageView.af_setImage(withURL: URL(string: stringURL)!)
+        backgroundColor = indexPath.row % 2 == 0 ? UIColor.userCellEven() : UIColor.userCellOdd()
+        if let stringURL = user.profileImageURL, let URL = URL(string: stringURL) {
+            profilePictureImageView.af_setImage(withURL: URL, placeholderImage: UIImage(asset: .placeholder))
         }
     }
-
 }

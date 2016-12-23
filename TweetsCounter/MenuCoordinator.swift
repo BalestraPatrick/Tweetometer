@@ -7,6 +7,8 @@
 //
 
 protocol MenuCoordinatorDelegate: class {
+    func refreshTimeline()
+    func logout()
     func presentSettings()
 }
 
@@ -28,26 +30,18 @@ class MenuCoordinator: MenuCoordinatorDelegate {
 
     // MARK: MenuCoordinatorDelegate
 
+    func logout() {
+        controller.dismiss(animated: true)
+        parentCoordinator.presentLogin()
+    }
+
+    func refreshTimeline() {
+        controller.dismiss(animated: true)
+        parentCoordinator.refreshTimeline()
+    }
+
     func presentSettings() {
         controller.dismiss(animated: true)
         parentCoordinator.presentSettings()
     }
-
-//    func pushDetail(_ controller: UserDetailViewController) {
-//        let userDetailCoordinator = UserDetailCoordinator(controller: controller)
-//        childCoordinators.append(userDetailCoordinator)
-//        userDetailCoordinator.start()
-//    }
-//
-//    func presentMenu() {
-//        let menuCoordinator = MenuCoordinator()
-//        childCoordinators.append(menuCoordinator)
-//        menuCoordinator.start()
-//    }
-//
-//    func presentLogin() {
-//        let loginCoordinator = LoginCoordinator(parent: controller)
-//        childCoordinators.append(loginCoordinator)
-//        loginCoordinator.start()
-//    }
 }
