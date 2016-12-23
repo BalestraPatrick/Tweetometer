@@ -227,7 +227,7 @@
                                             <outlet property="profilePictureImageView" destination="sgz-4k-7PW" id="Ykq-TO-QeX"/>
                                             <outlet property="screenNameLabel" destination="Kwb-TQ-Tqc" id="lew-ss-UyK"/>
                                             <outlet property="usernameLabel" destination="luN-Mg-qNM" id="sHx-oF-dX2"/>
-                                            <segue destination="WlY-wj-dbD" kind="show" identifier="UserDetail" id="x1V-o0-zOO">
+                                            <segue destination="WlY-wj-dbD" kind="show" identifier="userDetail" id="x1V-o0-zOO">
                                                 <segue key="commit" inheritsFrom="parent" id="UkV-Xd-Nan"/>
                                                 <segue key="preview" inheritsFrom="commit" id="SjX-z9-PQd"/>
                                             </segue>
@@ -561,7 +561,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QVn-ex-35j" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2007" y="266"/>
+            <point key="canvasLocation" x="2018" y="266"/>
         </scene>
         <!--Settings View Controller-->
         <scene sceneID="q89-cJ-1vz">
