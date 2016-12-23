@@ -33,7 +33,6 @@ extension UIColor {
     static func userCellOdd() -> UIColor {
         return UIColor(white: 0.97, alpha: 1.0)
     }
-
 }
 
 extension DateFormatter {
@@ -49,18 +48,14 @@ extension DateFormatter {
 extension Date {
     
     func tweetDateFormatted() -> String {
-        let minutes = (Calendar.current as NSCalendar).components(NSCalendar.Unit.minute, from: self, to: Date(), options: []).minute
-        if minutes! < 60 {
+        let minutesComponents = (Calendar.current as NSCalendar).components(NSCalendar.Unit.minute, from: self, to: Date(), options: []).minute
+        guard let minutes = minutesComponents else { return "" }
+        if minutes < 60 {
             return "\(minutes)m"
-        } else if minutes! < 60 * 24 {
-            return "\(minutes! / 24)h"
+        } else if minutes < 60 * 24 {
+            return "\(minutes / 60)h"
         } else {
-            return "\(minutes! / (60 * 24))d"
+            return "\(minutes / (60 * 24))d"
         }
     }
-}
-
-// Fix for bug in  DGElasticPullToRefresh: https://github.com/gontovnik/DGElasticPullToRefresh/issues/24#issuecomment-182840115
-extension UIScrollView {
-    func dg_stopScrollingAnimation() {}
 }

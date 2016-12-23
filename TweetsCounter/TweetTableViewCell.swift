@@ -30,7 +30,6 @@ class TweetTableViewCell: UITableViewCell {
         dateLabel.textColor = UIColor.black
         retweetsCountLabel.textColor = UIColor.black
         likesCountLabel.textColor = UIColor.black
-        
         setUpTwitterElementHandlers()
     }
     
@@ -64,5 +63,4 @@ class TweetTableViewCell: UITableViewCell {
         likesCountLabel.text = "\(tweet.likesCount)"
         index = indexPath.row
     }
-    
 }
