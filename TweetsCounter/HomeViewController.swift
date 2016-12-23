@@ -78,7 +78,7 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
 
     func requestProfilePicture() {
         // Request profile picture
-        session.getProfilePicture {  url in
+        session.getProfilePictureURL {  url in
             guard let url = url else { return }
             self.profilePictureItem.imageView.af_setImage(withURL: url, placeholderImage: UIImage(asset: .placeholder))
         }

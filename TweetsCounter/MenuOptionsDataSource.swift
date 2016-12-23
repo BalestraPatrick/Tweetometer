@@ -8,13 +8,11 @@
 
 import UIKit
 
-
 /// Definition of the option fields.
 struct Option {
     let image: String
     let title: String
 }
-
 
 /// The options to be presented in the menu.
 ///

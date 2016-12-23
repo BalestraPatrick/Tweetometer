@@ -54,9 +54,13 @@ class Tweet: Object, Unboxable {
         let user = realm.object(ofType: User.self, forPrimaryKey: userId)
         // If no user is found with the userID, create it.
         if user == nil {
-            let newUser: User = try unboxer.unbox(key: "user")
-            try! realm.write {
-                realm.add(newUser)
+            do {
+                let newUser: User = try unboxer.unbox(key: "user")
+                try! realm.write {
+                    realm.add(newUser)
+                }
+            } catch {
+                print(error)
             }
         }
     }

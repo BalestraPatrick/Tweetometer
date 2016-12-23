@@ -61,7 +61,6 @@ public final class TimelineParser {
         }
     }
 
-
     /// Find the oldest tweetId and save it for the next request.
     ///
     /// - Parameter maxId: The id of the oldest tweet retrieved.

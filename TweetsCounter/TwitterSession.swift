@@ -40,7 +40,6 @@ final class TwitterSession {
         return client != nil
     }
 
-
     /// Request the user's profile picture URL.
     ///
     /// - Parameter completion: The completion block that contains the profile picture URL.
@@ -58,7 +57,6 @@ final class TwitterSession {
         guard let client = client, let userId = client.userID else { return }
         Twitter.sharedInstance().sessionStore.logOutUserID(userId)
     }
-
 
     /// Get the timeline tweets of the current user.
     ///
