@@ -17,8 +17,17 @@ class DataManager {
     class func realm() -> Realm {
         do {
             if let _ = NSClassFromString("XCTest") {
-                return try! Realm(configuration: Realm.Configuration(fileURL: nil, inMemoryIdentifier: "TimelineParser", syncConfiguration: nil, encryptionKey: nil, readOnly: false, schemaVersion: 0, migrationBlock: nil, deleteRealmIfMigrationNeeded: false, objectTypes: nil))
+                Realm.Configuration.defaultConfiguration.inMemoryIdentifier = "TimelineParser"
+                return try! Realm()
             } else {
+                let config = Realm.Configuration(
+                    schemaVersion: 1,
+                    migrationBlock: { migration, oldSchemaVersion in
+                        if oldSchemaVersion < 1 {
+                            // Update custom properties here
+                        }
+                })
+                Realm.Configuration.defaultConfiguration = config
                 return try Realm()
             }
         } catch {

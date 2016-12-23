@@ -15,6 +15,7 @@ enum TwitterError: Error {
     case unknown
     case invalidResponse
     case rateLimitExceeded
+    case noInternetConnection
     case failedAnalysis
 }
 
@@ -77,6 +78,7 @@ final class TwitterSession {
             if let error = error as? NSError {
                 switch error.code {
                 case 88: return completion(.rateLimitExceeded)
+                case -1009: return completion(.noInternetConnection)
                 default: return completion(.invalidResponse)
                 }
             }

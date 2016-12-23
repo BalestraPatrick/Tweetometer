@@ -91,6 +91,8 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
                 switch error {
                 case .rateLimitExceeded:
                     self.presentAlert(title: "Rate Limit Exceeded ❌")
+                case .noInternetConnection:
+                    self.presentAlert(title: "No Internet Connection 📡")
                 default:
                     break
                 }
