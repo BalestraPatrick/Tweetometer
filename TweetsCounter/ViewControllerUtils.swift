@@ -11,7 +11,6 @@ import UIKit
 extension HomeViewController {
     
     func applyStyle() {
-//        view.backgroundColor = UIColor.backgroundBlueColor()
         navigationController?.navigationBar.applyStyle()
         tableView.separatorStyle = .none
         tableView.applyStyle()
@@ -26,7 +25,7 @@ extension HomeViewController {
 extension HomeViewController: UIPopoverPresentationControllerDelegate {
     
     func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
-        return UIModalPresentationStyle.none
+        return .none
     }
 }
 
@@ -55,7 +54,7 @@ extension MenuPopOverViewController {
     
     func applyStyle() {
         tableView.alwaysBounceVertical = false
-        view.backgroundColor = UIColor().menuDarkBlueColor()
+        view.backgroundColor = UIColor.menuDarkBlueColor()
         preferredContentSize = CGSize(width: 200, height: 44 * options.count)
     }
 }

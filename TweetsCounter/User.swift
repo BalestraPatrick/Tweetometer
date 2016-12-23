@@ -49,6 +49,7 @@ class User: Object, Unboxable {
             userDescription = try unboxer.unbox(key: "description")
             location = try unboxer.unbox(key: "location")
             displayURL = try unboxer.unbox(keyPath: "entities.url.urls.0.expanded_url")
+            // TODO: investigate image bug here
             profileImageURL = convertToBiggerFormat(try! unboxer.unbox(key: "profile_image_url_https"))
         } catch {
             print(error)

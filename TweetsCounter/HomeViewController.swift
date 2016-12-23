@@ -61,10 +61,10 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
         switch segueIdentifier {
         case .menuPopOver:
             guard let menuPopOver = segue.destination as? MenuPopOverViewController else { return }
-            menuPopOver.modalPresentationStyle = UIModalPresentationStyle.popover
+            menuPopOver.modalPresentationStyle = .popover
+            menuPopOver.view.backgroundColor = UIColor.menuDarkBlueColor()
             menuPopOver.popoverPresentationController!.delegate = self
-            menuPopOver.view.backgroundColor = UIColor().menuDarkBlueColor()
-            menuPopOver.popoverPresentationController!.backgroundColor = UIColor().menuDarkBlueColor()
+            menuPopOver.popoverPresentationController!.backgroundColor = UIColor.menuDarkBlueColor()
             coordinator.presentMenu(menuPopOver)
         case .userDetail:
             guard let userDetail = segue.destination as? UserDetailViewController, let cell = sender as? UITableViewCell, let indexPath = tableView.indexPath(for: cell), let users = users else { return }

@@ -62,20 +62,6 @@ final class UserTableViewCell: UITableViewCell {
         accessibilityElements = [profilePictureImageView, screenNameLabel, usernameLabel, followersLabel, followingLabel, numberOfTweetsLabel]
     }
     
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-        
-    }
-    
-    override func setHighlighted(_ highlighted: Bool, animated: Bool) {
-        super.setHighlighted(highlighted, animated: animated)
-        if highlighted {
-            self.backgroundColor = UIColor.white
-        } else {
-            self.backgroundColor = index % 2 == 0 ? UIColor(white: 1.0, alpha: 0.2) : UIColor(white: 1.0, alpha: 0.1)
-        }
-    }
-    
     func configure(_ user: User, indexPath: IndexPath) {
         screenName = user.name
         username = user.screenName
@@ -83,6 +69,7 @@ final class UserTableViewCell: UITableViewCell {
         numberOfFollowing = user.followingCount
         numberOfTweets = user.tweets.count
         index = indexPath.row
+        backgroundColor = indexPath.row % 2 == 0 ? UIColor.white : UIColor(white: 0.97, alpha: 1.0)
         if let stringURL = user.profileImageURL {
             profilePictureImageView.af_setImage(withURL: URL(string: stringURL)!)
         }
