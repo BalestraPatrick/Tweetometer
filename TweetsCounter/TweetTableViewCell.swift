@@ -15,9 +15,15 @@ class TweetTableViewCell: UITableViewCell {
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var retweetsCountLabel: UILabel!
     @IBOutlet weak var likesCountLabel: UILabel!
-    
+
     weak var coordinator: UserDetailCoordinatorDelegate!
-    
+
+    var index = 0 {
+        didSet {
+            backgroundColor = index % 2 == 0 ? UIColor.userCellEven() : UIColor.userCellOdd()
+        }
+    }
+
     override func awakeFromNib() {
         super.awakeFromNib()
         tweetLabel.textColor = UIColor.black
@@ -28,10 +34,15 @@ class TweetTableViewCell: UITableViewCell {
         setUpTwitterElementHandlers()
     }
     
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
+    override func setHighlighted(_ highlighted: Bool, animated: Bool) {
+        super.setHighlighted(highlighted, animated: animated)
+        if highlighted {
+            backgroundColor = UIColor.userCellSelected()
+        } else {
+            backgroundColor = index % 2 == 0 ? UIColor.userCellEven() : UIColor.userCellOdd()
+        }
     }
-    
+
     func setUpTwitterElementHandlers() {
         tweetLabel.handleURLTap { url in
             self.coordinator.presentSafari(url)
@@ -51,7 +62,7 @@ class TweetTableViewCell: UITableViewCell {
         dateLabel.text = tweet.createdAt.tweetDateFormatted()
         retweetsCountLabel.text = "\(tweet.retweetsCount)"
         likesCountLabel.text = "\(tweet.likesCount)"
-        backgroundColor = indexPath.row % 2 == 0 ? UIColor.userCellEven() : UIColor.userCellOdd()
+        index = indexPath.row
     }
     
 }

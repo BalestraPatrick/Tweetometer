@@ -19,7 +19,7 @@ final class UserTableViewCell: UITableViewCell {
 
     var index = 0 {
         didSet {
-            backgroundColor = index % 2 == 0 ? UIColor.white : UIColor(white: 0.97, alpha: 1.0)
+            backgroundColor = index % 2 == 0 ? UIColor.userCellEven() : UIColor.userCellOdd()
         }
     }
     
@@ -84,7 +84,6 @@ final class UserTableViewCell: UITableViewCell {
         numberOfFollowing = user.followingCount
         numberOfTweets = user.tweets.count
         index = indexPath.row
-        backgroundColor = indexPath.row % 2 == 0 ? UIColor.userCellEven() : UIColor.userCellOdd()
         if let stringURL = user.profileImageURL, let URL = URL(string: stringURL) {
             profilePictureImageView.af_setImage(withURL: URL, placeholderImage: UIImage(asset: .placeholder))
         }
