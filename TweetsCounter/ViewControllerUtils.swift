@@ -16,6 +16,10 @@ extension HomeViewController {
         tableView.applyStyle()
         titleLabel.text = "Your Timeline Stats"
     }
+
+    func set(screenName: String) {
+        subtitleLabel.text = "@\(screenName)"
+    }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
@@ -62,9 +66,12 @@ extension MenuPopOverViewController {
 extension UserDetailViewController {
     
     func applyStyle() {
-        view.backgroundColor = UIColor.backgroundBlue()
+        navigationController?.navigationBar.applyStyle()
+        tableView.separatorStyle = .none
+        tableView.applyStyle()
+        tableView.backgroundColor = UIColor.backgroundBlue()
     }
-    
+
     func setTitleViewContent(_ name: String, screenName: String) {
         titleLabel.text = name
         subtitleLabel.text = "@\(screenName)"

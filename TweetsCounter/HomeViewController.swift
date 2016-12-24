@@ -35,6 +35,7 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
         super.viewDidLoad()
         applyStyle()
         tableView.rowHeight = 75.0
+        let refresher = TweetometerPullToRefresh()
         tableView.addPullToRefresh(refresher) {
             self.refreshTimeline()
         }
@@ -55,6 +56,7 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
 
     deinit {
         notificationToken?.stop()
+        tableView.removePullToRefresh(refresher)
     }
 
     // MARK: Storyboard Segues
@@ -96,8 +98,9 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
 
     func requestProfilePicture() {
         // Request profile picture
-        session.getProfilePictureURL {  url in
+        session.getProfilePictureURL { [unowned self] url in
             guard let url = url else { return }
+            self.set(screenName: self.session.loggedUserScreenName())
             self.profilePictureItem.imageView.af_setImage(withURL: url, placeholderImage: UIImage(asset: .placeholder))
         }
     }

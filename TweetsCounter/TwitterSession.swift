@@ -24,6 +24,7 @@ final class TwitterSession {
     typealias TimelineUpdate = (TwitterError?) -> Void
 
     private var client: TWTRAPIClient?
+    private var user: TWTRUser?
     private var timelineParser = TimelineParser()
     private var timelineUpdate: TimelineUpdate?
     private var timelineRequestsCount = 0
@@ -41,12 +42,17 @@ final class TwitterSession {
         return client != nil
     }
 
+    func loggedUserScreenName() -> String {
+        return user?.screenName ?? ""
+    }
+
     /// Request the user's profile picture URL.
     ///
     /// - Parameter completion: The completion block that contains the profile picture URL.
     func getProfilePictureURL(completion: @escaping (URL?) -> ()) {
         guard let client = client, let userID = client.userID else { return completion(nil) }
         client.loadUser(withID: userID) { user, error in
+            self.user = user
             if let stringURL = user?.profileImageLargeURL {
                 return completion(URL(string: stringURL)!)
             }
