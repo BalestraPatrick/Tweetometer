@@ -7,8 +7,9 @@
 //
 
 import UIKit
-import PullToRefresh
 import RealmSwift
+import PullToRefresh
+import Whisper
 
 enum TableViewStatus {
     case refreshing
@@ -81,7 +82,6 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
 
     func refreshTimeline() {
         setRefreshUI(to: .refreshing)
-        requestTimeline()
     }
 
     func setRefreshUI(to status: TableViewStatus) {
@@ -120,12 +120,11 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
 
     // MARK: UI
 
-    func presentAlert(title: String, message: String? = nil) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default) { _ in
-            self.setRefreshUI(to: .notRefreshing)
-        })
-        present(alert, animated: true)
+    func presentAlert(title: String) {
+        setRefreshUI(to: .notRefreshing)
+        Whisper.Config.modifyInset = false
+        let whisperMessage = Message(title: title, textColor: .white, backgroundColor: .backgroundBlue(), images: nil)
+        Whisper.show(whisper: whisperMessage, to: self.navigationController!, action: .show)
     }
 
     // MARK: UITableViewDataSource

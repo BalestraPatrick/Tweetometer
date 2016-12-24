@@ -20,6 +20,7 @@ PODS:
     - TwitterCore (= 2.6.1)
   - Unbox (2.3.0)
   - ValueStepper (1.0)
+  - Whisper (4.0.0)
 
 DEPENDENCIES:
   - ActiveLabel
@@ -35,6 +36,7 @@ DEPENDENCIES:
   - TwitterKit
   - Unbox
   - ValueStepper
+  - Whisper
 
 EXTERNAL SOURCES:
   Keys:
@@ -55,7 +57,8 @@ SPEC CHECKSUMS:
   TwitterKit: d38c08d31dfd4ba604f95deca6cf8e174b5cbd96
   Unbox: 5ba1966ebe99b5d568d432626323331eedd33458
   ValueStepper: a1a275491e3a1ab6fe80a589ce04781d4a795fb3
+  Whisper: 08be92623311f8e53201e62e17f6d7b9599a4714
 
-PODFILE CHECKSUM: 0c3e5c095ad5e346afc0f6f94ac31ab4c31cd16f
+PODFILE CHECKSUM: 9e0369780749249924673b98321e1bdc9c11576e
 
 COCOAPODS: 1.1.1

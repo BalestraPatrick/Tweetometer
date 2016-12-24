@@ -23,6 +23,7 @@ target 'TweetsCounter' do
  pod 'Unbox'
  pod 'ValueStepper'
  pod 'SwiftyUserDefaults'
+ pod 'Whisper'
  # Used to tap hashtags and links
  pod 'ActiveLabel'
  # Custom pull to refresh component

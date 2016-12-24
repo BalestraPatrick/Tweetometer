@@ -373,7 +373,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kIQ-FQ-S91" customClass="ActiveLabel" customModule="ActiveLabel">
-                                            <rect key="frame" x="15" y="5" width="296" height="21"/>
+                                            <rect key="frame" x="15" y="5" width="296" height="20.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
@@ -407,13 +407,13 @@
                                             </variation>
                                         </label>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="gJ6-UQ-emV">
-                                            <rect key="frame" x="0.0" y="26" width="375" height="48"/>
+                                            <rect key="frame" x="0.0" y="25.5" width="375" height="48.5"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="mLk-bD-f1f">
-                                                    <rect key="frame" x="133.5" y="0.0" width="108" height="48"/>
+                                                    <rect key="frame" x="133.5" y="0.0" width="108" height="48.5"/>
                                                     <subviews>
                                                         <imageView userInteractionEnabled="NO" alpha="0.90000000000000002" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="retweet" translatesAutoresizingMaskIntoConstraints="NO" id="WNA-Gr-emu">
-                                                            <rect key="frame" x="0.0" y="11.5" width="25" height="25"/>
+                                                            <rect key="frame" x="0.0" y="12" width="25" height="25"/>
                                                             <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="25" id="HK6-A7-9xb"/>
@@ -430,14 +430,14 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yFR-Ke-zsa" userLabel="SpacingView">
-                                                            <rect key="frame" x="52.5" y="0.0" width="0.0" height="48"/>
+                                                            <rect key="frame" x="52.5" y="0.0" width="0.0" height="48.5"/>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" id="lMT-Zz-UyQ"/>
                                                             </constraints>
                                                         </view>
                                                         <imageView userInteractionEnabled="NO" alpha="0.90000000000000002" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="heart" translatesAutoresizingMaskIntoConstraints="NO" id="WBF-8A-THl">
-                                                            <rect key="frame" x="57.5" y="11.5" width="25" height="25"/>
+                                                            <rect key="frame" x="57.5" y="12" width="25" height="25"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="25" id="TLU-Ht-hVR"/>
                                                                 <constraint firstAttribute="width" constant="25" id="Vor-t0-5s7"/>
