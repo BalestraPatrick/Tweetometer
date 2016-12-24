@@ -37,23 +37,16 @@ class Tweet: Object, Unboxable {
             createdAt = try unboxer.unbox(key: "created_at", formatter: DateFormatter.twitterDateFormatter())
             text = try unboxer.unbox(key: "text")
             language = try unboxer.unbox(key: "lang")
-            retweeted = try unboxer.unbox(key: "is_quote_status")
-            retweetsCount = try unboxer.unbox(key: "retweet_count")
-
             do {
-                if retweeted {
-                    likesCount = try unboxer.unbox(keyPath: "retweeted_status.favorite_count")
-                } else {
-                    likesCount = try unboxer.unbox(key: "favorite_count")
-                }
-
+                likesCount = try unboxer.unbox(keyPath: "retweeted_status.favorite_count")
+                retweetsCount = try unboxer.unbox(key: "retweet_count")
+                retweeted = true
+                print("Retweet: \(retweetsCount) retweets and \(likesCount) likes: \(text)")
             } catch {
-                print(error)
-            }
-            if text.hasPrefix("RT") {
-                print(likesCount)
-                print(unboxer.dictionary)
-
+                likesCount = try unboxer.unbox(key: "favorite_count")
+                retweetsCount = try unboxer.unbox(key: "retweet_count")
+                retweeted = false
+                print("Normal: \(retweetsCount) retweets and \(likesCount) likes: \(text)")
             }
             createUser(unboxer: unboxer)
         } catch {
