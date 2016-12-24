@@ -7,13 +7,13 @@ extension UIImage {
     enum Asset: String {
         case close = "close"
         case detail = "detail"
-        case heartIcon = "HeartIcon"
+        case heartIcon = "heart"
         case info = "info"
         case logout = "logout"
         case menu = "Menu"
         case placeholder = "placeholder"
         case refresh = "refresh"
-        case retweetIcon = "RetweetIcon"
+        case retweetIcon = "retweet"
         case settings = "settings"
 
         var image: UIImage {
