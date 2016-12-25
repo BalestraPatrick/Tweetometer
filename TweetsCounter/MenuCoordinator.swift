@@ -31,6 +31,7 @@ class MenuCoordinator: MenuCoordinatorDelegate {
     // MARK: MenuCoordinatorDelegate
 
     func logout() {
+        DataManager.logOut()
         controller.dismiss(animated: true)
         parentCoordinator.presentLogin()
     }

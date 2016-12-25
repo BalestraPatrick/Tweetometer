@@ -41,12 +41,10 @@ class Tweet: Object, Unboxable {
                 likesCount = try unboxer.unbox(keyPath: "retweeted_status.favorite_count")
                 retweetsCount = try unboxer.unbox(key: "retweet_count")
                 retweeted = true
-                print("Retweet: \(retweetsCount) retweets and \(likesCount) likes: \(text)")
             } catch {
                 likesCount = try unboxer.unbox(key: "favorite_count")
                 retweetsCount = try unboxer.unbox(key: "retweet_count")
                 retweeted = false
-                print("Normal: \(retweetsCount) retweets and \(likesCount) likes: \(text)")
             }
             createUser(unboxer: unboxer)
         } catch {

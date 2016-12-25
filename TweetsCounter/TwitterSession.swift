@@ -31,7 +31,13 @@ final class TwitterSession {
     private final let maximumTimelineRequests = 4
     private final let maximumTweetsPerRequest = 200
 
-    init() {
+    /// Shared Twitter session responsible for all requests to the Twitter APIs.
+    static let shared: TwitterSession = {
+        return TwitterSession()
+    }()
+
+    /// Private initializer invoke only once in the app's lifetime.
+    private init() {
         if let userID = Twitter.sharedInstance().sessionStore.session()?.userID {
             client = TWTRAPIClient(userID: userID)
         }

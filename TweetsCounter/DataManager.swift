@@ -34,4 +34,12 @@ class DataManager {
             fatalError("Could not initialize a Realm instance: \(error)")
         }
     }
+
+    /// Logs out the current user and cleans the Realm database.
+    class func logOut() {
+        TwitterSession.shared.logOutUser()
+        try! self.realm().write {
+            realm().deleteAll()
+        }
+    }
 }

@@ -24,9 +24,9 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
     @IBOutlet weak var profilePictureItem: ProfilePictureButtonItem!
     @IBOutlet weak var emptyStateLabel: UILabel!
 
-    fileprivate lazy var session = TwitterSession()
+    fileprivate lazy var session = TwitterSession.shared
     fileprivate var notificationToken: NotificationToken?
-    fileprivate let refresher = PullToRefresh()
+    fileprivate var refresher: TweetometerPullToRefresh!
 
     var users: Results<User>?
     weak var coordinator: HomeCoordinatorDelegate!
@@ -35,7 +35,7 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
         super.viewDidLoad()
         applyStyle()
         tableView.rowHeight = 75.0
-        let refresher = TweetometerPullToRefresh()
+        refresher = TweetometerPullToRefresh()
         tableView.addPullToRefresh(refresher) {
             self.refreshTimeline()
         }
@@ -88,6 +88,7 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
 
     func setRefreshUI(to status: TableViewStatus) {
         if case .refreshing = status {
+            requestTimeline()
             tableView.startRefreshing(at: .top)
             UIApplication.shared.isNetworkActivityIndicatorVisible = true
         } else {
@@ -98,10 +99,10 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
 
     func requestProfilePicture() {
         // Request profile picture
-        session.getProfilePictureURL { [unowned self] url in
-            guard let url = url else { return }
-            self.set(screenName: self.session.loggedUserScreenName())
-            self.profilePictureItem.imageView.af_setImage(withURL: url, placeholderImage: UIImage(asset: .placeholder))
+        session.getProfilePictureURL { [weak self] url in
+            guard let url = url, let weakSelf = self else { return }
+            weakSelf.set(screenName: weakSelf.session.loggedUserScreenName())
+            weakSelf.profilePictureItem.imageView.af_setImage(withURL: url, placeholderImage: UIImage(asset: .placeholder))
         }
     }
 
@@ -115,6 +116,7 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
                 case .noInternetConnection:
                     self.presentAlert(title: "No Internet Connection 📡")
                 default:
+                    self.presentAlert(title: error.localizedDescription)
                     break
                 }
             }
