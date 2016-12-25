@@ -25,10 +25,4 @@ public final class LoginViewController: UIViewController {
             self.coordinator.dismiss()
         }
     }
-
-    // MARK: - IBActions
-
-    @IBAction func cancel(_ sender: UIButton) {
-        coordinator.dismiss()
-    }
 }

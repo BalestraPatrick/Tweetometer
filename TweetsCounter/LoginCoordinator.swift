@@ -20,9 +20,9 @@ final class LoginCoordinator: LoginCoordinatorDelegate {
 
     var childCoordinators = Array<AnyObject>()
 
-    let parent: UIViewController
+    let parent: HomeViewController
 
-    init(parent: UIViewController) {
+    init(parent: HomeViewController) {
         self.parent = parent
     }
 
@@ -35,5 +35,6 @@ final class LoginCoordinator: LoginCoordinatorDelegate {
 
     func dismiss() {
         loginViewController.dismiss(animated: true)
+        parent.refreshTimeline()
     }
 }
