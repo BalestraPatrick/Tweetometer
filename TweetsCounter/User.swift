@@ -22,7 +22,7 @@ public class User: Object, Unboxable {
     dynamic public var profileImageURL: String? = nil
     dynamic public var tweetsCount: Int = 1
     dynamic public var location: String = ""
-    dynamic public var displayURL: String = ""
+    dynamic public var displayURL: String? = nil
     public var tweets = List<Tweet>()
 
     override public static func primaryKey() -> String? {
@@ -48,12 +48,9 @@ public class User: Object, Unboxable {
             name = try unboxer.unbox(key: "name")
             userDescription = try unboxer.unbox(key: "description")
             location = try unboxer.unbox(key: "location")
-            displayURL = try unboxer.unbox(keyPath: "entities.url.urls.0.expanded_url")
-
-            // TODO: investigate image bug here
             profileImageURL = convertToBiggerFormat(try! unboxer.unbox(key: "profile_image_url_https"))
-            if screenName == "dasdom" || screenName == "vixentael" {
-
+            do {
+                displayURL = unboxer.unbox(keyPath: "entities.url.urls.0.expanded_url")
             }
         } catch {
             print(error)
