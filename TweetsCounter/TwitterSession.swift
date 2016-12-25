@@ -38,7 +38,6 @@ public final class TwitterSession {
 
     /// Private initializer invoke only once in the app's lifetime.
     private init() {
-//        Twitter.sharedInstance().start(withConsumerKey: "K0S2YRYN1BEQLSucd3moyBT1h", consumerSecret: "SKnrlqdEvUpRQ6yoP1kEFEB8YbVa8B6yWCPZFDsciN53viA10W")
         if let userID = Twitter.sharedInstance().sessionStore.session()?.userID {
             client = TWTRAPIClient(userID: userID)
         }
