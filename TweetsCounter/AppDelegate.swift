@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import TweetometerKit
 
 @UIApplicationMain class AppDelegate: UIResponder, UIApplicationDelegate {
     
@@ -17,7 +18,7 @@ import UIKit
     }()
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        _ = FabricSetUp(environment: .debug)
+        FabricSetUp(environment: .debug)
         window = UIWindow(frame: UIScreen.main.bounds)
         appCoordinator.start()
         return true

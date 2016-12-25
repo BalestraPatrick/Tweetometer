@@ -10,34 +10,34 @@ import Foundation
 import Unbox
 import RealmSwift
 
-class User: Object, Unboxable {
+public class User: Object, Unboxable {
 
-    dynamic var userId: String = ""
-    dynamic var followersCount: Int = 0
-    dynamic var followingCount: Int = 0
-    dynamic var statusesCount: Int = 0
-    dynamic var screenName: String = ""
-    dynamic var name: String = ""
-    dynamic var userDescription: String = ""
-    dynamic var profileImageURL: String? = nil
-    dynamic var tweetsCount: Int = 1
-    dynamic var location: String = ""
-    dynamic var displayURL: String = ""
-    var tweets = List<Tweet>()
+    dynamic public var userId: String = ""
+    dynamic public var followersCount: Int = 0
+    dynamic public var followingCount: Int = 0
+    dynamic public var statusesCount: Int = 0
+    dynamic public var screenName: String = ""
+    dynamic public var name: String = ""
+    dynamic public var userDescription: String = ""
+    dynamic public var profileImageURL: String? = nil
+    dynamic public var tweetsCount: Int = 1
+    dynamic public var location: String = ""
+    dynamic public var displayURL: String = ""
+    public var tweets = List<Tweet>()
 
-    override static func primaryKey() -> String? {
+    override public static func primaryKey() -> String? {
         return "userId"
     }
 
-    override static func indexedProperties() -> [String] {
+    override public static func indexedProperties() -> [String] {
         return ["userId"]
     }
 
-    override static func ignoredProperties() -> [String] {
+    override public static func ignoredProperties() -> [String] {
         return ["tweets"]
     }
 
-    convenience required init(unboxer: Unboxer) {
+    convenience required public init(unboxer: Unboxer) {
         self.init()
         do {
             userId = try unboxer.unbox(key: "id_str")

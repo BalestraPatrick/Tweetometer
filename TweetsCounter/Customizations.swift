@@ -10,34 +10,34 @@ import UIKit
 
 extension UIColor {
     
-    static func backgroundBlue() -> UIColor {
+    public static func backgroundBlue() -> UIColor {
         return UIColor(red: 0.114, green: 0.631, blue: 0.949, alpha: 1.0)
     }
     
-    static func menuDarkBlue() -> UIColor {
+    public static func menuDarkBlue() -> UIColor {
         return UIColor(red: 0.223, green: 0.262, blue: 0.349, alpha: 1.0)
     }
     
-    static func transparentMenuDarkBlue() -> UIColor {
+    public static func transparentMenuDarkBlue() -> UIColor {
         return UIColor(red: 0.223, green: 0.262, blue: 0.349, alpha: 0.5)
     }
 
-    static func userCellSelected() -> UIColor {
+    public static func userCellSelected() -> UIColor {
         return UIColor(white: 0.9, alpha: 1.0)
     }
 
-    static func userCellEven() -> UIColor {
+    public static func userCellEven() -> UIColor {
         return UIColor.white
     }
 
-    static func userCellOdd() -> UIColor {
+    public static func userCellOdd() -> UIColor {
         return UIColor(white: 0.97, alpha: 1.0)
     }
 }
 
 extension DateFormatter {
 
-    static func twitterDateFormatter() -> DateFormatter {
+    public static func twitterDateFormatter() -> DateFormatter {
         let formatter = DateFormatter()
         formatter.locale = Locale(identifier: "en_US_POSIX")
         formatter.dateFormat = "EEE MMM dd HH:mm:ss Z yyyy"
@@ -47,7 +47,7 @@ extension DateFormatter {
 
 extension Date {
     
-    func tweetDateFormatted() -> String {
+    public func tweetDateFormatted() -> String {
         let minutesComponents = (Calendar.current as NSCalendar).components(NSCalendar.Unit.minute, from: self, to: Date(), options: []).minute
         guard let minutes = minutesComponents else { return "" }
         if minutes < 60 {

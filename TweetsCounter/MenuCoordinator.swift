@@ -6,6 +6,8 @@
 //  Copyright © 2016 Patrick Balestra. All rights reserved.
 //
 
+import TweetometerKit
+
 protocol MenuCoordinatorDelegate: class {
     func refreshTimeline()
     func logout()

@@ -12,15 +12,6 @@ plugin 'cocoapods-keys', {
 }
 
 target 'TweetsCounter' do
- pod 'Fabric'
- pod 'Crashlytics'
- pod 'TwitterKit'
- pod 'TwitterCore'
- pod 'RealmSwift'
-    
- pod 'Alamofire'
- pod 'AlamofireImage'
- pod 'Unbox'
  pod 'ValueStepper'
  pod 'SwiftyUserDefaults'
  pod 'Whisper'
@@ -32,6 +23,17 @@ target 'TweetsCounter' do
  target 'TweetsCounterTests' do
     inherit! :search_paths
  end
+end
+
+target 'TweetometerKit' do
+  pod 'Unbox'
+  pod 'RealmSwift'
+  pod 'TwitterKit'
+  pod 'TwitterCore'
+  pod 'Crashlytics'
+  pod 'Fabric'
+  pod 'Alamofire'
+  pod 'AlamofireImage'
 end
 
 post_install do |installer|

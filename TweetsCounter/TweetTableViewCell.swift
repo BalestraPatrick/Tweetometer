@@ -8,6 +8,7 @@
 
 import UIKit
 import ActiveLabel
+import TweetometerKit
 
 class TweetTableViewCell: UITableViewCell {
     

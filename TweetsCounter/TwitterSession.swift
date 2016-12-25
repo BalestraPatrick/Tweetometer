@@ -10,7 +10,7 @@ import UIKit
 import TwitterKit
 import AlamofireImage
 
-enum TwitterError: Error {
+public enum TwitterError: Error {
     case notAuthenticated
     case unknown
     case invalidResponse
@@ -19,9 +19,9 @@ enum TwitterError: Error {
     case failedAnalysis
 }
 
-final class TwitterSession {
+public final class TwitterSession {
 
-    typealias TimelineUpdate = (TwitterError?) -> Void
+    public typealias TimelineUpdate = (TwitterError?) -> Void
 
     private var client: TWTRAPIClient?
     private var user: TWTRUser?
@@ -32,30 +32,31 @@ final class TwitterSession {
     private final let maximumTweetsPerRequest = 200
 
     /// Shared Twitter session responsible for all requests to the Twitter APIs.
-    static let shared: TwitterSession = {
+    public static let shared: TwitterSession = {
         return TwitterSession()
     }()
 
     /// Private initializer invoke only once in the app's lifetime.
     private init() {
+//        Twitter.sharedInstance().start(withConsumerKey: "K0S2YRYN1BEQLSucd3moyBT1h", consumerSecret: "SKnrlqdEvUpRQ6yoP1kEFEB8YbVa8B6yWCPZFDsciN53viA10W")
         if let userID = Twitter.sharedInstance().sessionStore.session()?.userID {
             client = TWTRAPIClient(userID: userID)
         }
     }
     
     ///  Check the session user ID to see if there is an user logged in.
-    func isUserLoggedIn() -> Bool {
+    public func isUserLoggedIn() -> Bool {
         return client != nil
     }
 
-    func loggedUserScreenName() -> String {
+    public func loggedUserScreenName() -> String {
         return user?.screenName ?? ""
     }
 
     /// Request the user's profile picture URL.
     ///
     /// - Parameter completion: The completion block that contains the profile picture URL.
-    func getProfilePictureURL(completion: @escaping (URL?) -> ()) {
+    public func getProfilePictureURL(completion: @escaping (URL?) -> ()) {
         guard let client = client, let userID = client.userID else { return completion(nil) }
         client.loadUser(withID: userID) { user, error in
             self.user = user
@@ -66,7 +67,7 @@ final class TwitterSession {
     }
 
     /// Log out the current user.
-    func logOutUser() {
+    public func logOutUser() {
         guard let client = client, let userId = client.userID else { return }
         Twitter.sharedInstance().sessionStore.logOutUserID(userId)
     }
@@ -76,7 +77,7 @@ final class TwitterSession {
     /// - Parameters:
     ///   - maxId: The optional maximum tweetID used to return only the oldest tweets.
     ///   - completion: The completion block containing an optional error.
-    func getTimeline(before maxId: String?, completion: @escaping TimelineUpdate) {
+    public func getTimeline(before maxId: String?, completion: @escaping TimelineUpdate) {
         timelineUpdate = completion
         guard let client = client else { return completion(.notAuthenticated) }
         let url = "https://api.twitter.com/1.1/statuses/home_timeline.json"

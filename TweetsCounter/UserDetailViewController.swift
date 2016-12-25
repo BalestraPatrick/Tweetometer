@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import TweetometerKit
 
 final class UserDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     

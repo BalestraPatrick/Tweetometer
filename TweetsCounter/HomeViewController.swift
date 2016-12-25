@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import TweetometerKit
 import RealmSwift
 import PullToRefresh
 import Whisper

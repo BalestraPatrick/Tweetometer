@@ -10,26 +10,26 @@ import Foundation
 import Unbox
 import RealmSwift
 
-class Tweet: Object, Unboxable {
+public class Tweet: Object, Unboxable {
 
-    dynamic var userId: String = ""
-    dynamic var createdAt: Date = Date()
-    dynamic var tweetId: String = ""
-    dynamic var text: String = ""
-    dynamic var language: String = ""
-    dynamic var retweetsCount: Int = 0
-    dynamic var likesCount: Int = 0
-    dynamic var retweeted: Bool = false
+    dynamic public var userId: String = ""
+    dynamic public var createdAt: Date = Date()
+    dynamic public var tweetId: String = ""
+    dynamic public var text: String = ""
+    dynamic public var language: String = ""
+    dynamic public var retweetsCount: Int = 0
+    dynamic public var likesCount: Int = 0
+    dynamic public var retweeted: Bool = false
 
-    override static func primaryKey() -> String? {
+    override public static func primaryKey() -> String? {
         return "tweetId"
     }
 
-    override static func indexedProperties() -> [String] {
+    override public static func indexedProperties() -> [String] {
         return ["tweetId", "userId"]
     }
 
-    convenience required init(unboxer: Unboxer) {
+    convenience required public init(unboxer: Unboxer) {
         self.init()
         do {
             userId = try unboxer.unbox(keyPath: "user.id")

@@ -9,12 +9,12 @@
 import Foundation
 import RealmSwift
 
-class DataManager {
+public class DataManager {
 
     /// Creates and in-memory Realm in case we are running in a unit testing target, otherwise uses a normal on-disk Realm.
     ///
     /// - Returns: An in-memory on an on-disk Realm depending on the environment. 
-    class func realm() -> Realm {
+    public class func realm() -> Realm {
         do {
             if let _ = NSClassFromString("XCTest") {
                 Realm.Configuration.defaultConfiguration.inMemoryIdentifier = "TimelineParser"
@@ -36,7 +36,7 @@ class DataManager {
     }
 
     /// Logs out the current user and cleans the Realm database.
-    class func logOut() {
+    public class func logOut() {
         TwitterSession.shared.logOutUser()
         try! self.realm().write {
             realm().deleteAll()
