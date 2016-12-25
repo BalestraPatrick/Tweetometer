@@ -21,6 +21,7 @@ struct Option {
 /// - settings: Open the settings.
 enum MenuOptions: Int {
     case refresh
+    case share
     case logout
     case settings
 }
@@ -32,6 +33,7 @@ final class MenuOptionsDataSource {
     
     init () {
         self.options = [Option(image: "refresh", title: "Refresh"),
+                        Option(image: "share", title: "Share"),
                         Option(image: "logout", title: "Logout"),
                         Option(image: "settings", title: "Settings")]
     }
