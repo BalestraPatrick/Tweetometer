@@ -37,7 +37,6 @@ class LinkOpenerUserTests: XCTestCase {
 
     func test_openUser_Safari() {
         opener.client = .web
-        opener.open(user: "BalestraPatrick")
         let mockCoordinator = MockCoordinator()
         opener.coordinator = mockCoordinator
         opener.open(user: "BalestraPatrick")

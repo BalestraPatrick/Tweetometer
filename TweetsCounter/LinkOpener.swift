@@ -113,8 +113,7 @@ class LinkOpener {
         return SFSafariViewController(url: url)
     }
 
-
-    /// Retrieves the URL from the given components to open a third-party app via URL scheme.
+    /// Builds the URL from the given components to open a third-party app via URL scheme.
     ///
     /// - Parameter components: The URL components taht describe the URL scheme.
     private func open(components: URLComponents) {

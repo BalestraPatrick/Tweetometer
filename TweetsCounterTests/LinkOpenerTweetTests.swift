@@ -15,14 +15,14 @@ class LinkOpenerTweetTests: XCTestCase {
 
     func test_openTweet_TweetbotApp() {
         opener.client = .tweetbot
-        opener.open(user: "BalestraPatrick")
-        XCTAssertEqual(opener.urlComponents.string!, "tweetbot:/user_profile/BalestraPatrick", "Tweetbot URL Scheme is wrong")
+        opener.open(tweet: "812705528329760768")
+        XCTAssertEqual(opener.urlComponents.string!, "tweetbot:/status/812705528329760768", "Tweetbot URL Scheme is wrong")
     }
 
     func test_openTweet_TwitterApp() {
         opener.client = .twitter
-        opener.open(user: "BalestraPatrick")
-        XCTAssertEqual(opener.urlComponents.string!, "twitter:/user%3Fscreen_name=BalestraPatrick", "Twitter URL Scheme is wrong")
+        opener.open(tweet: "812705528329760768")
+        XCTAssertEqual(opener.urlComponents.string!.removingPercentEncoding, "twitter:/status?id=812705528329760768", "Twitter URL Scheme is wrong")
     }
 
     class MockCoordinator: UserDetailCoordinatorDelegate {
@@ -37,10 +37,9 @@ class LinkOpenerTweetTests: XCTestCase {
 
     func test_openTweet_Safari() {
         opener.client = .web
-        opener.open(user: "BalestraPatrick")
         let mockCoordinator = MockCoordinator()
         opener.coordinator = mockCoordinator
-        opener.open(user: "BalestraPatrick")
-        XCTAssertEqual(mockCoordinator.url, URL(string: "https://www.twitter.com/BalestraPatrick"))
+        opener.open(tweet: "812705528329760768")
+        XCTAssertEqual(mockCoordinator.url, URL(string: "https://www.twitter.com/statuses/812705528329760768"))
     }
 }
