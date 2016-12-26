@@ -21,39 +21,43 @@ class TweetTableViewCell: UITableViewCell {
 
     var index = 0 {
         didSet {
-            backgroundColor = index % 2 == 0 ? UIColor.userCellEven() : UIColor.userCellOdd()
+            backgroundColor = index % 2 == 0 ? .userCellEven() : .userCellOdd()
         }
     }
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        tweetLabel.textColor = UIColor.black
-        dateLabel.textColor = UIColor.black
-        retweetsCountLabel.textColor = UIColor.black
-        likesCountLabel.textColor = UIColor.black
-        setUpTwitterElementHandlers()
+        dateLabel.textColor = .black
+        retweetsCountLabel.textColor = .black
+        likesCountLabel.textColor = .black
+
+        // Set up Tweet label
+        tweetLabel.customize { label in
+            label.textColor = .black
+            label.mentionColor = .mentionBlue()
+            label.mentionSelectedColor = .mentionBlueSelected()
+            label.URLColor = .backgroundBlue()
+            label.URLSelectedColor = .backgroundBlueSelected()
+            label.hashtagColor = .hashtagGray()
+            label.hashtagSelectedColor = .hashtagGraySelected()
+            label.handleURLTap {
+                self.coordinator.presentSafari($0)
+            }
+            label.handleHashtagTap {
+                self.coordinator.open(hashtag: $0)
+            }
+            label.handleMentionTap {
+                self.coordinator.open(user: $0)
+            }
+        }
     }
     
     override func setHighlighted(_ highlighted: Bool, animated: Bool) {
         super.setHighlighted(highlighted, animated: animated)
         if highlighted {
-            backgroundColor = UIColor.userCellSelected()
+            backgroundColor = .userCellSelected()
         } else {
-            backgroundColor = index % 2 == 0 ? UIColor.userCellEven() : UIColor.userCellOdd()
-        }
-    }
-
-    func setUpTwitterElementHandlers() {
-        tweetLabel.handleURLTap { url in
-            self.coordinator.presentSafari(url)
-        }
-        
-        tweetLabel.handleHashtagTap { hashtag in
-            self.coordinator.open(hashtag: hashtag)
-        }
-        
-        tweetLabel.handleMentionTap { mention in
-            self.coordinator.open(user: mention)
+            backgroundColor = index % 2 == 0 ? .userCellEven() : .userCellOdd()
         }
     }
     
