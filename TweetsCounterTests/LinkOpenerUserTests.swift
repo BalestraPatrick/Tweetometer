@@ -12,17 +12,18 @@ import XCTest
 class LinkOpenerUserTests: XCTestCase {
     
     let opener = LinkOpener()
+    let user = "BalestraPatrick"
     
     func test_openUser_TweetbotApp() {
         opener.client = .tweetbot
-        opener.open(user: "BalestraPatrick")
-        XCTAssertEqual(opener.urlComponents.string!, "tweetbot:/user_profile/BalestraPatrick", "Tweetbot URL Scheme is wrong")
+        opener.open(user: user)
+        XCTAssertEqual(opener.urlComponents.string!, "tweetbot:/user_profile/\(user)", "Tweetbot URL Scheme is wrong")
     }
     
     func test_openUser_TwitterApp() {
         opener.client = .twitter
-        opener.open(user: "BalestraPatrick")
-        XCTAssertEqual(opener.urlComponents.string!, "twitter:/user%3Fscreen_name=BalestraPatrick", "Twitter URL Scheme is wrong")
+        opener.open(user: user)
+        XCTAssertEqual(opener.urlComponents.string!, "twitter:/user%3Fscreen_name=\(user)", "Twitter URL Scheme is wrong")
     }
 
     class MockCoordinator: UserDetailCoordinatorDelegate {
@@ -39,7 +40,7 @@ class LinkOpenerUserTests: XCTestCase {
         opener.client = .web
         let mockCoordinator = MockCoordinator()
         opener.coordinator = mockCoordinator
-        opener.open(user: "BalestraPatrick")
-        XCTAssertEqual(mockCoordinator.url, URL(string: "https://www.twitter.com/BalestraPatrick"))
+        opener.open(user: user)
+        XCTAssertEqual(mockCoordinator.url, URL(string: "https://www.twitter.com/\(user)"))
     }
 }

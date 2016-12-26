@@ -12,17 +12,18 @@ import XCTest
 class LinkOpenerHashtagTests: XCTestCase {
 
     let opener = LinkOpener()
+    let hashtag = "appbuilders17"
 
     func test_openHashtag_TweetbotApp() {
         opener.client = .tweetbot
-        opener.open(hashtag: "appbuilders17")
-        XCTAssertEqual(opener.urlComponents.string!.removingPercentEncoding, "tweetbot:/search?query=appbuilders17", "Tweetbot URL Scheme is wrong")
+        opener.open(hashtag: hashtag)
+        XCTAssertEqual(opener.urlComponents.string!.removingPercentEncoding, "tweetbot:/search?query=\(hashtag)", "Tweetbot URL Scheme is wrong")
     }
 
     func test_openHashtag_TwitterApp() {
         opener.client = .twitter
-        opener.open(hashtag: "appbuilders17")
-        XCTAssertEqual(opener.urlComponents.string!.removingPercentEncoding, "twitter:/search?query=appbuilders17", "Twitter URL Scheme is wrong")
+        opener.open(hashtag: hastag)
+        XCTAssertEqual(opener.urlComponents.string!.removingPercentEncoding, "twitter:/search?query=\(hashtag)", "Twitter URL Scheme is wrong")
     }
 
     class MockCoordinator: UserDetailCoordinatorDelegate {
@@ -39,7 +40,7 @@ class LinkOpenerHashtagTests: XCTestCase {
         opener.client = .web
         let mockCoordinator = MockCoordinator()
         opener.coordinator = mockCoordinator
-        opener.open(hashtag: "appbuilders17")
-        XCTAssertEqual(mockCoordinator.url, URL(string: "https://www.twitter.com/search?q=appbuilders17"))
+        opener.open(hashtag: hashtag)
+        XCTAssertEqual(mockCoordinator.url, URL(string: "https://www.twitter.com/search?q=\(hashtag)"))
     }
 }
