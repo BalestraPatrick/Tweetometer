@@ -53,7 +53,7 @@ class TweetTableViewCell: UITableViewCell {
         }
         
         tweetLabel.handleMentionTap { mention in
-            self.coordinator.open(mention: mention)
+            self.coordinator.open(user: mention)
         }
     }
     

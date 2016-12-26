@@ -409,10 +409,10 @@
                                             <rect key="frame" x="0.0" y="26" width="375" height="48"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="mLk-bD-f1f">
-                                                    <rect key="frame" x="133" y="0.0" width="109" height="48"/>
+                                                    <rect key="frame" x="133.5" y="0.0" width="108" height="48"/>
                                                     <subviews>
                                                         <imageView userInteractionEnabled="NO" alpha="0.90000000000000002" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="retweet" translatesAutoresizingMaskIntoConstraints="NO" id="WNA-Gr-emu">
-                                                            <rect key="frame" x="0.0" y="12" width="25" height="25"/>
+                                                            <rect key="frame" x="0.0" y="11.5" width="25" height="25"/>
                                                             <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="25" id="HK6-A7-9xb"/>
@@ -420,7 +420,7 @@
                                                             </constraints>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wc7-xs-rkN">
-                                                            <rect key="frame" x="30" y="14" width="18" height="21"/>
+                                                            <rect key="frame" x="30" y="14" width="17.5" height="20.5"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" relation="lessThanOrEqual" constant="100" id="L5W-eT-UdO"/>
                                                             </constraints>
@@ -429,21 +429,21 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yFR-Ke-zsa" userLabel="SpacingView">
-                                                            <rect key="frame" x="53" y="0.0" width="0.0" height="48"/>
+                                                            <rect key="frame" x="52.5" y="0.0" width="0.0" height="48"/>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" id="lMT-Zz-UyQ"/>
                                                             </constraints>
                                                         </view>
                                                         <imageView userInteractionEnabled="NO" alpha="0.90000000000000002" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="heart" translatesAutoresizingMaskIntoConstraints="NO" id="WBF-8A-THl">
-                                                            <rect key="frame" x="58" y="12" width="25" height="25"/>
+                                                            <rect key="frame" x="57.5" y="11.5" width="25" height="25"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="25" id="TLU-Ht-hVR"/>
                                                                 <constraint firstAttribute="width" constant="25" id="Vor-t0-5s7"/>
                                                             </constraints>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="25" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MWg-10-7X9">
-                                                            <rect key="frame" x="88" y="14" width="21" height="21"/>
+                                                            <rect key="frame" x="87.5" y="14" width="20.5" height="20.5"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" relation="lessThanOrEqual" constant="100" id="eTP-oN-fy6"/>
                                                             </constraints>
@@ -486,6 +486,7 @@
                         </prototypes>
                         <connections>
                             <outlet property="dataSource" destination="WlY-wj-dbD" id="icC-VL-v4L"/>
+                            <outlet property="delegate" destination="WlY-wj-dbD" id="jDQ-jo-EgG"/>
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="BHy-jC-wAA">

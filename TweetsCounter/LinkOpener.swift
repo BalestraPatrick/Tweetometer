@@ -14,21 +14,21 @@ private let tweetbotScheme = "tweetbot"
 
 class LinkOpener {
     
-    /// Store preferred user client from the settings
+    /// Store preferred user client from the settings.
     var client = SettingsManager.sharedManager.preferredTwitterClient
 
-    /// User detail coordinator needed to present a SafariViewController on the current view controller
-    var coordinator: UserDetailCoordinator?
+    /// User detail coordinator needed to present a SafariViewController on the current view controller.
+    var coordinator: UserDetailCoordinatorDelegate?
 
-    /// Describes the URL Scheme components
+    /// Describes the URL Scheme components.
     var urlComponents = URLComponents()
 
-    /// Returns true if the Tweetbot app is available on device.
+    /// Returns true if the Tweetbot app is available on the device.
     var isTweetbotAvailable: Bool = {
         return UIApplication.shared.canOpenURL(URL(string: "\(tweetbotScheme)://")!)
     }()
 
-    /// Returns true if the Twitter app is available on device.
+    /// Returns true if the Twitter app is available on the device.
     var isTwitterAvailable: Bool = {
         return UIApplication.shared.canOpenURL(URL(string: "\(twitterScheme)://")!)
     }()
@@ -38,9 +38,9 @@ class LinkOpener {
         return UIApplication.shared.canOpenURL(URL(string: "http://www.google.com")!)
     }()
     
-    /// Opens the a Twitter user in the default client.
+    /// Opens a user profile in the default client.
     ///
-    /// - parameter user: Screen-name of the user.
+    /// - parameter user: The screen name of the user.
     func open(user: String) {
         switch client {
         case .tweetbot:
@@ -52,61 +52,56 @@ class LinkOpener {
         case .web:
             let url = URL(string: "https://www.twitter.com/\(user)")
             if let url = url, let coordinator = coordinator {
-                coordinator.presentSafari(url)
-                return
+                return coordinator.presentSafari(url)
             }
         }
-                
-        // Try to open the URL
-        if let stringURL = urlComponents.string!.removingPercentEncoding, let url = URL(string: stringURL), isSafariAvailable {
-            UIApplication.shared.open(url)
-        }
+
+        // Open URL scheme
+        open(components: urlComponents)
     }
 
+    /// Opens an hashtag in the default client.
+    ///
+    /// - Parameter hashtag: The hashtag to be opened.
     func open(hashtag: String) {
-        let url = URL(string: "https://twitter.com/search?q=\(hashtag)")
         switch client {
         case .tweetbot:
             urlComponents.scheme = tweetbotScheme
-            urlComponents.path = "tweetbot://search?query=\(hashtag)"
-            break
+            urlComponents.path = "/search?query=\(hashtag)"
         case .twitter:
-            // TODO
-            break
+            urlComponents.scheme = twitterScheme
+            urlComponents.path = "/search?query=\(hashtag)"
         case .web:
+            let url = URL(string: "https://www.twitter.com/search?q=\(hashtag)")
             if let url = url, let coordinator = coordinator {
-                coordinator.presentSafari(url)
-                return
+                return coordinator.presentSafari(url)
             }
         }
 
-        // Try to open the URL
-        if let url = url, isSafariAvailable {
-            UIApplication.shared.open(url)
-        }
+        // Open URL scheme
+        open(components: urlComponents)
     }
 
-    func open(mention: String) {
-        let url = URL(string: "https://twitter.com/search?q=\(mention)")
+    /// Opens a tweet in the default client.
+    ///
+    /// - Parameter tweet: The tweet id to be opened.
+    func open(tweet: String) {
         switch client {
         case .tweetbot:
             urlComponents.scheme = tweetbotScheme
-            urlComponents.path = "tweetbot://user_profile/\(mention)"
-            break
+            urlComponents.path = "/status/\(tweet)"
         case .twitter:
-            // TODO
-            break
+            urlComponents.scheme = twitterScheme
+            urlComponents.path = "/status?id=\(tweet)"
         case .web:
+            let url = URL(string: "https://www.twitter.com/statuses/\(tweet)")
             if let url = url, let coordinator = coordinator {
-                coordinator.presentSafari(url)
-                return
+                return coordinator.presentSafari(url)
             }
         }
 
-        // Try to open the URL
-        if let url = url, isSafariAvailable {
-            UIApplication.shared.open(url)
-        }
+        // Open URL scheme
+        open(components: urlComponents)
     }
 
     /// Initializes a Safari view controller object to present in the future.
@@ -116,5 +111,17 @@ class LinkOpener {
     /// - returns: The view controller to be used.
     internal func openInSafari(_ url: URL) -> SFSafariViewController {
         return SFSafariViewController(url: url)
+    }
+
+
+    /// Retrieves the URL from the given components to open a third-party app via URL scheme.
+    ///
+    /// - Parameter components: The URL components taht describe the URL scheme.
+    private func open(components: URLComponents) {
+        // Create valid url and do all checks
+        guard let string = components.string, let escapedString = string.removingPercentEncoding, let url = URL(string: escapedString), isSafariAvailable else {
+            return print("URL invalid")
+        }
+        UIApplication.shared.open(url)
     }
 }

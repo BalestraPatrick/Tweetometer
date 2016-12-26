@@ -62,6 +62,13 @@ final class UserDetailViewController: UIViewController, UITableViewDelegate, UIT
             return cell
         }
     }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        // Open Tweet in user's preferred client
+        if let tweetId = user?.tweets[indexPath.row].tweetId {
+            coordinator.open(tweet: tweetId)
+        }
+    }
     
     // MARK: IBActions
     

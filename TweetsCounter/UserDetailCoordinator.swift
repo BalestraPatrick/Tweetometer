@@ -12,7 +12,6 @@ protocol UserDetailCoordinatorDelegate: class {
     func presentSafari(_ url: URL)
     func open(user: String)
     func open(hashtag: String)
-    func open(mention: String)
 }
 
 class UserDetailCoordinator: UserDetailCoordinatorDelegate {
@@ -23,6 +22,7 @@ class UserDetailCoordinator: UserDetailCoordinatorDelegate {
     
     init(controller: UserDetailViewController) {
         self.controller = controller
+        linkOpener.coordinator = self
     }
 
     func start() {
@@ -37,7 +37,6 @@ class UserDetailCoordinator: UserDetailCoordinatorDelegate {
     }
     
     func open(user: String) {
-        linkOpener.coordinator = self
         linkOpener.open(user: user)
     }
 
@@ -45,7 +44,7 @@ class UserDetailCoordinator: UserDetailCoordinatorDelegate {
         linkOpener.open(hashtag: hashtag)
     }
 
-    func open(mention: String) {
-        linkOpener.open(mention: mention)
+    func open(tweet: String) {
+        linkOpener.open(tweet: tweet)
     }
 }

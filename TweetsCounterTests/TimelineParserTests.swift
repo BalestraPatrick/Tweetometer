@@ -8,7 +8,6 @@
 
 import XCTest
 import RealmSwift
-@testable import TweetsCounter
 @testable import TweetometerKit
 
 class TimelineParserTests: XCTestCase {
