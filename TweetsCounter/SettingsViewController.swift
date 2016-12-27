@@ -54,7 +54,17 @@ final class SettingsViewController: UIViewController {
     @IBAction func clientChanged(_ sender: UISegmentedControl) {
         settings.preferredTwitterClient = TwitterClient.fromIndex(sender.selectedSegmentIndex)
     }
+
+    // MARK: Navigation
+
+    @IBAction func emailSupport(_ sender: Any) {
+
+    }
     
+    @IBAction func twitterSupport(_ sender: Any) {
+
+    }
+
     @IBAction func developedBy(_ sender: AnyObject) {
         let url = URL(string: Links.developerAddress)!
         let safari = linkOpener.openInSafari(url)

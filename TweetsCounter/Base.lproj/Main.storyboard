@@ -659,60 +659,82 @@
                                             <constraint firstItem="kvr-H0-8TK" firstAttribute="leading" secondItem="cve-fi-WMD" secondAttribute="leading" constant="15" id="txP-cI-Yj6"/>
                                         </constraints>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KTa-pU-TNd">
-                                        <rect key="frame" x="0.0" y="150" width="375" height="1"/>
-                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="1" id="Tce-wb-J49"/>
-                                        </constraints>
-                                    </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tgY-PA-ZWx">
-                                        <rect key="frame" x="0.0" y="151" width="375" height="50"/>
+                                        <rect key="frame" x="0.0" y="150" width="375" height="50"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="to0-xg-Qo9">
-                                                <rect key="frame" x="10" y="10" width="355" height="30"/>
-                                                <state key="normal" title="Developed by Patrick Balestra">
-                                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="developedBy:" destination="oLc-FF-uU2" eventType="touchUpInside" id="fEA-jB-SNE"/>
-                                                </connections>
-                                            </button>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="tAP-j6-dSV">
+                                                <rect key="frame" x="15" y="10" width="345" height="30"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="to0-xg-Qo9">
+                                                        <rect key="frame" x="0.0" y="0.0" width="167.5" height="30"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <state key="normal" title="Email Support">
+                                                            <color key="titleColor" red="0.22352941176470587" green="0.2627450980392157" blue="0.34901960784313724" alpha="1" colorSpace="calibratedRGB"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="emailSupport:" destination="oLc-FF-uU2" eventType="touchUpInside" id="UXa-mD-jnE"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B5s-t7-T4R">
+                                                        <rect key="frame" x="177.5" y="0.0" width="167.5" height="30"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <state key="normal" title="Twitter Support">
+                                                            <color key="titleColor" red="0.22352941179999999" green="0.26274509800000001" blue="0.34901960780000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="twitterSupport:" destination="oLc-FF-uU2" eventType="touchUpInside" id="3uG-Zj-SWZ"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
                                         </subviews>
                                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
-                                            <constraint firstItem="to0-xg-Qo9" firstAttribute="top" secondItem="tgY-PA-ZWx" secondAttribute="top" constant="10" id="Lvh-gD-eeV"/>
-                                            <constraint firstAttribute="bottom" secondItem="to0-xg-Qo9" secondAttribute="bottom" constant="10" id="NGs-GG-Jg4"/>
-                                            <constraint firstAttribute="trailing" secondItem="to0-xg-Qo9" secondAttribute="trailing" constant="10" id="Rqj-Fu-ftm"/>
                                             <constraint firstAttribute="height" constant="50" id="UEv-Hc-y9U"/>
-                                            <constraint firstItem="to0-xg-Qo9" firstAttribute="leading" secondItem="tgY-PA-ZWx" secondAttribute="leading" constant="10" id="uOh-Vt-c0j"/>
+                                            <constraint firstAttribute="trailing" secondItem="tAP-j6-dSV" secondAttribute="trailing" constant="15" id="bSd-7k-ECh"/>
+                                            <constraint firstItem="tAP-j6-dSV" firstAttribute="leading" secondItem="tgY-PA-ZWx" secondAttribute="leading" constant="15" id="dLm-Cd-v8U"/>
+                                            <constraint firstItem="tAP-j6-dSV" firstAttribute="centerY" secondItem="tgY-PA-ZWx" secondAttribute="centerY" id="qUd-al-XH4"/>
                                         </constraints>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qwC-bS-18W">
-                                        <rect key="frame" x="0.0" y="201" width="375" height="50"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N49-Wt-af6">
+                                        <rect key="frame" x="0.0" y="200" width="375" height="50"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KQz-JN-yHc">
-                                                <rect key="frame" x="10" y="10" width="355" height="30"/>
-                                                <state key="normal" title="Fork me on Github">
-                                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="openGithub:" destination="oLc-FF-uU2" eventType="touchUpInside" id="vlV-1n-ufs"/>
-                                                </connections>
-                                            </button>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="UbJ-Ms-zRG">
+                                                <rect key="frame" x="15" y="10" width="345" height="30"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C3Q-Rl-Hyd">
+                                                        <rect key="frame" x="0.0" y="0.0" width="167.5" height="30"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <state key="normal" title="About">
+                                                            <color key="titleColor" red="0.22352941179999999" green="0.26274509800000001" blue="0.34901960780000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="developedBy:" destination="oLc-FF-uU2" eventType="touchUpInside" id="o0s-ey-FnR"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Oae-fy-1i1">
+                                                        <rect key="frame" x="177.5" y="0.0" width="167.5" height="30"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <state key="normal" title="GitHub">
+                                                            <color key="titleColor" red="0.22352941179999999" green="0.26274509800000001" blue="0.34901960780000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="openGithub:" destination="oLc-FF-uU2" eventType="touchUpInside" id="7bL-8u-Hkf"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
                                         </subviews>
                                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
-                                            <constraint firstItem="KQz-JN-yHc" firstAttribute="centerY" secondItem="qwC-bS-18W" secondAttribute="centerY" id="2ga-Eb-R4p"/>
-                                            <constraint firstItem="KQz-JN-yHc" firstAttribute="top" secondItem="qwC-bS-18W" secondAttribute="top" constant="10" id="6q6-FV-cSF"/>
-                                            <constraint firstAttribute="height" constant="50" id="Azm-k7-B6T"/>
-                                            <constraint firstItem="KQz-JN-yHc" firstAttribute="leading" secondItem="qwC-bS-18W" secondAttribute="leading" constant="10" id="iJS-TM-nRF"/>
-                                            <constraint firstAttribute="bottom" secondItem="KQz-JN-yHc" secondAttribute="bottom" constant="10" id="sKc-DZ-AKD"/>
-                                            <constraint firstAttribute="trailing" secondItem="KQz-JN-yHc" secondAttribute="trailing" constant="10" id="sQe-vp-SHz"/>
+                                            <constraint firstAttribute="trailing" secondItem="UbJ-Ms-zRG" secondAttribute="trailing" constant="15" id="98s-j7-P40"/>
+                                            <constraint firstItem="UbJ-Ms-zRG" firstAttribute="centerY" secondItem="N49-Wt-af6" secondAttribute="centerY" id="ctD-B7-NGZ"/>
+                                            <constraint firstItem="UbJ-Ms-zRG" firstAttribute="leading" secondItem="N49-Wt-af6" secondAttribute="leading" constant="15" id="rrt-Vt-PqV"/>
+                                            <constraint firstAttribute="height" constant="50" id="usW-YO-RXo"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fLn-n3-9r1">
-                                        <rect key="frame" x="0.0" y="251" width="375" height="416"/>
+                                        <rect key="frame" x="0.0" y="250" width="375" height="417"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xf7-YG-yLY">
                                                 <rect key="frame" x="94" y="8" width="188" height="49"/>
@@ -751,7 +773,6 @@ Version 1.0 </string>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="developedByButton" destination="to0-xg-Qo9" id="M9I-jR-g0a"/>
-                        <outlet property="githubButton" destination="KQz-JN-yHc" id="QXp-23-ErM"/>
                         <outlet property="titleLabel" destination="vdm-Ir-DuJ" id="NLY-NN-AGi"/>
                         <outlet property="tweetsStepper" destination="uHY-74-zom" id="kR3-lE-zAd"/>
                         <outlet property="twitterClientControl" destination="IVa-1S-1Wv" id="C9E-Wj-0i5"/>
@@ -759,14 +780,14 @@ Version 1.0 </string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="adn-EM-Q0i" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2819" y="-466"/>
+            <point key="canvasLocation" x="2830" y="266"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="DUi-b4-lun">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="CKX-yh-fN9" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="A0T-ro-vqk">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="A0T-ro-vqk">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -792,7 +813,7 @@ Version 1.0 </string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please login with your account." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DAf-T3-Tbp">
-                                <rect key="frame" x="36" y="216" width="303" height="24"/>
+                                <rect key="frame" x="36" y="216.5" width="303" height="24"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="9on-L4-s0s"/>
                                 </constraints>
@@ -820,7 +841,7 @@ Version 1.0 </string>
                                 <rect key="frame" x="67" y="631" width="240" height="16"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y9L-2z-YJG">
-                                <rect key="frame" x="36" y="250" width="303" height="39"/>
+                                <rect key="frame" x="36" y="250.5" width="303" height="38.5"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="46s-61-7ok"/>
                                 </constraints>
