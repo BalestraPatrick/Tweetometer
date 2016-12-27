@@ -22,7 +22,7 @@ class LinkOpenerHashtagTests: XCTestCase {
 
     func test_openHashtag_TwitterApp() {
         opener.client = .twitter
-        opener.open(hashtag: hastag)
+        opener.open(hashtag: hashtag)
         XCTAssertEqual(opener.urlComponents.string!.removingPercentEncoding, "twitter:/search?query=\(hashtag)", "Twitter URL Scheme is wrong")
     }
 
