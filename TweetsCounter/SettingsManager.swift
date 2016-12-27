@@ -59,7 +59,6 @@ final class SettingsManager {
     var numberOfAnalyzedTweets: Int {
         didSet {
             Defaults[Key.NumberOfAnalyzedTweets] = numberOfAnalyzedTweets
-            delegate?.numberOfAnalyzedTweetsDidChange(numberOfAnalyzedTweets)
         }
     }
     
