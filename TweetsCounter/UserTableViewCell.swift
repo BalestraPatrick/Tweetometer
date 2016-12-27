@@ -20,7 +20,7 @@ final class UserTableViewCell: UITableViewCell {
 
     var index = 0 {
         didSet {
-            backgroundColor = index % 2 == 0 ? UIColor.userCellEven() : UIColor.userCellOdd()
+            backgroundColor = index % 2 == 0 ? .userCellEven() : .userCellOdd()
         }
     }
     
@@ -72,9 +72,9 @@ final class UserTableViewCell: UITableViewCell {
     override func setHighlighted(_ highlighted: Bool, animated: Bool) {
         super.setHighlighted(highlighted, animated: animated)
         if highlighted {
-            backgroundColor = UIColor.userCellSelected()
+            backgroundColor = .userCellSelected()
         } else {
-            backgroundColor = index % 2 == 0 ? UIColor.userCellEven() : UIColor.userCellOdd()
+            backgroundColor = index % 2 == 0 ? .userCellEven() : .userCellOdd()
         }
     }
     

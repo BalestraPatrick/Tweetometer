@@ -15,13 +15,13 @@ final class MenuOptionTableViewCell: UITableViewCell {
         if highlighted {
             self.backgroundColor = UIColor(white: 1.0, alpha: 0.1)
         } else {
-            self.backgroundColor = UIColor.clear
+            self.backgroundColor = .clear
         }
     }
     
     func configureCell(_ option: Option) {
-        backgroundColor = UIColor.clear
-        textLabel?.textColor = UIColor.white
+        backgroundColor = .clear
+        textLabel?.textColor = .white
         layoutMargins = UIEdgeInsets.zero
         textLabel?.text = option.title
         imageView?.image = UIImage(named: option.image)

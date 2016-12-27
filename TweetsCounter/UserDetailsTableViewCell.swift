@@ -15,7 +15,7 @@ class UserDetailsTableViewCell: UITableViewCell {
     @IBOutlet weak var descriptionLabel: UILabel!
     
     func configure(_ user: User) {
-        backgroundColor = UIColor.backgroundBlue()
+        backgroundColor = .backgroundBlue()
         descriptionLabel.text = user.userDescription
         if let stringURL = user.profileImageURL {
             profileImage.af_setImage(withURL: URL(string: stringURL)!, placeholderImage: UIImage(asset: .placeholder))
