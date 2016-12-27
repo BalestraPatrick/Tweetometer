@@ -17,7 +17,7 @@ class TweetTableViewCell: UITableViewCell {
     @IBOutlet weak var retweetsCountLabel: UILabel!
     @IBOutlet weak var likesCountLabel: UILabel!
 
-    weak var coordinator: UserDetailCoordinatorDelegate!
+    weak var coordinator: UserDetailCoordinator!
 
     var index = 0 {
         didSet {

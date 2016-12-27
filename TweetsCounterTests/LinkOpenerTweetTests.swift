@@ -26,14 +26,12 @@ class LinkOpenerTweetTests: XCTestCase {
         XCTAssertEqual(opener.urlComponents.string!.removingPercentEncoding, "twitter:/status?id=\(tweetId)", "Twitter URL Scheme is wrong")
     }
 
-    class MockCoordinator: UserDetailCoordinatorDelegate {
+    class MockCoordinator: Coordinator {
         var url: URL?
 
         func presentSafari(_ url: URL) {
             self.url = url
         }
-        func open(user: String) { }
-        func open(hashtag: String) { }
     }
 
     func test_openTweet_Safari() {

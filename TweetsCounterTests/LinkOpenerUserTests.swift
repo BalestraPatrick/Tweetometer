@@ -26,7 +26,7 @@ class LinkOpenerUserTests: XCTestCase {
         XCTAssertEqual(opener.urlComponents.string!, "twitter:/user%3Fscreen_name=\(user)", "Twitter URL Scheme is wrong")
     }
 
-    class MockCoordinator: UserDetailCoordinatorDelegate {
+    class MockCoordinator: Coordinator {
         var url: URL?
 
         func presentSafari(_ url: URL) {

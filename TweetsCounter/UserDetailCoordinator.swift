@@ -9,15 +9,15 @@
 import Foundation
 
 protocol UserDetailCoordinatorDelegate: class {
-    func presentSafari(_ url: URL)
     func open(user: String)
     func open(hashtag: String)
 }
 
-class UserDetailCoordinator: UserDetailCoordinatorDelegate {
+class UserDetailCoordinator: Coordinator, UserDetailCoordinatorDelegate {
+
+    var childCoordinators = Array<AnyObject>()
     
     let controller: UserDetailViewController
-    var childCoordinators = Array<AnyObject>()
     let linkOpener = LinkOpener()
     
     init(controller: UserDetailViewController) {

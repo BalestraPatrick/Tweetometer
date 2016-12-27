@@ -14,20 +14,29 @@ protocol MenuCoordinatorDelegate: class {
     func presentSettings()
 }
 
-class MenuCoordinator: MenuCoordinatorDelegate {
+class MenuCoordinator: Coordinator, MenuCoordinatorDelegate {
 
-    let controller: MenuPopOverViewController
-    // The MenuCoordinator can't exist without a parent coordinator because it's presented through a popOver.
-    let parentCoordinator: HomeCoordinator
     var childCoordinators = Array<AnyObject>()
+    
+    let controller: MenuPopOverViewController
+    let parentCoordinator: HomeCoordinator
+    let linkOpener = LinkOpener()
 
     init(parent: HomeCoordinator, controller: MenuPopOverViewController) {
         self.parentCoordinator = parent
         self.controller = controller
+        linkOpener.coordinator = self
     }
 
     func start() {
         controller.coordinator = self
+    }
+
+    // MARK: Coordinator
+
+    func presentSafari(_ url: URL) {
+        let safari = linkOpener.openInSafari(url)
+        controller.present(safari, animated: true, completion: nil)
     }
 
     // MARK: MenuCoordinatorDelegate

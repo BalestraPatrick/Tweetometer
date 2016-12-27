@@ -26,14 +26,12 @@ class LinkOpenerHashtagTests: XCTestCase {
         XCTAssertEqual(opener.urlComponents.string!.removingPercentEncoding, "twitter:/search?query=\(hashtag)", "Twitter URL Scheme is wrong")
     }
 
-    class MockCoordinator: UserDetailCoordinatorDelegate {
+    class MockCoordinator: Coordinator {
         var url: URL?
 
         func presentSafari(_ url: URL) {
             self.url = url
         }
-        func open(user: String) { }
-        func open(hashtag: String) { }
     }
 
     func test_openHashtag_Safari() {

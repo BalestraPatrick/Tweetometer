@@ -65,18 +65,12 @@ final class SettingsViewController: UIViewController {
 
     }
 
-    @IBAction func developedBy(_ sender: AnyObject) {
-        let url = URL(string: Links.developerAddress)!
-        let safari = linkOpener.openInSafari(url)
-        // TODO: delegate to coordinator
-        present(safari, animated: true, completion: nil)
+    @IBAction func developedBy(_ sender: Any) {
+        coordinator.presentAbout()
     }
     
-    @IBAction func openGithub(_ sender: AnyObject) {
-        let url = URL(string: Links.githubAddress)!
-        let safari = linkOpener.openInSafari(url)
-        // TODO: delegate to coordinator
-        present(safari, animated: true, completion: nil)
+    @IBAction func openGithub(_ sender: Any) {
+        coordinator.presentGithub()
     }
     
     @IBAction func dismiss(_ sender: AnyObject) {

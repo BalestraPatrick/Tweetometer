@@ -18,7 +18,7 @@ class LinkOpener {
     var client = SettingsManager.sharedManager.preferredTwitterClient
 
     /// User detail coordinator needed to present a SafariViewController on the current view controller.
-    var coordinator: UserDetailCoordinatorDelegate?
+    weak var coordinator: Coordinator?
 
     /// Describes the URL Scheme components.
     var urlComponents = URLComponents()

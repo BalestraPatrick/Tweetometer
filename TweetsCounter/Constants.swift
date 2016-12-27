@@ -33,8 +33,9 @@ struct TwitterEndpoints {
 }
 
 struct Links {
-    static let developerAddress = "http://www.patrickbalestra.com"
-    static let githubAddress = "http://www.github.com/BalestraPatrick/Tweetometer"
+    static let developer = "https://www.patrickbalestra.com"
+    static let github = "https://www.github.com/BalestraPatrick/Tweetometer"
+    static let twitter = "https://www.twitter.com/BalestraPatrick/"
 }
 
 enum TableViewCell: String {

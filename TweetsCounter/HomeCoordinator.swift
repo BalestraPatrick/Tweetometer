@@ -15,17 +15,27 @@ protocol HomeCoordinatorDelegate: class {
     func refreshTimeline()
 }
 
-class HomeCoordinator: HomeCoordinatorDelegate {
+class HomeCoordinator: Coordinator, HomeCoordinatorDelegate {
+
+    var childCoordinators = Array<AnyObject>()
 
     let controller: HomeViewController
-    var childCoordinators = Array<AnyObject>()
+    let linkOpener = LinkOpener()
     
     init(controller: HomeViewController) {
         self.controller = controller
+        linkOpener.coordinator = self
     }
-    
+
     func start() {
         controller.coordinator = self
+    }
+
+    // MARK: Coordinator
+    
+    func presentSafari(_ url: URL) {
+        let safari = linkOpener.openInSafari(url)
+        controller.present(safari, animated: true, completion: nil)
     }
     
     // MARK: HomeCoordinatorDelegate

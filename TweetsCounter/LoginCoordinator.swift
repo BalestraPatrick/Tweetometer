@@ -12,29 +12,37 @@ protocol LoginCoordinatorDelegate: class {
     func dismiss()
 }
 
-final class LoginCoordinator: LoginCoordinatorDelegate {
+final class LoginCoordinator: Coordinator, LoginCoordinatorDelegate {
 
-    lazy var loginViewController: LoginViewController = {
+    lazy var controller: LoginViewController = {
         return StoryboardScene.Main.LoginViewController()
     }()
+    let parent: HomeViewController
+    let linkOpener = LinkOpener()
 
     var childCoordinators = Array<AnyObject>()
 
-    let parent: HomeViewController
-
     init(parent: HomeViewController) {
         self.parent = parent
+        linkOpener.coordinator = self
     }
 
     func start() {
-        loginViewController.coordinator = self
-        parent.present(loginViewController, animated: true)
+        controller.coordinator = self
+        parent.present(controller, animated: true)
+    }
+
+    // MARK: Coordinator
+    
+    func presentSafari(_ url: URL) {
+        let safari = linkOpener.openInSafari(url)
+        controller.present(safari, animated: true, completion: nil)
     }
 
     // MARK: LoginCoordinatorDelegate
 
     func dismiss() {
-        loginViewController.dismiss(animated: true)
+        controller.dismiss(animated: true)
         parent.refreshTimeline()
     }
 }

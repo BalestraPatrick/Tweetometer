@@ -8,9 +8,14 @@
 
 import UIKit
 
-class AppCoordinator: NSObject {
+protocol Coordinator: class {
+    func presentSafari(_ url: URL)
+}
+
+class AppCoordinator: Coordinator {
     
     let window: UIWindow
+    let linkOpener = LinkOpener()
 
     var childCoordinators = Array<AnyObject>()
 
@@ -24,8 +29,9 @@ class AppCoordinator: NSObject {
         window.rootViewController = initialViewController
         self.window = window
         self.childCoordinators = []
+        linkOpener.coordinator = self
     }
-    
+
     func start() {
         // Grab view controller instance already instantiated by Storyboard from the hierarchy
         if let visible = rootViewController.visibleViewController, let homeViewController = visible as? HomeViewController {
@@ -33,5 +39,12 @@ class AppCoordinator: NSObject {
             childCoordinators.append(homeCoordinator)
             homeCoordinator.start()
         }
+    }
+
+    // MARK: Coordinator
+
+    func presentSafari(_ url: URL) {
+        let safari = linkOpener.openInSafari(url)
+        rootViewController.present(safari, animated: true, completion: nil)
     }
 }
