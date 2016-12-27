@@ -92,10 +92,8 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
         if case .refreshing = status {
             requestTimeline()
             tableView.startRefreshing(at: .top)
-//            UIApplication.shared.isNetworkActivityIndicatorVisible = true
         } else {
             tableView.endRefreshing(at: .top)
-//            UIApplication.shared.isNetworkActivityIndicatorVisible = false
         }
     }
 
