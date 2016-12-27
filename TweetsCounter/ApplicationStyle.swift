@@ -12,14 +12,14 @@ extension UINavigationBar {
     
     func applyStyle() {
         barStyle = .black
-        barTintColor = UIColor.backgroundBlue()
-        tintColor = UIColor.white
+        barTintColor = .backgroundBlue()
+        tintColor = .white
         titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white,
             NSFontAttributeName: UIFont.systemFont(ofSize: 18, weight: 0.1)]
         setBackgroundImage(UIImage(), for: .default)
         shadowImage = UIImage()
         isTranslucent = false
-        backgroundColor = UIColor.backgroundBlue()
+        backgroundColor = .backgroundBlue()
     }
 }
 
@@ -27,7 +27,7 @@ extension UITableView {
     
     func applyStyle() {
         backgroundView = nil
-        backgroundColor = UIColor.clear
+        backgroundColor = .clear
         tableFooterView = UIView()
     }
 }

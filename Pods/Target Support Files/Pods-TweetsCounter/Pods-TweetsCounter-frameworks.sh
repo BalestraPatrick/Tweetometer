@@ -86,6 +86,7 @@ strip_invalid_archs() {
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/ActiveLabel/ActiveLabel.framework"
   install_framework "$BUILT_PRODUCTS_DIR/Keys/Keys.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/Presentr/Presentr.framework"
   install_framework "$BUILT_PRODUCTS_DIR/PullToRefresher/PullToRefresh.framework"
   install_framework "$BUILT_PRODUCTS_DIR/SwiftyUserDefaults/SwiftyUserDefaults.framework"
   install_framework "$BUILT_PRODUCTS_DIR/ValueStepper/ValueStepper.framework"
@@ -99,6 +100,7 @@ fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/ActiveLabel/ActiveLabel.framework"
   install_framework "$BUILT_PRODUCTS_DIR/Keys/Keys.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/Presentr/Presentr.framework"
   install_framework "$BUILT_PRODUCTS_DIR/PullToRefresher/PullToRefresh.framework"
   install_framework "$BUILT_PRODUCTS_DIR/SwiftyUserDefaults/SwiftyUserDefaults.framework"
   install_framework "$BUILT_PRODUCTS_DIR/ValueStepper/ValueStepper.framework"

@@ -17,7 +17,7 @@ final class SettingsViewController: UIViewController {
     
     @IBOutlet weak var developedByButton: UIButton!
     @IBOutlet weak var githubButton: UIButton!
-    
+
     let settings = SettingsManager.sharedManager
     let linkOpener = LinkOpener()
     weak var coordinator: SettingsCoordinator!
@@ -37,6 +37,7 @@ final class SettingsViewController: UIViewController {
         githubButton.layer.cornerRadius = 5.0
         githubButton.layer.borderColor = UIColor.white.cgColor
         githubButton.layer.borderWidth = 1.0
+        view.backgroundColor = .menuDarkBlue()
 
         twitterClientControl.setEnabled(linkOpener.isTwitterAvailable, forSegmentAt: 1)
         twitterClientControl.setEnabled(linkOpener.isTweetbotAvailable, forSegmentAt: 2)
@@ -57,16 +58,18 @@ final class SettingsViewController: UIViewController {
     @IBAction func developedBy(_ sender: AnyObject) {
         let url = URL(string: Links.developerAddress)!
         let safari = linkOpener.openInSafari(url)
+        // TODO: delegate to coordinator
         present(safari, animated: true, completion: nil)
     }
     
     @IBAction func openGithub(_ sender: AnyObject) {
         let url = URL(string: Links.githubAddress)!
         let safari = linkOpener.openInSafari(url)
+        // TODO: delegate to coordinator
         present(safari, animated: true, completion: nil)
     }
     
     @IBAction func dismiss(_ sender: AnyObject) {
-        self.dismiss(animated: true, completion: nil)
+        coordinator.dismiss()
     }
 }

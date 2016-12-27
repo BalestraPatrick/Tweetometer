@@ -39,7 +39,6 @@ class MenuPopOverViewController: UITableViewController {
             coordinator.refreshTimeline()
         case MenuOptions.logout.rawValue:
             coordinator.logout()
-            break
         case MenuOptions.settings.rawValue:
             coordinator.presentSettings()
         default:

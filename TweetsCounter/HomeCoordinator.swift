@@ -49,8 +49,8 @@ class HomeCoordinator: HomeCoordinatorDelegate {
     }
 
     func presentSettings() {
-        // TODO: remove menu coordinator
         let settingsCoordinator = SettingsCoordinator(parent: controller)
+        childCoordinators.append(settingsCoordinator)
         settingsCoordinator.start()
     }
 

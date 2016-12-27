@@ -12,13 +12,14 @@ plugin 'cocoapods-keys', {
 }
 
 target 'TweetsCounter' do
- pod 'ValueStepper'
- pod 'SwiftyUserDefaults'
- pod 'Whisper'
- # Used to tap hashtags and links
- pod 'ActiveLabel'
- # Custom pull to refresh component
- pod 'PullToRefresher'
+  pod 'Presentr'
+  pod 'ValueStepper'
+  pod 'SwiftyUserDefaults'
+  pod 'Whisper'
+  # Used to tap hashtags and links
+  pod 'ActiveLabel'
+  # Custom pull to refresh component
+  pod 'PullToRefresher'
 
  target 'TweetsCounterTests' do
     inherit! :search_paths
