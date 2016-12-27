@@ -15,7 +15,9 @@ final class SettingsViewController: UIViewController {
     @IBOutlet weak var tweetsStepper: ValueStepper!
     @IBOutlet weak var twitterClientControl: UISegmentedControl!
     
-    @IBOutlet weak var developedByButton: UIButton!
+    @IBOutlet weak var twitterSupportButton: UIButton!
+    @IBOutlet weak var emailSupportButton: UIButton!
+    @IBOutlet weak var aboutButton: UIButton!
     @IBOutlet weak var githubButton: UIButton!
 
     let settings = SettingsManager.sharedManager
@@ -29,14 +31,12 @@ final class SettingsViewController: UIViewController {
         tweetsStepper.numberFormatter.maximumFractionDigits = 0
         
         twitterClientControl.selectedSegmentIndex = TwitterClient.toIndex(settings.preferredTwitterClient)
-        
-        developedByButton.layer.cornerRadius = 5.0
-        developedByButton.layer.borderColor = UIColor.white.cgColor
-        developedByButton.layer.borderWidth = 1.0
-        
+
+        twitterSupportButton.layer.cornerRadius = 5.0
+        emailSupportButton.layer.cornerRadius = 5.0
+        aboutButton.layer.cornerRadius = 5.0
         githubButton.layer.cornerRadius = 5.0
-        githubButton.layer.borderColor = UIColor.white.cgColor
-        githubButton.layer.borderWidth = 1.0
+
         view.backgroundColor = .menuDarkBlue()
 
         twitterClientControl.setEnabled(linkOpener.isTwitterAvailable, forSegmentAt: 1)

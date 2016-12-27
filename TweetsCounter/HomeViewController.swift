@@ -28,6 +28,7 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
     fileprivate lazy var session = TwitterSession.shared
     fileprivate var notificationToken: NotificationToken?
     fileprivate var refresher: TweetometerPullToRefresh!
+    private let activityManager = NetworkingActivityIndicatorManager()
 
     var users: Results<User>?
     weak var coordinator: HomeCoordinatorDelegate!
@@ -91,10 +92,10 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
         if case .refreshing = status {
             requestTimeline()
             tableView.startRefreshing(at: .top)
-            UIApplication.shared.isNetworkActivityIndicatorVisible = true
+//            UIApplication.shared.isNetworkActivityIndicatorVisible = true
         } else {
             tableView.endRefreshing(at: .top)
-            UIApplication.shared.isNetworkActivityIndicatorVisible = false
+//            UIApplication.shared.isNetworkActivityIndicatorVisible = false
         }
     }
 
@@ -127,10 +128,11 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
     // MARK: UI
 
     func presentAlert(title: String) {
+        guard let navigationController = navigationController else { return print("No navigation controller in this view hierarchy") }
         setRefreshUI(to: .notRefreshing)
         Whisper.Config.modifyInset = false
         let whisperMessage = Message(title: title, textColor: .white, backgroundColor: .backgroundBlue(), images: nil)
-        Whisper.show(whisper: whisperMessage, to: self.navigationController!, action: .show)
+        Whisper.show(whisper: whisperMessage, to: navigationController, action: .show)
     }
 
     // MARK: UITableViewDataSource
@@ -156,8 +158,9 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
 extension UITableView {
 
     func applyChanges<T>(changes: RealmCollectionChange<T>) {
-        UIApplication.shared.isNetworkActivityIndicatorVisible = false
-        endRefreshing(at: Position.top)
+        // TODO: move this code somewhere else
+//        UIApplication.shared.isNetworkActivityIndicatorVisible = false
+//        endRefreshing(at: Position.top)
         switch changes {
         case .initial: reloadData()
         case .update(_, let deletions, let insertions, let updates):

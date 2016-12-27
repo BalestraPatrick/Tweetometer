@@ -40,13 +40,6 @@ extension HomeViewController: UITabBarDelegate {
     }
 }
 
-extension HomeViewController: SettingsDelegateTweets {
-    
-    func numberOfAnalyzedTweetsDidChange(_ value: Int) {
-        
-    }
-}
-
 extension SettingsViewController: SettingsDelegateClient {
     
     func twitterClientDiDChange(_ value: TwitterClient) {

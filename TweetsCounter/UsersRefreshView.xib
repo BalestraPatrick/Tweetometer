@@ -19,15 +19,15 @@
                     <rect key="frame" x="28" y="2" width="20" height="20"/>
                     <color key="color" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </activityIndicatorView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last updated 1.56pm" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pjY-oD-nea">
-                    <rect key="frame" x="58" y="2" width="150.5" height="19.5"/>
-                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="16"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Updated 1.56pm" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pjY-oD-nea">
+                    <rect key="frame" x="58" y="2" width="112" height="18"/>
+                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J0L-gv-oDg">
-                    <rect key="frame" x="20" y="27" width="335" height="1"/>
-                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <rect key="frame" x="20" y="25.5" width="335" height="1"/>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="0.5" id="JqU-X8-yMu"/>
                     </constraints>

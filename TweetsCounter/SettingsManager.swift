@@ -10,7 +10,7 @@ import UIKit
 import SwiftyUserDefaults
 
 protocol SettingsDelegateTweets: class {
-    func numberOfAnalyzedTweetsDidChange(_ value: Int)
+
 }
 
 protocol SettingsDelegateClient: class {

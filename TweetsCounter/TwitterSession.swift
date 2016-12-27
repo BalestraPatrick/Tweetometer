@@ -56,10 +56,12 @@ public final class TwitterSession {
     ///
     /// - Parameter completion: The completion block that contains the profile picture URL.
     public func getProfilePictureURL(completion: @escaping (URL?) -> ()) {
+        NotificationCenter.default.post(name: requestStartedNotification(), object: nil)
         guard let client = client, let userID = client.userID else { return completion(nil) }
         client.loadUser(withID: userID) { user, error in
             self.user = user
             if let stringURL = user?.profileImageLargeURL {
+                NotificationCenter.default.post(name: requestCompletedNotification(), object: nil)
                 return completion(URL(string: stringURL)!)
             }
         }
@@ -77,6 +79,7 @@ public final class TwitterSession {
     ///   - maxId: The optional maximum tweetID used to return only the oldest tweets.
     ///   - completion: The completion block containing an optional error.
     public func getTimeline(before maxId: String?, completion: @escaping TimelineUpdate) {
+        NotificationCenter.default.post(name: requestStartedNotification(), object: nil)
         timelineUpdate = completion
         guard let client = client else { return completion(.notAuthenticated) }
         let url = "https://api.twitter.com/1.1/statuses/home_timeline.json"
@@ -88,6 +91,7 @@ public final class TwitterSession {
         let request = client.urlRequest(withMethod: "GET", url: url, parameters: parameters, error: nil)
         client.sendTwitterRequest(request) { response, data, error in
             if let error = error as? NSError {
+                NotificationCenter.default.post(name: requestCompletedNotification(), object: nil)
                 switch error.code {
                 case 88: return completion(.rateLimitExceeded)
                 case -1009: return completion(.noInternetConnection)
@@ -98,16 +102,16 @@ public final class TwitterSession {
             do {
                 let tweets: Any = try JSONSerialization.jsonObject(with: data, options: .allowFragments)
                 guard let timeline = tweets as? JSONArray else { return completion(.invalidResponse) }
-
                 self.timelineParser.parse(timeline)
-
                 self.timelineRequestsCount += 1
                 if let update = self.timelineUpdate {
                     update(nil)
                     if self.timelineRequestsCount >= self.maximumTimelineRequests {
+                        NotificationCenter.default.post(name: requestCompletedNotification(), object: nil)
                         return
                     }
                     self.getTimeline(before: self.timelineParser.maxId, completion: update)
+                    NotificationCenter.default.post(name: requestCompletedNotification(), object: nil)
                 }
             } catch {
                 return completion(.invalidResponse)
