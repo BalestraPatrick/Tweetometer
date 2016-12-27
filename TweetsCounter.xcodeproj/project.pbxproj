@@ -426,8 +426,8 @@
 				AE9670061C945ADF00189697 /* HomeCoordinator.swift */,
 				AE292B3C1DFDF009002B91AD /* MenuCoordinator.swift */,
 				AE9670091C94604700189697 /* UserDetailCoordinator.swift */,
-				AE055BA11DF03CE600442A2E /* LoginCoordinator.swift */,
 				AE292B3E1DFDF998002B91AD /* SettingsCoordinator.swift */,
+				AE055BA11DF03CE600442A2E /* LoginCoordinator.swift */,
 			);
 			name = Coordinators;
 			sourceTree = "<group>";

@@ -58,11 +58,11 @@ final class SettingsViewController: UIViewController {
     // MARK: Navigation
 
     @IBAction func emailSupport(_ sender: Any) {
-
+        coordinator.presentEmailSupport()
     }
     
     @IBAction func twitterSupport(_ sender: Any) {
-
+        coordinator.presentTwitterSupport()
     }
 
     @IBAction func developedBy(_ sender: Any) {
