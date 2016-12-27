@@ -158,9 +158,6 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
 extension UITableView {
 
     func applyChanges<T>(changes: RealmCollectionChange<T>) {
-        // TODO: move this code somewhere else
-//        UIApplication.shared.isNetworkActivityIndicatorVisible = false
-//        endRefreshing(at: Position.top)
         switch changes {
         case .initial: reloadData()
         case .update(_, let deletions, let insertions, let updates):
