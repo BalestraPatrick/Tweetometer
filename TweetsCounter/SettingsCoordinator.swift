@@ -41,7 +41,6 @@ final class SettingsCoordinator: NSObject, Coordinator, SettingsCoordinatorDeleg
         self.parent = parent
         super.init()
         linkOpener.coordinator = self
-        mailController.mailComposeDelegate = self
         presenter.transitionType = .coverVertical
         presenter.dismissOnSwipe = true
         presenter.cornerRadius = 10.0
@@ -63,6 +62,7 @@ final class SettingsCoordinator: NSObject, Coordinator, SettingsCoordinatorDeleg
 
     func presentEmailSupport() {
         guard MFMailComposeViewController.canSendMail() else { return }
+        mailController.mailComposeDelegate = self
         controller.present(mailController, animated: true)
     }
 
