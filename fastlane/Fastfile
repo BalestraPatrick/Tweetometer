@@ -31,11 +31,14 @@ platform :ios do
   desc "This will also make sure the profile is up to date"
   lane :beta do
     # match(type: "appstore") # more information: https://codesigning.guide
-    gym(scheme: "Tweetometer") # Build your app - more options available
-    pilot
+    increment_build_number
+    ensure_git_branch(branch: "master")
+    gym(scheme: "Tweetometer") 
+    pilot(
+      beta_app_description: "Tweetometer - Analyze your Twitter Timeline",
+      beta_app_feedback_email: "me@patrickbalestra.com",
+    )
 
-    # sh "your_script.sh"
-    # You can also use other beta testing services here (run `fastlane actions`)
   end
 
   desc "Deploy a new version to the App Store"
