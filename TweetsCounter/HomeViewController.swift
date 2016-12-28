@@ -27,7 +27,7 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
 
     fileprivate lazy var session = TwitterSession.shared
     fileprivate var notificationToken: NotificationToken?
-    fileprivate var refresher: PullToRefresh!//TweetometerPullToRefresh!
+    fileprivate var refresher: PullToRefresh!
     private let activityManager = NetworkingActivityIndicatorManager()
 
     var users: Results<User>?
@@ -37,7 +37,7 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
         super.viewDidLoad()
         applyStyle()
         tableView.rowHeight = 75.0
-        refresher = PullToRefresh() //TweetometerPullToRefresh()
+        refresher = PullToRefresh()
         tableView.addPullToRefresh(refresher) {
             self.refreshTimeline()
         }
