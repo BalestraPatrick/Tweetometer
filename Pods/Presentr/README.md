@@ -1,4 +1,4 @@
-<img src="http://danielozano.com/PresentrScreenshots/PresentrLogo.png" width="700">
+<img src="http://danielozano.com/Presentr/Screenshots/PresentrLogo.png" width="700">
 
 [![Version](https://img.shields.io/cocoapods/v/Presentr.svg?style=flat)](http://cocoapods.org/pods/Presentr)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
@@ -7,23 +7,34 @@
 [![License](https://img.shields.io/cocoapods/l/Presentr.svg?style=flat)](http://cocoapods.org/pods/Presentr)
 [![codebeat badge](https://codebeat.co/badges/f89d5cdf-b0c3-441d-b4e1-d56dcea48544)](https://codebeat.co/projects/github-com-icalialabs-presentr)
 
-*Presentr is a simple wrapper for the Custom View Controller Presentation API introduced in iOS 8.*
+*Presentr is a simple customizable wrapper for the Custom View Controller Presentation API introduced in iOS 8.*
 
 ## About
 
-It is very common in an app to want to modally present a view on top of the current screen without covering it completely. It can be for presenting an alert, a menu, or any kind of popup with some other functionality.
+iOS let's you modally present any view controller, but if you want the presented view controller to not cover the whole screen or modify anything about its presentation or transition you have to use the Custom View Controller Presentation API's.
 
-Before iOS 8 this was done by adding a subiew on top of your content, but that is not the recommended way since a modal should ideally have its own view controller for handling all of the logic. View controller containment was also used, and was a better alternative, but still not ideal for this use case.
+This can be cumbersome, specially if you do it multiple times in your app. **Presentr** simplifies all of this. You just have to configure **Presentr** depending on how you want you view controller to be presented, and the framework handles everything for you.
 
-iOS 8 fixed all of this by introducing Custom View Controller Presentations, which allowed us to modally present view controllers in new ways. But in order to use this API it is up to us to implement a couple of classes and delegates that could be confusing for some.
+<img src="http://danielozano.com/Presentr/Gifs/AlertSlow.gif" width="192">
+<img src="http://danielozano.com/Presentr/Gifs/PopupSlow.gif" width="192">
+<img src="http://danielozano.com/Presentr/Gifs/TopHalfSlow.gif" width="192">
+<img src="http://danielozano.com/Presentr/Gifs/OtherSlow.gif" width="192">
 
-**Presentr** is made to simplify this process by hiding all of that and providing a couple of custom presentations and transitions that I think you will find useful. If you want to contribute and add more presentations or transitions please send me a pull request!
+*These are just examples of an Alert UI presented in multiple ways. But, with Presentr you can present any custom View Controller you create in any of the Presentation types, or create your own custom one!*
 
 ## What's New
 
-#### 1.0.1
-- Added keyboard observation options for .popup (thanks @aasatt)
-- Swipe to dismiss gesture (thanks @josejuanqm)
+#### 1.0.5
+- Support for animated blurred background (thanks to @fpg1503)
+
+#### 1.0.4
+- New ModalSize option with sideMargin value (thanks to @alediaz84)
+- Example project fixes
+
+#### 1.0.3
+- Support for custom radius & drop shadow (thanks @falkobuttler)
+- New fluid percentage option for ModalSize enum (thanks @mseijas)
+- Example project and other general improvements (thanks @gabrielPeart)
 
 #### See CHANGELOG.md for previous
 
@@ -64,10 +75,44 @@ Install using
 carthage update --platform ios
 ```
 
-
 ### Manually
 1. Download and drop ```/Presentr``` folder in your project.  
 2. You're done!
+
+## Getting started
+
+### Create a Presentr object
+
+It is **important to hold on to the Presentr object as a property** on the presenting/current View Controller since internally it will be used as a delegate for the custom presentation, so you must hold a strong reference to it.
+
+```swift
+class ViewController: UIViewController{
+
+  let presenter: Presentr = {
+      let presenter = Presentr(presentationType: .alert)
+      presenter.transitionType = .coverHorizontalFromRight // Optional
+      return presenter
+  }()
+
+}
+```
+
+### Present the view controller.
+
+Instantiate the View Controller you want to present. Remember to setup autolayout on it so it can be displayed well on any size.
+
+```swift
+let controller = SomeViewController()
+customPresentViewController(presenter, viewController: controller, animated: true, completion: nil)
+```
+
+This is a helper method provided for you as an extension on UIViewController. It handles setting the Presentr object as the delegate for the presentation & transition.
+
+The PresentationType (and all other properties) can be changed later on in order to reuse the Presentr object for other presentations.
+
+```swift
+presenter.presentationType = .popup
+```
 
 ## Main Types
 
@@ -84,11 +129,11 @@ public enum PresentationType {
 }
 ```
 #### Alert & Popup
-<img src="http://danielozano.com/PresentrScreenshots/Alert1.png" width="250">
-<img src="http://danielozano.com/PresentrScreenshots/Popup1.png" width="250">
+<img src="http://danielozano.com/Presentr/Gifs/AlertSlow.gif" width="250">
+<img src="http://danielozano.com/Presentr/Gifs/PopupSlow.gif" width="250">
 #### BottomHalf & TopHalf
-<img src="http://danielozano.com/PresentrScreenshots/BottomHalf1.png" width="250">
-<img src="http://danielozano.com/PresentrScreenshots/TopHalf2.png" width="250">
+<img src="http://danielozano.com/Presentr/Gifs/BottomHalfSlow.gif" width="250">
+<img src="http://danielozano.com/Presentr/Gifs/TopHalfSlow.gif" width="250">
 
 ### Transition Type
 
@@ -105,31 +150,7 @@ public enum TransitionType{
 }
 ```
 
-## Getting Started
-
-### Create a Presentr object
-
-It is **important to hold on to the Presentr object as a property** on the presenting/current View Controller since internally it will be used as a delegate for the custom presentation, so you must hold a strong reference to it.
-
-```swift
-class ViewController: UIViewController{
-
-  let presenter: Presentr = {
-      let presenter = Presentr(presentationType: .Alert)
-      presenter.transitionType = .coverHorizontalFromRight // Optional
-      return presenter
-  }()
-
-}
-```
-
-The PresentationType (and all other properties) can be changed later on in order to reuse the Presentr object for other presentations.
-
-```swift
-presenter.presentationType = .popup
-```
-
-### Properties
+## Properties
 #### Properties are optional, as they all have Default values.
 
 You can choose a TransitionType, which is the animation that will be used to present or dismiss the view controller.
@@ -159,6 +180,24 @@ You can choose to disable rounded corners on the view controller that will be pr
 presenter.roundCorners = false
 ```
 
+You can also set the cornerRadius if you set roundCorners to true.
+
+```swift
+presenter.cornerRadius = 10
+```
+
+Using the PresentrShadow struct can set a custom shadow on the presented view controller.
+
+```swift
+let shadow = PresentrShadow()
+shadow.shadowColor = .black
+shadow.shadowOpacity = 0.5
+shadow.shadowOffset = CGSize(5,5)
+shadow.shadowRadius = 4.0
+
+presenter.dropShadow = shadow
+```
+
 You can choose to disable dismissOnTap that dismisses the presented view controller on tapping the background. Default is true. Or you can disable the animation for the dismissOnTap.
 
 ```swift
@@ -166,18 +205,30 @@ presenter.dismissOnTap = false
 presenter.dismissAnimated = false
 ```
 
-### Present the view controller.
-
-Instantiate the View Controller you want to present. Remember to setup autolayout on it so it can be displayed well on any size.
+You can activate dismissOnSwipe so that swiping up inside the presented view controller dismisses it. Default is false. If your view controller uses any kind of scroll view this is not recommended as it will mess with the scrolling.
 
 ```swift
-let controller = SomeViewController()
-customPresentViewController(presenter, viewController: controller, animated: true, completion: nil)
+presenter.dismissOnSwipe = true
 ```
 
-This is a helper method provided for you as an extension on UIViewController. It handles setting the Presentr object as the delegate for the presentation & transition.
+If you have text fields inside your modal, you can use a KeyboardTranslationType to tell Presentr how to handle your modal when the keyboard shows up.
 
-### Creating a custom PresentationType
+```swift
+presenter.keyboardTranslationType = .none
+presenter.keyboardTranslationType = .moveUp
+presenter.keyboardTranslationType = .compress
+presenter.keyboardTranslationType = .stickToTop
+```
+
+## Delegate
+
+You can conform to the PresentrDelegate protocol in your presented view controller if you want to get a callback. Using this method you can prevent the view controller from being dismissed when the background is tapped and/or perform something before it's dismissed.
+
+```swift
+func presentrShouldDismiss(keyboardShowing: Bool) -> Bool { }
+```
+
+## Creating a custom PresentationType
 
 If you need to present a controller in a way that is not handled by the 4 included presentation types you can create your own. You create a custom **PresentationType** using the **.Custom** case on the **PresentationType** enum.
 ```swift
@@ -193,6 +244,7 @@ public enum ModalSize {
   case half   
   case full      
   case custom(size: Float)
+  case fluid(percentage: Float)
 }
 
 // This is used to calculate the center point position for the modal.
@@ -248,9 +300,11 @@ class ViewController: UIViewController{
 }
 ```
 
-<img src="http://danielozano.com/PresentrScreenshots/CustomPresentationType.png" width="250">
+<img src="http://danielozano.com/Presentr/Screenshots/CustomPresentationType.png" width="250">
 
-### Presentr also comes with a cool AlertViewController baked in if you want something different from Apple's. The API is very similar to Apple's alert controller.
+## AlertViewController
+
+Presentr also comes with a cool AlertViewController baked in if you want something different from Apple's. The API is very similar to Apple's alert controller.
 
 ```swift
 
@@ -275,7 +329,7 @@ class ViewController: UIViewController{
 
 ```
 
-<img src="http://danielozano.com/PresentrScreenshots/Alert2.png" width="250">
+<img src="http://danielozano.com/Presentr/Screenshots/Alert2.png" width="250">
 
 ## Requirements
 
@@ -285,7 +339,7 @@ class ViewController: UIViewController{
 
 ## Documentation
 
-Read the [docs](http://danielozano.com/PresentrDocs/). Generated with [jazzy](https://github.com/realm/jazzy).
+Read the [docs](http://danielozano.com/Presentr/Docs/). Generated with [jazzy](https://github.com/realm/jazzy).
 
 ##  Author
 [Daniel Lozano](http://danielozano.com) <br>

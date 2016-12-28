@@ -19,7 +19,7 @@ target 'TweetsCounter' do
   # Used to tap hashtags and links
   pod 'ActiveLabel'
   # Custom pull to refresh component
-  pod 'PullToRefresher'
+  pod 'PullToRefresher', :git => 'https://github.com/BalestraPatrick/PullToRefresh'
 
  target 'TweetsCounterTests' do
     inherit! :search_paths

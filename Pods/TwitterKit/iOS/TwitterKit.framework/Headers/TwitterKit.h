@@ -46,6 +46,7 @@
 #import "TWTRTimelineCursor.h"
 #import "TWTRTimelineDataSource.h"
 #import "TWTRTimelineDelegate.h"
+#import "TWTRTimelineFilter.h"
 #import "TWTRTimelineType.h"
 #import "TWTRTimelineViewController.h"
 #import "TWTRTweet.h"

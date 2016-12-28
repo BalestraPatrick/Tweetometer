@@ -7,18 +7,18 @@ PODS:
     - Fabric (~> 1.6.3)
   - Fabric (1.6.11)
   - Keys (1.0.0)
-  - Presentr (1.0.3)
+  - Presentr (1.1.0)
   - PullToRefresher (2.0.2)
-  - Realm (2.1.1):
-    - Realm/Headers (= 2.1.1)
-  - Realm/Headers (2.1.1)
-  - RealmSwift (2.1.1):
-    - Realm (= 2.1.1)
+  - Realm (2.1.2):
+    - Realm/Headers (= 2.1.2)
+  - Realm/Headers (2.1.2)
+  - RealmSwift (2.1.2):
+    - Realm (= 2.1.2)
   - SwiftyUserDefaults (3.0.0)
-  - TwitterCore (2.6.1):
+  - TwitterCore (2.7.0):
     - Fabric
-  - TwitterKit (2.6.1):
-    - TwitterCore (= 2.6.1)
+  - TwitterKit (2.7.0):
+    - TwitterCore (= 2.7.0)
   - Unbox (2.3.0)
   - ValueStepper (1.0)
   - Whisper (4.0.0)
@@ -31,7 +31,7 @@ DEPENDENCIES:
   - Fabric
   - Keys (from `Pods/CocoaPodsKeys`)
   - Presentr
-  - PullToRefresher
+  - PullToRefresher (from `https://github.com/BalestraPatrick/PullToRefresh`)
   - RealmSwift
   - SwiftyUserDefaults
   - TwitterCore
@@ -43,6 +43,13 @@ DEPENDENCIES:
 EXTERNAL SOURCES:
   Keys:
     :path: Pods/CocoaPodsKeys
+  PullToRefresher:
+    :git: https://github.com/BalestraPatrick/PullToRefresh
+
+CHECKOUT OPTIONS:
+  PullToRefresher:
+    :commit: f8dfc95106f66ace35b79eb7e19673a572001e5a
+    :git: https://github.com/BalestraPatrick/PullToRefresh
 
 SPEC CHECKSUMS:
   ActiveLabel: eb405c5b99275be52fac161f7a55cab1dd672c54
@@ -51,17 +58,17 @@ SPEC CHECKSUMS:
   Crashlytics: 2b6dbe138a42395577cfa73dfa1aa7248cadf39e
   Fabric: 5911403591946b8228ab1c51d98f1d7137e863c6
   Keys: 9c35bf00f612ee1d48556f4a4b9b4551e224e90f
-  Presentr: 9759bf538d9f3211a5ee1314a541a11bbea7ea71
-  PullToRefresher: 5e101a8c3523e67ee0291375ba932ef59e0853c2
-  Realm: a55959c0b171a5fe5267406d17f314fec3cefaae
-  RealmSwift: 749fd955bf8d6471c21d218b9389a47aaeccfe3f
+  Presentr: e73439be1cba3ad0651b18c58d77238bbacce59c
+  PullToRefresher: 9d66e6a86fb9e1d8fa861c4bbd263e88f5dfc0bd
+  Realm: efe855f4d977c8ce5a82d3116d9f1ff155a6550c
+  RealmSwift: 17d6ee30b6f9df86364408c2197492e33bfea567
   SwiftyUserDefaults: 0f1d45fc3aafb9064dac661e367f8f83fe21a4b4
-  TwitterCore: a8aea8bdaf2abd6572c8f264707a4ea4dc2d0eab
-  TwitterKit: d38c08d31dfd4ba604f95deca6cf8e174b5cbd96
+  TwitterCore: fbdbeaf6d2d20cf7c7aa4136fe5173c1c85df2e2
+  TwitterKit: 97e729ceea041d174126235bf6ff67dcf37772d4
   Unbox: 5ba1966ebe99b5d568d432626323331eedd33458
   ValueStepper: a1a275491e3a1ab6fe80a589ce04781d4a795fb3
   Whisper: 08be92623311f8e53201e62e17f6d7b9599a4714
 
-PODFILE CHECKSUM: 9b121fa3fa26593e4eb0e3a915f141a5464b78f0
+PODFILE CHECKSUM: e6cf181819ff33eee4667961b8b0a88a4b6a3f89
 
 COCOAPODS: 1.1.1
