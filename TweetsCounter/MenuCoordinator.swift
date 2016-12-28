@@ -7,9 +7,11 @@
 //
 
 import TweetometerKit
+import Social
 
 protocol MenuCoordinatorDelegate: class {
     func refreshTimeline()
+    func share()
     func logout()
     func presentSettings()
 }
@@ -35,25 +37,39 @@ class MenuCoordinator: Coordinator, MenuCoordinatorDelegate {
     // MARK: Coordinator
 
     func presentSafari(_ url: URL) {
+        controller.dismiss(animated: false)
         let safari = linkOpener.openInSafari(url)
         controller.present(safari, animated: true, completion: nil)
     }
 
     // MARK: MenuCoordinatorDelegate
 
-    func logout() {
-        DataManager.logOut()
-        controller.dismiss(animated: true)
-        parentCoordinator.presentLogin()
-    }
-
     func refreshTimeline() {
-        controller.dismiss(animated: true)
+        controller.dismiss(animated: false)
         parentCoordinator.refreshTimeline()
     }
 
+    func share() {
+        controller.dismiss(animated: false)
+        guard SLComposeViewController.isAvailable(forServiceType: SLServiceTypeTwitter) else {
+            return parentCoordinator.controller.presentAlert(title: "No Twitter account available")
+        }
+
+        if let twitterSheet = SLComposeViewController(forServiceType: SLServiceTypeTwitter) {
+            twitterSheet.add(URL(string: "https://www.patrickbalestra.com/Tweetometer"))
+            twitterSheet.add(parentCoordinator.controller.tableView.topUsersImage)
+            parentCoordinator.controller.present(twitterSheet, animated: true)
+        }
+    }
+
+    func logout() {
+        DataManager.logOut()
+        controller.dismiss(animated: false)
+        parentCoordinator.presentLogin()
+    }
+
     func presentSettings() {
-        controller.dismiss(animated: true)
+        controller.dismiss(animated: false)
         parentCoordinator.presentSettings()
     }
 }

@@ -37,6 +37,8 @@ class MenuPopOverViewController: UITableViewController {
         switch indexPath.row {
         case MenuOptions.refresh.rawValue:
             coordinator.refreshTimeline()
+        case MenuOptions.share.rawValue:
+            coordinator.share()
         case MenuOptions.logout.rawValue:
             coordinator.logout()
         case MenuOptions.settings.rawValue:
