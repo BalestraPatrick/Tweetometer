@@ -27,7 +27,7 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
 
     fileprivate lazy var session = TwitterSession.shared
     fileprivate var notificationToken: NotificationToken?
-    fileprivate var refresher: TweetometerPullToRefresh!
+    fileprivate var refresher: PullToRefresh!//TweetometerPullToRefresh!
     private let activityManager = NetworkingActivityIndicatorManager()
 
     var users: Results<User>?
@@ -37,7 +37,7 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
         super.viewDidLoad()
         applyStyle()
         tableView.rowHeight = 75.0
-        refresher = TweetometerPullToRefresh()
+        refresher = PullToRefresh() //TweetometerPullToRefresh()
         tableView.addPullToRefresh(refresher) {
             self.refreshTimeline()
         }
@@ -94,6 +94,7 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
             tableView.startRefreshing(at: .top)
         } else {
             tableView.endRefreshing(at: .top)
+            refresher.refresherData = RefresherData(lastUpdate: "Now", numberOfTweets: DataManager.realm().objects(Tweet.self).count)
         }
     }
 
@@ -120,6 +121,8 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
                     break
                 }
             }
+            print("FINISHED WITHOUT ERRORS")
+            self.setRefreshUI(to: .notRefreshing)
         }
     }
 

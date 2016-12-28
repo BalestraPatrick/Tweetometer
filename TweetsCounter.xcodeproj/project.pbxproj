@@ -29,10 +29,6 @@
 		AE292B3D1DFDF009002B91AD /* MenuCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE292B3C1DFDF009002B91AD /* MenuCoordinator.swift */; };
 		AE292B3F1DFDF998002B91AD /* SettingsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE292B3E1DFDF998002B91AD /* SettingsCoordinator.swift */; };
 		AE2F0DC61C93751100F10122 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE2F0DC51C93751100F10122 /* AppCoordinator.swift */; };
-		AE30ABF61E0F114200A1AFBC /* UsersRefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE30ABF51E0F114200A1AFBC /* UsersRefreshView.swift */; };
-		AE30ABFA1E0F117A00A1AFBC /* UsersRefreshView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE30ABF91E0F117A00A1AFBC /* UsersRefreshView.xib */; };
-		AE30ABFC1E0F147400A1AFBC /* UsersRefreshViewAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE30ABFB1E0F147400A1AFBC /* UsersRefreshViewAnimator.swift */; };
-		AE30ABFF1E0F17AF00A1AFBC /* TweetometerPullToRefresh.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE30ABFE1E0F17AF00A1AFBC /* TweetometerPullToRefresh.swift */; };
 		AE35A2F41C52B4A4001E1D88 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE35A2F31C52B4A4001E1D88 /* SettingsViewController.swift */; };
 		AE35A2F61C52C146001E1D88 /* DismissFromSettingsSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE35A2F51C52C146001E1D88 /* DismissFromSettingsSegue.swift */; };
 		AE3E81BE1BF8B40600A51804 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3E81BD1BF8B40600A51804 /* LoginViewController.swift */; };
@@ -131,10 +127,6 @@
 		AE292B3C1DFDF009002B91AD /* MenuCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuCoordinator.swift; sourceTree = "<group>"; };
 		AE292B3E1DFDF998002B91AD /* SettingsCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsCoordinator.swift; sourceTree = "<group>"; };
 		AE2F0DC51C93751100F10122 /* AppCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
-		AE30ABF51E0F114200A1AFBC /* UsersRefreshView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsersRefreshView.swift; sourceTree = "<group>"; };
-		AE30ABF91E0F117A00A1AFBC /* UsersRefreshView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UsersRefreshView.xib; sourceTree = "<group>"; };
-		AE30ABFB1E0F147400A1AFBC /* UsersRefreshViewAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsersRefreshViewAnimator.swift; sourceTree = "<group>"; };
-		AE30ABFE1E0F17AF00A1AFBC /* TweetometerPullToRefresh.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetometerPullToRefresh.swift; sourceTree = "<group>"; };
 		AE35A2F31C52B4A4001E1D88 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		AE35A2F51C52C146001E1D88 /* DismissFromSettingsSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DismissFromSettingsSegue.swift; sourceTree = "<group>"; };
 		AE3E81BD1BF8B40600A51804 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -299,7 +291,6 @@
 		AE0FA7D11C0EE78100EDB0A1 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				AE30ABFD1E0F147D00A1AFBC /* Table View Refresher */,
 				AE07A0D51C5D4AD400514B1C /* UserTableViewCell.swift */,
 				AEAFB1051C7A0E270030AB33 /* TweetTableViewCell.swift */,
 				AEF598E61CD679B40055E88C /* UserDetailsTableViewCell.swift */,
@@ -364,17 +355,6 @@
 				AE277E041BD4E6DB004E151C /* Info.plist */,
 			);
 			path = TweetsCounterTests;
-			sourceTree = "<group>";
-		};
-		AE30ABFD1E0F147D00A1AFBC /* Table View Refresher */ = {
-			isa = PBXGroup;
-			children = (
-				AE30ABF91E0F117A00A1AFBC /* UsersRefreshView.xib */,
-				AE30ABF51E0F114200A1AFBC /* UsersRefreshView.swift */,
-				AE30ABFB1E0F147400A1AFBC /* UsersRefreshViewAnimator.swift */,
-				AE30ABFE1E0F17AF00A1AFBC /* TweetometerPullToRefresh.swift */,
-			);
-			name = "Table View Refresher";
 			sourceTree = "<group>";
 		};
 		AE45DC3C1E0FFDAC00CD2190 /* TweetometerKit */ = {
@@ -584,7 +564,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				AE277DF81BD4E6DB004E151C /* LaunchScreen.storyboard in Resources */,
-				AE30ABFA1E0F117A00A1AFBC /* UsersRefreshView.xib in Resources */,
 				AE277DF51BD4E6DB004E151C /* Assets.xcassets in Resources */,
 				AE277DF31BD4E6DB004E151C /* Main.storyboard in Resources */,
 			);
@@ -749,7 +728,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AE30ABFC1E0F147400A1AFBC /* UsersRefreshViewAnimator.swift in Sources */,
 				AE35A2F61C52C146001E1D88 /* DismissFromSettingsSegue.swift in Sources */,
 				AEAFB1061C7A0E270030AB33 /* TweetTableViewCell.swift in Sources */,
 				AE277DF01BD4E6DB004E151C /* HomeViewController.swift in Sources */,
@@ -763,7 +741,6 @@
 				AE3E81BE1BF8B40600A51804 /* LoginViewController.swift in Sources */,
 				AE277DEE1BD4E6DB004E151C /* AppDelegate.swift in Sources */,
 				AED0A1F61C5E01BA002D40A4 /* ApplicationStyle.swift in Sources */,
-				AE30ABFF1E0F17AF00A1AFBC /* TweetometerPullToRefresh.swift in Sources */,
 				AE506B561E12D11700DE23B0 /* NetworkActivityIndicatorManager.swift in Sources */,
 				AE055BA21DF03CE600442A2E /* LoginCoordinator.swift in Sources */,
 				AEC95CF21C81AED900811BAC /* LinkOpener.swift in Sources */,
@@ -774,7 +751,6 @@
 				AEF1F20D1C64EB8900591E46 /* MenuOptionsDataSource.swift in Sources */,
 				AEB280951C79FC0C009C64EE /* ViewControllerUtils.swift in Sources */,
 				AEE4D8081BF9BFD100C9CA08 /* Constants.swift in Sources */,
-				AE30ABF61E0F114200A1AFBC /* UsersRefreshView.swift in Sources */,
 				AE96700A1C94604700189697 /* UserDetailCoordinator.swift in Sources */,
 				AE292B3F1DFDF998002B91AD /* SettingsCoordinator.swift in Sources */,
 				AE1FF7501C7927D7001C8F87 /* SettingsManager.swift in Sources */,
