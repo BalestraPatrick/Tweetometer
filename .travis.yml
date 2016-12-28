@@ -1,7 +1,8 @@
 before_install:
   - gem install cocoapods-keys
   - brew install swiftlint
-  
+  - pod repo update
+
 cache:
   - bundler
   - cocoapods
