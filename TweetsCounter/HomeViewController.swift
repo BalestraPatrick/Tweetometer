@@ -156,6 +156,9 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
 
 extension UITableView {
 
+    /// Applies the Realm changes to the tableView datasource with an animation.
+    ///
+    /// - Parameter changes: The deletions, insertions and updates to apply to the tableView.
     func applyChanges<T>(changes: RealmCollectionChange<T>) {
         switch changes {
         case .initial: reloadData()
@@ -171,14 +174,19 @@ extension UITableView {
         }
     }
 
+
+    /// When a row is inserted in the currently visible rows, the background color of the cell may be wrong.
+    /// This method checks if one of the inserted rows is in in the currently visible rows.
+    /// If it is, the index of that cell manually updated.
+    ///
+    /// - Parameter insertions: An Array containing the idnexes of the rows inserted in the tableView.
     func fixBackgroundColorForVisibleRows(insertions: [Int]) {
-        if let rows = indexPathsForVisibleRows {
-            for row in rows {
-                if insertions.contains(row.row) {
-                    for indexPath in rows {
-                        if let cell = cellForRow(at: indexPath) as? UserTableViewCell {
-                            cell.index = indexPath.row
-                        }
+        guard let rows = indexPathsForVisibleRows else { return }
+        for row in rows {
+            if insertions.contains(row.row) {
+                for indexPath in rows {
+                    if let cell = cellForRow(at: indexPath) as? UserTableViewCell {
+                        cell.index = indexPath.row
                     }
                 }
             }
