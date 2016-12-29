@@ -31,3 +31,24 @@ extension UITableView {
         tableFooterView = UIView()
     }
 }
+
+extension DateFormatter {
+
+    static let updateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .short
+        formatter.timeStyle = .short
+        formatter.doesRelativeDateFormatting = true
+        return formatter
+    }()
+}
+
+extension Date {
+
+    func updateString() -> String {
+        if self.compare(Date(timeIntervalSince1970: 0)) == ComparisonResult.orderedSame {
+            return "✖️"
+        }
+        return DateFormatter.updateFormatter.string(from: self)
+    }
+}

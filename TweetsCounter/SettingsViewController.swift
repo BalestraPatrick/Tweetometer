@@ -20,7 +20,7 @@ final class SettingsViewController: UIViewController {
     @IBOutlet weak var aboutButton: UIButton!
     @IBOutlet weak var githubButton: UIButton!
 
-    let settings = SettingsManager.shared
+    let settings = Settings.shared
     let linkOpener = LinkOpener()
     weak var coordinator: SettingsCoordinator!
 

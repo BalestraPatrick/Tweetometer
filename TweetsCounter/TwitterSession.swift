@@ -22,12 +22,21 @@ public enum TwitterError: Error {
 public final class TwitterSession {
 
     public typealias TimelineUpdate = (TwitterError?) -> Void
+    public var lastUpdate: Date {
+        get {
+            return Settings.shared.lastUpdate
+        }
+        set {
+            Settings.shared.lastUpdate = lastUpdate
+        }
+    }
 
     private var client: TWTRAPIClient?
     private var user: TWTRUser?
     private var timelineParser = TimelineParser()
     private var timelineUpdate: TimelineUpdate?
     private var timelineRequestsCount = 0
+
     private final let maximumTimelineRequests = 4
     private final let maximumTweetsPerRequest = 200
 
@@ -107,9 +116,11 @@ public final class TwitterSession {
                 if let update = self.timelineUpdate {
                     update(nil)
                     if self.timelineRequestsCount >= self.maximumTimelineRequests {
+                        self.lastUpdate = Date()
                         NotificationCenter.default.post(name: requestCompletedNotification(), object: nil)
                         return
                     }
+                    self.lastUpdate = Date()
                     self.getTimeline(before: self.timelineParser.maxId, completion: update)
                     NotificationCenter.default.post(name: requestCompletedNotification(), object: nil)
                 }

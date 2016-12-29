@@ -16,7 +16,7 @@ class LinkOpener {
     
     /// Store preferred user client from the settings.
     var client: TwitterClient {
-        return SettingsManager.shared.preferredTwitterClient
+        return Settings.shared.preferredTwitterClient
     }
 
     /// User detail coordinator needed to present a SafariViewController on the current view controller.

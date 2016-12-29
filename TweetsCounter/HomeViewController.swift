@@ -38,6 +38,8 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
         applyStyle()
         tableView.rowHeight = 75.0
         refresher = PullToRefresh()
+        print("Last update: \(session.lastUpdate.updateString())")
+        refresher.refresherData = RefresherData(lastUpdate: session.lastUpdate.updateString(), numberOfTweets: DataManager.realm().objects(Tweet.self).count)
         tableView.addPullToRefresh(refresher) {
             self.refreshTimeline()
         }
@@ -93,7 +95,8 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
             tableView.startRefreshing(at: .top)
         } else {
             tableView.endRefreshing(at: .top)
-            refresher.refresherData = RefresherData(lastUpdate: "Now", numberOfTweets: DataManager.realm().objects(Tweet.self).count)
+            print("Last update: \(session.lastUpdate.updateString())")
+            refresher.refresherData = RefresherData(lastUpdate: session.lastUpdate.updateString(), numberOfTweets: DataManager.realm().objects(Tweet.self).count)
         }
     }
 
@@ -173,7 +176,6 @@ extension UITableView {
         default: break
         }
     }
-
 
     /// When a row is inserted in the currently visible rows, the background color of the cell may be wrong.
     /// This method checks if one of the inserted rows is in in the currently visible rows.

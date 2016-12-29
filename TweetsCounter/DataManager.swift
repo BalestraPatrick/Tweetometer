@@ -46,7 +46,7 @@ public final class DataManager {
     /// Remove the oldest tweets based on the user preference.
     public class func shouldCleanCache() {
         let realm = self.realm()
-        let maximumCount = SettingsManager.shared.maximumNumberOfTweets
+        let maximumCount = Settings.shared.maximumNumberOfTweets
         while realm.objects(Tweet.self).count > maximumCount {
             print("count: \(realm.objects(Tweet.self).count) >= maximumCount: \(maximumCount)")
             let tweets = realm.objects(Tweet.self)

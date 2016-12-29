@@ -12,6 +12,7 @@ import SwiftyUserDefaults
 struct Key {
     static let maximumNumberOfTweets = "maximumNumberOfTweets"
     static let preferredTwitterClient = "preferredTwitterClient"
+    static let lastUpdate = "lastUpdate"
 }
 
 public enum TwitterClient {
@@ -37,10 +38,10 @@ public enum TwitterClient {
     }
 }
 
-public final class SettingsManager {
+public final class Settings {
     
     /// Shared manager instance
-    public static let shared = SettingsManager()
+    public static let shared = Settings()
 
     /// Number of tweets to be retrieved and analyzed. Default value is 200.
     public var maximumNumberOfTweets: Int {
@@ -48,17 +49,28 @@ public final class SettingsManager {
             Defaults[Key.maximumNumberOfTweets] = maximumNumberOfTweets
         }
     }
-    
+
+    /// The preferred client that the user would like to use.
     public var preferredTwitterClient: TwitterClient {
         didSet {
             Defaults[Key.preferredTwitterClient] = TwitterClient.toIndex(preferredTwitterClient)
         }
     }
+
+    /// The date of the last update with the Twitter APIs.
+    public var lastUpdate: Date {
+        didSet {
+            Defaults[Key.lastUpdate] = lastUpdate
+        }
+    }
     
     private init() {
         maximumNumberOfTweets = Defaults[Key.maximumNumberOfTweets].int ?? 1000
+        lastUpdate = Date(timeIntervalSince1970: 0)
+
         preferredTwitterClient = TwitterClient.fromIndex(Defaults[Key.preferredTwitterClient].int ?? 0)
-        
+
+        // Convert initial values to TwitterClient enum case
         if let v = Defaults[Key.preferredTwitterClient].int {
             switch v {
             case 0:  preferredTwitterClient = .tweetbot
