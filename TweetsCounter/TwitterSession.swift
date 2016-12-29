@@ -116,11 +116,9 @@ public final class TwitterSession {
                 if let update = self.timelineUpdate {
                     update(nil)
                     if self.timelineRequestsCount >= self.maximumTimelineRequests {
-                        self.lastUpdate = Date()
                         NotificationCenter.default.post(name: requestCompletedNotification(), object: nil)
                         return
                     }
-                    self.lastUpdate = Date()
                     self.getTimeline(before: self.timelineParser.maxId, completion: update)
                     NotificationCenter.default.post(name: requestCompletedNotification(), object: nil)
                 }

@@ -112,6 +112,7 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
     func requestTimeline() {
         // Request tweets.
         session.getTimeline(before: nil) { error in
+            self.session.lastUpdate = Date()
             if let error = error {
                 switch error {
                 case .rateLimitExceeded:

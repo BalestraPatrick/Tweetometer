@@ -7,12 +7,12 @@
 //
 
 import XCTest
-@testable import TweetsCounter
+@testable import TweetometerKit
 
 class MenuOptionsTests: XCTestCase {
     
     func testDataSource() {
-        let options = MenuOptionsDataSource().options
+        let options = MenuDataSource().options
         
         XCTAssertEqual(options.count, 4)
         XCTAssertEqual(options[0].title, "Refresh")
