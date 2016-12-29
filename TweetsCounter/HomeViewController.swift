@@ -166,12 +166,12 @@ extension UITableView {
             reloadRows(at: updates.map(fromRow), with: .none)
             deleteRows(at: deletions.map(fromRow), with: .automatic)
             endUpdates()
-            fixBackgroundColorForVisibleRows()
+            fixBackgroundColorForVisibleRows(insertions: insertions)
         default: break
         }
     }
 
-    func fixBackgroundColorForVisibleRows() {
+    func fixBackgroundColorForVisibleRows(insertions: [Int]) {
         if let rows = indexPathsForVisibleRows {
             for row in rows {
                 if insertions.contains(row.row) {
