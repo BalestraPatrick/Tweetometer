@@ -73,8 +73,9 @@ public final class Settings {
         // Convert initial values to TwitterClient enum case
         if let v = Defaults[Key.preferredTwitterClient].int {
             switch v {
-            case 0:  preferredTwitterClient = .tweetbot
+            case 0:  preferredTwitterClient = .web
             case 1: preferredTwitterClient = .twitter
+            case 2: preferredTwitterClient = .tweetbot
             default: preferredTwitterClient = .web
             }
         } else {
