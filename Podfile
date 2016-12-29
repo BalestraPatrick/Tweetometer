@@ -14,7 +14,6 @@ plugin 'cocoapods-keys', {
 target 'TweetsCounter' do
   pod 'Presentr'
   pod 'ValueStepper'
-  pod 'SwiftyUserDefaults'
   pod 'Whisper'
   # Used to tap hashtags and links
   pod 'ActiveLabel'
@@ -35,6 +34,7 @@ target 'TweetometerKit' do
   pod 'Fabric'
   pod 'Alamofire'
   pod 'AlamofireImage'
+  pod 'SwiftyUserDefaults'
 end
 
 post_install do |installer|
