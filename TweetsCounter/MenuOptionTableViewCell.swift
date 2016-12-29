@@ -6,7 +6,7 @@
 //  Copyright © 2016 Patrick Balestra. All rights reserved.
 //
 
-import UIKit
+import TweetometerKit
 
 final class MenuOptionTableViewCell: UITableViewCell {
     

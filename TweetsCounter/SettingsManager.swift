@@ -9,25 +9,17 @@
 import UIKit
 import SwiftyUserDefaults
 
-protocol SettingsDelegateTweets: class {
-
-}
-
-protocol SettingsDelegateClient: class {
-    func twitterClientDiDChange(_ value: TwitterClient)
-}
-
 struct Key {
-    static let NumberOfAnalyzedTweets = "numberOfAnalyzedTweets"
-    static let PreferredTwitterClient = "preferredTwitterClient"
+    static let maximumNumberOfTweets = "maximumNumberOfTweets"
+    static let preferredTwitterClient = "preferredTwitterClient"
 }
 
-enum TwitterClient {
+public enum TwitterClient {
     case web
     case twitter
     case tweetbot
     
-    static func fromIndex(_ index: Int) -> TwitterClient {
+    public static func fromIndex(_ index: Int) -> TwitterClient {
         switch index {
         case 0: return .web
         case 1: return .twitter
@@ -36,7 +28,7 @@ enum TwitterClient {
         }
     }
     
-    static func toIndex(_ option: TwitterClient) -> Int {
+    public static func toIndex(_ option: TwitterClient) -> Int {
         switch option {
         case .web: return 0
         case .twitter: return 1
@@ -45,35 +37,29 @@ enum TwitterClient {
     }
 }
 
-final class SettingsManager {
+public final class SettingsManager {
     
     /// Shared manager instance
-    static let sharedManager = SettingsManager()
-    
-    /// Delegate used to be notified when a setting changes.
-    weak var delegate: SettingsDelegateTweets?
-    
-    weak var clientDelegate: SettingsDelegateClient?
-    
+    public static let shared = SettingsManager()
+
     /// Number of tweets to be retrieved and analyzed. Default value is 200.
-    var numberOfAnalyzedTweets: Int {
+    public var maximumNumberOfTweets: Int {
         didSet {
-            Defaults[Key.NumberOfAnalyzedTweets] = numberOfAnalyzedTweets
+            Defaults[Key.maximumNumberOfTweets] = maximumNumberOfTweets
         }
     }
     
-    var preferredTwitterClient: TwitterClient {
+    public var preferredTwitterClient: TwitterClient {
         didSet {
-            Defaults[Key.PreferredTwitterClient] = TwitterClient.toIndex(preferredTwitterClient)
-            clientDelegate?.twitterClientDiDChange(preferredTwitterClient)
+            Defaults[Key.preferredTwitterClient] = TwitterClient.toIndex(preferredTwitterClient)
         }
     }
     
-    init() {
-        numberOfAnalyzedTweets = Defaults[Key.NumberOfAnalyzedTweets].int ?? 200
-        preferredTwitterClient = TwitterClient.fromIndex(Defaults[Key.PreferredTwitterClient].int ?? 0)
+    private init() {
+        maximumNumberOfTweets = Defaults[Key.maximumNumberOfTweets].int ?? 1000
+        preferredTwitterClient = TwitterClient.fromIndex(Defaults[Key.preferredTwitterClient].int ?? 0)
         
-        if let v = Defaults[Key.PreferredTwitterClient].int {
+        if let v = Defaults[Key.preferredTwitterClient].int {
             switch v {
             case 0:  preferredTwitterClient = .tweetbot
             case 1: preferredTwitterClient = .twitter
@@ -83,5 +69,4 @@ final class SettingsManager {
             preferredTwitterClient = .web
         }
     }
-    
 }

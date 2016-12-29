@@ -6,7 +6,7 @@
 //  Copyright © 2016 Patrick Balestra. All rights reserved.
 //
 
-import UIKit
+import TweetometerKit
 import SafariServices
 
 private let twitterScheme = "twitter"
@@ -15,7 +15,9 @@ private let tweetbotScheme = "tweetbot"
 class LinkOpener {
     
     /// Store preferred user client from the settings.
-    var client = SettingsManager.sharedManager.preferredTwitterClient
+    var client: TwitterClient {
+        return SettingsManager.shared.preferredTwitterClient
+    }
 
     /// User detail coordinator needed to present a SafariViewController on the current view controller.
     weak var coordinator: Coordinator?

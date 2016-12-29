@@ -40,13 +40,6 @@ extension HomeViewController: UITabBarDelegate {
     }
 }
 
-extension SettingsViewController: SettingsDelegateClient {
-    
-    func twitterClientDiDChange(_ value: TwitterClient) {
-        twitterClientControl.selectedSegmentIndex = TwitterClient.toIndex(value)
-    }
-}
-
 extension MenuPopOverViewController {
     
     func applyStyle() {

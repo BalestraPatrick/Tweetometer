@@ -7,10 +7,11 @@
 //
 
 import UIKit
+import TweetometerKit
 
 class MenuPopOverViewController: UITableViewController {
     
-    let options = MenuOptionsDataSource().options
+    let options = MenuDataSource().options
     weak var coordinator: MenuCoordinatorDelegate!
     
     override func viewDidLoad() {
@@ -35,13 +36,13 @@ class MenuPopOverViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.row {
-        case MenuOptions.refresh.rawValue:
+        case MenuOption.refresh.rawValue:
             coordinator.refreshTimeline()
-        case MenuOptions.share.rawValue:
+        case MenuOption.share.rawValue:
             coordinator.share()
-        case MenuOptions.logout.rawValue:
+        case MenuOption.logout.rawValue:
             coordinator.logout()
-        case MenuOptions.settings.rawValue:
+        case MenuOption.settings.rawValue:
             coordinator.presentSettings()
         default:
             break

@@ -42,8 +42,7 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
             self.refreshTimeline()
         }
 
-        let realm = DataManager.realm()
-        users = realm.objects(User.self).sorted(byProperty: "tweetsCount", ascending: false)
+        users = DataManager.realm().objects(User.self).sorted(byProperty: "tweetsCount", ascending: false)
         notificationToken = users?.addNotificationBlock(tableView.applyChanges)
 
         // Check if a user is logged in
@@ -121,7 +120,6 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
                     break
                 }
             }
-            print("FINISHED WITHOUT ERRORS")
             self.setRefreshUI(to: .notRefreshing)
         }
     }
@@ -168,7 +166,22 @@ extension UITableView {
             reloadRows(at: updates.map(fromRow), with: .none)
             deleteRows(at: deletions.map(fromRow), with: .automatic)
             endUpdates()
+            fixBackgroundColorForVisibleRows()
         default: break
+        }
+    }
+
+    func fixBackgroundColorForVisibleRows() {
+        if let rows = indexPathsForVisibleRows {
+            for row in rows {
+                if insertions.contains(row.row) {
+                    for indexPath in rows {
+                        if let cell = cellForRow(at: indexPath) as? UserTableViewCell {
+                            cell.index = indexPath.row
+                        }
+                    }
+                }
+            }
         }
     }
 }

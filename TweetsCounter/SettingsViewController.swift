@@ -6,7 +6,7 @@
 //  Copyright © 2016 Patrick Balestra. All rights reserved.
 //
 
-import UIKit
+import TweetometerKit
 import ValueStepper
 
 final class SettingsViewController: UIViewController {
@@ -20,14 +20,14 @@ final class SettingsViewController: UIViewController {
     @IBOutlet weak var aboutButton: UIButton!
     @IBOutlet weak var githubButton: UIButton!
 
-    let settings = SettingsManager.sharedManager
+    let settings = SettingsManager.shared
     let linkOpener = LinkOpener()
     weak var coordinator: SettingsCoordinator!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tweetsStepper.value = Double(settings.numberOfAnalyzedTweets)
+        tweetsStepper.value = Double(settings.maximumNumberOfTweets)
         tweetsStepper.numberFormatter.maximumFractionDigits = 0
         
         twitterClientControl.selectedSegmentIndex = TwitterClient.toIndex(settings.preferredTwitterClient)
@@ -48,7 +48,7 @@ final class SettingsViewController: UIViewController {
     }
     
     @IBAction func stepperChanged(_ sender: ValueStepper) {
-        settings.numberOfAnalyzedTweets = Int(sender.value)
+        settings.maximumNumberOfTweets = Int(sender.value)
     }
     
     @IBAction func clientChanged(_ sender: UISegmentedControl) {

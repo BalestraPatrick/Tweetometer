@@ -9,9 +9,9 @@
 import UIKit
 
 /// Definition of the option fields.
-struct Option {
-    let image: String
-    let title: String
+public struct Option {
+    public let image: String
+    public let title: String
 }
 
 /// The options to be presented in the menu.
@@ -19,19 +19,19 @@ struct Option {
 /// - refresh: Refresh the current timeline.
 /// - logout: Logout the user.
 /// - settings: Open the settings.
-enum MenuOptions: Int {
+public enum MenuOption: Int {
     case refresh
     case share
     case logout
     case settings
 }
 
-final class MenuOptionsDataSource {
+public final class MenuDataSource {
 
     /// The options for the menu.
-    var options: [Option]
+    public var options: [Option]
     
-    init () {
+    public init () {
         self.options = [Option(image: "refresh", title: "Refresh"),
                         Option(image: "share", title: "Share"),
                         Option(image: "logout", title: "Logout"),
