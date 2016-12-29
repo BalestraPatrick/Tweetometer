@@ -48,7 +48,7 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   PullToRefresher:
-    :commit: f8dfc95106f66ace35b79eb7e19673a572001e5a
+    :commit: eb31eb4fb71e596d3c54266ed2b7b3598a485fdf
     :git: https://github.com/BalestraPatrick/PullToRefresh
 
 SPEC CHECKSUMS:

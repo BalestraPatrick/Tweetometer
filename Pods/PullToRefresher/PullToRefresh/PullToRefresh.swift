@@ -26,9 +26,9 @@ public struct RefresherData {
 
 open class PullToRefresh: NSObject {
 
-    public var refresherData = RefresherData(lastUpdate: "Never", numberOfTweets: 0) {
+    public var refresherData = RefresherData(lastUpdate: "never", numberOfTweets: 0) {
         didSet {
-            refreshView.label.text = "Updated Now - \(refresherData.numberOfTweets) Tweets"
+            refreshView.label.text = "Updated \(refresherData.lastUpdate) - \(refresherData.numberOfTweets) Tweets"
         }
     }
 
