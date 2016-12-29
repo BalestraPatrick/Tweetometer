@@ -2,9 +2,7 @@
 
 [![CI Status](http://img.shields.io/travis/BalestraPatrick/Tweetometer.svg?style=flat)](https://travis-ci.org/BalestraPatrick/Tweetometer)
 
-![](Screenshots/image1.png)
-
-**DISCLAIMER: The project is currently in an unstable state. I'm in the process of migrating to Swift 3.0.**
+![](header.png)
 
 Tweetometer is an app to see who is tweeting in your Twitter timeline. It often happens to me that I check my timeline and I see a few hundreds tweets in just a few hours and I wonder "Who is spamming my timeline?". 
 
@@ -18,7 +16,7 @@ $ pod keys set FABRIC_BUILD_SECRET YOUR_BUILD_SECRET_HERE</pre>
 
 
 ### Contribution
-You're welcome to improve and add new features to the app!
+You're welcome to improve and add new features to the app! Check the current [backlog](https://github.com/BalestraPatrick/Tweetometer/projects/1).
 
 ### Author
 I'm Patrick Balestra, [@BalestraPatrick](http://www.twitter.com/BalestraPatrick) on Twitter.
