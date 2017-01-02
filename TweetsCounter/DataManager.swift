@@ -48,20 +48,20 @@ public final class DataManager {
         let realm = self.realm()
         let maximumCount = Settings.shared.maximumNumberOfTweets
         while realm.objects(Tweet.self).count > maximumCount {
-            print("count: \(realm.objects(Tweet.self).count) >= maximumCount: \(maximumCount)")
             let tweets = realm.objects(Tweet.self)
             if let oldestTweet = tweets.min(by: { $0.tweetId < $1.tweetId }) {
                 // Delete from user tweets array and delete user if it doesn't have any more tweets.
                 if let user = realm.object(ofType: User.self, forPrimaryKey: oldestTweet.userId) {
-                    try! realm.write {
-                        user.tweets.remove(objectAtIndex: user.tweets.index(of: oldestTweet)!)
-                        user.tweetsCount = user.tweets.count
-                        if user.tweetsCount == 0 {
-                            realm.delete(user)
+                    if let index = user.tweets.index(of: oldestTweet) {
+                        try! realm.write {
+                            user.tweets.remove(objectAtIndex: index)
+                            user.tweetsCount = user.tweets.count
+                            if user.tweetsCount == 0 {
+                                realm.delete(user)
+                            }
                         }
                     }
                 }
-
                 // Delete the oldest tweet.
                 try! realm.write {
                     realm.delete(oldestTweet)
