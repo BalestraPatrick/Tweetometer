@@ -18,3 +18,5 @@ DerivedData
 *.xcuserstate
 
 Pods/CocoaPodsKeys
+fastlane/report.xml
+fastlane/test_output/
