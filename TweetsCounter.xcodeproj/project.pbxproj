@@ -16,6 +16,8 @@
 		AE07A0D61C5D4AD400514B1C /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE07A0D51C5D4AD400514B1C /* UserTableViewCell.swift */; };
 		AE0A0DB11E113CAE0088AF06 /* LinkOpenerTweetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0A0DB01E113CAE0088AF06 /* LinkOpenerTweetTests.swift */; };
 		AE0A0DB31E11500B0088AF06 /* LinkOpenerHashtagTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0A0DB21E11500B0088AF06 /* LinkOpenerHashtagTests.swift */; };
+		AE0ADCA91E1A9E5B000021B3 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE0ADCA71E1A9E5B000021B3 /* Settings.storyboard */; };
+		AE0ADCAC1E1A9E78000021B3 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE0ADCAA1E1A9E78000021B3 /* Login.storyboard */; };
 		AE0FA7C71C0DEBDE00EDB0A1 /* ProfilePictureButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0FA7C61C0DEBDE00EDB0A1 /* ProfilePictureButtonItem.swift */; };
 		AE15F36C1C62A1BD00EE2F82 /* MenuPopOverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE15F36B1C62A1BD00EE2F82 /* MenuPopOverViewController.swift */; };
 		AE247A751DF1C61300C87A29 /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE247A741DF1C61300C87A29 /* Images.swift */; };
@@ -107,6 +109,8 @@
 		AE07A0D51C5D4AD400514B1C /* UserTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
 		AE0A0DB01E113CAE0088AF06 /* LinkOpenerTweetTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkOpenerTweetTests.swift; sourceTree = "<group>"; };
 		AE0A0DB21E11500B0088AF06 /* LinkOpenerHashtagTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkOpenerHashtagTests.swift; sourceTree = "<group>"; };
+		AE0ADCA81E1A9E5B000021B3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Settings.storyboard; sourceTree = "<group>"; };
+		AE0ADCAB1E1A9E78000021B3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Login.storyboard; sourceTree = "<group>"; };
 		AE0C38421BE58815003A858F /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		AE0C38481BE589B8003A858F /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
 		AE0FA7C61C0DEBDE00EDB0A1 /* ProfilePictureButtonItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfilePictureButtonItem.swift; sourceTree = "<group>"; };
@@ -286,6 +290,8 @@
 			isa = PBXGroup;
 			children = (
 				AE277DF11BD4E6DB004E151C /* Main.storyboard */,
+				AE0ADCAA1E1A9E78000021B3 /* Login.storyboard */,
+				AE0ADCA71E1A9E5B000021B3 /* Settings.storyboard */,
 				AE277DF61BD4E6DB004E151C /* LaunchScreen.storyboard */,
 			);
 			name = Storyboards;
@@ -561,6 +567,8 @@
 				AE277DF81BD4E6DB004E151C /* LaunchScreen.storyboard in Resources */,
 				AE277DF51BD4E6DB004E151C /* Assets.xcassets in Resources */,
 				AE277DF31BD4E6DB004E151C /* Main.storyboard in Resources */,
+				AE0ADCAC1E1A9E78000021B3 /* Login.storyboard in Resources */,
+				AE0ADCA91E1A9E5B000021B3 /* Settings.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -801,6 +809,22 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		AE0ADCA71E1A9E5B000021B3 /* Settings.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AE0ADCA81E1A9E5B000021B3 /* Base */,
+			);
+			name = Settings.storyboard;
+			sourceTree = "<group>";
+		};
+		AE0ADCAA1E1A9E78000021B3 /* Login.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AE0ADCAB1E1A9E78000021B3 /* Base */,
+			);
+			name = Login.storyboard;
+			sourceTree = "<group>";
+		};
 		AE277DF11BD4E6DB004E151C /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

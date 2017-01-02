@@ -19,6 +19,8 @@ target 'TweetsCounter' do
   pod 'ActiveLabel'
   # Custom pull to refresh component
   pod 'PullToRefresher', :git => 'https://github.com/BalestraPatrick/PullToRefresh'
+  # Used to do custom view controller transition animations.
+  pod 'Hero'
 
  target 'TweetsCounterTests' do
     inherit! :search_paths

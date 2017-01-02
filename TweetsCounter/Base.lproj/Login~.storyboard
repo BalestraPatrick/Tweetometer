@@ -42,9 +42,6 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="heroModifiers" value="fade() translate(0, -250) rotate(-1.6, 0, 0) scale(1.5)"/>
-                                </userDefinedRuntimeAttributes>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -56,9 +53,6 @@
                     <nil key="simulatedStatusBarMetrics"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="200" height="88"/>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabled" value="YES"/>
-                    </userDefinedRuntimeAttributes>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dY2-sq-hGH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -127,9 +121,6 @@
                                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
-                                                    <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="string" keyPath="heroID" value="username"/>
-                                                    </userDefinedRuntimeAttributes>
                                                     <variation key="default">
                                                         <mask key="constraints">
                                                             <exclude reference="GIo-V6-bHy"/>
@@ -295,7 +286,7 @@
                         <barButtonItem key="rightBarButtonItem" image="Menu" id="NoE-yk-Izm">
                             <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
-                                <segue destination="p7T-X3-Vin" kind="popoverPresentation" identifier="menuPopOver" animates="NO" popoverAnchorBarButtonItem="NoE-yk-Izm" id="maH-fW-2FS">
+                                <segue destination="p7T-X3-Vin" kind="popoverPresentation" identifier="menuPopOver" popoverAnchorBarButtonItem="NoE-yk-Izm" id="maH-fW-2FS">
                                     <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
                                 </segue>
                             </connections>
@@ -510,10 +501,6 @@
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <nil key="highlightedColor"/>
-                                    <userDefinedRuntimeAttributes>
-                                        <userDefinedRuntimeAttribute type="string" keyPath="heroID" value="username"/>
-                                        <userDefinedRuntimeAttribute type="string" keyPath="heroModifiers" value="fade() translate(0, -250) rotate(-1.6, 0, 0) scale(1.5)"/>
-                                    </userDefinedRuntimeAttributes>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Subtitle" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hDz-A4-jpE">
                                     <rect key="frame" x="0.0" y="17" width="240" height="21"/>
@@ -531,9 +518,6 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabled" value="YES"/>
-                    </userDefinedRuntimeAttributes>
                     <connections>
                         <outlet property="subtitleLabel" destination="hDz-A4-jpE" id="fwp-f2-ANp"/>
                         <outlet property="tableView" destination="qge-SP-VPC" id="KC7-Eb-9rz"/>
@@ -542,7 +526,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QVn-ex-35j" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2190" y="266"/>
+            <point key="canvasLocation" x="2018" y="266"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="DUi-b4-lun">
@@ -560,7 +544,99 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gkG-je-CkE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="430" y="266"/>
+            <point key="canvasLocation" x="427" y="926"/>
+        </scene>
+        <!--Login View Controller-->
+        <scene sceneID="Gb4-SI-36J">
+            <objects>
+                <viewController storyboardIdentifier="Login" id="G6B-Kp-BNF" customClass="LoginViewController" customModule="TweetsCounter" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="CdZ-7i-uyy"/>
+                        <viewControllerLayoutGuide type="bottom" id="SIM-Lw-ilQ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="XA5-k3-P0y">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please login with your account." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DAf-T3-Tbp">
+                                <rect key="frame" x="36" y="216.5" width="303" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="9on-L4-s0s"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="9on-L4-s0s"/>
+                                    </mask>
+                                </variation>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="SDO-ee-46F">
+                                <rect key="frame" x="165" y="319" width="46" height="30"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yHF-0q-YkM" customClass="TWTRLogInButton">
+                                        <rect key="frame" x="0.0" y="0.0" width="46" height="30"/>
+                                        <state key="normal" title="Button">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <imageView userInteractionEnabled="NO" alpha="0.5" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="olE-ZE-V9X">
+                                <rect key="frame" x="67" y="631" width="240" height="16"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y9L-2z-YJG">
+                                <rect key="frame" x="36" y="250.5" width="303" height="38.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="46s-61-7ok"/>
+                                </constraints>
+                                <attributedString key="attributedText">
+                                    <fragment content="Tweetometer">
+                                        <attributes>
+                                            <color key="NSColor" red="0.11372549019607843" green="0.63137254901960782" blue="0.94901960784313721" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="16" name="SFUIDisplay-Medium"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content=" analyzes your timeline to show you who tweets the most.">
+                                        <attributes>
+                                            <color key="NSColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                            <font key="NSFont" metaFont="system" size="16"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="46s-61-7ok"/>
+                                    </mask>
+                                </variation>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="DAf-T3-Tbp" secondAttribute="trailing" constant="20" id="1Cu-Cn-P1y"/>
+                            <constraint firstItem="DAf-T3-Tbp" firstAttribute="leading" secondItem="XA5-k3-P0y" secondAttribute="leadingMargin" constant="20" id="1EY-M7-X8O"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="y9L-2z-YJG" secondAttribute="trailing" constant="20" id="6bK-h6-eqM"/>
+                            <constraint firstItem="olE-ZE-V9X" firstAttribute="leading" secondItem="XA5-k3-P0y" secondAttribute="leadingMargin" constant="51" id="KjW-Y9-y76"/>
+                            <constraint firstItem="yHF-0q-YkM" firstAttribute="top" secondItem="y9L-2z-YJG" secondAttribute="bottom" constant="30" id="V0Y-XJ-eat"/>
+                            <constraint firstItem="y9L-2z-YJG" firstAttribute="leading" secondItem="XA5-k3-P0y" secondAttribute="leadingMargin" constant="20" id="W0G-cC-057"/>
+                            <constraint firstItem="y9L-2z-YJG" firstAttribute="top" secondItem="DAf-T3-Tbp" secondAttribute="bottom" constant="10" id="fef-M5-7sV"/>
+                            <constraint firstItem="SDO-ee-46F" firstAttribute="centerX" secondItem="XA5-k3-P0y" secondAttribute="centerX" id="owW-7J-kPQ"/>
+                            <constraint firstItem="SIM-Lw-ilQ" firstAttribute="top" secondItem="olE-ZE-V9X" secondAttribute="bottom" constant="20" id="q9U-Pc-R5x"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="olE-ZE-V9X" secondAttribute="trailing" constant="52" id="qhd-yR-xT8"/>
+                            <constraint firstItem="SDO-ee-46F" firstAttribute="centerY" secondItem="XA5-k3-P0y" secondAttribute="centerY" id="s7A-e2-q8I"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="logInButton" destination="yHF-0q-YkM" id="sS3-he-ml5"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Hu3-dA-3VD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1256.8" y="925.18740629685169"/>
         </scene>
         <!--Settings-->
         <scene sceneID="RV4-Tn-rkS">
@@ -570,18 +646,11 @@
             </objects>
             <point key="canvasLocation" x="2830" y="266"/>
         </scene>
-        <!--Login-->
-        <scene sceneID="1iD-Fj-q6A">
-            <objects>
-                <viewControllerPlaceholder storyboardIdentifier="Login" storyboardName="Login" referencedIdentifier="Login" id="n6U-AM-k32" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="hvE-QY-jTC" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1256.8" y="925.18740629685169"/>
-        </scene>
     </scenes>
     <resources>
         <image name="Menu" width="25" height="25"/>
         <image name="heart" width="16" height="16"/>
+        <image name="logo" width="16" height="16"/>
         <image name="retweet" width="16" height="16"/>
     </resources>
     <inferredMetricsTieBreakers>
