@@ -22,11 +22,8 @@ public enum TwitterError: Error {
 public final class TwitterSession {
 
     public typealias TimelineUpdate = (TwitterError?) -> Void
-    public var lastUpdate: Date {
-        get {
-            return Settings.shared.lastUpdate
-        }
-        set {
+    public var lastUpdate = Settings.shared.lastUpdate {
+        didSet {
             Settings.shared.lastUpdate = lastUpdate
         }
     }

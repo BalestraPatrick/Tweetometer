@@ -66,8 +66,8 @@ public final class Settings {
     
     private init() {
         maximumNumberOfTweets = Defaults[Key.maximumNumberOfTweets].int ?? 1000
-        lastUpdate = Date(timeIntervalSince1970: 0)
-
+        lastUpdate = Defaults[Key.lastUpdate].date ?? Date(timeIntervalSince1970: 0)
+        print(lastUpdate)
         preferredTwitterClient = TwitterClient.fromIndex(Defaults[Key.preferredTwitterClient].int ?? 0)
 
         // Convert initial values to TwitterClient enum case
