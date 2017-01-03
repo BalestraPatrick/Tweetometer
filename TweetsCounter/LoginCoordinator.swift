@@ -19,17 +19,17 @@ final class LoginCoordinator: Coordinator, LoginCoordinatorDelegate {
     }()
     var childCoordinators = Array<AnyObject>()
 
-    let parent: HomeViewController
+    let homeController: HomeViewController
     let linkOpener = LinkOpener()
 
     init(parent: HomeViewController) {
-        self.parent = parent
+        self.homeController = parent
         linkOpener.coordinator = self
     }
 
     func start() {
         controller.coordinator = self
-        parent.present(controller, animated: true)
+        homeController.present(controller, animated: true)
     }
 
     // MARK: Coordinator
@@ -43,6 +43,7 @@ final class LoginCoordinator: Coordinator, LoginCoordinatorDelegate {
 
     func dismiss() {
         controller.dismiss(animated: true)
-        parent.refreshTimeline()
+        homeController.refreshTimeline()
+        homeController.requestProfilePicture()
     }
 }
