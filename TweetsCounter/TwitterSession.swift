@@ -22,13 +22,31 @@ public enum TwitterError: Error {
 public final class TwitterSession {
 
     public typealias TimelineUpdate = (TwitterError?) -> Void
+
+    /// The date of the last update with the Twitter APIs.
     public var lastUpdate = Settings.shared.lastUpdate {
         didSet {
             Settings.shared.lastUpdate = lastUpdate
         }
     }
 
-    private var client: TWTRAPIClient?
+    /// A computed property needed to initialize the client used to perform all Twitter requests.
+    private var client: TWTRAPIClient? {
+        get {
+            if _client == nil {
+                if let userID = Twitter.sharedInstance().sessionStore.session()?.userID {
+                    return TWTRAPIClient(userID: userID)
+                }
+            }
+            return _client
+        }
+        set {
+            _client = client
+        }
+    }
+
+    /// A variable that holds a Twitter client.
+    private var _client: TWTRAPIClient?
     private var user: TWTRUser?
     private var timelineParser = TimelineParser()
     private var timelineUpdate: TimelineUpdate?
@@ -42,18 +60,18 @@ public final class TwitterSession {
         return TwitterSession()
     }()
 
-    /// Private initializer invoke only once in the app's lifetime.
+    /// Private initializer invoked only once in the app's lifetime.
     private init() {
-        if let userID = Twitter.sharedInstance().sessionStore.session()?.userID {
-            client = TWTRAPIClient(userID: userID)
-        }
     }
-    
+
     ///  Check the session user ID to see if there is an user logged in.
     public func isUserLoggedIn() -> Bool {
         return client != nil
     }
 
+    /// Returns the current user screenName to be displayed on the UI.
+    ///
+    /// - Returns: The current user screenName.
     public func loggedUserScreenName() -> String {
         return user?.screenName ?? ""
     }
