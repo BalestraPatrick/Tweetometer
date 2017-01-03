@@ -25,6 +25,7 @@ final class UserDetailViewController: UIViewController, UITableViewDelegate, UIT
         applyStyle()
 
         guard let user = user else { return }
+        user.sortTweets()
         setTitleViewContent(user.name, screenName: user.screenName)
         tableView.estimatedRowHeight = 50.0
         tableView.rowHeight = UITableViewAutomaticDimension

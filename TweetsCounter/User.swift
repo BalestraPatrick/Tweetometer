@@ -62,3 +62,10 @@ public class User: Object, Unboxable {
         return biggerURL
     }
 }
+
+public extension User {
+
+    public func sortTweets() {
+        tweets = List(tweets.sorted(by: { $0.createdAt > $1.createdAt }))
+    }
+}
