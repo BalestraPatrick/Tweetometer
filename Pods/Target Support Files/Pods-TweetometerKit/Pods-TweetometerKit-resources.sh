@@ -74,9 +74,11 @@ EOM
   esac
 }
 if [[ "$CONFIGURATION" == "Debug" ]]; then
+  install_resource "Instabug/Instabug.framework/Instabug.bundle"
   install_resource "TwitterKit/iOS/TwitterKit.framework/Versions/A/Resources/TwitterKitResources.bundle"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
+  install_resource "Instabug/Instabug.framework/Instabug.bundle"
   install_resource "TwitterKit/iOS/TwitterKit.framework/Versions/A/Resources/TwitterKitResources.bundle"
 fi
 

@@ -8,6 +8,7 @@ plugin 'cocoapods-keys', {
     :keys => [
         "FABRIC_API_KEY",
         "FABRIC_BUILD_SECRET",
+        "INSTABUG_API_KEY",
     ]
 }
 
@@ -15,11 +16,11 @@ target 'TweetsCounter' do
   pod 'Presentr'
   pod 'ValueStepper'
   pod 'Whisper'
-  # Used to tap hashtags and links
+  # Easily tap hashtags and links
   pod 'ActiveLabel'
   # Custom pull to refresh component
   pod 'PullToRefresher', :git => 'https://github.com/BalestraPatrick/PullToRefresh'
-  # Used to do custom view controller transition animations.
+  # Custom view controller transition animations
   pod 'Hero'
 
  target 'TweetsCounterTests' do
@@ -34,8 +35,12 @@ target 'TweetometerKit' do
   pod 'TwitterCore'
   pod 'Crashlytics'
   pod 'Fabric'
+  # Faster bug reporting
+  pod 'Instabug'
+  # Networking libraries
   pod 'Alamofire'
   pod 'AlamofireImage'
+  # Better User Defaults
   pod 'SwiftyUserDefaults'
 end
 

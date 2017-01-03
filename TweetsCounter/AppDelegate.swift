@@ -18,7 +18,7 @@ import TweetometerKit
     }()
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        FabricSetUp(environment: .debug)
+        AppSetUp()
         window = UIWindow(frame: UIScreen.main.bounds)
         appCoordinator.start()
         return true

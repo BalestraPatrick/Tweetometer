@@ -7,6 +7,7 @@ PODS:
     - Fabric (~> 1.6.3)
   - Fabric (1.6.11)
   - Hero (0.0.2)
+  - Instabug (6.2.1)
   - Keys (1.0.0)
   - Presentr (1.1.0)
   - PullToRefresher (2.0.2)
@@ -31,6 +32,7 @@ DEPENDENCIES:
   - Crashlytics
   - Fabric
   - Hero
+  - Instabug
   - Keys (from `Pods/CocoaPodsKeys`)
   - Presentr
   - PullToRefresher (from `https://github.com/BalestraPatrick/PullToRefresh`)
@@ -60,6 +62,7 @@ SPEC CHECKSUMS:
   Crashlytics: 2b6dbe138a42395577cfa73dfa1aa7248cadf39e
   Fabric: 5911403591946b8228ab1c51d98f1d7137e863c6
   Hero: 75fac8b0009d0b874505dfa8ef3c66e51e2e766d
+  Instabug: 2bfccef68c775f58fcd04ba982dd5c07125bacb1
   Keys: 9c35bf00f612ee1d48556f4a4b9b4551e224e90f
   Presentr: e73439be1cba3ad0651b18c58d77238bbacce59c
   PullToRefresher: 9d66e6a86fb9e1d8fa861c4bbd263e88f5dfc0bd
@@ -72,6 +75,6 @@ SPEC CHECKSUMS:
   ValueStepper: a1a275491e3a1ab6fe80a589ce04781d4a795fb3
   Whisper: 08be92623311f8e53201e62e17f6d7b9599a4714
 
-PODFILE CHECKSUM: f90030c9574d0c1697263a07933ff13b9ebff861
+PODFILE CHECKSUM: 3cc5f3f3524b56141c8ce75f2fc26cc2cbfbb6a9
 
 COCOAPODS: 1.1.1

@@ -38,6 +38,7 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
         applyStyle()
         tableView.rowHeight = 75.0
         refresher = PullToRefresh()
+//        navigationController?.isHeroEnabled = true
         print("Last update: \(session.lastUpdate.updateString())")
         refresher.refresherData = RefresherData(lastUpdate: session.lastUpdate.updateString(), numberOfTweets: DataManager.realm().objects(Tweet.self).count)
         tableView.addPullToRefresh(refresher) {
