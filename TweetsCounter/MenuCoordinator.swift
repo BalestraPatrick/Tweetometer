@@ -51,16 +51,12 @@ class MenuCoordinator: Coordinator, MenuCoordinatorDelegate {
 
     func share() {
         controller.dismiss(animated: false)
-        guard SLComposeViewController.isAvailable(forServiceType: SLServiceTypeTwitter) else {
-            return parentCoordinator.controller.presentAlert(title: "No Twitter account available")
+        var items: [Any] = [URL(string: "https://www.patrickbalestra.com/Tweetometer")!]
+        if let image = parentCoordinator.controller.tableView.topUsersImage {
+            items.append(image)
         }
-
-        if let twitterSheet = SLComposeViewController(forServiceType: SLServiceTypeTwitter) {
-            twitterSheet.add(URL(string: "https://www.patrickbalestra.com/Tweetometer"))
-            twitterSheet.add(parentCoordinator.controller.tableView.topUsersImage)
-            parentCoordinator.controller.present(twitterSheet, animated: true)
-        }
-    }
+        let activity = UIActivityViewController(activityItems: items, applicationActivities: nil)
+        parentCoordinator.controller.present(activity, animated: true)    }
 
     func logout() {
         DataManager.logOut()
