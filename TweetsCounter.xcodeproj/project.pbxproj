@@ -55,7 +55,7 @@
 		AE96700A1C94604700189697 /* UserDetailCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9670091C94604700189697 /* UserDetailCoordinator.swift */; };
 		AEA2F4971C2806C700777304 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA2F4961C2806C700777304 /* Utils.swift */; };
 		AEAFB1061C7A0E270030AB33 /* TweetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEAFB1051C7A0E270030AB33 /* TweetTableViewCell.swift */; };
-		AEB280951C79FC0C009C64EE /* ViewControllerUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEB280941C79FC0C009C64EE /* ViewControllerUtils.swift */; };
+		AEB280951C79FC0C009C64EE /* UIViewController+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEB280941C79FC0C009C64EE /* UIViewController+Utils.swift */; };
 		AEC95CF21C81AED900811BAC /* LinkOpener.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEC95CF11C81AED900811BAC /* LinkOpener.swift */; };
 		AED0A1F61C5E01BA002D40A4 /* ApplicationStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED0A1F51C5E01BA002D40A4 /* ApplicationStyle.swift */; };
 		AEDC61E91CD4D665005324C6 /* LinkOpenerUserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEDC61E81CD4D665005324C6 /* LinkOpenerUserTests.swift */; };
@@ -65,6 +65,7 @@
 		AEE8C9AD1C0DB2D40047A6A6 /* Storyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE8C9AC1C0DB2D40047A6A6 /* Storyboard.swift */; };
 		AEF1F20F1C64EE9B00591E46 /* MenuOptionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF1F20E1C64EE9B00591E46 /* MenuOptionsTests.swift */; };
 		AEF598E71CD679B40055E88C /* UserDetailsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF598E61CD679B40055E88C /* UserDetailsTableViewCell.swift */; };
+		AEFBEBD51E1D3070009BCD34 /* ActiveLabel+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEFBEBD41E1D3070009BCD34 /* ActiveLabel+Utils.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -151,7 +152,7 @@
 		AEA2F4961C2806C700777304 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		AEAFB1051C7A0E270030AB33 /* TweetTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetTableViewCell.swift; sourceTree = "<group>"; };
 		AEB059731DE47E34002BBE79 /* Tweetometer.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Tweetometer.entitlements; sourceTree = "<group>"; };
-		AEB280941C79FC0C009C64EE /* ViewControllerUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerUtils.swift; sourceTree = "<group>"; };
+		AEB280941C79FC0C009C64EE /* UIViewController+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Utils.swift"; sourceTree = "<group>"; };
 		AEBDAE311BE5748C00D8E8C3 /* RxAlamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxAlamofire.framework; path = "Pods/../build/Debug-iphoneos/RxAlamofire.framework"; sourceTree = "<group>"; };
 		AEBDAE331BE576DF00D8E8C3 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = "Pods/../build/Debug-iphoneos/Alamofire.framework"; sourceTree = "<group>"; };
 		AEBDAE351BE576E300D8E8C3 /* RxAlamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxAlamofire.framework; path = "Pods/../build/Debug-iphoneos/RxAlamofire.framework"; sourceTree = "<group>"; };
@@ -177,6 +178,7 @@
 		AEF1F20E1C64EE9B00591E46 /* MenuOptionsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuOptionsTests.swift; sourceTree = "<group>"; };
 		AEF1F2121C64F10000591E46 /* TimelineParserTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelineParserTests.swift; sourceTree = "<group>"; };
 		AEF598E61CD679B40055E88C /* UserDetailsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDetailsTableViewCell.swift; sourceTree = "<group>"; };
+		AEFBEBD41E1D3070009BCD34 /* ActiveLabel+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ActiveLabel+Utils.swift"; sourceTree = "<group>"; };
 		B560E69F32810C963EEC14D4 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8D941EE5F74C95636A57DB0 /* Pods-TweetsCounter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TweetsCounter.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TweetsCounter/Pods-TweetsCounter.debug.xcconfig"; sourceTree = "<group>"; };
 		D1A7022AEB25973DC7D6AB46 /* Pods_TweetometerKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TweetometerKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -266,8 +268,9 @@
 			isa = PBXGroup;
 			children = (
 				AED0A1F51C5E01BA002D40A4 /* ApplicationStyle.swift */,
-				AEB280941C79FC0C009C64EE /* ViewControllerUtils.swift */,
+				AEB280941C79FC0C009C64EE /* UIViewController+Utils.swift */,
 				AE0447991DF3040700FEE093 /* NSAttributedString+User.swift */,
+				AEFBEBD41E1D3070009BCD34 /* ActiveLabel+Utils.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -752,10 +755,11 @@
 				AEF598E71CD679B40055E88C /* UserDetailsTableViewCell.swift in Sources */,
 				AEE8C9AD1C0DB2D40047A6A6 /* Storyboard.swift in Sources */,
 				AE0FA7C71C0DEBDE00EDB0A1 /* ProfilePictureButtonItem.swift in Sources */,
-				AEB280951C79FC0C009C64EE /* ViewControllerUtils.swift in Sources */,
+				AEB280951C79FC0C009C64EE /* UIViewController+Utils.swift in Sources */,
 				AEE4D8081BF9BFD100C9CA08 /* Constants.swift in Sources */,
 				AE96700A1C94604700189697 /* UserDetailCoordinator.swift in Sources */,
 				AE292B3F1DFDF998002B91AD /* SettingsCoordinator.swift in Sources */,
+				AEFBEBD51E1D3070009BCD34 /* ActiveLabel+Utils.swift in Sources */,
 				AE9670071C945ADF00189697 /* HomeCoordinator.swift in Sources */,
 				AE247A751DF1C61300C87A29 /* Images.swift in Sources */,
 				AE6352151C66226800799157 /* UserDetailViewController.swift in Sources */,

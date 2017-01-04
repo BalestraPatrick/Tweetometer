@@ -7,8 +7,8 @@
 //
 
 import UIKit
-import ActiveLabel
 import TweetometerKit
+import ActiveLabel
 
 class TweetTableViewCell: UITableViewCell {
     
@@ -32,24 +32,13 @@ class TweetTableViewCell: UITableViewCell {
         likesCountLabel.textColor = .black
 
         // Set up Tweet label
-        tweetLabel.customize { label in
-            label.textColor = .black
-            label.mentionColor = .mentionBlue()
-            label.mentionSelectedColor = .mentionBlueSelected()
-            label.URLColor = .backgroundBlue()
-            label.URLSelectedColor = .backgroundBlueSelected()
-            label.hashtagColor = .hashtagGray()
-            label.hashtagSelectedColor = .hashtagGraySelected()
-            label.handleURLTap {
-                self.coordinator.presentSafari($0)
-            }
-            label.handleHashtagTap {
-                self.coordinator.open(hashtag: $0)
-            }
-            label.handleMentionTap {
-                self.coordinator.open(user: $0)
-            }
-        }
+        tweetLabel.configureTweet(URLHandler: {
+            self.coordinator.presentSafari($0)
+        }, hashtagHandler: {
+            self.coordinator.open(hashtag: $0)
+        }, mentionHandler: {
+            self.coordinator.open(user: $0)
+        })
     }
     
     override func setHighlighted(_ highlighted: Bool, animated: Bool) {
@@ -61,11 +50,12 @@ class TweetTableViewCell: UITableViewCell {
         }
     }
     
-    func configure(_ tweet: Tweet, indexPath: IndexPath) {
+    func configure(_ tweet: Tweet, indexPath: IndexPath, coordinator: UserDetailCoordinator) {
         tweetLabel.text = tweet.text
         dateLabel.text = tweet.createdAt.tweetDateFormatted()
         retweetsCountLabel.text = "\(tweet.retweetsCount)"
         likesCountLabel.text = "\(tweet.likesCount)"
         index = indexPath.row
+        self.coordinator = coordinator
     }
 }

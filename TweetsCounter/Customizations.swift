@@ -34,6 +34,10 @@ extension UIColor {
         return UIColor(red: 139/255, green: 147/255, blue: 145/255, alpha: 0.5)
     }
 
+    public static func bioGray() -> UIColor {
+        return UIColor(red: 229/255, green: 229/255, blue: 229/255, alpha: 1.0)
+    }
+
     public static func menuDarkBlue() -> UIColor {
         return UIColor(red: 0.223, green: 0.262, blue: 0.349, alpha: 1.0)
     }
