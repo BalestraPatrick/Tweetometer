@@ -112,8 +112,6 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
     func requestTimeline() {
         // Request tweets.
         session.getTimeline(before: nil) { error in
-            // FIXME: Only set new last update if no error occurred
-            self.session.lastUpdate = Date()
             if let error = error {
                 switch error {
                 case .rateLimitExceeded:
@@ -124,6 +122,8 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
                     self.presentAlert(title: error.localizedDescription)
                     break
                 }
+            } else {
+                self.session.lastUpdate = Date()
             }
             self.setRefreshUI(to: .notRefreshing)
         }
