@@ -128,10 +128,13 @@ public final class TwitterSession {
                 guard let timeline = tweets as? JSONArray else { return completion(.invalidResponse) }
                 self.timelineParser.parse(timeline)
                 self.timelineRequestsCount += 1
+                print("tweets: \(timeline.count)")
                 if let update = self.timelineUpdate {
                     update(nil)
                     if self.timelineRequestsCount >= self.maximumTimelineRequests {
+                        // Request completed and reset the counter
                         NotificationCenter.default.post(name: requestCompletedNotification(), object: nil)
+                        self.timelineRequestsCount = 0
                         return
                     }
                     self.getTimeline(before: self.timelineParser.maxId, completion: update)
