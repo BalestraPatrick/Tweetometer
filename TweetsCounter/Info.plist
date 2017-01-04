@@ -81,5 +81,9 @@
 	</array>
 	<key>ITSAppUsesNonExemptEncryption</key>
 	<false/>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Attach pictures to your bug reports.</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Attach audio recordings to your bug reports.</string>
 </dict>
 </plist>
