@@ -77,7 +77,7 @@ public final class Settings {
         maximumNumberOfTweets = Defaults[Key.maximumNumberOfTweets].int ?? 1000
         lastUpdate = Defaults[Key.lastUpdate].date ?? Date(timeIntervalSince1970: 0)
         preferredTwitterClient = TwitterClient.fromIndex(Defaults[Key.preferredTwitterClient].int ?? 0)
-        logEvents()
+        trackEvents()
 
         // Convert initial values to TwitterClient enum case
         if let v = Defaults[Key.preferredTwitterClient].int {
@@ -92,8 +92,9 @@ public final class Settings {
         }
     }
 
-    private func logEvents() {
-        Answers.logCustomEvent(withName: "Maximum Number of Tweets", customAttributes: ["value" : maximumNumberOfTweets])
-        Answers.logCustomEvent(withName: "Twitter Client", customAttributes: ["value" : preferredTwitterClient.description])
+    /// Track Analytics events
+    private func trackEvents() {
+        Analytics.shared.track(event: .maximumNumberOfTweets(value: maximumNumberOfTweets))
+        Analytics.shared.track(event: .preferredTwitterClient(value: preferredTwitterClient.description))
     }
 }

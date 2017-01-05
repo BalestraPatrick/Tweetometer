@@ -8,7 +8,7 @@
 
 import UIKit
 import TwitterKit
-import Crashlytics
+import TweetometerKit
 
 public final class LoginViewController: UIViewController {
 
@@ -21,10 +21,10 @@ public final class LoginViewController: UIViewController {
         // Twitter login button initialization
         logInButton.logInCompletion = { [unowned self] session, error in
             if let e = error {
-                Answers.logLogin(withMethod: nil, success: false, customAttributes: ["error" : e])
+                Analytics.shared.track(event: .login(success: false, error: ["error" : e]))
                 return print(e)
             }
-            Answers.logLogin(withMethod: nil, success: true, customAttributes: nil)
+            Analytics.shared.track(event: .login(success: true, error: nil))
             self.coordinator.dismiss()
         }
     }
