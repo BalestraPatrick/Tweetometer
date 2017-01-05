@@ -42,7 +42,7 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
         tableView.addPullToRefresh(refresher) {
             self.refreshTimeline()
         }
-
+        
         users = DataManager.realm().objects(User.self).sorted(byProperty: "tweetsCount", ascending: false)
         notificationToken = users?.addNotificationBlock(tableView.applyChanges)
 
