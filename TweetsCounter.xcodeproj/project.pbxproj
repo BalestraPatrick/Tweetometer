@@ -20,6 +20,7 @@
 		AE0ADCAC1E1A9E78000021B3 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE0ADCAA1E1A9E78000021B3 /* Login.storyboard */; };
 		AE0FA7C71C0DEBDE00EDB0A1 /* ProfilePictureButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0FA7C61C0DEBDE00EDB0A1 /* ProfilePictureButtonItem.swift */; };
 		AE15F36C1C62A1BD00EE2F82 /* MenuPopOverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE15F36B1C62A1BD00EE2F82 /* MenuPopOverViewController.swift */; };
+		AE1FCA151E1EFCC3001B4229 /* Analytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1FCA141E1EFCC3001B4229 /* Analytics.swift */; };
 		AE247A751DF1C61300C87A29 /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE247A741DF1C61300C87A29 /* Images.swift */; };
 		AE277DEE1BD4E6DB004E151C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE277DED1BD4E6DB004E151C /* AppDelegate.swift */; };
 		AE277DF01BD4E6DB004E151C /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE277DEF1BD4E6DB004E151C /* HomeViewController.swift */; };
@@ -117,6 +118,7 @@
 		AE0FA7C61C0DEBDE00EDB0A1 /* ProfilePictureButtonItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfilePictureButtonItem.swift; sourceTree = "<group>"; };
 		AE0FA7CC1C0EDC7E00EDB0A1 /* Customizations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Customizations.swift; path = ../TweetsCounter/Customizations.swift; sourceTree = "<group>"; };
 		AE15F36B1C62A1BD00EE2F82 /* MenuPopOverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuPopOverViewController.swift; sourceTree = "<group>"; };
+		AE1FCA141E1EFCC3001B4229 /* Analytics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Analytics.swift; sourceTree = "<group>"; };
 		AE1FF74F1C7927D7001C8F87 /* SettingsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsManager.swift; path = ../TweetsCounter/SettingsManager.swift; sourceTree = "<group>"; };
 		AE247A741DF1C61300C87A29 /* Images.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
 		AE26EDEF1BEE1293000E9829 /* RxAlamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxAlamofire.framework; path = "Pods/../build/Debug-iphoneos/RxAlamofire.framework"; sourceTree = "<group>"; };
@@ -399,6 +401,7 @@
 				AEC42BF81C5AAFC60008444D /* TimelineParser.swift */,
 				AEE8C9A91C0D97C50047A6A6 /* TwitterSession.swift */,
 				AE5F87261DFED16100310C1C /* DataManager.swift */,
+				AE1FCA141E1EFCC3001B4229 /* Analytics.swift */,
 			);
 			name = Twitter;
 			sourceTree = "<group>";
@@ -788,6 +791,7 @@
 				AE5083531E152F7800D6F045 /* MenuOptionsDataSource.swift in Sources */,
 				AE45DC4B1E0FFF4700CD2190 /* DataManager.swift in Sources */,
 				AE45DC4E1E10192200CD2190 /* AppSetUp.swift in Sources */,
+				AE1FCA151E1EFCC3001B4229 /* Analytics.swift in Sources */,
 				AE45DC4A1E0FFF4400CD2190 /* TwitterSession.swift in Sources */,
 				AE506B581E12D4B600DE23B0 /* Notification.swift in Sources */,
 				AE5083541E15460E00D6F045 /* SettingsManager.swift in Sources */,
