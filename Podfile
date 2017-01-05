@@ -4,7 +4,7 @@ inhibit_all_warnings!
 use_frameworks!
 
 plugin 'cocoapods-keys', {
-    :project => "Tweetscounter",
+    :project => "TweetsCounter",
     :keys => [
         "FABRIC_API_KEY",
         "FABRIC_BUILD_SECRET",
