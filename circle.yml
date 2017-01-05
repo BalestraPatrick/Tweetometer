@@ -9,6 +9,7 @@ dependencies:
   cache_directories:
     - derived_data
   pre:
+    - gem install bundler
     - bundle install
     - bundle exec pod repo update
     # - bundle exec pod install

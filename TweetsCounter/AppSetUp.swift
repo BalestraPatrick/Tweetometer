@@ -21,8 +21,8 @@ public enum Environment {
 public class AppSetUp: NSObject {
 
     @discardableResult public init(environment: Environment = .debug) {
-        Instabug.start(withToken: TweetscounterKeys().iNSTABUG_API_KEY(), invocationEvent: .twoFingersSwipeLeft)
-        Twitter.sharedInstance().start(withConsumerKey: TweetscounterKeys().fABRIC_API_KEY(), consumerSecret: TweetscounterKeys().fABRIC_BUILD_SECRET())
+        Instabug.start(withToken: TweetsCounterKeys().iNSTABUG_API_KEY, invocationEvent: .twoFingersSwipeLeft)
+        Twitter.sharedInstance().start(withConsumerKey: TweetsCounterKeys().fABRIC_API_KEY, consumerSecret: TweetsCounterKeys().fABRIC_BUILD_SECRET)
         switch environment {
         case .debug:
             Fabric.with([Crashlytics.sharedInstance(), Twitter.sharedInstance()])
