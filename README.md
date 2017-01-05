@@ -1,6 +1,7 @@
 # Tweetometer
 
-[![CI Status](http://img.shields.io/travis/BalestraPatrick/Tweetometer.svg?style=flat)](https://travis-ci.org/BalestraPatrick/Tweetometer)
+[![CircleCI](https://circleci.com/gh/BalestraPatrick/Tweetometer.svg?style=svg)](https://circleci.com/gh/BalestraPatrick/Tweetometer)
+
 ![Swift 3.0+](https://img.shields.io/badge/Swift-3.0%2B-orange.svg)
 [![License](https://img.shields.io/badge/License-%40MIT-lightgrey.svg)](https://raw.githubusercontent.com/BalestraPatrick/Tweetometer/master/LICENSE)
 [![Twitter: @BalestraPatrick](https://img.shields.io/badge/Twitter-%40BalestraPatrick-blue.svg)](https://twitter.com/BalestraPatrick)
