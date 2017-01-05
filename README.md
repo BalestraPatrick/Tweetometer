@@ -13,14 +13,15 @@ Tweetometer is an app to see who is tweeting in your Twitter timeline. It often 
 ### Usage
 This project uses [CocoaPods](https://github.com/CocoaPods/CocoaPods/) to manage the dependencies. If you want to run the project, you first need to install the pods by doing `pod install`.
 
-Fabric is used and you need to add your own API key by using [cocoapods keys](https://github.com/orta/cocoapods-keys) if you want to use the project. First install the gem (if not already installed) by doing `gem install cocoapods-keys` and then add your API Key and Build Secret like this:
+A few API keys are also required and you can add your own Fabric and Instabug keys by using [cocoapods keys](https://github.com/orta/cocoapods-keys). First install it by doing `gem install cocoapods-keys` and then add your keys and like this:
 
-<pre>$ pod keys set FABRIC_API_KEY YOUR_API_KEY_HERE
-$ pod keys set FABRIC_BUILD_SECRET YOUR_BUILD_SECRET_HERE</pre>
+<pre>$ pod keys set FABRIC_API_KEY YOUR_API_KEY
+$ pod keys set FABRIC_BUILD_SECRET YOUR_BUILD_SECRET
+$ pod keys set INSTABUG_API_KEY YOUR_API_KEY</pre>
 
 
 ### Contribution
-You're welcome to improve and add new features to the app! Check the current [backlog](https://github.com/BalestraPatrick/Tweetometer/projects/1).
+You're welcome to improve and add new features to the app! Check the [backlog](https://github.com/BalestraPatrick/Tweetometer/projects/1).
 
 ### Author
 I'm Patrick Balestra, [@BalestraPatrick](http://www.twitter.com/BalestraPatrick) on Twitter.
