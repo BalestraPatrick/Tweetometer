@@ -39,6 +39,6 @@ class LinkOpenerTweetTests: XCTestCase {
         let mockCoordinator = MockCoordinator()
         opener.coordinator = mockCoordinator
         opener.open(tweet: tweetId)
-        XCTAssertEqual(mockCoordinator.url, URL(string: "https://www.twitter.com/statuses/\(tweetId)"))
+        XCTAssertEqual(mockCoordinator.url, URL(string: "https://www.twitter.com/status/\(tweetId)"))
     }
 }
