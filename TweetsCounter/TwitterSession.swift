@@ -56,9 +56,7 @@ public final class TwitterSession {
     private final let maximumTweetsPerRequest = 200
 
     /// Shared Twitter session responsible for all requests to the Twitter APIs.
-    public static let shared: TwitterSession = {
-        return TwitterSession()
-    }()
+    public static let shared = TwitterSession()
 
     /// Private initializer invoked only once in the app's lifetime.
     private init() {
