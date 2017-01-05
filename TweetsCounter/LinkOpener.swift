@@ -94,7 +94,7 @@ class LinkOpener {
             urlComponents.scheme = twitterScheme
             urlComponents.path = "/status?id=\(tweet)"
         case .web:
-            let url = URL(string: "https://www.twitter.com/statuses/\(tweet)")
+            let url = URL(string: "https://www.twitter.com/status/\(tweet)")
             if let url = url, let coordinator = coordinator {
                 return coordinator.presentSafari(url)
             }
