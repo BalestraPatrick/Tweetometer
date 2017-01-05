@@ -1,11 +1,10 @@
 before_install:
-  - gem install cocoapods-keys
+  - bundle install
   - brew install swiftlint
-  - pod repo update
 
-cache:
-  - bundler
-  - cocoapods
+# cache:
+#   - bundler
+#   - cocoapods
 
 osx_image: xcode8.1
 language: objective-c
