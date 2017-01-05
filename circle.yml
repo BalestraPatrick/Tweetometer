@@ -11,8 +11,8 @@ dependencies:
     - gem install bundler
     - bundle install
     - bundle exec pod install
-    - xcrun instruments -w "8E9EAB52-88D1-41FD-B911-B1D97E56D57B" || echo "(Pre)Launched the simulator."
+    - xcrun instruments -w "84A11478-B7D4-4968-A626-E27CE7372148" || echo "(Pre)Launched the simulator."
 
 test:
   override:
-    - set -o pipefail && xcodebuild -destination "id=8E9EAB52-88D1-41FD-B911-B1D97E56D57B" -scheme "Tweetometer" -workspace "TweetsCounter.xcworkspace" -derivedDataPath derived_data test | xcpretty --color --test
+    - set -o pipefail && xcodebuild -destination "id=84A11478-B7D4-4968-A626-E27CE7372148" -scheme "Tweetometer" -workspace "TweetsCounter.xcworkspace" -derivedDataPath derived_data test | xcpretty --color --test
