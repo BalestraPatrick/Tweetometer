@@ -13,5 +13,4 @@ notifications:
 xcode_workspace: TweetsCounter.xcworkspace
 xcode_scheme: Tweetometer
 script:
-  - bundle exec pod install
   - set -o pipefail && xcodebuild -workspace TweetsCounter.xcworkspace -scheme Tweetometer -destination 'platform=iOS Simulator,name=iPhone 7,OS=10.1' ONLY_ACTIVE_ARCH=NO | xcpretty
