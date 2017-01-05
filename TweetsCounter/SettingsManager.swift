@@ -8,6 +8,7 @@
 
 import UIKit
 import SwiftyUserDefaults
+import Crashlytics
 
 struct Key {
     static let maximumNumberOfTweets = "maximumNumberOfTweets"
@@ -15,7 +16,7 @@ struct Key {
     static let lastUpdate = "lastUpdate"
 }
 
-public enum TwitterClient {
+public enum TwitterClient: CustomStringConvertible {
     case web
     case twitter
     case tweetbot
@@ -34,6 +35,14 @@ public enum TwitterClient {
         case .web: return 0
         case .twitter: return 1
         case .tweetbot: return 2
+        }
+    }
+
+    public var description: String {
+        switch self {
+        case .web: return "Safari"
+        case .twitter: return "Twitter"
+        case .tweetbot: return "Tweetbot"
         }
     }
 }
@@ -67,8 +76,8 @@ public final class Settings {
     private init() {
         maximumNumberOfTweets = Defaults[Key.maximumNumberOfTweets].int ?? 1000
         lastUpdate = Defaults[Key.lastUpdate].date ?? Date(timeIntervalSince1970: 0)
-        print(lastUpdate)
         preferredTwitterClient = TwitterClient.fromIndex(Defaults[Key.preferredTwitterClient].int ?? 0)
+        logEvents()
 
         // Convert initial values to TwitterClient enum case
         if let v = Defaults[Key.preferredTwitterClient].int {
@@ -81,5 +90,10 @@ public final class Settings {
         } else {
             preferredTwitterClient = .web
         }
+    }
+
+    private func logEvents() {
+        Answers.logCustomEvent(withName: "Maximum Number of Tweets", customAttributes: ["value" : maximumNumberOfTweets])
+        Answers.logCustomEvent(withName: "Twitter Client", customAttributes: ["value" : preferredTwitterClient.description])
     }
 }

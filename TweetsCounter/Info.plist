@@ -49,6 +49,8 @@
 			</dict>
 		</array>
 	</dict>
+	<key>ITSAppUsesNonExemptEncryption</key>
+	<false/>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>tweetbot</string>
@@ -61,6 +63,10 @@
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
 	</dict>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Attach audio recordings to your bug reports.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Attach pictures to your bug reports.</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
@@ -79,11 +85,5 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-	<key>ITSAppUsesNonExemptEncryption</key>
-	<false/>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Attach pictures to your bug reports.</string>
-	<key>NSMicrophoneUsageDescription</key>
-	<string>Attach audio recordings to your bug reports.</string>
 </dict>
 </plist>
