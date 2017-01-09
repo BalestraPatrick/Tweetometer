@@ -23,8 +23,13 @@ public final class DataManager {
                 let config = Realm.Configuration(
                     schemaVersion: 2,
                     migrationBlock: { migration, oldSchemaVersion in
-                        if oldSchemaVersion < 1 {
-                            // Update custom properties here
+                        if oldSchemaVersion == 1 {
+                            // Migrate first version of the database to the second.
+                            // Here we just manually set the newly added `reply` property based on the text of the Tweet.
+                            migration.enumerateObjects(ofType: Tweet.className()) { oldObject, newObject in
+                                guard let new = newObject, let old = oldObject else { return }
+                                new["reply"] = (old["text"] as! String).hasPrefix("@")
+                            }
                         }
                 })
                 Realm.Configuration.defaultConfiguration = config
