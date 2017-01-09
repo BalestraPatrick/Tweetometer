@@ -14,10 +14,10 @@ extension NSAttributedString {
         let numberAttributes = [NSForegroundColorAttributeName : UIColor.black,
                                 NSFontAttributeName : UIFont.systemFont(ofSize: 15, weight: UIFontWeightLight)]
         let attributedString = NSMutableAttributedString(string: String(count), attributes: numberAttributes)
-        let followersAttributes = [NSForegroundColorAttributeName : UIColor.black,
+        let followingAttributes = [NSForegroundColorAttributeName : UIColor.black,
                                    NSFontAttributeName : UIFont.systemFont(ofSize: 11, weight: UIFontWeightThin)]
-        let followersWord = NSAttributedString(string: " Following", attributes: followersAttributes)
-        attributedString.append(followersWord)
+        let followingWord = NSAttributedString(string: " Following", attributes: followingAttributes)
+        attributedString.append(followingWord)
         return attributedString
     }
 
@@ -25,9 +25,9 @@ extension NSAttributedString {
         let numberAttributes = [NSForegroundColorAttributeName : UIColor.black,
                                 NSFontAttributeName : UIFont.systemFont(ofSize: 15, weight: UIFontWeightLight)]
         let attributedString = NSMutableAttributedString(string: String(count), attributes: numberAttributes)
-        let followersAttributes = [NSForegroundColorAttributeName : UIColor.black,
+        let followesAttributes = [NSForegroundColorAttributeName : UIColor.black,
                                    NSFontAttributeName : UIFont.systemFont(ofSize: 11, weight: UIFontWeightThin)]
-        let followersWord = NSAttributedString(string: " Followers", attributes: followersAttributes)
+        let followersWord = NSAttributedString(string: " Followers", attributes: followesAttributes)
         attributedString.append(followersWord)
         return attributedString
     }
@@ -36,11 +36,55 @@ extension NSAttributedString {
         let numberAttributes = [NSForegroundColorAttributeName : UIColor.black,
                                 NSFontAttributeName : UIFont.systemFont(ofSize: 20, weight: UIFontWeightLight)]
         let attributedString = NSMutableAttributedString(string: String(count), attributes: numberAttributes)
-        let followersAttributes = [NSForegroundColorAttributeName : UIColor.black,
+        let tweetsAttributes = [NSForegroundColorAttributeName : UIColor.black,
                                    NSFontAttributeName : UIFont.systemFont(ofSize: 15, weight: UIFontWeightThin)]
         let word = count > 1 ? " Tweets" : " Tweet"
-        let followersWord = NSAttributedString(string: word, attributes: followersAttributes)
-        attributedString.append(followersWord)
+        let tweetsWord = NSAttributedString(string: word, attributes: tweetsAttributes)
+        attributedString.append(tweetsWord)
+        return attributedString
+    }
+
+    class func totalTweetsCountAttributes(with count: Int) -> NSAttributedString {
+        let numberAttributes = [NSForegroundColorAttributeName : UIColor.white,
+                                NSFontAttributeName : UIFont.systemFont(ofSize: 20, weight: UIFontWeightLight)]
+        let wordAttributes = [NSForegroundColorAttributeName : UIColor.white,
+                                NSFontAttributeName : UIFont.systemFont(ofSize: 15, weight: UIFontWeightThin)]
+        let attributedString = NSMutableAttributedString(string: "Total\n", attributes: wordAttributes)
+        let word = NSAttributedString(string: String(count), attributes: numberAttributes)
+        attributedString.append(word)
+        return attributedString
+    }
+
+    class func tweetsCountAttributes(with count: Int) -> NSAttributedString {
+        let numberAttributes = [NSForegroundColorAttributeName : UIColor.white,
+                                NSFontAttributeName : UIFont.systemFont(ofSize: 20, weight: UIFontWeightLight)]
+        let wordAttributes = [NSForegroundColorAttributeName : UIColor.white,
+                              NSFontAttributeName : UIFont.systemFont(ofSize: 15, weight: UIFontWeightThin)]
+        let attributedString = NSMutableAttributedString(string: "Tweets\n", attributes: wordAttributes)
+        let word = NSAttributedString(string: String(count), attributes: numberAttributes)
+        attributedString.append(word)
+        return attributedString
+    }
+
+    class func retweetsCountAttributes(with count: Int) -> NSAttributedString {
+        let numberAttributes = [NSForegroundColorAttributeName : UIColor.white,
+                                NSFontAttributeName : UIFont.systemFont(ofSize: 20, weight: UIFontWeightLight)]
+        let wordAttributes = [NSForegroundColorAttributeName : UIColor.white,
+                              NSFontAttributeName : UIFont.systemFont(ofSize: 15, weight: UIFontWeightThin)]
+        let attributedString = NSMutableAttributedString(string: "Retweets\n", attributes: wordAttributes)
+        let word = NSAttributedString(string: String(count), attributes: numberAttributes)
+        attributedString.append(word)
+        return attributedString
+    }
+
+    class func repliesCountAttributes(with count: Int) -> NSAttributedString {
+        let numberAttributes = [NSForegroundColorAttributeName : UIColor.white,
+                                NSFontAttributeName : UIFont.systemFont(ofSize: 20, weight: UIFontWeightLight)]
+        let wordAttributes = [NSForegroundColorAttributeName : UIColor.white,
+                              NSFontAttributeName : UIFont.systemFont(ofSize: 15, weight: UIFontWeightThin)]
+        let attributedString = NSMutableAttributedString(string: "Replies\n", attributes: wordAttributes)
+        let word = NSAttributedString(string: String(count), attributes: numberAttributes)
+        attributedString.append(word)
         return attributedString
     }
 }

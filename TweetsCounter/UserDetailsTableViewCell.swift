@@ -14,8 +14,36 @@ class UserDetailsTableViewCell: UITableViewCell {
     
     @IBOutlet weak var profileImage: ProfilePictureImageView!
     @IBOutlet weak var descriptionLabel: ActiveLabel!
+    @IBOutlet weak var totalTweetsCountLabel: UILabel!
+    @IBOutlet weak var tweetsCountLabel: UILabel!
+    @IBOutlet weak var retweetsCountLabel: UILabel!
+    @IBOutlet weak var repliesCountLabel: UILabel!
 
     weak var coordinator: UserDetailCoordinator!
+
+    var totalTweetsCount: Int = 0 {
+        didSet {
+            totalTweetsCountLabel.attributedText = NSAttributedString.totalTweetsCountAttributes(with: totalTweetsCount)
+        }
+    }
+
+    var tweetsCount: Int = 0 {
+        didSet {
+            tweetsCountLabel.attributedText = NSAttributedString.tweetsCountAttributes(with: tweetsCount)
+        }
+    }
+
+    var retweetsCount: Int = 0 {
+        didSet {
+            retweetsCountLabel.attributedText = NSAttributedString.retweetsCountAttributes(with: retweetsCount)
+        }
+    }
+
+    var repliesCount: Int = 0 {
+        didSet {
+            repliesCountLabel.attributedText = NSAttributedString.repliesCountAttributes(with: repliesCount)
+        }
+    }
 
     func configure(_ user: User, coordinator: UserDetailCoordinator) {
         backgroundColor = .backgroundBlue()
@@ -23,6 +51,11 @@ class UserDetailsTableViewCell: UITableViewCell {
         if let stringURL = user.profileImageURL {
             profileImage.af_setImage(withURL: URL(string: stringURL)!, placeholderImage: UIImage(asset: .placeholder))
         }
+
+        totalTweetsCount = 123
+        tweetsCount = 100
+        retweetsCount = 15
+        repliesCount = 8
 
         self.coordinator = coordinator
 
