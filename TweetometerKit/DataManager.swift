@@ -21,7 +21,7 @@ public final class DataManager {
                 return try! Realm()
             } else {
                 let config = Realm.Configuration(
-                    schemaVersion: 1,
+                    schemaVersion: 2,
                     migrationBlock: { migration, oldSchemaVersion in
                         if oldSchemaVersion < 1 {
                             // Update custom properties here
