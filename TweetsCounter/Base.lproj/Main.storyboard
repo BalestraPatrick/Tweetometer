@@ -258,11 +258,14 @@
                             </button>
                         </barButtonItem>
                         <view key="titleView" contentMode="scaleToFill" id="OhV-Zt-nsQ">
-                            <rect key="frame" x="87.5" y="5.5" width="200" height="33"/>
+                            <rect key="frame" x="88" y="6" width="200" height="33"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f3d-NS-fIP">
                                     <rect key="frame" x="83" y="0.0" width="34" height="13"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="13.5" id="Oyc-36-7fk"/>
+                                    </constraints>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <nil key="highlightedColor"/>
@@ -492,17 +495,20 @@
                     <navigationItem key="navigationItem" id="BHy-jC-wAA">
                         <nil key="title"/>
                         <view key="titleView" contentMode="scaleToFill" id="XxA-KA-MPQ">
-                            <rect key="frame" x="87.5" y="5.5" width="200" height="33"/>
+                            <rect key="frame" x="88" y="6" width="200" height="33"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Di9-TO-8x9">
-                                    <rect key="frame" x="0.0" y="0.0" width="200" height="21"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" text="Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Di9-TO-8x9">
+                                    <rect key="frame" x="83.5" y="0.0" width="33.5" height="13"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="13.5" id="J07-1s-kwv"/>
+                                    </constraints>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Subtitle" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hDz-A4-jpE">
-                                    <rect key="frame" x="0.0" y="23.5" width="200" height="14.5"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hDz-A4-jpE">
+                                    <rect key="frame" x="100" y="18" width="0.0" height="15"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <nil key="highlightedColor"/>
@@ -510,12 +516,11 @@
                             </subviews>
                             <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
-                                <constraint firstItem="Di9-TO-8x9" firstAttribute="leading" secondItem="XxA-KA-MPQ" secondAttribute="leading" id="Hdy-B0-dnD"/>
-                                <constraint firstAttribute="bottom" secondItem="hDz-A4-jpE" secondAttribute="bottom" constant="-5" id="KE6-eZ-vrW"/>
-                                <constraint firstAttribute="trailing" secondItem="hDz-A4-jpE" secondAttribute="trailing" id="ng2-aG-I8w"/>
-                                <constraint firstItem="hDz-A4-jpE" firstAttribute="leading" secondItem="XxA-KA-MPQ" secondAttribute="leading" id="no5-oT-fme"/>
+                                <constraint firstItem="hDz-A4-jpE" firstAttribute="top" secondItem="Di9-TO-8x9" secondAttribute="bottom" constant="5" id="0Gi-li-Bi5"/>
+                                <constraint firstItem="Di9-TO-8x9" firstAttribute="centerX" secondItem="XxA-KA-MPQ" secondAttribute="centerX" id="PUA-4J-bU8"/>
+                                <constraint firstItem="hDz-A4-jpE" firstAttribute="centerX" secondItem="XxA-KA-MPQ" secondAttribute="centerX" id="UWk-oY-QB0"/>
                                 <constraint firstItem="Di9-TO-8x9" firstAttribute="top" secondItem="XxA-KA-MPQ" secondAttribute="top" id="p5z-up-a1B"/>
-                                <constraint firstAttribute="trailing" secondItem="Di9-TO-8x9" secondAttribute="trailing" id="vxp-zU-tuI"/>
+                                <constraint firstAttribute="bottom" secondItem="hDz-A4-jpE" secondAttribute="bottom" id="pek-JY-SV1"/>
                             </constraints>
                         </view>
                         <barButtonItem key="rightBarButtonItem" title="Open In" id="1uH-qr-l1M">
@@ -539,7 +544,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="CKX-yh-fN9" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="A0T-ro-vqk">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="A0T-ro-vqk">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
