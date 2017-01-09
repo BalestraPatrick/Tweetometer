@@ -336,7 +336,7 @@
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="75" id="7VI-t4-Ad9"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                             <variation key="default">
