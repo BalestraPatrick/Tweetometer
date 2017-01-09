@@ -20,6 +20,7 @@ public class Tweet: Object, Unboxable {
     dynamic public var retweetsCount: Int = 0
     dynamic public var likesCount: Int = 0
     dynamic public var retweeted: Bool = false
+    dynamic public var reply: Bool = false
 
     override public static func primaryKey() -> String? {
         return "tweetId"
@@ -37,6 +38,7 @@ public class Tweet: Object, Unboxable {
             createdAt = try unboxer.unbox(key: "created_at", formatter: DateFormatter.twitterDateFormatter())
             text = try unboxer.unbox(key: "text")
             language = try unboxer.unbox(key: "lang")
+            reply = isReply(text)
             do {
                 likesCount = try unboxer.unbox(keyPath: "retweeted_status.favorite_count")
                 retweetsCount = try unboxer.unbox(key: "retweet_count")
@@ -71,5 +73,13 @@ public class Tweet: Object, Unboxable {
                 print(error)
             }
         }
+    }
+
+    /// Checks if a tweet is a reply to another tweet.
+    ///
+    /// - Parameter text: The text of the tweet.
+    /// - Returns: Yes if the tweet starts with a '@', false otherwise.
+    private func isReply(_ text: String) -> Bool {
+        return text.hasPrefix("@")
     }
 }
