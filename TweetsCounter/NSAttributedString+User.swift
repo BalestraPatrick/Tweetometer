@@ -60,7 +60,8 @@ extension NSAttributedString {
                                 NSFontAttributeName : UIFont.systemFont(ofSize: 20, weight: UIFontWeightLight)]
         let wordAttributes = [NSForegroundColorAttributeName : UIColor.white,
                               NSFontAttributeName : UIFont.systemFont(ofSize: 15, weight: UIFontWeightThin)]
-        let attributedString = NSMutableAttributedString(string: "Tweets\n", attributes: wordAttributes)
+        let tweet = count > 1 ? " Tweets" : " Tweet"
+        let attributedString = NSMutableAttributedString(string: "\(tweet)\n", attributes: wordAttributes)
         let word = NSAttributedString(string: String(count), attributes: numberAttributes)
         attributedString.append(word)
         return attributedString
@@ -71,7 +72,8 @@ extension NSAttributedString {
                                 NSFontAttributeName : UIFont.systemFont(ofSize: 20, weight: UIFontWeightLight)]
         let wordAttributes = [NSForegroundColorAttributeName : UIColor.white,
                               NSFontAttributeName : UIFont.systemFont(ofSize: 15, weight: UIFontWeightThin)]
-        let attributedString = NSMutableAttributedString(string: "Retweets\n", attributes: wordAttributes)
+        let retweet = count > 1 ? " Retweets" : " Retweet"
+        let attributedString = NSMutableAttributedString(string: "\(retweet)\n", attributes: wordAttributes)
         let word = NSAttributedString(string: String(count), attributes: numberAttributes)
         attributedString.append(word)
         return attributedString
@@ -82,7 +84,8 @@ extension NSAttributedString {
                                 NSFontAttributeName : UIFont.systemFont(ofSize: 20, weight: UIFontWeightLight)]
         let wordAttributes = [NSForegroundColorAttributeName : UIColor.white,
                               NSFontAttributeName : UIFont.systemFont(ofSize: 15, weight: UIFontWeightThin)]
-        let attributedString = NSMutableAttributedString(string: "Replies\n", attributes: wordAttributes)
+        let reply = count > 1 ? " Replies" : " Reply"
+        let attributedString = NSMutableAttributedString(string: "\(reply)\n", attributes: wordAttributes)
         let word = NSAttributedString(string: String(count), attributes: numberAttributes)
         attributedString.append(word)
         return attributedString

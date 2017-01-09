@@ -68,4 +68,12 @@ public extension User {
     public func sortTweets() {
         tweets = List(tweets.sorted(by: { $0.createdAt > $1.createdAt }))
     }
+
+    public func retweetedTweetsCount() -> Int {
+        return tweets.filter { $0.retweeted }.count
+    }
+
+    public func repliesTweetsCount() -> Int {
+        return tweets.filter { $0.reply }.count
+    }
 }
