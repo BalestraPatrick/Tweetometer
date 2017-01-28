@@ -48,28 +48,25 @@ public final class DataManager {
         }
     }
 
-    /// Remove the oldest tweets based on the user preference.
+    /// Remove the oldest tweets based on the user maximum count.
     public class func shouldCleanCache() {
         let realm = self.realm()
         let maximumCount = Settings.shared.maximumNumberOfTweets
-        while realm.objects(Tweet.self).count > maximumCount {
-            let tweets = realm.objects(Tweet.self)
-            if let oldestTweet = tweets.min(by: { $0.tweetId < $1.tweetId }) {
-                // Delete from user tweets array and delete user if it doesn't have any more tweets.
+        let tweets = realm.objects(Tweet.self).sorted(byKeyPath: "createdAt", ascending: true)
+        while tweets.count > maximumCount {
+            if let oldestTweet = tweets.last {
+                // Check if it is the last tweet of the user so that we can remove it too.
                 if let user = realm.object(ofType: User.self, forPrimaryKey: oldestTweet.userId) {
-//                    if let index = user.tweets.index(of: oldestTweet) {
-//                        try! realm.write {
-//                            user.tweets.remove(objectAtIndex: index)
-//                            user.tweetsCount = user.tweets.count
-//                            if user.tweetsCount == 0 {
-//                                realm.delete(user)
-//                            }
-//                        }
-//                    }
-                }
-                // Delete the oldest tweet.
-                try! realm.write {
-                    realm.delete(oldestTweet)
+                    let count = user.tweetsCount()
+                    if count == 0 {
+                        try! realm.write {
+                            realm.delete(user)
+                        }
+                    }
+                    // Delete oldest tweet
+                    try! realm.write {
+                        realm.delete(oldestTweet)
+                    }
                 }
             }
         }

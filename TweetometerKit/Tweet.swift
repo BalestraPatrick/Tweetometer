@@ -65,8 +65,6 @@ public class Tweet: Object, Unboxable {
                 realm.add(newUser, update: true)
             }
             newUser.tweetsCount()
-            // Check if we have to clean some Users from the cache.
-            DataManager.shouldCleanCache()
         } catch {
             print(error)
         }

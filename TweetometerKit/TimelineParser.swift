@@ -56,6 +56,9 @@ public final class TimelineParser {
                 user.tweetsCount()
             }
         }
+        
+        // Check if we have to clean some Users from the cache.
+        DataManager.shouldCleanCache()
     }
 
     /// Find the oldest tweetId and save it for the next request.
