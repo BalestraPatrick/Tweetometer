@@ -1,27 +1,27 @@
 PODS:
-  - ActiveLabel (0.7.0)
-  - Alamofire (4.2.0)
+  - ActiveLabel (0.7.1)
+  - Alamofire (4.3.0)
   - AlamofireImage (3.2.0):
     - Alamofire (~> 4.1)
   - Crashlytics (3.8.3):
     - Fabric (~> 1.6.3)
   - Fabric (1.6.11)
-  - Instabug (6.3)
+  - Instabug (6.4.1)
   - Keys (1.0.0)
   - Presentr (1.1.0)
   - PullToRefresher (2.0.2)
-  - Realm (2.1.2):
-    - Realm/Headers (= 2.1.2)
-  - Realm/Headers (2.1.2)
-  - RealmSwift (2.1.2):
-    - Realm (= 2.1.2)
+  - Realm (2.4.1):
+    - Realm/Headers (= 2.4.1)
+  - Realm/Headers (2.4.1)
+  - RealmSwift (2.4.1):
+    - Realm (= 2.4.1)
   - SwiftyUserDefaults (3.0.0)
-  - TwitterCore (2.7.0):
+  - TwitterCore (2.8.0):
     - Fabric
-  - TwitterKit (2.7.0):
-    - TwitterCore (= 2.7.0)
+  - TwitterKit (2.8.0):
+    - TwitterCore (= 2.8.0)
   - Unbox (2.3.0)
-  - ValueStepper (1.0)
+  - ValueStepper (1.1.2)
   - Whisper (4.0.0)
 
 DEPENDENCIES:
@@ -54,22 +54,22 @@ CHECKOUT OPTIONS:
     :git: https://github.com/BalestraPatrick/PullToRefresh
 
 SPEC CHECKSUMS:
-  ActiveLabel: eb405c5b99275be52fac161f7a55cab1dd672c54
-  Alamofire: aa2e09d871c9160ac53c90e83c68064a94e3dfbe
+  ActiveLabel: 68625f22775f51c31bb691ca8de20f1e5a3bc825
+  Alamofire: 856a113053a7bc9cbe5d6367a555d773fc5cfef7
   AlamofireImage: 157ed682cc81d3b9db4fb90c1f12180ac552d93b
   Crashlytics: 2b6dbe138a42395577cfa73dfa1aa7248cadf39e
   Fabric: 5911403591946b8228ab1c51d98f1d7137e863c6
-  Instabug: 8b87bcc5edc95712a7c89b385b92e7c975719e46
+  Instabug: f1e8ced2a08618b48aade3ec67b260f92d8fd8a6
   Keys: 9c35bf00f612ee1d48556f4a4b9b4551e224e90f
   Presentr: e73439be1cba3ad0651b18c58d77238bbacce59c
   PullToRefresher: 9d66e6a86fb9e1d8fa861c4bbd263e88f5dfc0bd
-  Realm: efe855f4d977c8ce5a82d3116d9f1ff155a6550c
-  RealmSwift: 17d6ee30b6f9df86364408c2197492e33bfea567
+  Realm: 37a5198a197598d9ec0e4d1ae2f64924c86eeb9a
+  RealmSwift: d69e431b79a41acdf14c404b868ae1c2458916e1
   SwiftyUserDefaults: 0f1d45fc3aafb9064dac661e367f8f83fe21a4b4
-  TwitterCore: fbdbeaf6d2d20cf7c7aa4136fe5173c1c85df2e2
-  TwitterKit: 97e729ceea041d174126235bf6ff67dcf37772d4
+  TwitterCore: e959987be23c767004d29eb7fab8d85d8585a2e5
+  TwitterKit: f7b0a1adcb800f6446ff0ef70164797376522ff3
   Unbox: 5ba1966ebe99b5d568d432626323331eedd33458
-  ValueStepper: a1a275491e3a1ab6fe80a589ce04781d4a795fb3
+  ValueStepper: 77aa17d74fff4147cb22e61b72a574256203976b
   Whisper: 08be92623311f8e53201e62e17f6d7b9599a4714
 
 PODFILE CHECKSUM: 312243c3ac7298e5ce4032ca3502d5f8485a7f4e

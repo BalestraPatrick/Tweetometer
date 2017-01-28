@@ -34,11 +34,19 @@ private enum Button: Int {
         }
     }
     
-    /// Minimum value that must be the less than the maximum value.
-    @IBInspectable public var minimumValue: Double = 0.0
+    /// Minimum value that must be less than the maximum value.
+    @IBInspectable public var minimumValue: Double = 0.0 {
+        didSet {
+            setState()
+        }
+    }
     
     /// Maximum value that must be greater than the minimum value.
-    @IBInspectable public var maximumValue: Double = 1.0
+    @IBInspectable public var maximumValue: Double = 1.0 {
+        didSet {
+            setState()
+        }
+    }
     
     /// The value added/subtracted when one of the two buttons is pressed.
     @IBInspectable public var stepValue: Double = 0.1
@@ -67,7 +75,7 @@ private enum Button: Int {
     // MARK - Private variables
     
     /// Decrease button positioned on the left of the stepper.
-    private let decreaseButton: UIButton = {
+    internal let decreaseButton: UIButton = {
         let button = UIButton(type: UIButtonType.custom)
         button.backgroundColor = UIColor.clear
         button.tag = Button.decrease.rawValue
@@ -75,7 +83,7 @@ private enum Button: Int {
     }()
     
     /// Increase button positioned on the right of the stepper.
-    private let increaseButton: UIButton = {
+    internal let increaseButton: UIButton = {
         let button = UIButton(type: UIButtonType.custom)
         button.backgroundColor = UIColor.clear
         button.tag = Button.increase.rawValue
@@ -105,7 +113,13 @@ private enum Button: Int {
     private var rightSeparator = CAShapeLayer()
     
     // Timer used in case that autorepeat is true to change the value continuously.
-    private var continuousTimer: Timer?
+    private var continuousTimer: Timer? {
+        didSet {
+            if let timer = oldValue {
+                timer.invalidate()
+            }
+        }
+    }
 
     
     // MARK: Initializers
@@ -128,8 +142,8 @@ private enum Button: Int {
         addSubview(increaseButton)
         
         // Control events
-        decreaseButton.addTarget(self, action: #selector(decrease(_:)), for: .touchUpInside)
-        increaseButton.addTarget(self, action: #selector(increase(_:)), for: .touchUpInside)
+        decreaseButton.addTarget(self, action: #selector(decrease(_:)), for: [.touchUpInside, .touchCancel])
+        increaseButton.addTarget(self, action: #selector(increase(_:)), for: [.touchUpInside, .touchCancel])
         increaseButton.addTarget(self, action: #selector(stopContinuous(_:)), for: .touchUpOutside)
         decreaseButton.addTarget(self, action: #selector(stopContinuous(_:)), for: .touchUpOutside)
         decreaseButton.addTarget(self, action: #selector(selected(_:)), for: .touchDown)
@@ -137,10 +151,6 @@ private enum Button: Int {
     }
     
     // MARK: Storyboard preview setup
-    
-    func increase() {
-        
-    }
     
     override public func prepareForInterfaceBuilder() {
         setUp()
@@ -252,21 +262,19 @@ private enum Button: Int {
     
     // MARK: Control Events
     
-    func decrease(_ sender: UIButton) {
+    internal func decrease(_ sender: UIButton) {
         sender.backgroundColor = UIColor(white: 1.0, alpha: 0.0)
-        continuousTimer?.invalidate()
         continuousTimer = nil
         decreaseValue()
     }
     
-    func increase(_ sender: UIButton) {
+    internal func increase(_ sender: UIButton) {
         sender.backgroundColor = UIColor(white: 1.0, alpha: 0.0)
-        continuousTimer?.invalidate()
         continuousTimer = nil
         increaseValue()
     }
     
-    func continuousIncrement(_ timer: Timer) {
+    internal func continuousIncrement(_ timer: Timer) {
         // Check which one of the two buttons was continuously pressed
         let userInfo = timer.userInfo as! Dictionary<String, AnyObject>
         guard let sender = userInfo["sender"] as? UIButton else { return }
@@ -288,12 +296,11 @@ private enum Button: Int {
     
     func stopContinuous(_ sender: UIButton) {
         // When dragged outside, stop the timer.
-        continuousTimer?.invalidate()
+        continuousTimer = nil
     }
     
     func increaseValue() {
         let roundedValue = value.rounded(digits: numberFormatter.maximumFractionDigits)
-        print(roundedValue)
         if roundedValue + stepValue <= maximumValue && roundedValue + stepValue >= minimumValue {
             value = roundedValue + stepValue
         }
@@ -312,12 +319,14 @@ private enum Button: Int {
     private func setState() {
         if value >= maximumValue {
             increaseButton.isEnabled = false
+            decreaseButton.isEnabled = true
             increaseLayer.strokeColor = UIColor.gray.cgColor
-            continuousTimer?.invalidate()
+            continuousTimer = nil
         } else if value <= minimumValue {
             decreaseButton.isEnabled = false
+            increaseButton.isEnabled = true
             decreaseLayer.strokeColor = UIColor.gray.cgColor
-            continuousTimer?.invalidate()
+            continuousTimer = nil
         } else {
             increaseButton.isEnabled = true
             decreaseButton.isEnabled = true
@@ -337,6 +346,8 @@ private enum Button: Int {
         valueLabel.textColor = tintColor
         leftSeparator.strokeColor = tintColor.cgColor
         rightSeparator.strokeColor = tintColor.cgColor
+        increaseLayer.strokeColor = tintColor.cgColor
+        decreaseLayer.strokeColor = tintColor.cgColor
     }
     
 }

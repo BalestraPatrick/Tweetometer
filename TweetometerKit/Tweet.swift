@@ -59,19 +59,15 @@ public class Tweet: Object, Unboxable {
     /// - Parameter unboxer: The object used to decode the JSON.
     private func createUser(unboxer: Unboxer) {
         let realm = DataManager.realm()
-        let user = realm.object(ofType: User.self, forPrimaryKey: userId)
-        // If no user is found with the userID, create it.
-        if user == nil {
-            do {
-                let newUser: User = try unboxer.unbox(key: "user")
-                try! realm.write {
-                    realm.add(newUser)
-                }
-                // Check if we have to clean some Tweets from the cache.
-                DataManager.shouldCleanCache()
-            } catch {
-                print(error)
+        do {
+            let newUser: User = try unboxer.unbox(key: "user")
+            try! realm.write {
+                realm.add(newUser, update: true)
             }
+            // Check if we have to clean some Tweets from the cache.
+            DataManager.shouldCleanCache()
+        } catch {
+            print(error)
         }
     }
 
