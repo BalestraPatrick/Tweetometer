@@ -52,7 +52,7 @@ class UserDetailsTableViewCell: UITableViewCell {
             profileImage.af_setImage(withURL: URL(string: stringURL)!, placeholderImage: UIImage(asset: .placeholder))
         }
 
-        totalTweetsCount = user.tweetsCount
+        totalTweetsCount = user.tweetsCount()
         retweetsCount = user.retweetedTweetsCount()
         repliesCount = user.repliesTweetsCount()
         tweetsCount = totalTweetsCount - retweetsCount - repliesCount

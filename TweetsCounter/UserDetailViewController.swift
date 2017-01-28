@@ -25,7 +25,6 @@ final class UserDetailViewController: UIViewController, UITableViewDelegate, UIT
         applyStyle()
 
         guard let user = user else { return }
-        user.sortTweets()
         setTitleViewContent(user.name, screenName: user.screenName)
         tableView.estimatedRowHeight = 50.0
         tableView.rowHeight = UITableViewAutomaticDimension
@@ -40,7 +39,7 @@ final class UserDetailViewController: UIViewController, UITableViewDelegate, UIT
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0: return 1
-        case 1: return user?.tweets.count ?? 0
+        case 1: return user?.tweetsCount() ?? 0
         default: return 0
         }
     }
@@ -56,7 +55,7 @@ final class UserDetailViewController: UIViewController, UITableViewDelegate, UIT
         default:
             let cell = tableView.dequeueReusableCell(withIdentifier: TableViewCell.TweetCellIdentifier.rawValue, for: indexPath) as! TweetTableViewCell
             if let user = user {
-                let tweet = user.tweets[indexPath.row]
+                let tweet = user.tweets()[indexPath.row]
                 cell.configure(tweet, indexPath: indexPath, coordinator: coordinator)
             }
             return cell
@@ -66,7 +65,7 @@ final class UserDetailViewController: UIViewController, UITableViewDelegate, UIT
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // Open tweet in user's preferred client
         guard indexPath.section != 0 else { return }
-        if let tweetId = user?.tweets[indexPath.row].tweetId {
+        if let tweetId = user?.tweets()[indexPath.row].tweetId {
             coordinator.open(tweet: tweetId)
         }
     }

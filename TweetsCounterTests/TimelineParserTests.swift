@@ -47,8 +47,8 @@ class TimelineParserTests: XCTestCase {
         XCTAssertEqual(user.name, "Javi.swift")
         XCTAssertEqual(user.userDescription, "@Fabric Swift Engineer @Twitter. Previously @Pebble. Functional Programming enthusiast. Rubik\'s Cube speed solver. Chess player. Made @watch_chess.")
         XCTAssertEqual(user.profileImageURL, "https://pbs.twimg.com/profile_images/551121750100955136/ZphnhOpS_bigger.jpeg")
-        XCTAssertEqual(user.tweets.count, 1)
-        let tweet = user.tweets.first!
+        XCTAssertEqual(user.tweets().count, 1)
+        let tweet = user.tweets().first!
         XCTAssertEqual(tweet.tweetId, "695645083652075520")
         let createdAt = Date(timeIntervalSince1970: 1454689687)
         XCTAssertEqual(tweet.createdAt, createdAt)

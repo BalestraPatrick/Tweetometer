@@ -48,23 +48,24 @@ public class Tweet: Object, Unboxable {
                 retweetsCount = try unboxer.unbox(key: "retweet_count")
                 retweeted = false
             }
-            createUser(unboxer: unboxer)
+            updateUser(unboxer: unboxer)
         } catch {
             print(error)
         }
     }
 
-    /// Create a user if its not in the Realm.
+    /// Updates or creates a user if its not in the Realm.
     ///
     /// - Parameter unboxer: The object used to decode the JSON.
-    private func createUser(unboxer: Unboxer) {
+    private func updateUser(unboxer: Unboxer) {
         let realm = DataManager.realm()
         do {
             let newUser: User = try unboxer.unbox(key: "user")
             try! realm.write {
                 realm.add(newUser, update: true)
             }
-            // Check if we have to clean some Tweets from the cache.
+            newUser.tweetsCount()
+            // Check if we have to clean some Users from the cache.
             DataManager.shouldCleanCache()
         } catch {
             print(error)

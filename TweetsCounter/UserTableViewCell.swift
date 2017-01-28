@@ -83,7 +83,7 @@ final class UserTableViewCell: UITableViewCell {
         username = user.screenName
         numberOfFollowers = user.followersCount
         numberOfFollowing = user.followingCount
-        numberOfTweets = user.tweets.count
+        numberOfTweets = user.tweets().count
         index = indexPath.row
         if let stringURL = user.profileImageURL, let URL = URL(string: stringURL) {
             profilePictureImageView.af_setImage(withURL: URL, placeholderImage: UIImage(asset: .placeholder))

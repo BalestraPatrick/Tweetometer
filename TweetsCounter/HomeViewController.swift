@@ -43,7 +43,7 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
             self.refreshTimeline()
         }
         
-        users = DataManager.realm().objects(User.self).sorted(byProperty: "tweetsCount", ascending: false)
+        users = DataManager.realm().objects(User.self).sorted(byKeyPath: "count", ascending: false)
         notificationToken = users?.addNotificationBlock(tableView.applyChanges)
 
         // Check if a user is logged in
@@ -145,7 +145,9 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return users?.count ?? 0
+        let count = users?.count ?? 0
+        emptyStateLabel.isHidden = count == 0
+        return count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

@@ -20,10 +20,9 @@ public class User: Object, Unboxable {
     dynamic public var name: String = ""
     dynamic public var userDescription: String = ""
     dynamic public var profileImageURL: String? = nil
-    dynamic public var tweetsCount: Int = 1
+    dynamic internal var count: Int = 0
     dynamic public var location: String = ""
     dynamic public var displayURL: String? = nil
-    public var tweets = List<Tweet>()
 
     override public static func primaryKey() -> String? {
         return "userId"
@@ -56,24 +55,36 @@ public class User: Object, Unboxable {
             print(error)
         }
     }
-
-    private func convertToBiggerFormat(_ URL: String) -> String {
-        let biggerURL = URL.replacingOccurrences(of: "normal", with: "bigger")
-        return biggerURL
-    }
 }
 
 public extension User {
 
-    public func sortTweets() {
-        tweets = List(tweets.sorted(by: { $0.createdAt > $1.createdAt }))
+    fileprivate func convertToBiggerFormat(_ URL: String) -> String {
+        let biggerURL = URL.replacingOccurrences(of: "normal", with: "bigger")
+        return biggerURL
+    }
+
+    public func tweets() -> [Tweet] {
+        let realm = try! Realm()
+        let tweets = realm.objects(Tweet.self)
+            .filter { $0.userId == self.userId }
+            .sorted { $0.0.createdAt > $0.1.createdAt }
+        return tweets
+    }
+
+    @discardableResult
+    public func tweetsCount() -> Int {
+        try! Realm().write {
+            count = tweets().count
+        }
+        return count
     }
 
     public func retweetedTweetsCount() -> Int {
-        return tweets.filter { $0.retweeted }.count
+        return tweets().filter { $0.retweeted }.count
     }
 
     public func repliesTweetsCount() -> Int {
-        return tweets.filter { $0.reply }.count
+        return tweets().filter { $0.reply }.count
     }
 }

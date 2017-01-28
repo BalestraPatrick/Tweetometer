@@ -53,14 +53,7 @@ public final class TimelineParser {
         for tweet in newTweets {
             let user = realm.object(ofType: User.self, forPrimaryKey: tweet.userId)
             if let user = user {
-                try! realm.write {
-                    user.tweets.append(tweet)
-                    let sortedTweets = user.tweets.sorted(by: { tweet1, tweet2 -> Bool in
-                        return tweet1.createdAt > tweet2.createdAt
-                    })
-                    user.tweets = List(sortedTweets)
-                    user.tweetsCount = user.tweets.count
-                }
+                user.tweetsCount()
             }
         }
     }

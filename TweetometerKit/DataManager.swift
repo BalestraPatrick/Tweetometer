@@ -57,15 +57,15 @@ public final class DataManager {
             if let oldestTweet = tweets.min(by: { $0.tweetId < $1.tweetId }) {
                 // Delete from user tweets array and delete user if it doesn't have any more tweets.
                 if let user = realm.object(ofType: User.self, forPrimaryKey: oldestTweet.userId) {
-                    if let index = user.tweets.index(of: oldestTweet) {
-                        try! realm.write {
-                            user.tweets.remove(objectAtIndex: index)
-                            user.tweetsCount = user.tweets.count
-                            if user.tweetsCount == 0 {
-                                realm.delete(user)
-                            }
-                        }
-                    }
+//                    if let index = user.tweets.index(of: oldestTweet) {
+//                        try! realm.write {
+//                            user.tweets.remove(objectAtIndex: index)
+//                            user.tweetsCount = user.tweets.count
+//                            if user.tweetsCount == 0 {
+//                                realm.delete(user)
+//                            }
+//                        }
+//                    }
                 }
                 // Delete the oldest tweet.
                 try! realm.write {
