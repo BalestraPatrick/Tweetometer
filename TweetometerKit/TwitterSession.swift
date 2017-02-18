@@ -51,6 +51,7 @@ public final class TwitterSession {
     private var timelineParser = TimelineParser()
     private var timelineUpdate: TimelineUpdate?
     private var timelineRequestsCount = 0
+    private var queue = DispatchQueue(label: "com.patrickbalestra.tweetometer.background")
 
     private final let maximumTimelineRequests = 4
     private final let maximumTweetsPerRequest = 200
@@ -124,9 +125,10 @@ public final class TwitterSession {
             do {
                 let tweets: Any = try JSONSerialization.jsonObject(with: data, options: .allowFragments)
                 guard let timeline = tweets as? JSONArray else { return completion(.invalidResponse) }
-                self.timelineParser.parse(timeline)
+                self.queue.async {
+                    self.timelineParser.parse(timeline)
+                }
                 self.timelineRequestsCount += 1
-                print("tweets: \(timeline.count)")
                 if let update = self.timelineUpdate {
                     update(nil)
                     if self.timelineRequestsCount >= self.maximumTimelineRequests {

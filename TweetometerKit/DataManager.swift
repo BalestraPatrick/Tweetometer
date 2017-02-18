@@ -50,25 +50,20 @@ public final class DataManager {
 
     /// Remove the oldest tweets based on the user maximum count.
     public class func shouldCleanCache() {
-        let realm = self.realm()
-        let maximumCount = Settings.shared.maximumNumberOfTweets
-        let tweets = realm.objects(Tweet.self).sorted(byKeyPath: "createdAt", ascending: true)
-        while tweets.count > maximumCount {
-            if let oldestTweet = tweets.last {
-                // Check if it is the last tweet of the user so that we can remove it too.
-                if let user = realm.object(ofType: User.self, forPrimaryKey: oldestTweet.userId) {
-                    let count = user.tweetsCount()
-                    if count == 0 {
-                        try! realm.write {
-                            realm.delete(user)
-                        }
-                    }
-                    // Delete oldest tweet
-                    try! realm.write {
-                        realm.delete(oldestTweet)
-                    }
-                }
-            }
-        }
+//        let realm = self.realm()
+//        let maximumCount = Settings.shared.maximumNumberOfTweets
+//        let tweets = realm.objects(Tweet.self).sorted(byKeyPath: "createdAt", ascending: true)
+//        guard tweets.count > maximumCount else { return }
+//        let tweetsToDelete = tweets.suffix(from: maximumCount)
+//        print("Cleaning cache by deleting \(tweetsToDelete.count) tweets!")
+//        try! realm.write {
+//            realm.delete(tweetsToDelete)
+//        }
+//
+//        let users = realm.objects(User.self).filter { $0.tweetsCount() == 0 }
+//        print("Cleaning cache by deleting \(users.count) users!")
+//        try! realm.write {
+//            realm.delete(users)
+//        }
     }
 }
