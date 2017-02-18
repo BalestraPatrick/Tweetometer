@@ -44,7 +44,7 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
         }
         
         users = DataManager.realm().objects(User.self).sorted(byKeyPath: "count", ascending: false)
-        notificationToken = users?.addNotificationBlock(tableView.applyChanges)
+//        notificationToken = users?.addNotificationBlock(tableView.applyChanges)
 
         // Check if a user is logged in
         if session.isUserLoggedIn() == false {
@@ -52,13 +52,19 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
         } else {
             // Start requests
             requestProfilePicture()
-            refreshTimeline()
+            setRefreshUI(to: .refreshing)
         }
+
+        NotificationCenter.default.addObserver(self, selector: #selector(refresh), name: NSNotification.Name(rawValue: "Tweetometer.reload"), object: nil)
     }
 
     deinit {
         notificationToken?.stop()
         tableView.removePullToRefresh(refresher)
+    }
+
+    func refresh() {
+        tableView.reloadData()
     }
 
     // MARK: Storyboard Segues
