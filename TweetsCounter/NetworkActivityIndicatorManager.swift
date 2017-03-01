@@ -15,8 +15,8 @@ class NetworkingActivityIndicatorManager {
     let center = NotificationCenter.default
 
     init() {
-        center.addObserver(self, selector: #selector(requestCompleted), name: requestCompletedNotification(), object: nil)
-        center.addObserver(self, selector: #selector(requestStarted), name: requestStartedNotification(), object: nil)
+        center.addObserver(self, selector: #selector(requestCompleted), name: NSNotification.Name.requestCompleted(), object: nil)
+        center.addObserver(self, selector: #selector(requestStarted), name: NSNotification.Name.requestStarted(), object: nil)
     }
 
     @objc func requestStarted() {

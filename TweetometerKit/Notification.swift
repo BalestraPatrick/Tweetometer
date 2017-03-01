@@ -13,10 +13,13 @@ public enum Notification: String {
     case requestStarted = "Tweetometer.RequestStarted"
 }
 
-public func requestCompletedNotification() -> NSNotification.Name {
-    return NSNotification.Name(Notification.requestCompleted.rawValue)
-}
+extension NSNotification.Name {
 
-public func requestStartedNotification() -> NSNotification.Name {
-    return NSNotification.Name(Notification.requestStarted.rawValue)
+    public static func requestCompleted() -> NSNotification.Name {
+        return NSNotification.Name(Notification.requestCompleted.rawValue)
+    }
+
+    public static func requestStarted() -> NSNotification.Name {
+        return NSNotification.Name(Notification.requestStarted.rawValue)
+    }
 }

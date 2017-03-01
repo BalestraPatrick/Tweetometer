@@ -44,7 +44,7 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
         }
         
         users = DataManager.realm().objects(User.self).sorted(byKeyPath: "count", ascending: false)
-//        notificationToken = users?.addNotificationBlock(tableView.applyChanges)
+        notificationToken = users?.addNotificationBlock(tableView.applyChanges)
 
         // Check if a user is logged in
         if session.isUserLoggedIn() == false {
@@ -108,9 +108,9 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
     func requestProfilePicture() {
         // Request profile picture
         session.getProfilePictureURL { [weak self] url in
-            guard let url = url, let weakSelf = self else { return }
-            weakSelf.set(screenName: weakSelf.session.loggedUserScreenName())
-            weakSelf.profilePictureItem.imageView.af_setImage(withURL: url, placeholderImage: UIImage(asset: .placeholder))
+            guard let url = url, let strongSelf = self else { return }
+            strongSelf.set(screenName: strongSelf.session.loggedUserScreenName())
+            strongSelf.profilePictureItem.imageView.af_setImage(withURL: url, placeholderImage: UIImage(asset: .placeholder))
         }
     }
 

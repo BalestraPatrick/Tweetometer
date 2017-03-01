@@ -79,12 +79,12 @@ public final class TwitterSession {
     ///
     /// - Parameter completion: The completion block that contains the profile picture URL.
     public func getProfilePictureURL(completion: @escaping (URL?) -> Void) {
-        NotificationCenter.default.post(name: requestStartedNotification(), object: nil)
+        NotificationCenter.default.post(name: NSNotification.Name.requestStarted(), object: nil)
         guard let client = client, let userID = client.userID else { return completion(nil) }
         client.loadUser(withID: userID) { user, _ in
             self.user = user
             if let stringURL = user?.profileImageLargeURL {
-                NotificationCenter.default.post(name: requestCompletedNotification(), object: nil)
+                NotificationCenter.default.post(name: NSNotification.Name.requestCompleted(), object: nil)
                 return completion(URL(string: stringURL)!)
             }
         }
@@ -102,7 +102,7 @@ public final class TwitterSession {
     ///   - maxId: The optional maximum tweetID used to return only the oldest tweets.
     ///   - completion: The completion block containing an optional error.
     public func getTimeline(before maxId: String?, completion: @escaping TimelineUpdate) {
-        NotificationCenter.default.post(name: requestStartedNotification(), object: nil)
+        NotificationCenter.default.post(name: NSNotification.Name.requestStarted(), object: nil)
         timelineUpdate = completion
         guard let client = client else { return completion(.notAuthenticated) }
         let url = "https://api.twitter.com/1.1/statuses/home_timeline.json"
@@ -114,7 +114,7 @@ public final class TwitterSession {
         let request = client.urlRequest(withMethod: "GET", url: url, parameters: parameters, error: nil)
         client.sendTwitterRequest(request) { _, data, error in
             if let error = error as? NSError {
-                NotificationCenter.default.post(name: requestCompletedNotification(), object: nil)
+                NotificationCenter.default.post(name: NSNotification.Name.requestCompleted(), object: nil)
                 switch error.code {
                 case 88: return completion(.rateLimitExceeded)
                 case -1009: return completion(.noInternetConnection)
@@ -130,15 +130,16 @@ public final class TwitterSession {
                 }
                 self.timelineRequestsCount += 1
                 if let update = self.timelineUpdate {
+                    print(timeline.count)
                     update(nil)
                     if self.timelineRequestsCount >= self.maximumTimelineRequests {
                         // Request completed and reset the counter
-                        NotificationCenter.default.post(name: requestCompletedNotification(), object: nil)
+                        NotificationCenter.default.post(name: NSNotification.Name.requestCompleted(), object: nil)
                         self.timelineRequestsCount = 0
                         return
                     }
                     self.getTimeline(before: self.timelineParser.maxId, completion: update)
-                    NotificationCenter.default.post(name: requestCompletedNotification(), object: nil)
+                    NotificationCenter.default.post(name: NSNotification.Name.requestCompleted(), object: nil)
                 }
             } catch {
                 return completion(.invalidResponse)
