@@ -137,8 +137,7 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
     // MARK: UI
 
     func presentAlert(title: String) {
-        guard let navigationController = navigationController else { return print("No navigation controller in this view hierarchy") }
-        setRefreshUI(to: .notRefreshing)
+        guard let navigationController = navigationController else { return print("No navigation controller in this view hierarchy. Skipping the presentation.") }
         Whisper.Config.modifyInset = false
         let whisperMessage = Message(title: title, textColor: .white, backgroundColor: .backgroundBlue(), images: nil)
         Whisper.show(whisper: whisperMessage, to: navigationController, action: .show)
