@@ -9,6 +9,9 @@
 import Foundation
 import ActiveLabel
 
+typealias URLHandler = (URL) -> Void
+typealias StringHandler = (String) -> Void
+
 extension ActiveLabel {
 
     /// Configure the active label to display a tweet with the correct colors.
@@ -17,7 +20,7 @@ extension ActiveLabel {
     ///   - URLHandler: The function to call when a URL is tapped.
     ///   - hashtagHandler: The function to call when an hashtag is tapped.
     ///   - mentionHandler: The function to call when a mention is tapped.
-    func configureTweet(URLHandler: @escaping (URL) -> (), hashtagHandler: @escaping (String) -> (), mentionHandler: @escaping (String) -> ()) {
+    func configureTweet(URLHandler: @escaping URLHandler, hashtagHandler: @escaping StringHandler, mentionHandler: @escaping StringHandler) {
         customize { label in
             label.textColor = .black
             label.mentionColor = .mentionBlue()
@@ -38,7 +41,7 @@ extension ActiveLabel {
     ///   - URLHandler: The function to call when a URL is tapped.
     ///   - hashtagHandler: The function to call when an hashtag is tapped.
     ///   - mentionHandler: The function to call when a mention is tapped.
-    func configureBio(URLHandler: @escaping (URL) -> (), hashtagHandler: @escaping (String) -> (), mentionHandler: @escaping (String) -> ()) {
+    func configureBio(URLHandler: @escaping URLHandler, hashtagHandler: @escaping StringHandler, mentionHandler: @escaping StringHandler) {
         customize { label in
             label.textColor = .white
             label.mentionColor = .bioGray()

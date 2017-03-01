@@ -14,7 +14,7 @@ extension UINavigationBar {
         barStyle = .black
         barTintColor = .backgroundBlue()
         tintColor = .white
-        titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white,
+        titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white,
             NSFontAttributeName: UIFont.systemFont(ofSize: 18, weight: 0.1)]
         setBackgroundImage(UIImage(), for: .default)
         shadowImage = UIImage()

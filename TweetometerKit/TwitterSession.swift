@@ -78,10 +78,10 @@ public final class TwitterSession {
     /// Request the user's profile picture URL.
     ///
     /// - Parameter completion: The completion block that contains the profile picture URL.
-    public func getProfilePictureURL(completion: @escaping (URL?) -> ()) {
+    public func getProfilePictureURL(completion: @escaping (URL?) -> Void) {
         NotificationCenter.default.post(name: requestStartedNotification(), object: nil)
         guard let client = client, let userID = client.userID else { return completion(nil) }
-        client.loadUser(withID: userID) { user, error in
+        client.loadUser(withID: userID) { user, _ in
             self.user = user
             if let stringURL = user?.profileImageLargeURL {
                 NotificationCenter.default.post(name: requestCompletedNotification(), object: nil)
@@ -106,13 +106,13 @@ public final class TwitterSession {
         timelineUpdate = completion
         guard let client = client else { return completion(.notAuthenticated) }
         let url = "https://api.twitter.com/1.1/statuses/home_timeline.json"
-        var parameters = ["count" : String(describing: maximumTweetsPerRequest), "include_entities" : "false", "exclude_replies" : "false"]
+        var parameters = ["count": String(describing: maximumTweetsPerRequest), "include_entities": "false", "exclude_replies": "false"]
         if let maxId = maxId {
             parameters["max_id"] = maxId
         }
 
         let request = client.urlRequest(withMethod: "GET", url: url, parameters: parameters, error: nil)
-        client.sendTwitterRequest(request) { response, data, error in
+        client.sendTwitterRequest(request) { _, data, error in
             if let error = error as? NSError {
                 NotificationCenter.default.post(name: requestCompletedNotification(), object: nil)
                 switch error.code {

@@ -15,7 +15,7 @@ protocol UserDetailCoordinatorDelegate: class {
 
 class UserDetailCoordinator: Coordinator, UserDetailCoordinatorDelegate {
 
-    var childCoordinators = Array<AnyObject>()
+    var childCoordinators = [AnyObject]()
     
     let controller: UserDetailViewController
     let linkOpener = LinkOpener()

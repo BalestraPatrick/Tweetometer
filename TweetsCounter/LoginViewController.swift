@@ -21,7 +21,7 @@ public final class LoginViewController: UIViewController {
         // Twitter login button initialization
         logInButton.logInCompletion = { [unowned self] session, error in
             if let e = error {
-                Analytics.shared.track(event: .login(success: false, error: ["error" : e]))
+                Analytics.shared.track(event: .login(success: false, error: ["error": e]))
                 return print(e)
             }
             Analytics.shared.track(event: .login(success: true, error: nil))

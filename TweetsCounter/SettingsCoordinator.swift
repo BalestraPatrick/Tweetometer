@@ -31,7 +31,7 @@ final class SettingsCoordinator: NSObject, Coordinator, SettingsCoordinatorDeleg
         return mail
     }()
 
-    var childCoordinators = Array<AnyObject>()
+    var childCoordinators = [AnyObject]()
 
     let presenter = Presentr(presentationType: .custom(width: .fluid(percentage: 0.9), height: .fluid(percentage: 0.8), center: .center))
     let parent: UIViewController

@@ -17,7 +17,7 @@ protocol HomeCoordinatorDelegate: class {
 
 class HomeCoordinator: Coordinator, HomeCoordinatorDelegate {
 
-    var childCoordinators = Array<AnyObject>()
+    var childCoordinators = [AnyObject]()
 
     let controller: HomeViewController
     let linkOpener = LinkOpener()

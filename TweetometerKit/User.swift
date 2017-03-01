@@ -19,10 +19,10 @@ public class User: Object, Unboxable {
     dynamic public var screenName: String = ""
     dynamic public var name: String = ""
     dynamic public var userDescription: String = ""
-    dynamic public var profileImageURL: String? = nil
+    dynamic public var profileImageURL: String?
     dynamic internal var count: Int = 0
     dynamic public var location: String = ""
-    dynamic public var displayURL: String? = nil
+    dynamic public var displayURL: String?
 
     override public static func primaryKey() -> String? {
         return "userId"

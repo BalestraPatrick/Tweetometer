@@ -50,25 +50,25 @@ public final class DataManager {
 
     /// Remove the oldest tweets based on the user maximum count.
     public class func shouldCleanCache() {
-        let realm = self.realm()
-        let maximumCount = Settings.shared.maximumNumberOfTweets
-        let tweets = realm.objects(Tweet.self).sorted(byKeyPath: "createdAt", ascending: true)
-        guard tweets.count > maximumCount else { return }
-        let tweetsToDelete = tweets.suffix(from: maximumCount)
-        print("Cleaning cache by deleting \(tweetsToDelete.count) tweets!")
-        try! realm.write {
-            realm.delete(tweetsToDelete)
-        }
-
-        let users = realm.objects(User.self).filter { $0.tweetsCount() == 0 }
-        print("Cleaning cache by deleting \(users.count) users!")
-        try! realm.write {
-            realm.delete(users)
-        }
-
-        // Notification to update UI when everything is finished.
-        DispatchQueue.main.async {
-            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "Tweetometer.reload"), object: nil)
-        }
+//        let realm = self.realm()
+//        let maximumCount = Settings.shared.maximumNumberOfTweets
+//        let tweets = realm.objects(Tweet.self).sorted(byKeyPath: "createdAt", ascending: true)
+//        guard tweets.count > maximumCount else { return }
+//        let tweetsToDelete = tweets.suffix(from: maximumCount)
+//        print("Cleaning cache by deleting \(tweetsToDelete.count) tweets!")
+//        try! realm.write {
+//            realm.delete(tweetsToDelete)
+//        }
+//
+//        let users = realm.objects(User.self).filter { $0.tweetsCount() == 0 }
+//        print("Cleaning cache by deleting \(users.count) users!")
+//        try! realm.write {
+//            realm.delete(users)
+//        }
+//
+//        // Notification to update UI when everything is finished.
+//        DispatchQueue.main.async {
+//            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "Tweetometer.reload"), object: nil)
+//        }
     }
 }

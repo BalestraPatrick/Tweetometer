@@ -10,13 +10,13 @@ import UIKit
 import Unbox
 import RealmSwift
 
-typealias JSON = Dictionary<String, AnyHashable>
-typealias JSONArray = Array<JSON>
+typealias JSON = [String: AnyHashable]
+typealias JSONArray = [JSON]
 
 public final class TimelineParser {
 
     /// The Id of the oldest retrieved tweet.
-    var maxId: String? = nil
+    var maxId: String?
 
     /// Parse the JSON tweets into Tweet objects.
     ///

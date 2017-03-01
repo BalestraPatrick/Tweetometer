@@ -18,7 +18,7 @@ protocol MenuCoordinatorDelegate: class {
 
 class MenuCoordinator: Coordinator, MenuCoordinatorDelegate {
 
-    var childCoordinators = Array<AnyObject>()
+    var childCoordinators = [AnyObject]()
     
     let controller: MenuPopOverViewController
     let parentCoordinator: HomeCoordinator

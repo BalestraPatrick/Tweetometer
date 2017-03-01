@@ -17,7 +17,7 @@ final class LoginCoordinator: Coordinator, LoginCoordinatorDelegate {
     lazy var controller: LoginViewController = {
         return StoryboardScene.Main.LoginViewController()
     }()
-    var childCoordinators = Array<AnyObject>()
+    var childCoordinators = [AnyObject]()
 
     let homeController: HomeViewController
     let linkOpener = LinkOpener()

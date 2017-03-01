@@ -24,11 +24,11 @@ public class Analytics {
     public func track(event: Event) {
         switch event {
         case let .login(success, error):
-            Answers.logLogin(withMethod: nil, success: NSNumber(booleanLiteral: success), customAttributes: error)
+            Answers.logLogin(withMethod: nil, success: success as NSNumber, customAttributes: error)
         case let .maximumNumberOfTweets(value):
-            Answers.logCustomEvent(withName: "Maximum Number of Tweets", customAttributes: ["value" : value])
+            Answers.logCustomEvent(withName: "Maximum Number of Tweets", customAttributes: ["value": value])
         case let .preferredTwitterClient(value):
-            Answers.logCustomEvent(withName: "Twitter Client", customAttributes: ["value" : value])
+            Answers.logCustomEvent(withName: "Twitter Client", customAttributes: ["value": value])
         }
     }
 }

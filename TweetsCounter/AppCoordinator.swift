@@ -17,7 +17,7 @@ class AppCoordinator: Coordinator {
     let window: UIWindow
     let linkOpener = LinkOpener()
 
-    var childCoordinators = Array<AnyObject>()
+    var childCoordinators = [AnyObject]()
 
     lazy var rootViewController: UINavigationController = {
         return self.window.rootViewController as! UINavigationController
