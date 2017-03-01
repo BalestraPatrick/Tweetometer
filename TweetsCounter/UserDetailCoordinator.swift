@@ -44,7 +44,7 @@ class UserDetailCoordinator: Coordinator, UserDetailCoordinatorDelegate {
         linkOpener.open(hashtag: hashtag)
     }
 
-    func open(tweet: String) {
-        linkOpener.open(tweet: tweet)
+    func open(tweet: String, user: String) {
+        linkOpener.open(tweet: tweet, user: user)
     }
 }

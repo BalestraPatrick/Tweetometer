@@ -85,7 +85,7 @@ class LinkOpener {
     /// Opens a tweet in the default client.
     ///
     /// - Parameter tweet: The tweet id to be opened.
-    func open(tweet: String) {
+    func open(tweet: String, user: String) {
         switch client {
         case .tweetbot:
             urlComponents.scheme = tweetbotScheme
@@ -94,7 +94,7 @@ class LinkOpener {
             urlComponents.scheme = twitterScheme
             urlComponents.path = "/status?id=\(tweet)"
         case .web:
-            let url = URL(string: "https://www.twitter.com/status/\(tweet)")
+            let url = URL(string: "https://mobile.twitter.com/\(user)/status/\(tweet)")
             if let url = url, let coordinator = coordinator {
                 return coordinator.presentSafari(url)
             }

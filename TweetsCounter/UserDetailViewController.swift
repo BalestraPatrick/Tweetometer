@@ -65,8 +65,8 @@ final class UserDetailViewController: UIViewController, UITableViewDelegate, UIT
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // Open tweet in user's preferred client
         guard indexPath.section != 0 else { return }
-        if let tweetId = user?.tweets()[indexPath.row].tweetId {
-            coordinator.open(tweet: tweetId)
+        if let tweetId = user?.tweets()[indexPath.row].tweetId, let userId = user?.screenName {
+            coordinator.open(tweet: tweetId, user: userId)
         }
     }
     
