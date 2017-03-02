@@ -151,7 +151,7 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let count = users?.count ?? 0
-        emptyStateLabel.isHidden = count == 0
+        emptyStateLabel.isHidden = count != 0
         return count
     }
     
