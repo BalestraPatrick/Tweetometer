@@ -1,6 +1,0 @@
-framework module Pods_TweetsCounter {
-  umbrella header "Pods-TweetsCounter-umbrella.h"
-
-  export *
-  module * { export * }
-}
