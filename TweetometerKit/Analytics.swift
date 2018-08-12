@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import Crashlytics
+//import Crashlytics
 
 public enum Event {
     case login(success: Bool, error: [String: Any]?)
@@ -22,13 +22,13 @@ public class Analytics {
     private init() {}
 
     public func track(event: Event) {
-        switch event {
-        case let .login(success, error):
-            Answers.logLogin(withMethod: nil, success: success as NSNumber, customAttributes: error)
-        case let .maximumNumberOfTweets(value):
-            Answers.logCustomEvent(withName: "Maximum Number of Tweets", customAttributes: ["value": value])
-        case let .preferredTwitterClient(value):
-            Answers.logCustomEvent(withName: "Twitter Client", customAttributes: ["value": value])
-        }
+//        switch event {
+//        case let .login(success, error):
+//            Answers.logLogin(withMethod: nil, success: success as NSNumber, customAttributes: error)
+//        case let .maximumNumberOfTweets(value):
+//            Answers.logCustomEvent(withName: "Maximum Number of Tweets", customAttributes: ["value": value])
+//        case let .preferredTwitterClient(value):
+//            Answers.logCustomEvent(withName: "Twitter Client", customAttributes: ["value": value])
+//        }
     }
 }

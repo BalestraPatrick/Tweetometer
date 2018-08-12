@@ -8,9 +8,6 @@
 
 import UIKit
 import TweetometerKit
-import RealmSwift
-import PullToRefresh
-import Whisper
 
 enum TableViewStatus {
     case refreshing
@@ -43,8 +40,8 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
             self.refreshTimeline()
         }
         
-        users = DataManager.realm().objects(User.self).sorted(byKeyPath: "count", ascending: false)
-        notificationToken = users?.addNotificationBlock(tableView.applyChanges)
+//        users = DataManager.realm().objects(User.self).sorted(byKeyPath: "count", ascending: false)
+//        notificationToken = users?.addNotificationBlock(tableView.applyChanges)
 
         // Check if a user is logged in
         if session.isUserLoggedIn() == false {

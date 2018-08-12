@@ -7,8 +7,8 @@
 //
 
 import UIKit
-import SwiftyUserDefaults
-import Crashlytics
+//import SwiftyUserDefaults
+//import Crashlytics
 
 struct Key {
     static let maximumNumberOfTweets = "maximumNumberOfTweets"
@@ -55,41 +55,41 @@ public final class Settings {
     /// Number of tweets to be retrieved and analyzed. Default value is 200.
     public var maximumNumberOfTweets: Int {
         didSet {
-            Defaults[Key.maximumNumberOfTweets] = maximumNumberOfTweets
+//            Defaults[Key.maximumNumberOfTweets] = maximumNumberOfTweets
         }
     }
 
     /// The preferred client that the user would like to use.
     public var preferredTwitterClient: TwitterClient {
         didSet {
-            Defaults[Key.preferredTwitterClient] = TwitterClient.toIndex(preferredTwitterClient)
+//            Defaults[Key.preferredTwitterClient] = TwitterClient.toIndex(preferredTwitterClient)
         }
     }
 
     /// The date of the last update with the Twitter APIs.
     public var lastUpdate: Date {
         didSet {
-            Defaults[Key.lastUpdate] = lastUpdate
+//            Defaults[Key.lastUpdate] = lastUpdate
         }
     }
     
     private init() {
-        maximumNumberOfTweets = Defaults[Key.maximumNumberOfTweets].int ?? 1000
-        lastUpdate = Defaults[Key.lastUpdate].date ?? Date(timeIntervalSince1970: 0)
-        preferredTwitterClient = TwitterClient.fromIndex(Defaults[Key.preferredTwitterClient].int ?? 0)
-        trackEvents()
-
-        // Convert initial values to TwitterClient enum case
-        if let v = Defaults[Key.preferredTwitterClient].int {
-            switch v {
-            case 0:  preferredTwitterClient = .web
-            case 1: preferredTwitterClient = .twitter
-            case 2: preferredTwitterClient = .tweetbot
-            default: preferredTwitterClient = .web
-            }
-        } else {
-            preferredTwitterClient = .web
-        }
+        maximumNumberOfTweets = 800//Defaults[Key.maximumNumberOfTweets].int ?? 1000
+        lastUpdate = Date(timeIntervalSince1970: 0)//Defaults[Key.lastUpdate].date ?? Date(timeIntervalSince1970: 0)
+        preferredTwitterClient = .tweetbot//TwitterClient.fromIndex(Defaults[Key.preferredTwitterClient].int ?? 0)
+//        trackEvents()
+//
+//        // Convert initial values to TwitterClient enum case
+//        if let v = Defaults[Key.preferredTwitterClient].int {
+//            switch v {
+//            case 0:  preferredTwitterClient = .web
+//            case 1: preferredTwitterClient = .twitter
+//            case 2: preferredTwitterClient = .tweetbot
+//            default: preferredTwitterClient = .web
+//            }
+//        } else {
+//            preferredTwitterClient = .web
+//        }
     }
 
     /// Track Analytics events

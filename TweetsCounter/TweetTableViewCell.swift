@@ -8,11 +8,10 @@
 
 import UIKit
 import TweetometerKit
-import ActiveLabel
 
 class TweetTableViewCell: UITableViewCell {
     
-    @IBOutlet weak var tweetLabel: ActiveLabel!
+//    @IBOutlet weak var tweetLabel: ActiveLabel!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var retweetsCountLabel: UILabel!
     @IBOutlet weak var likesCountLabel: UILabel!
@@ -32,13 +31,13 @@ class TweetTableViewCell: UITableViewCell {
         likesCountLabel.textColor = .black
 
         // Set up Tweet label
-        tweetLabel.configureTweet(URLHandler: {
-            self.coordinator.presentSafari($0)
-        }, hashtagHandler: {
-            self.coordinator.open(hashtag: $0)
-        }, mentionHandler: {
-            self.coordinator.open(user: $0)
-        })
+//        tweetLabel.configureTweet(URLHandler: {
+//            self.coordinator.presentSafari($0)
+//        }, hashtagHandler: {
+//            self.coordinator.open(hashtag: $0)
+//        }, mentionHandler: {
+//            self.coordinator.open(user: $0)
+//        })
     }
     
     override func setHighlighted(_ highlighted: Bool, animated: Bool) {
