@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "AE277DE91BD4E6DB004E151C"
-               BuildableName = "TweetsCounter.app"
-               BlueprintName = "TweetsCounter"
-               ReferencedContainer = "container:TweetsCounter.xcodeproj">
+               BuildableName = "Tweetometer.app"
+               BlueprintName = "Tweetometer"
+               ReferencedContainer = "container:Tweetometer.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -34,9 +34,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "AE277DFD1BD4E6DB004E151C"
-               BuildableName = "TweetsCounterTests.xctest"
-               BlueprintName = "TweetsCounterTests"
-               ReferencedContainer = "container:TweetsCounter.xcodeproj">
+               BuildableName = "TweetometerTests.xctest"
+               BlueprintName = "TweetometerTests"
+               ReferencedContainer = "container:Tweetometer.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
@@ -46,7 +46,7 @@
                BlueprintIdentifier = "AE277E081BD4E6DB004E151C"
                BuildableName = "TweetsCounterUITests.xctest"
                BlueprintName = "TweetsCounterUITests"
-               ReferencedContainer = "container:TweetsCounter.xcodeproj">
+               ReferencedContainer = "container:Tweetometer.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -54,9 +54,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "AE277DE91BD4E6DB004E151C"
-            BuildableName = "TweetsCounter.app"
-            BlueprintName = "TweetsCounter"
-            ReferencedContainer = "container:TweetsCounter.xcodeproj">
+            BuildableName = "Tweetometer.app"
+            BlueprintName = "Tweetometer"
+            ReferencedContainer = "container:Tweetometer.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -77,9 +77,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "AE277DE91BD4E6DB004E151C"
-            BuildableName = "TweetsCounter.app"
-            BlueprintName = "TweetsCounter"
-            ReferencedContainer = "container:TweetsCounter.xcodeproj">
+            BuildableName = "Tweetometer.app"
+            BlueprintName = "Tweetometer"
+            ReferencedContainer = "container:Tweetometer.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <EnvironmentVariables>
@@ -103,9 +103,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "AE277DE91BD4E6DB004E151C"
-            BuildableName = "TweetsCounter.app"
-            BlueprintName = "TweetsCounter"
-            ReferencedContainer = "container:TweetsCounter.xcodeproj">
+            BuildableName = "Tweetometer.app"
+            BlueprintName = "Tweetometer"
+            ReferencedContainer = "container:Tweetometer.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

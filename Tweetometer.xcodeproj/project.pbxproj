@@ -126,14 +126,14 @@
 		AE1FCA1E1E1F055E001B4229 /* TimelineParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelineParser.swift; sourceTree = "<group>"; };
 		AE1FCA201E1F0571001B4229 /* TwitterSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterSession.swift; sourceTree = "<group>"; };
 		AE247A741DF1C61300C87A29 /* Images.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
-		AE277DEA1BD4E6DB004E151C /* TweetsCounter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TweetsCounter.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AE277DEA1BD4E6DB004E151C /* Tweetometer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tweetometer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE277DED1BD4E6DB004E151C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AE277DEF1BD4E6DB004E151C /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		AE277DF21BD4E6DB004E151C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		AE277DF41BD4E6DB004E151C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AE277DF71BD4E6DB004E151C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AE277DF91BD4E6DB004E151C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		AE277DFE1BD4E6DB004E151C /* TweetsCounterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TweetsCounterTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		AE277DFE1BD4E6DB004E151C /* TweetometerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TweetometerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE277E021BD4E6DB004E151C /* TwitterRequestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwitterRequestTests.swift; sourceTree = "<group>"; };
 		AE277E041BD4E6DB004E151C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AE292B3C1DFDF009002B91AD /* MenuCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuCoordinator.swift; sourceTree = "<group>"; };
@@ -268,8 +268,8 @@
 		AE277DE11BD4E6DB004E151C = {
 			isa = PBXGroup;
 			children = (
-				AE277DEC1BD4E6DB004E151C /* TweetsCounter */,
-				AE277E011BD4E6DB004E151C /* TweetsCounterTests */,
+				AE277DEC1BD4E6DB004E151C /* Tweetometer */,
+				AE277E011BD4E6DB004E151C /* TweetometerTests */,
 				AE45DC3C1E0FFDAC00CD2190 /* TweetometerKit */,
 				AE277DEB1BD4E6DB004E151C /* Products */,
 				AE56929921207F76001363F1 /* Whisper.framework */,
@@ -282,14 +282,14 @@
 		AE277DEB1BD4E6DB004E151C /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				AE277DEA1BD4E6DB004E151C /* TweetsCounter.app */,
-				AE277DFE1BD4E6DB004E151C /* TweetsCounterTests.xctest */,
+				AE277DEA1BD4E6DB004E151C /* Tweetometer.app */,
+				AE277DFE1BD4E6DB004E151C /* TweetometerTests.xctest */,
 				AE45DC3B1E0FFDAC00CD2190 /* TweetometerKit.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		AE277DEC1BD4E6DB004E151C /* TweetsCounter */ = {
+		AE277DEC1BD4E6DB004E151C /* Tweetometer */ = {
 			isa = PBXGroup;
 			children = (
 				AEB059731DE47E34002BBE79 /* Tweetometer.entitlements */,
@@ -303,10 +303,10 @@
 				AE277DF41BD4E6DB004E151C /* Assets.xcassets */,
 				AE277DF91BD4E6DB004E151C /* Info.plist */,
 			);
-			path = TweetsCounter;
+			path = Tweetometer;
 			sourceTree = "<group>";
 		};
-		AE277E011BD4E6DB004E151C /* TweetsCounterTests */ = {
+		AE277E011BD4E6DB004E151C /* TweetometerTests */ = {
 			isa = PBXGroup;
 			children = (
 				AEF1F2121C64F10000591E46 /* TimelineParserTests.swift */,
@@ -319,7 +319,7 @@
 				AE6675911C3C13DB00DD47AB /* JSON */,
 				AE277E041BD4E6DB004E151C /* Info.plist */,
 			);
-			path = TweetsCounterTests;
+			path = TweetometerTests;
 			sourceTree = "<group>";
 		};
 		AE45DC3C1E0FFDAC00CD2190 /* TweetometerKit */ = {
@@ -400,9 +400,9 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		AE277DE91BD4E6DB004E151C /* TweetsCounter */ = {
+		AE277DE91BD4E6DB004E151C /* Tweetometer */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = AE277E121BD4E6DB004E151C /* Build configuration list for PBXNativeTarget "TweetsCounter" */;
+			buildConfigurationList = AE277E121BD4E6DB004E151C /* Build configuration list for PBXNativeTarget "Tweetometer" */;
 			buildPhases = (
 				AE277DE61BD4E6DB004E151C /* Sources */,
 				AE277DE71BD4E6DB004E151C /* Frameworks */,
@@ -415,14 +415,14 @@
 			dependencies = (
 				AE45DC411E0FFDAC00CD2190 /* PBXTargetDependency */,
 			);
-			name = TweetsCounter;
+			name = Tweetometer;
 			productName = TweetsCounter;
-			productReference = AE277DEA1BD4E6DB004E151C /* TweetsCounter.app */;
+			productReference = AE277DEA1BD4E6DB004E151C /* Tweetometer.app */;
 			productType = "com.apple.product-type.application";
 		};
-		AE277DFD1BD4E6DB004E151C /* TweetsCounterTests */ = {
+		AE277DFD1BD4E6DB004E151C /* TweetometerTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = AE277E151BD4E6DB004E151C /* Build configuration list for PBXNativeTarget "TweetsCounterTests" */;
+			buildConfigurationList = AE277E151BD4E6DB004E151C /* Build configuration list for PBXNativeTarget "TweetometerTests" */;
 			buildPhases = (
 				AE277DFA1BD4E6DB004E151C /* Sources */,
 				AE277DFB1BD4E6DB004E151C /* Frameworks */,
@@ -433,9 +433,9 @@
 			dependencies = (
 				AE277E001BD4E6DB004E151C /* PBXTargetDependency */,
 			);
-			name = TweetsCounterTests;
+			name = TweetometerTests;
 			productName = TweetsCounterTests;
-			productReference = AE277DFE1BD4E6DB004E151C /* TweetsCounterTests.xctest */;
+			productReference = AE277DFE1BD4E6DB004E151C /* TweetometerTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		AE45DC3A1E0FFDAC00CD2190 /* TweetometerKit */ = {
@@ -487,7 +487,7 @@
 					};
 				};
 			};
-			buildConfigurationList = AE277DE51BD4E6DB004E151C /* Build configuration list for PBXProject "TweetsCounter" */;
+			buildConfigurationList = AE277DE51BD4E6DB004E151C /* Build configuration list for PBXProject "Tweetometer" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -500,8 +500,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				AE277DE91BD4E6DB004E151C /* TweetsCounter */,
-				AE277DFD1BD4E6DB004E151C /* TweetsCounterTests */,
+				AE277DE91BD4E6DB004E151C /* Tweetometer */,
+				AE277DFD1BD4E6DB004E151C /* TweetometerTests */,
 				AE45DC3A1E0FFDAC00CD2190 /* TweetometerKit */,
 			);
 		};
@@ -634,7 +634,7 @@
 /* Begin PBXTargetDependency section */
 		AE277E001BD4E6DB004E151C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = AE277DE91BD4E6DB004E151C /* TweetsCounter */;
+			target = AE277DE91BD4E6DB004E151C /* Tweetometer */;
 			targetProxy = AE277DFF1BD4E6DB004E151C /* PBXContainerItemProxy */;
 		};
 		AE45DC411E0FFDAC00CD2190 /* PBXTargetDependency */ = {
@@ -787,7 +787,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = TweetsCounter/Tweetometer.entitlements;
+				CODE_SIGN_ENTITLEMENTS = Tweetometer/Tweetometer.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -795,7 +795,7 @@
 					"$(PROJECT_DIR)/TweetsCounter",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = TweetsCounter/Info.plist;
+				INFOPLIST_FILE = Tweetometer/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
@@ -814,10 +814,6 @@
 					"\"CoreMedia\"",
 					"-framework",
 					"\"CoreText\"",
-					"-framework",
-					"\"Crashlytics\"",
-					"-framework",
-					"\"Fabric\"",
 					"-framework",
 					"\"Foundation\"",
 					"-framework",
@@ -851,14 +847,14 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = TweetsCounter/Tweetometer.entitlements;
+				CODE_SIGN_ENTITLEMENTS = Tweetometer/Tweetometer.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/TweetsCounter",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = TweetsCounter/Info.plist;
+				INFOPLIST_FILE = Tweetometer/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
@@ -877,10 +873,6 @@
 					"\"CoreMedia\"",
 					"-framework",
 					"\"CoreText\"",
-					"-framework",
-					"\"Crashlytics\"",
-					"-framework",
-					"\"Fabric\"",
 					"-framework",
 					"\"Foundation\"",
 					"-framework",
@@ -919,7 +911,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 3.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TweetsCounter.app/TweetsCounter";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Tweetometer.app/Tweetometer";
 			};
 			name = Debug;
 		};
@@ -933,7 +925,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.patrickbalestra.TweetsCounterTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TweetsCounter.app/TweetsCounter";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Tweetometer.app/Tweetometer";
 			};
 			name = Release;
 		};
@@ -996,7 +988,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		AE277DE51BD4E6DB004E151C /* Build configuration list for PBXProject "TweetsCounter" */ = {
+		AE277DE51BD4E6DB004E151C /* Build configuration list for PBXProject "Tweetometer" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				AE277E101BD4E6DB004E151C /* Debug */,
@@ -1005,7 +997,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		AE277E121BD4E6DB004E151C /* Build configuration list for PBXNativeTarget "TweetsCounter" */ = {
+		AE277E121BD4E6DB004E151C /* Build configuration list for PBXNativeTarget "Tweetometer" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				AE277E131BD4E6DB004E151C /* Debug */,
@@ -1014,7 +1006,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		AE277E151BD4E6DB004E151C /* Build configuration list for PBXNativeTarget "TweetsCounterTests" */ = {
+		AE277E151BD4E6DB004E151C /* Build configuration list for PBXNativeTarget "TweetometerTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				AE277E161BD4E6DB004E151C /* Debug */,
