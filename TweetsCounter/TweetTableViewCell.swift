@@ -8,6 +8,7 @@
 
 import UIKit
 import TweetometerKit
+//import ActiveLabel
 
 class TweetTableViewCell: UITableViewCell {
     
@@ -50,7 +51,7 @@ class TweetTableViewCell: UITableViewCell {
     }
     
     func configure(_ tweet: Tweet, indexPath: IndexPath, coordinator: UserDetailCoordinator) {
-        tweetLabel.text = tweet.text
+//        tweetLabel.text = tweet.text
         dateLabel.text = tweet.createdAt.tweetDateFormatted()
         retweetsCountLabel.text = "\(tweet.retweetsCount)"
         likesCountLabel.text = "\(tweet.likesCount)"

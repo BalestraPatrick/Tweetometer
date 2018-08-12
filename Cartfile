@@ -1,0 +1,5 @@
+github "BalestraPatrick/ValueStepper"
+github "IcaliaLabs/Presentr"
+github "hyperoslo/Whisper"
+
+git "https://github.com/BalestraPatrick/PullToRefresh"

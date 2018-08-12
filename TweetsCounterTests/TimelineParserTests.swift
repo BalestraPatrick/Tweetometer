@@ -7,24 +7,9 @@
 //
 
 import XCTest
-import RealmSwift
 @testable import TweetometerKit
 
 class TimelineParserTests: XCTestCase {
-
-    var realm: Realm!
-
-    override func setUp() {
-        super.setUp()
-         realm = DataManager.realm()
-    }
-    
-    override func tearDown() {
-        super.tearDown()
-        try! realm.write {
-            realm.deleteAll()
-        }
-    }
     
     func testParseTweets() {
         let jsonPath = Bundle(for: type(of: self)).path(forResource: "timeline_tweets", ofType: "json")

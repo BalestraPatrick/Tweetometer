@@ -43,6 +43,14 @@
 		AE45DC431E0FFDAC00CD2190 /* TweetometerKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = AE45DC3B1E0FFDAC00CD2190 /* TweetometerKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		AE506B561E12D11700DE23B0 /* NetworkActivityIndicatorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE506B551E12D11700DE23B0 /* NetworkActivityIndicatorManager.swift */; };
 		AE506B581E12D4B600DE23B0 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE506B571E12D4B600DE23B0 /* Notification.swift */; };
+		AE56928D21207EC8001363F1 /* Presentr.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE56928C21207EC8001363F1 /* Presentr.framework */; };
+		AE56928E21207EC8001363F1 /* Presentr.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = AE56928C21207EC8001363F1 /* Presentr.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		AE56929021207ECD001363F1 /* PullToRefresh.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE56928F21207ECC001363F1 /* PullToRefresh.framework */; };
+		AE56929121207ECD001363F1 /* PullToRefresh.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = AE56928F21207ECC001363F1 /* PullToRefresh.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		AE56929321207ED2001363F1 /* ValueStepper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE56929221207ED1001363F1 /* ValueStepper.framework */; };
+		AE56929421207ED2001363F1 /* ValueStepper.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = AE56929221207ED1001363F1 /* ValueStepper.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		AE56929A21207F76001363F1 /* Whisper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE56929921207F76001363F1 /* Whisper.framework */; };
+		AE56929B21207F76001363F1 /* Whisper.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = AE56929921207F76001363F1 /* Whisper.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		AE5F0AE41C65056D00B0C157 /* timeline_tweets.json in Resources */ = {isa = PBXBuildFile; fileRef = AE5F0AE31C65056D00B0C157 /* timeline_tweets.json */; };
 		AE6352131C66178400799157 /* MenuOptionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6352121C66178400799157 /* MenuOptionTableViewCell.swift */; };
 		AE6352151C66226800799157 /* UserDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6352141C66226800799157 /* UserDetailViewController.swift */; };
@@ -88,7 +96,11 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				AE56929121207ECD001363F1 /* PullToRefresh.framework in Embed Frameworks */,
 				AE45DC431E0FFDAC00CD2190 /* TweetometerKit.framework in Embed Frameworks */,
+				AE56929421207ED2001363F1 /* ValueStepper.framework in Embed Frameworks */,
+				AE56928E21207EC8001363F1 /* Presentr.framework in Embed Frameworks */,
+				AE56929B21207F76001363F1 /* Whisper.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -104,8 +116,6 @@
 		AE0A0DB21E11500B0088AF06 /* LinkOpenerHashtagTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkOpenerHashtagTests.swift; sourceTree = "<group>"; };
 		AE0ADCA81E1A9E5B000021B3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Settings.storyboard; sourceTree = "<group>"; };
 		AE0ADCAB1E1A9E78000021B3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Login.storyboard; sourceTree = "<group>"; };
-		AE0C38421BE58815003A858F /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
-		AE0C38481BE589B8003A858F /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
 		AE0FA7C61C0DEBDE00EDB0A1 /* ProfilePictureButtonItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfilePictureButtonItem.swift; sourceTree = "<group>"; };
 		AE15F36B1C62A1BD00EE2F82 /* MenuPopOverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuPopOverViewController.swift; sourceTree = "<group>"; };
 		AE1FCA141E1EFCC3001B4229 /* Analytics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Analytics.swift; sourceTree = "<group>"; };
@@ -116,7 +126,6 @@
 		AE1FCA1E1E1F055E001B4229 /* TimelineParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelineParser.swift; sourceTree = "<group>"; };
 		AE1FCA201E1F0571001B4229 /* TwitterSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterSession.swift; sourceTree = "<group>"; };
 		AE247A741DF1C61300C87A29 /* Images.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
-		AE26EDEF1BEE1293000E9829 /* RxAlamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxAlamofire.framework; path = "Pods/../build/Debug-iphoneos/RxAlamofire.framework"; sourceTree = "<group>"; };
 		AE277DEA1BD4E6DB004E151C /* TweetsCounter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TweetsCounter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE277DED1BD4E6DB004E151C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AE277DEF1BD4E6DB004E151C /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -138,29 +147,23 @@
 		AE45DC3E1E0FFDAC00CD2190 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AE506B551E12D11700DE23B0 /* NetworkActivityIndicatorManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkActivityIndicatorManager.swift; sourceTree = "<group>"; };
 		AE506B571E12D4B600DE23B0 /* Notification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
+		AE56928C21207EC8001363F1 /* Presentr.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Presentr.framework; path = Carthage/Build/iOS/Presentr.framework; sourceTree = "<group>"; };
+		AE56928F21207ECC001363F1 /* PullToRefresh.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PullToRefresh.framework; path = Carthage/Build/iOS/PullToRefresh.framework; sourceTree = "<group>"; };
+		AE56929221207ED1001363F1 /* ValueStepper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ValueStepper.framework; path = Carthage/Build/iOS/ValueStepper.framework; sourceTree = "<group>"; };
+		AE56929921207F76001363F1 /* Whisper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Whisper.framework; path = Carthage/Build/iOS/Whisper.framework; sourceTree = "<group>"; };
 		AE5F0AE31C65056D00B0C157 /* timeline_tweets.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = timeline_tweets.json; sourceTree = "<group>"; };
 		AE6352121C66178400799157 /* MenuOptionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuOptionTableViewCell.swift; sourceTree = "<group>"; };
 		AE6352141C66226800799157 /* UserDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDetailViewController.swift; sourceTree = "<group>"; };
 		AE66758F1C3C13D500DD47AB /* users_show.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = users_show.json; sourceTree = "<group>"; };
-		AE791C2E1CD4E24D00F98F61 /* Pods.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Pods.framework; path = "Pods/../build/Debug-iphoneos/Pods.framework"; sourceTree = "<group>"; };
 		AE9670061C945ADF00189697 /* HomeCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeCoordinator.swift; sourceTree = "<group>"; };
 		AE9670091C94604700189697 /* UserDetailCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDetailCoordinator.swift; sourceTree = "<group>"; };
 		AEA2F4961C2806C700777304 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		AEAFB1051C7A0E270030AB33 /* TweetTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetTableViewCell.swift; sourceTree = "<group>"; };
 		AEB059731DE47E34002BBE79 /* Tweetometer.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Tweetometer.entitlements; sourceTree = "<group>"; };
 		AEB280941C79FC0C009C64EE /* UIViewController+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Utils.swift"; sourceTree = "<group>"; };
-		AEBDAE311BE5748C00D8E8C3 /* RxAlamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxAlamofire.framework; path = "Pods/../build/Debug-iphoneos/RxAlamofire.framework"; sourceTree = "<group>"; };
-		AEBDAE331BE576DF00D8E8C3 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = "Pods/../build/Debug-iphoneos/Alamofire.framework"; sourceTree = "<group>"; };
-		AEBDAE351BE576E300D8E8C3 /* RxAlamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxAlamofire.framework; path = "Pods/../build/Debug-iphoneos/RxAlamofire.framework"; sourceTree = "<group>"; };
-		AEBDAE371BE576E700D8E8C3 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = "Pods/../build/Debug-iphoneos/RxSwift.framework"; sourceTree = "<group>"; };
-		AEBDAE391BE57A7E00D8E8C3 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = "Pods/../build/Debug-iphoneos/Alamofire.framework"; sourceTree = "<group>"; };
-		AEBDAE3A1BE57A7E00D8E8C3 /* RxAlamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxAlamofire.framework; path = "Pods/../build/Debug-iphoneos/RxAlamofire.framework"; sourceTree = "<group>"; };
-		AEBDAE3B1BE57A7E00D8E8C3 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = "Pods/../build/Debug-iphoneos/RxSwift.framework"; sourceTree = "<group>"; };
 		AEC95CF11C81AED900811BAC /* LinkOpener.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkOpener.swift; sourceTree = "<group>"; };
 		AED0A1F51C5E01BA002D40A4 /* ApplicationStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationStyle.swift; sourceTree = "<group>"; };
 		AEDC61E81CD4D665005324C6 /* LinkOpenerUserTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkOpenerUserTests.swift; sourceTree = "<group>"; };
-		AEE20A6A1BEE1AA900A029CF /* RxAlamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxAlamofire.framework; path = "Pods/../build/Debug-iphoneos/RxAlamofire.framework"; sourceTree = "<group>"; };
-		AEE20A6C1BEE1AAF00A029CF /* Pods.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Pods.framework; path = "Pods/../build/Debug-iphoneos/Pods.framework"; sourceTree = "<group>"; };
 		AEE22BAA1CD72DF1003CA241 /* ProfilePictureImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfilePictureImageView.swift; sourceTree = "<group>"; };
 		AEE4D8071BF9BFD100C9CA08 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		AEE75E3A1E13D93E00377A46 /* UITableView+Screenshot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+Screenshot.swift"; sourceTree = "<group>"; };
@@ -169,7 +172,6 @@
 		AEF1F2121C64F10000591E46 /* TimelineParserTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelineParserTests.swift; sourceTree = "<group>"; };
 		AEF598E61CD679B40055E88C /* UserDetailsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDetailsTableViewCell.swift; sourceTree = "<group>"; };
 		AEFBEBD41E1D3070009BCD34 /* ActiveLabel+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ActiveLabel+Utils.swift"; sourceTree = "<group>"; };
-		B560E69F32810C963EEC14D4 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -177,7 +179,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AE56929021207ECD001363F1 /* PullToRefresh.framework in Frameworks */,
 				AE45DC421E0FFDAC00CD2190 /* TweetometerKit.framework in Frameworks */,
+				AE56929321207ED2001363F1 /* ValueStepper.framework in Frameworks */,
+				AE56928D21207EC8001363F1 /* Presentr.framework in Frameworks */,
+				AE56929A21207F76001363F1 /* Whisper.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -198,27 +204,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		75DDA918902E9559544BBC6E /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				AE791C2E1CD4E24D00F98F61 /* Pods.framework */,
-				AEE20A6C1BEE1AAF00A029CF /* Pods.framework */,
-				AEE20A6A1BEE1AA900A029CF /* RxAlamofire.framework */,
-				AE26EDEF1BEE1293000E9829 /* RxAlamofire.framework */,
-				AE0C38481BE589B8003A858F /* RxSwift.framework */,
-				AE0C38421BE58815003A858F /* Alamofire.framework */,
-				AEBDAE391BE57A7E00D8E8C3 /* Alamofire.framework */,
-				AEBDAE3A1BE57A7E00D8E8C3 /* RxAlamofire.framework */,
-				AEBDAE3B1BE57A7E00D8E8C3 /* RxSwift.framework */,
-				AEBDAE371BE576E700D8E8C3 /* RxSwift.framework */,
-				AEBDAE351BE576E300D8E8C3 /* RxAlamofire.framework */,
-				AEBDAE331BE576DF00D8E8C3 /* Alamofire.framework */,
-				AEBDAE311BE5748C00D8E8C3 /* RxAlamofire.framework */,
-				B560E69F32810C963EEC14D4 /* Pods.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		AE07A0D81C5D4AF900514B1C /* View Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -287,7 +272,10 @@
 				AE277E011BD4E6DB004E151C /* TweetsCounterTests */,
 				AE45DC3C1E0FFDAC00CD2190 /* TweetometerKit */,
 				AE277DEB1BD4E6DB004E151C /* Products */,
-				75DDA918902E9559544BBC6E /* Frameworks */,
+				AE56929921207F76001363F1 /* Whisper.framework */,
+				AE56929221207ED1001363F1 /* ValueStepper.framework */,
+				AE56928F21207ECC001363F1 /* PullToRefresh.framework */,
+				AE56928C21207EC8001363F1 /* Presentr.framework */,
 			);
 			sourceTree = "<group>";
 		};
@@ -419,8 +407,8 @@
 				AE277DE61BD4E6DB004E151C /* Sources */,
 				AE277DE71BD4E6DB004E151C /* Frameworks */,
 				AE277DE81BD4E6DB004E151C /* Resources */,
-				AE67B86E1C50C24400BFB697 /* ShellScript */,
 				AE45DC471E0FFDAC00CD2190 /* Embed Frameworks */,
+				AE45EEB42120673C003072F6 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -551,18 +539,26 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		AE67B86E1C50C24400BFB697 /* ShellScript */ = {
+		AE45EEB42120673C003072F6 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/Presentr.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/ValueStepper.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/PullToRefresh.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Whisper.framework",
 			);
 			outputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Presentr.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/ValueStepper.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/PullToRefresh.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Whisper.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if which swiftlint >/dev/null; then\n    swiftlint\nelse\n    echo \"SwiftLint does not exist, download from https://github.com/realm/SwiftLint\"\nfi";
+			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -797,6 +793,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/TweetsCounter",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = TweetsCounter/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
@@ -809,10 +806,6 @@
 					"\"AVFoundation\"",
 					"-framework",
 					"\"Accounts\"",
-					"-framework",
-					"\"ActiveLabel\"",
-					"-framework",
-					"\"Alamofire\"",
 					"-framework",
 					"\"CoreData\"",
 					"-framework",
@@ -828,8 +821,6 @@
 					"-framework",
 					"\"Foundation\"",
 					"-framework",
-					"\"Keys\"",
-					"-framework",
 					"\"PullToRefresh\"",
 					"-framework",
 					"\"QuartzCore\"",
@@ -840,17 +831,9 @@
 					"-framework",
 					"\"Social\"",
 					"-framework",
-					"\"SwiftyUserDefaults\"",
-					"-framework",
 					"\"SystemConfiguration\"",
 					"-framework",
-					"\"TwitterCore\"",
-					"-framework",
-					"\"TwitterKit\"",
-					"-framework",
 					"\"UIKit\"",
-					"-framework",
-					"\"Unbox\"",
 					"-framework",
 					"\"ValueStepper\"",
 					"$(inherited)",
@@ -873,6 +856,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/TweetsCounter",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = TweetsCounter/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
@@ -885,10 +869,6 @@
 					"\"AVFoundation\"",
 					"-framework",
 					"\"Accounts\"",
-					"-framework",
-					"\"ActiveLabel\"",
-					"-framework",
-					"\"Alamofire\"",
 					"-framework",
 					"\"CoreData\"",
 					"-framework",
@@ -904,8 +884,6 @@
 					"-framework",
 					"\"Foundation\"",
 					"-framework",
-					"\"Keys\"",
-					"-framework",
 					"\"PullToRefresh\"",
 					"-framework",
 					"\"QuartzCore\"",
@@ -916,17 +894,9 @@
 					"-framework",
 					"\"Social\"",
 					"-framework",
-					"\"SwiftyUserDefaults\"",
-					"-framework",
 					"\"SystemConfiguration\"",
 					"-framework",
-					"\"TwitterCore\"",
-					"-framework",
-					"\"TwitterKit\"",
-					"-framework",
 					"\"UIKit\"",
-					"-framework",
-					"\"Unbox\"",
 					"-framework",
 					"\"ValueStepper\"",
 					"$(inherited)",

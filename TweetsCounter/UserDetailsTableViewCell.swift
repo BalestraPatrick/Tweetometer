@@ -8,12 +8,12 @@
 
 import UIKit
 import TweetometerKit
-import ActiveLabel
+//import ActiveLabel
 
 class UserDetailsTableViewCell: UITableViewCell {
     
     @IBOutlet weak var profileImage: ProfilePictureImageView!
-    @IBOutlet weak var descriptionLabel: ActiveLabel!
+//    @IBOutlet weak var descriptionLabel: ActiveLabel!
     @IBOutlet weak var totalTweetsCountLabel: UILabel!
     @IBOutlet weak var tweetsCountLabel: UILabel!
     @IBOutlet weak var retweetsCountLabel: UILabel!
@@ -47,9 +47,9 @@ class UserDetailsTableViewCell: UITableViewCell {
 
     func configure(_ user: User, coordinator: UserDetailCoordinator) {
         backgroundColor = .backgroundBlue()
-        descriptionLabel.text = user.userDescription
+//        descriptionLabel.text = user.userDescription
         if let stringURL = user.profileImageURL {
-            profileImage.af_setImage(withURL: URL(string: stringURL)!, placeholderImage: UIImage(asset: .placeholder))
+//            profileImage.af_setImage(withURL: URL(string: stringURL)!, placeholderImage: UIImage(asset: .placeholder))
         }
 
         totalTweetsCount = user.tweetsCount()
@@ -60,12 +60,12 @@ class UserDetailsTableViewCell: UITableViewCell {
         self.coordinator = coordinator
 
         // Set up Tweet label
-        descriptionLabel.configureBio(URLHandler: {
-            self.coordinator.presentSafari($0)
-        }, hashtagHandler: {
-            self.coordinator.open(hashtag: $0)
-        }, mentionHandler: {
-            self.coordinator.open(user: $0)
-        })
+//        descriptionLabel.configureBio(URLHandler: {
+//            self.coordinator.presentSafari($0)
+//        }, hashtagHandler: {
+//            self.coordinator.open(hashtag: $0)
+//        }, mentionHandler: {
+//            self.coordinator.open(user: $0)
+//        })
     }
 }

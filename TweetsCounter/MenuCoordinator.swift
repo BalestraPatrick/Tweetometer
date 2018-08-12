@@ -59,7 +59,7 @@ class MenuCoordinator: Coordinator, MenuCoordinatorDelegate {
         parentCoordinator.controller.present(activity, animated: true)    }
 
     func logout() {
-        DataManager.logOut()
+//        DataManager.logOut()
         controller.dismiss(animated: false)
         parentCoordinator.presentLogin()
     }

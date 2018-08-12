@@ -1,0 +1,6 @@
+framework module ValueStepper {
+  umbrella header "ValueStepper-iOS10.2-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -1,0 +1,8 @@
+language: objective-c
+osx_image: xcode9
+before_install:
+- gem install scan
+- scan --version
+install: true
+script:
+- scan -p "ActiveLabel.xcodeproj" -s "ActiveLabel"

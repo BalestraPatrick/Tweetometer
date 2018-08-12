@@ -1,0 +1,4 @@
+github "BalestraPatrick/PullToRefresh" "2.0.2"
+github "BalestraPatrick/ValueStepper" "1.5.1"
+github "IcaliaLabs/Presentr" "1.3.2"
+github "hyperoslo/Whisper" "6.0.2"

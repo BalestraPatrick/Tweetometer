@@ -85,8 +85,8 @@ final class UserTableViewCell: UITableViewCell {
         numberOfFollowing = user.followingCount
         numberOfTweets = user.tweets().count
         index = indexPath.row
-        if let stringURL = user.profileImageURL, let URL = URL(string: stringURL) {
-            profilePictureImageView.af_setImage(withURL: URL, placeholderImage: UIImage(asset: .placeholder))
-        }
+//        if let stringURL = user.profileImageURL, let URL = URL(string: stringURL) {
+//            profilePictureImageView.af_setImage(withURL: URL, placeholderImage: UIImage(asset: .placeholder))
+//        }
     }
 }

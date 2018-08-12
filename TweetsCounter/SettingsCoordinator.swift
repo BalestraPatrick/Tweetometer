@@ -62,7 +62,7 @@ final class SettingsCoordinator: NSObject, Coordinator, SettingsCoordinatorDeleg
 
     func presentEmailSupport() {
         guard MFMailComposeViewController.canSendMail() else { return }
-        mailController.mailComposeDelegate = self
+//        mailController.mailComposeDelegate = self
         controller.present(mailController, animated: true)
     }
 
@@ -91,9 +91,9 @@ final class SettingsCoordinator: NSObject, Coordinator, SettingsCoordinatorDeleg
 
 // MARK: MFMailComposeViewControllerDelegate
 
-extension SettingsCoordinator: MFMailComposeViewControllerDelegate {
-
-    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
-        controller.dismiss(animated: true)
-    }
-}
+//extension SettingsCoordinator: MFMailComposeViewControllerDelegate {
+//
+//    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+//        controller.dismiss(animated: true)
+//    }
+//}
