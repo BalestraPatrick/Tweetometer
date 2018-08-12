@@ -27,7 +27,7 @@ final class UserDetailViewController: UIViewController, UITableViewDelegate, UIT
         guard let user = user else { return }
         setTitleViewContent(user.name, screenName: user.screenName)
         tableView.estimatedRowHeight = 50.0
-        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.rowHeight = UITableView.automaticDimension
     }
     
     // MARK: UITableViewDataSource
