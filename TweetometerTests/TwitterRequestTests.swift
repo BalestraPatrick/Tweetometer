@@ -7,7 +7,7 @@
 //
 
 import XCTest
-@testable import TweetsCounter
+@testable import Tweetometer
 
 class TwitterRequestTests: XCTestCase {
 

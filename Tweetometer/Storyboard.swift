@@ -57,8 +57,8 @@ struct StoryboardScene {
         }
         
         case login = "Login"
-        static func LoginViewController() -> LoginViewController {
-            return Main.login.viewController() as! LoginViewController
+        static func LogInViewController() -> LogInViewController {
+            return Main.login.viewController() as! LogInViewController
         }
         
         case userDetail = "UserDetail"

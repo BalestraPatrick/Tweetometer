@@ -1,5 +1,6 @@
 github "BalestraPatrick/ValueStepper"
 github "IcaliaLabs/Presentr"
 github "hyperoslo/Whisper"
+github "Instagram/IGListKit" ~> 3.0
 
 git "https://github.com/BalestraPatrick/PullToRefresh"

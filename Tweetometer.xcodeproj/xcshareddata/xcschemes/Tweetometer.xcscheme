@@ -30,22 +30,14 @@
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
          <TestableReference
-            skipped = "NO">
+            skipped = "NO"
+            parallelizable = "YES"
+            testExecutionOrdering = "random">
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "AE277DFD1BD4E6DB004E151C"
                BuildableName = "TweetometerTests.xctest"
                BlueprintName = "TweetometerTests"
-               ReferencedContainer = "container:Tweetometer.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "AE277E081BD4E6DB004E151C"
-               BuildableName = "TweetsCounterUITests.xctest"
-               BlueprintName = "TweetsCounterUITests"
                ReferencedContainer = "container:Tweetometer.xcodeproj">
             </BuildableReference>
          </TestableReference>

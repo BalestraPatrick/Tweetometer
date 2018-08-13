@@ -12,7 +12,7 @@ protocol Coordinator: class {
     func presentSafari(_ url: URL)
 }
 
-class AppCoordinator: Coordinator {
+class AppCoordinator: Coordinator & DependencyInitializer {
     
     let window: UIWindow
     let linkOpener = LinkOpener()

@@ -12,13 +12,13 @@
         <!--Menu Pop Over View Controller-->
         <scene sceneID="vvo-5B-Z7j">
             <objects>
-                <tableViewController storyboardIdentifier="MenuPopOver" id="p7T-X3-Vin" customClass="MenuPopOverViewController" customModule="TweetsCounter" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="MenuPopOver" id="p7T-X3-Vin" customClass="MenuPopOverViewController" customModule="Tweetometer" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="RQF-4u-aes">
                         <rect key="frame" x="0.0" y="0.0" width="200" height="88"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="MenuPopOverCell" textLabel="0Ir-kN-Uni" imageView="SFV-Px-loh" style="IBUITableViewCellStyleDefault" id="ZJr-Mc-ZnX" customClass="MenuOptionTableViewCell" customModule="TweetsCounter" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="MenuPopOverCell" textLabel="0Ir-kN-Uni" imageView="SFV-Px-loh" style="IBUITableViewCellStyleDefault" id="ZJr-Mc-ZnX" customClass="MenuOptionTableViewCell" customModule="Tweetometer" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="200" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ZJr-Mc-ZnX" id="sf7-qW-yEv">
@@ -58,7 +58,7 @@
         <!--Home View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="Home" id="BYZ-38-t0r" customClass="HomeViewController" customModule="TweetsCounter" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Home" id="BYZ-38-t0r" customClass="HomeViewController" customModule="Tweetometer" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -77,14 +77,14 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="UserCell" rowHeight="75" id="te9-gm-mVz" customClass="UserTableViewCell" customModule="TweetsCounter" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="UserCell" rowHeight="75" id="te9-gm-mVz" customClass="UserTableViewCell" customModule="Tweetometer" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="75"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="te9-gm-mVz" id="1CI-Gc-lpG">
                                             <rect key="frame" x="0.0" y="0.0" width="342" height="74.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="sgz-4k-7PW" customClass="ProfilePictureImageView" customModule="TweetsCounter" customModuleProvider="target">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="sgz-4k-7PW" customClass="ProfilePictureImageView" customModule="Tweetometer" customModuleProvider="target">
                                                     <rect key="frame" x="10" y="12.5" width="50" height="50"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="50" id="3AA-4i-0iV"/>
@@ -247,14 +247,14 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="qij-GM-89B">
-                        <barButtonItem key="leftBarButtonItem" id="FhS-OA-b3v" customClass="ProfilePictureButtonItem" customModule="TweetsCounter" customModuleProvider="target">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="u4C-qs-5mp">
+                        <barButtonItem key="leftBarButtonItem" id="FhS-OA-b3v" customClass="ProfilePictureButtonItem" customModule="Tweetometer" customModuleProvider="target">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="u4C-qs-5mp">
                                 <rect key="frame" x="16" y="5" width="30" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <accessibility key="accessibilityConfiguration" label="Profile Picture"/>
                             </button>
                         </barButtonItem>
-                        <view key="titleView" contentMode="scaleToFill" id="OhV-Zt-nsQ">
+                        <view key="titleView" hidden="YES" contentMode="scaleToFill" id="OhV-Zt-nsQ">
                             <rect key="frame" x="87.5" y="5.5" width="200" height="33"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
@@ -307,20 +307,20 @@
         <!--User Detail View Controller-->
         <scene sceneID="kNi-L6-ALA">
             <objects>
-                <viewController storyboardIdentifier="UserDetail" id="WlY-wj-dbD" customClass="UserDetailViewController" customModule="TweetsCounter" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="UserDetail" id="WlY-wj-dbD" customClass="UserDetailViewController" customModule="Tweetometer" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="qge-SP-VPC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="UserDetailsCell" rowHeight="125" id="UUf-IX-oke" customClass="UserDetailsTableViewCell" customModule="TweetsCounter" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="UserDetailsCell" rowHeight="125" id="UUf-IX-oke" customClass="UserDetailsTableViewCell" customModule="Tweetometer" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="125"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="UUf-IX-oke" id="gt5-nd-Gjb">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="125"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="HL1-ms-NtI" customClass="ProfilePictureImageView" customModule="TweetsCounter" customModuleProvider="target">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="HL1-ms-NtI" customClass="ProfilePictureImageView" customModule="Tweetometer" customModuleProvider="target">
                                             <rect key="frame" x="10" y="10" width="50" height="50"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="HL1-ms-NtI" secondAttribute="height" multiplier="1:1" id="4jn-dj-jap"/>
@@ -477,7 +477,7 @@
                                     <outlet property="tweetsCountLabel" destination="mix-GS-QdR" id="Y4M-ED-Qng"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="TweetCell" rowHeight="74" id="qAR-wb-vTY" customClass="TweetTableViewCell" customModule="TweetsCounter" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="TweetCell" rowHeight="74" id="qAR-wb-vTY" customClass="TweetTableViewCell" customModule="Tweetometer" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="153" width="375" height="74"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qAR-wb-vTY" id="00K-uK-z4v">

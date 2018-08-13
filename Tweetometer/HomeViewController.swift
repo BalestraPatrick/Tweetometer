@@ -25,7 +25,6 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
     @IBOutlet weak var emptyStateLabel: UILabel!
 
     fileprivate lazy var session = TwitterSession.shared
-//    fileprivate var notificationToken: NotificationToken?
     fileprivate var refresher: PullToRefresh!
     private let activityManager = NetworkingActivityIndicatorManager()
 
@@ -36,6 +35,8 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
         super.viewDidLoad()
         applyStyle()
         tableView.rowHeight = 75.0
+//        let ciao = session
+        coordinator.presentLogin()
 //        refresher = PullToRefresh()
 //        refresher.refresherData = RefresherData(lastUpdate: session.lastUpdate.updateString(), numberOfTweets: DataManager.realm().objects(Tweet.self).count)
 //        tableView.addPullToRefresh(refresher) {
@@ -59,7 +60,7 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
 
     deinit {
 //        notificationToken?.stop()
-        tableView.removePullToRefresh(refresher)
+//        tableView.removePullToRefresh(refresher)
     }
 
     func refresh() {

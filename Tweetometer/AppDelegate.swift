@@ -13,35 +13,24 @@ import TweetometerKit
     
     var window: UIWindow?
     
-    fileprivate lazy var appCoordinator: AppCoordinator = {
-        return AppCoordinator(window: self.window!)
-    }()
+    private lazy var appCoordinator = AppCoordinator(window: self.window!)
+    private var dependencies = [DependencyInitializer]()
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-//        AppSetUp()
         window = UIWindow(frame: UIScreen.main.bounds)
-        appCoordinator.start()
+        dependencies = [
+            appCoordinator,
+            TwitterKitInitializer()
+        ]
+        dependencies.forEach { $0.start() }
         return true
     }
     
-    func applicationWillResignActive(_ application: UIApplication) {
-        
-    }
-    
-    func applicationDidEnterBackground(_ application: UIApplication) {
-        
-    }
-    
-    func applicationWillEnterForeground(_ application: UIApplication) {
-        
-    }
-    
-    func applicationDidBecomeActive(_ application: UIApplication) {
-        
-    }
-    
-    func applicationWillTerminate(_ application: UIApplication) {
-        
+    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+        if let twitterInitializer = dependencies.compactMap({ $0 as? TwitterKitInitializer }).first {
+            return twitterInitializer.application(app, open:url, options: options)
+        }
+        return false
     }
 }
 

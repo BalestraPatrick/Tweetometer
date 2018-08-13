@@ -7,7 +7,7 @@
 //
 
 import XCTest
-@testable import TweetsCounter
+@testable import Tweetometer
 
 class LinkOpenerTweetTests: XCTestCase {
 
@@ -16,13 +16,13 @@ class LinkOpenerTweetTests: XCTestCase {
 
     func test_openTweet_TweetbotApp() {
         opener.client = .tweetbot
-        opener.open(tweet: tweetId)
+//        opener.open(tweet: tweetId)
         XCTAssertEqual(opener.urlComponents.string!, "tweetbot:/status/\(tweetId)", "Tweetbot URL Scheme is wrong")
     }
 
     func test_openTweet_TwitterApp() {
         opener.client = .twitter
-        opener.open(tweet: tweetId)
+//        opener.open(tweet: tweetId)
         XCTAssertEqual(opener.urlComponents.string!.removingPercentEncoding, "twitter:/status?id=\(tweetId)", "Twitter URL Scheme is wrong")
     }
 
@@ -38,7 +38,7 @@ class LinkOpenerTweetTests: XCTestCase {
         opener.client = .web
         let mockCoordinator = MockCoordinator()
         opener.coordinator = mockCoordinator
-        opener.open(tweet: tweetId)
+//        opener.open(tweet: tweetId)
         XCTAssertEqual(mockCoordinator.url, URL(string: "https://www.twitter.com/status/\(tweetId)"))
     }
 }

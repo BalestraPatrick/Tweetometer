@@ -14,8 +14,8 @@ protocol LoginCoordinatorDelegate: class {
 
 final class LoginCoordinator: Coordinator, LoginCoordinatorDelegate {
 
-    lazy var controller: LoginViewController = {
-        return StoryboardScene.Main.LoginViewController()
+    lazy var controller: LogInViewController = {
+        return StoryboardScene.Main.LogInViewController()
     }()
     var childCoordinators = [AnyObject]()
 

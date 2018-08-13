@@ -17,6 +17,6 @@ DerivedData
 *.ipa
 *.xcuserstate
 
-Pods/CocoaPodsKeys
 fastlane/report.xml
 fastlane/test_output/
+Config/TwitterKeys.xcconfig

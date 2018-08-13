@@ -28,6 +28,7 @@ final class UserDetailViewController: UIViewController, UITableViewDelegate, UIT
         setTitleViewContent(user.name, screenName: user.screenName)
         tableView.estimatedRowHeight = 50.0
         tableView.rowHeight = UITableView.automaticDimension
+        navigationItem.largeTitleDisplayMode = .never
     }
     
     // MARK: UITableViewDataSource

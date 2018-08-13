@@ -1,0 +1,20 @@
+PODS:
+  - TwitterCore (3.1.0)
+  - TwitterKit (3.3.0):
+    - TwitterCore (>= 3.1.0)
+
+DEPENDENCIES:
+  - TwitterKit
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - TwitterCore
+    - TwitterKit
+
+SPEC CHECKSUMS:
+  TwitterCore: 644d59e75abccb26cf0a9050d2c4dea0e5412241
+  TwitterKit: a2e60ddcedbf54091eac6f27685ca7a87681e1d7
+
+PODFILE CHECKSUM: c84379129d0305be1f6765d2b82904432dc5cb57
+
+COCOAPODS: 1.5.3

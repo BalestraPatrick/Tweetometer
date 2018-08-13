@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import TwitterKit
 
 public enum TwitterError: Error {
     case notAuthenticated
@@ -41,8 +42,7 @@ public final class TwitterSession {
     public static let shared = TwitterSession()
 
     /// Private initializer invoked only once in the app's lifetime.
-    private init() {
-    }
+    private init() { }
 
     /// Request the user's profile picture URL.
     ///
@@ -62,7 +62,7 @@ public final class TwitterSession {
     /// Log out the current user.
     public func logOutUser() {
 //        guard let client = client, let userId = client.userID else { return }
-//        Twitter.sharedInstance().sessionStore.logOutUserID(userId)
+        Twitter.sharedInstance().sessionStore.logOutUserID("userId")
     }
 
     /// Get the timeline tweets of the current user.

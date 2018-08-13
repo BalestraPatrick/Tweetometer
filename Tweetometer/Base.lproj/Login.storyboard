@@ -1,19 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.3.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Login View Controller-->
+        <!--Log In View Controller-->
         <scene sceneID="Gb4-SI-36J">
             <objects>
-                <viewController storyboardIdentifier="Login" id="G6B-Kp-BNF" customClass="LoginViewController" customModule="TweetsCounter" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Login" useStoryboardIdentifierAsRestorationIdentifier="YES" id="G6B-Kp-BNF" customClass="LogInViewController" customModule="Tweetometer" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="CdZ-7i-uyy"/>
                         <viewControllerLayoutGuide type="bottom" id="SIM-Lw-ilQ"/>
@@ -23,7 +22,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please login with your account." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DAf-T3-Tbp">
-                                <rect key="frame" x="36" y="216.5" width="303" height="24"/>
+                                <rect key="frame" x="36" y="216" width="303" height="24"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="9on-L4-s0s"/>
                                 </constraints>
@@ -37,21 +36,24 @@
                                 </variation>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="SDO-ee-46F">
-                                <rect key="frame" x="165" y="319" width="46" height="30"/>
+                                <rect key="frame" x="164.5" y="318.5" width="46" height="30"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yHF-0q-YkM" customClass="TWTRLogInButton">
                                         <rect key="frame" x="0.0" y="0.0" width="46" height="30"/>
                                         <state key="normal" title="Button">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="logIn" destination="G6B-Kp-BNF" eventType="touchUpInside" id="Ncg-7I-VXM"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
                             <imageView userInteractionEnabled="NO" alpha="0.5" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="olE-ZE-V9X">
-                                <rect key="frame" x="67" y="631" width="240" height="16"/>
+                                <rect key="frame" x="67" y="435" width="240" height="212"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y9L-2z-YJG">
-                                <rect key="frame" x="36" y="250.5" width="303" height="38.5"/>
+                                <rect key="frame" x="36" y="250" width="303" height="38.5"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="46s-61-7ok"/>
                                 </constraints>
@@ -95,7 +97,7 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="logInButton" destination="yHF-0q-YkM" id="sS3-he-ml5"/>
+                        <outlet property="logInButton" destination="yHF-0q-YkM" id="1s6-1a-Umq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Hu3-dA-3VD" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -104,6 +106,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="logo" width="16" height="16"/>
+        <image name="logo" width="260" height="212"/>
     </resources>
 </document>

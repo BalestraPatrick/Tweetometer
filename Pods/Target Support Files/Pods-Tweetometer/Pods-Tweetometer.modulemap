@@ -1,0 +1,6 @@
+framework module Pods_Tweetometer {
+  umbrella header "Pods-Tweetometer-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -22,39 +22,27 @@
 	<string>1.0</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>tweetometer</string>
+				<string>twitterkit-${TWITTER_CONSUMER_KEY}</string>
+			</array>
+		</dict>
+	</array>
 	<key>CFBundleVersion</key>
 	<string>9</string>
-	<key>Fabric</key>
-	<dict>
-		<key>APIKey</key>
-		<string>9fce642c2644fef5ab19ee53e1ec472130a2c78e</string>
-		<key>Kits</key>
-		<array>
-			<dict>
-				<key>KitInfo</key>
-				<dict/>
-				<key>KitName</key>
-				<string>Crashlytics</string>
-			</dict>
-			<dict>
-				<key>KitInfo</key>
-				<dict>
-					<key>consumerKey</key>
-					<string>K0S2YRYN1BEQLSucd3moyBT1h</string>
-					<key>consumerSecret</key>
-					<string>SKnrlqdEvUpRQ6yoP1kEFEB8YbVa8B6yWCPZFDsciN53viA10W</string>
-				</dict>
-				<key>KitName</key>
-				<string>Twitter</string>
-			</dict>
-		</array>
-	</dict>
 	<key>ITSAppUsesNonExemptEncryption</key>
 	<false/>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>tweetbot</string>
 		<string>twitter</string>
+		<string>twitterauth</string>
 	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
@@ -85,5 +73,9 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>TWITTER_CONSUMER_KEY</key>
+	<string>${TWITTER_CONSUMER_KEY}</string>
+	<key>TWITTER_CONSUMER_SECRET</key>
+	<string>${TWITTER_CONSUMER_SECRET}</string>
 </dict>
 </plist>
