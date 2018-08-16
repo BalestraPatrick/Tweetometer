@@ -43,7 +43,7 @@ final class LoginCoordinator: Coordinator, LoginCoordinatorDelegate {
 
     func dismiss() {
         controller.dismiss(animated: true)
-        homeController.refreshTimeline()
-        homeController.requestProfilePicture()
+//        homeController.refreshTimeline()
+//        homeController.requestProfilePicture()
     }
 }

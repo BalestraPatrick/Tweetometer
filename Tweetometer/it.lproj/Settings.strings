@@ -1,0 +1,33 @@
+
+/* Class = "UILabel"; text = "Tweets to Analyze"; ObjectID = "2aB-Fy-mTA"; */
+"2aB-Fy-mTA.text" = "Tweets to Analyze";
+
+/* Class = "UIButton"; normalTitle = "Twitter Support"; ObjectID = "B5s-t7-T4R"; */
+"B5s-t7-T4R.normalTitle" = "Twitter Support";
+
+/* Class = "UIButton"; normalTitle = "About"; ObjectID = "C3Q-Rl-Hyd"; */
+"C3Q-Rl-Hyd.normalTitle" = "About";
+
+/* Class = "UISegmentedControl"; IVa-1S-1Wv.segmentTitles[0] = "Safari"; ObjectID = "IVa-1S-1Wv"; */
+"IVa-1S-1Wv.segmentTitles[0]" = "Safari";
+
+/* Class = "UISegmentedControl"; IVa-1S-1Wv.segmentTitles[1] = "Twitter"; ObjectID = "IVa-1S-1Wv"; */
+"IVa-1S-1Wv.segmentTitles[1]" = "Twitter";
+
+/* Class = "UISegmentedControl"; IVa-1S-1Wv.segmentTitles[2] = "Tweetbot"; ObjectID = "IVa-1S-1Wv"; */
+"IVa-1S-1Wv.segmentTitles[2]" = "Tweetbot";
+
+/* Class = "UIButton"; normalTitle = "GitHub"; ObjectID = "Oae-fy-1i1"; */
+"Oae-fy-1i1.normalTitle" = "GitHub";
+
+/* Class = "UILabel"; text = "Developed in 🇨🇭\nVersion 1.0 "; ObjectID = "Xf7-YG-yLY"; */
+"Xf7-YG-yLY.text" = "Developed in 🇨🇭\nVersion 1.0 ";
+
+/* Class = "UILabel"; text = "Twitter Client"; ObjectID = "kvr-H0-8TK"; */
+"kvr-H0-8TK.text" = "Twitter Client";
+
+/* Class = "UIButton"; normalTitle = "Email Support"; ObjectID = "to0-xg-Qo9"; */
+"to0-xg-Qo9.normalTitle" = "Email Support";
+
+/* Class = "UILabel"; text = "Settings"; ObjectID = "vdm-Ir-DuJ"; */
+"vdm-Ir-DuJ.text" = "Settings";

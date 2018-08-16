@@ -1,0 +1,10 @@
+strings:
+  paths:
+    - Tweetometer/en.lproj/Localizable.strings
+  templateName: structured-swift4
+  output: Tweetometer/Generated/LocalizedStrings.swift
+xcassets:
+  paths:
+    - Tweetometer/Assets.xcassets
+  templateName: swift4
+  output: Tweetometer/Generated/Images.swift

@@ -1,0 +1,75 @@
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "0Ir-kN-Uni"; */
+"0Ir-kN-Uni.text" = "Title";
+
+/* Class = "UILabel"; text = " "; ObjectID = "1fa-iJ-g8o"; */
+"1fa-iJ-g8o.text" = " ";
+
+/* Class = "UIBarButtonItem"; title = "Open In"; ObjectID = "1uH-qr-l1M"; */
+"1uH-qr-l1M.title" = "Open In";
+
+/* Class = "UILabel"; text = "123 Following"; ObjectID = "9UK-bE-V5v"; */
+"9UK-bE-V5v.text" = "123 Following";
+
+/* Class = "UILabel"; text = "Total\n12"; ObjectID = "B8j-rC-pPB"; */
+"B8j-rC-pPB.text" = "Total\n12";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "Di9-TO-8x9"; */
+"Di9-TO-8x9.text" = "Title";
+
+/* Class = "UILabel"; accessibilityLabel = "Followers count"; ObjectID = "JHa-b5-EON"; */
+"JHa-b5-EON.accessibilityLabel" = "Followers count";
+
+/* Class = "UILabel"; text = "1234 Followers"; ObjectID = "JHa-b5-EON"; */
+"JHa-b5-EON.text" = "1234 Followers";
+
+/* Class = "UILabel"; text = "Patrick Balestra"; ObjectID = "Kwb-TQ-Tqc"; */
+"Kwb-TQ-Tqc.text" = "Patrick Balestra";
+
+/* Class = "UILabel"; text = "25"; ObjectID = "MWg-10-7X9"; */
+"MWg-10-7X9.text" = "25";
+
+/* Class = "UILabel"; text = "@BalestraPatrick"; ObjectID = "RNX-vJ-6ef"; */
+"RNX-vJ-6ef.text" = "@BalestraPatrick";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "Ug9-Fa-FTU"; */
+"Ug9-Fa-FTU.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "12"; ObjectID = "Wc7-xs-rkN"; */
+"Wc7-xs-rkN.text" = "12";
+
+/* Class = "UILabel"; text = "Replies\n12"; ObjectID = "XaP-di-Hi1"; */
+"XaP-di-Hi1.text" = "Replies\n12";
+
+/* Class = "UILabel"; text = " "; ObjectID = "f36-7Q-DDt"; */
+"f36-7Q-DDt.text" = " ";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "f3d-NS-fIP"; */
+"f3d-NS-fIP.text" = "Title";
+
+/* Class = "UILabel"; text = "No Tweets analyzed."; ObjectID = "ghP-3g-EJo"; */
+"ghP-3g-EJo.text" = "No Tweets analyzed.";
+
+/* Class = "UILabel"; text = "Retweets\n12"; ObjectID = "i8i-e4-Jgb"; */
+"i8i-e4-Jgb.text" = "Retweets\n12";
+
+/* Class = "UILabel"; text = "San Francisco, USA"; ObjectID = "jaE-Pv-RLh"; */
+"jaE-Pv-RLh.text" = "San Francisco, USA";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "kIQ-FQ-S91"; */
+"kIQ-FQ-S91.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "lS1-U3-t8J"; */
+"lS1-U3-t8J.text" = "Label";
+
+/* Class = "UILabel"; text = "@BalestraPatrick"; ObjectID = "luN-Mg-qNM"; */
+"luN-Mg-qNM.text" = "@BalestraPatrick";
+
+/* Class = "UILabel"; text = "Tweets\n12"; ObjectID = "mix-GS-QdR"; */
+"mix-GS-QdR.text" = "Tweets\n12";
+
+/* Class = "UILabel"; text = " "; ObjectID = "ufs-Vh-8Yb"; */
+"ufs-Vh-8Yb.text" = " ";
+
+/* Class = "UILabel"; text = "12"; ObjectID = "zna-gr-Umo"; */
+"zna-gr-Umo.text" = "12";

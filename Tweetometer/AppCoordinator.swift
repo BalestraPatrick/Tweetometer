@@ -18,24 +18,26 @@ class AppCoordinator: Coordinator & DependencyInitializer {
     let linkOpener = LinkOpener()
 
     var childCoordinators = [AnyObject]()
+    let services: AppServices
 
     lazy var rootViewController: UINavigationController = {
         return self.window.rootViewController as! UINavigationController
     }()
     
-    init(window: UIWindow) {
+    init(window: UIWindow, services: AppServices) {
         // Grab the initial view controller from Storyboard
         let initialViewController = StoryboardScene.Main.initialViewController()
         window.rootViewController = initialViewController
         self.window = window
         self.childCoordinators = []
+        self.services = services
         linkOpener.coordinator = self
     }
 
     func start() {
         // Grab view controller instance already instantiated by Storyboard from the hierarchy
         if let visible = rootViewController.visibleViewController, let homeViewController = visible as? HomeViewController {
-            let homeCoordinator = HomeCoordinator(controller: homeViewController)
+            let homeCoordinator = HomeCoordinator(controller: homeViewController, twitterService: services.twitterSession)
             childCoordinators.append(homeCoordinator)
             homeCoordinator.start()
         }

@@ -11,4 +11,3 @@ import Foundation
 protocol DependencyInitializer {
     func start()
 }
-

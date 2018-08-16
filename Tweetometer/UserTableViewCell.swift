@@ -59,7 +59,7 @@ final class UserTableViewCell: UITableViewCell {
     override func prepareForReuse() {
         super.prepareForReuse()
 
-        profilePictureImageView.image = UIImage(asset: .placeholder)
+        profilePictureImageView.image = Asset.placeholder.image
     }
     
     override func awakeFromNib() {

@@ -18,9 +18,15 @@ public enum TwitterError: Error {
     case failedAnalysis
 }
 
+public enum Result<T> {
+    case success(T)
+    case error(Error)
+}
+
 public final class TwitterSession {
 
     public typealias TimelineUpdate = (TwitterError?) -> Void
+    public typealias CompletionBlock<T> = (Result<T>) -> Void
 
     /// The date of the last update with the Twitter APIs.
     public var lastUpdate = Settings.shared.lastUpdate {
@@ -29,40 +35,49 @@ public final class TwitterSession {
         }
     }
 
-    /// A variable that holds a Twitter client.
+    private lazy var client: TWTRAPIClient? = {
+        if let userID = loggedInUserID {
+            return TWTRAPIClient(userID: userID)
+        }
+        return nil
+    }()
+
+    private var loggedInUserID: String? {
+        return TWTRTwitter.sharedInstance().sessionStore.session()?.userID
+    }
+    private var loggedInUser: TWTRUser?
+
     private var timelineParser = TimelineParser()
     private var timelineUpdate: TimelineUpdate?
     private var timelineRequestsCount = 0
     private var queue = DispatchQueue(label: "com.patrickbalestra.tweetometer.background")
-
     private final let maximumTimelineRequests = 4
     private final let maximumTweetsPerRequest = 200
 
-    /// Shared Twitter session responsible for all requests to the Twitter APIs.
-    public static let shared = TwitterSession()
+    public init() {
+    }
 
-    /// Private initializer invoked only once in the app's lifetime.
-    private init() { }
+    /// Returns true if a user is currently logged in.
+    public func isUserLoggedIn() -> Bool {
+        return TWTRTwitter.sharedInstance().sessionStore.hasLoggedInUsers()
+    }
 
-    /// Request the user's profile picture URL.
-    ///
-    /// - Parameter completion: The completion block that contains the profile picture URL.
-    public func getProfilePictureURL(completion: @escaping (URL?) -> Void) {
-//        NotificationCenter.default.post(name: NSNotification.Name.requestStarted(), object: nil)
-//        guard let client = client, let userID = client.userID else { return completion(nil) }
-//        client.loadUser(withID: userID) { user, _ in
-//            self.user = user
-//            if let stringURL = user?.profileImageLargeURL {
-//                NotificationCenter.default.post(name: NSNotification.Name.requestCompleted(), object: nil)
-//                return completion(URL(string: stringURL)!)
-//            }
-//        }
+    public func loadUserData(completion: @escaping CompletionBlock<TWTRUser>)  {
+        guard let client = client, let userID = loggedInUserID else { return }
+        client.loadUser(withID: userID, completion: { [weak self] user, error in
+            if let user = user {
+                self?.loggedInUser = user
+                completion(.success(user))
+            } else if let error = error {
+                completion(.error(error))
+            }
+        })
     }
 
     /// Log out the current user.
     public func logOutUser() {
 //        guard let client = client, let userId = client.userID else { return }
-        Twitter.sharedInstance().sessionStore.logOutUserID("userId")
+//        Twitter.sharedInstance().sessionStore.logOutUserID(userId)
     }
 
     /// Get the timeline tweets of the current user.

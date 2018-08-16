@@ -6,9 +6,10 @@
 //  Copyright © 2016 Patrick Balestra. All rights reserved.
 //
 
-import UIKit
+import TweetometerKit
 
 protocol HomeCoordinatorDelegate: class {
+    var twitterService: TwitterSession { get }
     func pushDetail(_ controller: UserDetailViewController)
     func presentMenu(_ controller: MenuPopOverViewController)
     func presentLogin()
@@ -20,15 +21,18 @@ class HomeCoordinator: Coordinator, HomeCoordinatorDelegate {
     var childCoordinators = [AnyObject]()
 
     let controller: HomeViewController
+    let twitterService: TwitterSession
     let linkOpener = LinkOpener()
     
-    init(controller: HomeViewController) {
+    init(controller: HomeViewController, twitterService: TwitterSession) {
         self.controller = controller
+        self.twitterService = twitterService
         linkOpener.coordinator = self
     }
 
     func start() {
         controller.coordinator = self
+        presentLoginIfNeeded()
     }
 
     // MARK: Coordinator
@@ -66,5 +70,14 @@ class HomeCoordinator: Coordinator, HomeCoordinatorDelegate {
 
     func refreshTimeline() {
         controller.refreshTimeline()
+    }
+
+    // MARK: Internal Methods
+
+    private func presentLoginIfNeeded() {
+        guard twitterService.isUserLoggedIn() == false else { return }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            self.presentLogin()
+        }
     }
 }

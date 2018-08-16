@@ -24,7 +24,6 @@ final class ProfilePictureButtonItem: UIBarButtonItem {
 
     private func setUp() {
         customView = imageView
-        imageView.image = UIImage(asset: .placeholder)
         imageView.layer.cornerRadius = imageView.bounds.size.width / 2
         imageView.layer.borderColor = UIColor.white.cgColor
         imageView.layer.borderWidth = 1.0
@@ -32,5 +31,4 @@ final class ProfilePictureButtonItem: UIBarButtonItem {
         imageView.layer.masksToBounds = true
         accessibilityLabel = "Profile Picture"
     }
-    
 }

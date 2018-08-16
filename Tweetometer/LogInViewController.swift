@@ -12,13 +12,9 @@ import TwitterKit
 
 public final class LogInViewController: UIViewController {
 
-    @IBOutlet weak var logInButton: TWTRLogInButton!
     weak var coordinator: LoginCoordinatorDelegate!
 
-    public override func viewDidLoad() {
-        super.viewDidLoad()
-
-    }
+    @IBOutlet private weak var logInButton: TWTRLogInButton!
 
     @IBAction func logIn() {
         logInButton.logInCompletion = { [unowned self] session, error in

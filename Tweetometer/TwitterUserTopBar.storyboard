@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.13.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="y36-5T-dLl">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.9"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Twitter User Top Bar View Controller-->
+        <scene sceneID="cVP-Hs-luA">
+            <objects>
+                <viewController id="y36-5T-dLl" customClass="TwitterUserTopBarViewController" customModule="Tweetometer" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="7ht-Y2-NCW"/>
+                        <viewControllerLayoutGuide type="bottom" id="BpD-54-Buu"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="nNe-PJ-1Iw">
+                        <rect key="frame" x="0.0" y="0.0" width="250" height="44"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="XnE-Uh-bFb">
+                                <rect key="frame" x="5" y="5" width="34" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="XnE-Uh-bFb" secondAttribute="height" multiplier="1:1" id="vbZ-uY-oYG"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Timeline" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1ns-n5-bRf">
+                                <rect key="frame" x="72" y="3" width="106.5" height="21"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="751" text="@BalestraPatrick" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C89-6l-YYi" userLabel="BalestraPatrick">
+                                <rect key="frame" x="77.5" y="24" width="95" height="17"/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="12"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="BpD-54-Buu" firstAttribute="top" secondItem="C89-6l-YYi" secondAttribute="bottom" constant="3" id="5WM-wl-guV"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="1ns-n5-bRf" secondAttribute="trailing" constant="10" id="5tD-3l-a9k"/>
+                            <constraint firstItem="XnE-Uh-bFb" firstAttribute="leading" secondItem="nNe-PJ-1Iw" secondAttribute="leading" constant="5" id="CLQ-5O-89r"/>
+                            <constraint firstItem="1ns-n5-bRf" firstAttribute="centerX" secondItem="nNe-PJ-1Iw" secondAttribute="centerX" id="EBw-CN-tdm"/>
+                            <constraint firstItem="1ns-n5-bRf" firstAttribute="top" secondItem="7ht-Y2-NCW" secondAttribute="bottom" constant="3" id="b7D-Zd-puX"/>
+                            <constraint firstItem="C89-6l-YYi" firstAttribute="centerX" secondItem="nNe-PJ-1Iw" secondAttribute="centerX" id="hwR-Qy-pGr"/>
+                            <constraint firstItem="C89-6l-YYi" firstAttribute="top" secondItem="1ns-n5-bRf" secondAttribute="bottom" id="p1p-vS-1zq"/>
+                            <constraint firstAttribute="bottom" secondItem="XnE-Uh-bFb" secondAttribute="bottom" constant="5" id="pNX-8r-dH6"/>
+                            <constraint firstItem="XnE-Uh-bFb" firstAttribute="top" secondItem="nNe-PJ-1Iw" secondAttribute="top" constant="5" id="t4V-1R-Tdv"/>
+                            <constraint firstItem="1ns-n5-bRf" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="XnE-Uh-bFb" secondAttribute="trailing" constant="10" id="vQ4-gV-SBX"/>
+                        </constraints>
+                    </view>
+                    <size key="freeformSize" width="250" height="44"/>
+                    <connections>
+                        <outlet property="profileImageView" destination="XnE-Uh-bFb" id="MjW-1d-3b6"/>
+                        <outlet property="usernameLabel" destination="C89-6l-YYi" id="YaD-Wb-3Xn"/>
+                        <outlet property="yourTimelineLabel" destination="1ns-n5-bRf" id="Lir-Aw-bFD"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aqS-Gu-OVv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1664" y="-254.57271364317842"/>
+        </scene>
+    </scenes>
+</document>
