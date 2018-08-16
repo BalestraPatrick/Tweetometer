@@ -25,6 +25,7 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
     @IBOutlet weak var emptyStateLabel: UILabel!
 
     weak var coordinator: HomeCoordinatorDelegate!
+    var twitterUserTopView: UserTopBarViewController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,8 +35,7 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
     }
 
     private func setUpTwitterUserTopView() {
-        let twitterUserTopView = StoryboardScene.TwitterUserTopBar.initialScene.instantiate()
-        twitterUserTopView.twitterService = coordinator.twitterService
+        twitterUserTopView = UserTopBarViewController.instantiate(with: .init(twitterSession: coordinator.twitterService, delegate: self))
         navigationItem.titleView = twitterUserTopView.view
         twitterUserTopView.view.widthAnchor.constraint(equalTo: navigationController!.view.widthAnchor).isActive = true
         twitterUserTopView.view.centerXAnchor.constraint(equalTo: navigationController!.view.centerXAnchor).isActive = true
@@ -132,5 +132,20 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
 //        let user = users[indexPath.row]
 //        cell.configure(user, indexPath: indexPath)
         return cell
+    }
+}
+
+
+extension HomeViewController: UserTopBarDelegate {
+
+    func openSettings(sender: UIView) {
+        let menuPopOver = StoryboardScene.Main.menuPopOver.instantiate()
+        menuPopOver.modalPresentationStyle = .popover
+        menuPopOver.view.backgroundColor = .menuDarkBlue()
+        menuPopOver.popoverPresentationController?.delegate = self
+        menuPopOver.popoverPresentationController?.backgroundColor = .menuDarkBlue()
+        menuPopOver.popoverPresentationController?.sourceView = sender
+        menuPopOver.popoverPresentationController?.sourceRect = CGRect(x: 13, y: sender.bounds.height, width: 0, height: 0)
+        coordinator.presentMenu(menuPopOver)
     }
 }

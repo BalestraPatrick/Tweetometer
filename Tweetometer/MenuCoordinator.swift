@@ -32,6 +32,7 @@ class MenuCoordinator: Coordinator, MenuCoordinatorDelegate {
 
     func start() {
         controller.coordinator = self
+        parentCoordinator.controller.present(controller, animated: true)
     }
 
     // MARK: Coordinator

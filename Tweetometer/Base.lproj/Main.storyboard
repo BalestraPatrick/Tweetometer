@@ -12,7 +12,7 @@
         <!--Menu Pop Over View Controller-->
         <scene sceneID="vvo-5B-Z7j">
             <objects>
-                <tableViewController storyboardIdentifier="MenuPopOver" id="p7T-X3-Vin" customClass="MenuPopOverViewController" customModule="Tweetometer" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="MenuPopOver" useStoryboardIdentifierAsRestorationIdentifier="YES" id="p7T-X3-Vin" customClass="MenuPopOverViewController" customModule="Tweetometer" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="RQF-4u-aes">
                         <rect key="frame" x="0.0" y="0.0" width="200" height="88"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

@@ -83,10 +83,10 @@ internal enum StoryboardScene {
 
     internal static let settings = SceneType<Tweetometer.SettingsViewController>(storyboard: Settings.self, identifier: "Settings")
   }
-  internal enum TwitterUserTopBar: StoryboardType {
-    internal static let storyboardName = "TwitterUserTopBar"
+  internal enum UserTopBar: StoryboardType {
+    internal static let storyboardName = "UserTopBar"
 
-    internal static let initialScene = InitialSceneType<Tweetometer.TwitterUserTopBarViewController>(storyboard: TwitterUserTopBar.self)
+    internal static let initialScene = InitialSceneType<Tweetometer.UserTopBarViewController>(storyboard: UserTopBar.self)
   }
 }
 

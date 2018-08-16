@@ -1,5 +1,5 @@
 //
-//  TwitterUserTopBarViewController.swift
+//  UserTopBarViewController.swift
 //  Tweetometer
 //
 //  Created by Patrick Balestra on 8/15/18.
@@ -9,14 +9,29 @@
 import UIKit
 import TweetometerKit
 
-class TwitterUserTopBarViewController: UIViewController {
+protocol UserTopBarDelegate {
+    func openSettings(sender: UIView)
+}
 
-    var twitterService: TwitterSession!
+class UserTopBarViewController: UIViewController {
+
+    struct Dependencies {
+        let twitterSession: TwitterSession
+        let delegate: UserTopBarDelegate
+    }
+
+    private var dependencies: Dependencies!
 
     @IBOutlet private var profileImageView: UIImageView!
     @IBOutlet private var yourTimelineLabel: UILabel!
     @IBOutlet private var usernameLabel: UILabel!
     @IBOutlet var settingsButton: UIButton!
+
+    static func instantiate(with dependencies: Dependencies) -> UserTopBarViewController {
+        let this = StoryboardScene.UserTopBar.initialScene.instantiate()
+        this.dependencies = dependencies
+        return this
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,7 +39,7 @@ class TwitterUserTopBarViewController: UIViewController {
     }
 
     private func loadData() {
-        twitterService.loadUserData { result in
+        dependencies.twitterSession.loadUserData { result in
             switch result {
             case .success(let user):
                 self.profileImageView?.kf.setImage(with: URL(string: user.profileImageURL)!)
@@ -37,7 +52,7 @@ class TwitterUserTopBarViewController: UIViewController {
         profileImageView.layer.masksToBounds = true
     }
 
-    @IBAction private func openSettings(_ sender: Any) {
-
+    @IBAction func openSettings(_ sender: UIView) {
+        dependencies.delegate.openSettings(sender: sender)
     }
 }

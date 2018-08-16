@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Twitter User Top Bar View Controller-->
+        <!--User Top Bar View Controller-->
         <scene sceneID="cVP-Hs-luA">
             <objects>
-                <viewController id="y36-5T-dLl" customClass="TwitterUserTopBarViewController" customModule="Tweetometer" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="y36-5T-dLl" customClass="UserTopBarViewController" customModule="Tweetometer" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="7ht-Y2-NCW"/>
                         <viewControllerLayoutGuide type="bottom" id="BpD-54-Buu"/>
@@ -44,7 +44,7 @@
                                 <rect key="frame" x="201" y="5" width="34" height="34"/>
                                 <state key="normal" image="settings"/>
                                 <connections>
-                                    <action selector="openSettings:" destination="y36-5T-dLl" eventType="touchUpInside" id="0tR-OQ-OGo"/>
+                                    <action selector="openSettings:" destination="y36-5T-dLl" eventType="touchUpInside" id="dF0-8S-d7y"/>
                                 </connections>
                             </button>
                         </subviews>
