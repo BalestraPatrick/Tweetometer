@@ -21,7 +21,7 @@ protocol SettingsCoordinatorDelegate: class {
 final class SettingsCoordinator: NSObject, Coordinator, SettingsCoordinatorDelegate {
 
     lazy var controller: SettingsViewController = {
-        return StoryboardScene.Main.settingsViewController()
+        return StoryboardScene.Settings.settings.instantiate()
     }()
 
     lazy var mailController: MFMailComposeViewController = {

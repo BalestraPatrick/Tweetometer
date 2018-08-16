@@ -34,21 +34,12 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
     }
 
     private func setUpTwitterUserTopView() {
-        let twitterUserTopView = UIStoryboard(name: "TwitterUserTopBar", bundle: Bundle.main).instantiateInitialViewController()
-        navigationItem.titleView = twitterUserTopView?.view
-    }
-
-    private func loadUserProfileImageView() {
-        coordinator.twitterService.loadUserData { [weak self] result in
-            guard let self = self else { return }
-            switch result {
-            case .success(let user):
-                self.profilePictureItem.imageView?.kf.setImage(with: URL(string: user.profileImageURL)!)
-            case .error:
-                self.profilePictureItem.imageView?.image = Asset.placeholder.image
-            }
-        }
-        profilePictureItem.imageView?.kf.indicatorType = .activity
+        let twitterUserTopView = StoryboardScene.TwitterUserTopBar.initialScene.instantiate()
+        twitterUserTopView.twitterService = coordinator.twitterService
+        navigationItem.titleView = twitterUserTopView.view
+        twitterUserTopView.view.widthAnchor.constraint(equalTo: navigationController!.view.widthAnchor).isActive = true
+        twitterUserTopView.view.centerXAnchor.constraint(equalTo: navigationController!.view.centerXAnchor).isActive = true
+        twitterUserTopView.view.layoutIfNeeded()
     }
 
     func refresh() {
@@ -61,13 +52,13 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
         guard let identifier = segue.identifier, let segueIdentifier = StoryboardSegue.Main(rawValue: identifier) else { return }
 
         switch segueIdentifier {
-        case .menuPopOver:
-            guard let menuPopOver = segue.destination as? MenuPopOverViewController else { return }
-            menuPopOver.modalPresentationStyle = .popover
-            menuPopOver.view.backgroundColor = .menuDarkBlue()
-            menuPopOver.popoverPresentationController!.delegate = self
-            menuPopOver.popoverPresentationController!.backgroundColor = .menuDarkBlue()
-            coordinator.presentMenu(menuPopOver)
+//        case .menuPopOver:
+//            guard let menuPopOver = segue.destination as? MenuPopOverViewController else { return }
+//            menuPopOver.modalPresentationStyle = .popover
+//            menuPopOver.view.backgroundColor = .menuDarkBlue()
+//            menuPopOver.popoverPresentationController!.delegate = self
+//            menuPopOver.popoverPresentationController!.backgroundColor = .menuDarkBlue()
+//            coordinator.presentMenu(menuPopOver)
         case .userDetail: break
 //            guard let userDetail = segue.destination as? UserDetailViewController, let cell = sender as? UITableViewCell, let indexPath = tableView.indexPath(for: cell), let users = users else { return }
 //            let selectedUser = users[indexPath.row]

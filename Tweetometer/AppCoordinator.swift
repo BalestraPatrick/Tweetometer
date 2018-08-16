@@ -26,7 +26,7 @@ class AppCoordinator: Coordinator & DependencyInitializer {
     
     init(window: UIWindow, services: AppServices) {
         // Grab the initial view controller from Storyboard
-        let initialViewController = StoryboardScene.Main.initialViewController()
+        let initialViewController = StoryboardScene.Main.initialScene.instantiate()
         window.rootViewController = initialViewController
         self.window = window
         self.childCoordinators = []

@@ -22,13 +22,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="XnE-Uh-bFb">
-                                <rect key="frame" x="5" y="5" width="34" height="34"/>
+                                <rect key="frame" x="15" y="5" width="34" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="XnE-Uh-bFb" secondAttribute="height" multiplier="1:1" id="vbZ-uY-oYG"/>
+                                    <constraint firstAttribute="height" constant="34" id="xWG-fs-omr"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Timeline" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1ns-n5-bRf">
-                                <rect key="frame" x="72" y="3" width="106.5" height="21"/>
+                                <rect key="frame" x="71.5" y="3" width="107" height="21"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -39,15 +40,26 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="66I-v2-Kti">
+                                <rect key="frame" x="201" y="5" width="34" height="34"/>
+                                <state key="normal" image="settings"/>
+                                <connections>
+                                    <action selector="openSettings:" destination="y36-5T-dLl" eventType="touchUpInside" id="0tR-OQ-OGo"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="BpD-54-Buu" firstAttribute="top" secondItem="C89-6l-YYi" secondAttribute="bottom" constant="3" id="5WM-wl-guV"/>
-                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="1ns-n5-bRf" secondAttribute="trailing" constant="10" id="5tD-3l-a9k"/>
-                            <constraint firstItem="XnE-Uh-bFb" firstAttribute="leading" secondItem="nNe-PJ-1Iw" secondAttribute="leading" constant="5" id="CLQ-5O-89r"/>
+                            <constraint firstItem="66I-v2-Kti" firstAttribute="height" secondItem="XnE-Uh-bFb" secondAttribute="height" id="5hu-fE-g8E"/>
+                            <constraint firstItem="66I-v2-Kti" firstAttribute="width" secondItem="XnE-Uh-bFb" secondAttribute="width" id="7Ln-i4-e9p"/>
+                            <constraint firstItem="XnE-Uh-bFb" firstAttribute="leading" secondItem="nNe-PJ-1Iw" secondAttribute="leading" constant="15" id="CLQ-5O-89r"/>
+                            <constraint firstItem="66I-v2-Kti" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="1ns-n5-bRf" secondAttribute="trailing" constant="10" id="CcT-AQ-wjv"/>
                             <constraint firstItem="1ns-n5-bRf" firstAttribute="centerX" secondItem="nNe-PJ-1Iw" secondAttribute="centerX" id="EBw-CN-tdm"/>
+                            <constraint firstItem="66I-v2-Kti" firstAttribute="centerY" secondItem="nNe-PJ-1Iw" secondAttribute="centerY" id="Z1r-oI-pps"/>
                             <constraint firstItem="1ns-n5-bRf" firstAttribute="top" secondItem="7ht-Y2-NCW" secondAttribute="bottom" constant="3" id="b7D-Zd-puX"/>
                             <constraint firstItem="C89-6l-YYi" firstAttribute="centerX" secondItem="nNe-PJ-1Iw" secondAttribute="centerX" id="hwR-Qy-pGr"/>
+                            <constraint firstAttribute="trailing" secondItem="66I-v2-Kti" secondAttribute="trailing" constant="15" id="iGY-rt-v12"/>
                             <constraint firstItem="C89-6l-YYi" firstAttribute="top" secondItem="1ns-n5-bRf" secondAttribute="bottom" id="p1p-vS-1zq"/>
                             <constraint firstAttribute="bottom" secondItem="XnE-Uh-bFb" secondAttribute="bottom" constant="5" id="pNX-8r-dH6"/>
                             <constraint firstItem="XnE-Uh-bFb" firstAttribute="top" secondItem="nNe-PJ-1Iw" secondAttribute="top" constant="5" id="t4V-1R-Tdv"/>
@@ -57,6 +69,7 @@
                     <size key="freeformSize" width="250" height="44"/>
                     <connections>
                         <outlet property="profileImageView" destination="XnE-Uh-bFb" id="MjW-1d-3b6"/>
+                        <outlet property="settingsButton" destination="66I-v2-Kti" id="baH-MG-7Fh"/>
                         <outlet property="usernameLabel" destination="C89-6l-YYi" id="YaD-Wb-3Xn"/>
                         <outlet property="yourTimelineLabel" destination="1ns-n5-bRf" id="Lir-Aw-bFD"/>
                     </connections>
@@ -66,4 +79,7 @@
             <point key="canvasLocation" x="1664" y="-254.57271364317842"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="settings" width="25" height="25"/>
+    </resources>
 </document>

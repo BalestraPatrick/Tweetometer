@@ -8,13 +8,45 @@
 
 import UIKit
 
+extension UIViewController {
+
+    func add(childViewController: UIViewController) {
+        addChild(childViewController)
+        view.addSubview(childViewController.view)
+        childViewController.didMove(toParent: self)
+    }
+
+    func insert(childViewController: UIViewController, belowSubview subview: UIView) {
+        addChild(childViewController)
+        view.insertSubview(childViewController.view, belowSubview: subview)
+        childViewController.didMove(toParent: self)
+    }
+
+    func insert(childViewController: UIViewController, aboveSubview subview: UIView) {
+        addChild(childViewController)
+        view.insertSubview(childViewController.view, aboveSubview: subview)
+    }
+
+    func insert(childViewController: UIViewController, at index: Int) {
+        addChild(childViewController)
+        view.insertSubview(childViewController.view, at: index)
+        childViewController.didMove(toParent: self)
+    }
+
+    func removeFromParent() {
+        willMove(toParent: nil)
+        view.removeFromSuperview()
+        removeFromParent()
+    }
+}
+
 extension HomeViewController {
     
     func applyStyle() {
         navigationController?.navigationBar.applyStyle()
         tableView.separatorStyle = .none
         tableView.applyStyle()
-        titleLabel.text = "Your Timeline Stats"
+//        titleLabel.text = "Your Timeline Stats"
     }
 
     func set(screenName: String) {

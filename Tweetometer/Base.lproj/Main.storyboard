@@ -249,62 +249,10 @@
                             <constraint firstItem="ghP-3g-EJo" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="N2l-Em-EWk"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="qij-GM-89B">
-                        <view key="titleView" hidden="YES" contentMode="scaleToFill" id="OhV-Zt-nsQ">
-                            <rect key="frame" x="26" y="5.5" width="291" height="33"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f3d-NS-fIP">
-                                    <rect key="frame" x="128.5" y="0.0" width="34" height="13.5"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="13.5" id="Oyc-36-7fk"/>
-                                    </constraints>
-                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="@BalestraPatrick" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RNX-vJ-6ef" userLabel="BalestraPatrick">
-                                    <rect key="frame" x="97" y="18.5" width="97" height="14.5"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ug9-Fa-FTU">
-                                    <rect key="frame" x="0.0" y="0.0" width="33" height="33"/>
-                                    <constraints>
-                                        <constraint firstAttribute="width" secondItem="Ug9-Fa-FTU" secondAttribute="height" multiplier="1:1" id="LT0-gc-V8q"/>
-                                    </constraints>
-                                    <state key="normal" title="Button"/>
-                                </button>
-                            </subviews>
-                            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
-                            <constraints>
-                                <constraint firstItem="RNX-vJ-6ef" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Ug9-Fa-FTU" secondAttribute="trailing" constant="8" symbolic="YES" id="4ky-2n-ioE"/>
-                                <constraint firstItem="f3d-NS-fIP" firstAttribute="top" secondItem="OhV-Zt-nsQ" secondAttribute="top" id="CZE-B4-esf"/>
-                                <constraint firstItem="RNX-vJ-6ef" firstAttribute="top" secondItem="f3d-NS-fIP" secondAttribute="bottom" constant="5" id="IHG-4Z-smE"/>
-                                <constraint firstAttribute="bottom" secondItem="Ug9-Fa-FTU" secondAttribute="bottom" id="SDA-07-a0z"/>
-                                <constraint firstAttribute="bottom" secondItem="RNX-vJ-6ef" secondAttribute="bottom" id="UAb-Fo-Nyj"/>
-                                <constraint firstItem="Ug9-Fa-FTU" firstAttribute="top" secondItem="OhV-Zt-nsQ" secondAttribute="top" id="W6W-ax-amU"/>
-                                <constraint firstItem="f3d-NS-fIP" firstAttribute="centerX" secondItem="OhV-Zt-nsQ" secondAttribute="centerX" id="WLe-x6-FXi"/>
-                                <constraint firstItem="RNX-vJ-6ef" firstAttribute="centerX" secondItem="OhV-Zt-nsQ" secondAttribute="centerX" id="oYo-R8-IyE"/>
-                                <constraint firstItem="Ug9-Fa-FTU" firstAttribute="leading" secondItem="OhV-Zt-nsQ" secondAttribute="leading" id="sfY-Tc-wtl"/>
-                            </constraints>
-                        </view>
-                        <barButtonItem key="rightBarButtonItem" image="Menu" id="NoE-yk-Izm">
-                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <connections>
-                                <segue destination="p7T-X3-Vin" kind="popoverPresentation" identifier="menuPopOver" popoverAnchorBarButtonItem="NoE-yk-Izm" id="maH-fW-2FS">
-                                    <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
-                                </segue>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="qij-GM-89B"/>
                     <connections>
                         <outlet property="emptyStateLabel" destination="ghP-3g-EJo" id="FDw-6y-Pgu"/>
-                        <outlet property="profilePictureItem" destination="Ug9-Fa-FTU" id="j56-ld-x5Q"/>
-                        <outlet property="subtitleLabel" destination="RNX-vJ-6ef" id="dKc-hT-bEB"/>
                         <outlet property="tableView" destination="rso-oX-7fS" id="Aqk-H5-NCc"/>
-                        <outlet property="titleLabel" destination="f3d-NS-fIP" id="9zj-ni-TDf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

@@ -3,8 +3,6 @@
 // swiftlint:disable sorted_imports
 import Foundation
 import UIKit
-import Tweetometer
-import TweetsCounter
 
 // swiftlint:disable superfluous_disable_command
 // swiftlint:disable file_length
@@ -63,6 +61,8 @@ internal enum StoryboardScene {
   internal enum Login: StoryboardType {
     internal static let storyboardName = "Login"
 
+    internal static let initialScene = InitialSceneType<Tweetometer.LogInViewController>(storyboard: Login.self)
+
     internal static let login = SceneType<Tweetometer.LogInViewController>(storyboard: Login.self, identifier: "Login")
   }
   internal enum Main: StoryboardType {
@@ -79,7 +79,9 @@ internal enum StoryboardScene {
   internal enum Settings: StoryboardType {
     internal static let storyboardName = "Settings"
 
-    internal static let settings = SceneType<TweetsCounter.SettingsViewController>(storyboard: Settings.self, identifier: "Settings")
+    internal static let initialScene = InitialSceneType<Tweetometer.SettingsViewController>(storyboard: Settings.self)
+
+    internal static let settings = SceneType<Tweetometer.SettingsViewController>(storyboard: Settings.self, identifier: "Settings")
   }
   internal enum TwitterUserTopBar: StoryboardType {
     internal static let storyboardName = "TwitterUserTopBar"
@@ -90,7 +92,6 @@ internal enum StoryboardScene {
 
 internal enum StoryboardSegue {
   internal enum Main: String, SegueType {
-    case menuPopOver
     case userDetail
   }
 }
