@@ -47,7 +47,6 @@ class MenuCoordinator: Coordinator, MenuCoordinatorDelegate {
 
     func refreshTimeline() {
         controller.dismiss(animated: false)
-        parentCoordinator.refreshTimeline()
     }
 
     func share() {

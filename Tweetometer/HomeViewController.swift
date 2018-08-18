@@ -11,11 +11,6 @@ import TweetometerKit
 import Whisper
 import Kingfisher
 
-enum TableViewStatus {
-    case refreshing
-    case notRefreshing
-}
-
 final class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var tableView: UITableView!
@@ -32,6 +27,7 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
         applyStyle()
         tableView.rowHeight = 75.0
         setUpTwitterUserTopView()
+        requestTimeline()
     }
 
     private func setUpTwitterUserTopView() {
@@ -42,23 +38,11 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
         twitterUserTopView.view.layoutIfNeeded()
     }
 
-    func refresh() {
-        tableView.reloadData()
-    }
-
     // MARK: Storyboard Segues
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let identifier = segue.identifier, let segueIdentifier = StoryboardSegue.Main(rawValue: identifier) else { return }
-
         switch segueIdentifier {
-//        case .menuPopOver:
-//            guard let menuPopOver = segue.destination as? MenuPopOverViewController else { return }
-//            menuPopOver.modalPresentationStyle = .popover
-//            menuPopOver.view.backgroundColor = .menuDarkBlue()
-//            menuPopOver.popoverPresentationController!.delegate = self
-//            menuPopOver.popoverPresentationController!.backgroundColor = .menuDarkBlue()
-//            coordinator.presentMenu(menuPopOver)
         case .userDetail: break
 //            guard let userDetail = segue.destination as? UserDetailViewController, let cell = sender as? UITableViewCell, let indexPath = tableView.indexPath(for: cell), let users = users else { return }
 //            let selectedUser = users[indexPath.row]
@@ -69,44 +53,27 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
     
     // MARK: Data Request
 
-    func refreshTimeline() {
-//        setRefreshUI(to: .refreshing)
+    func requestTimeline() {
+        // Request tweets.
+        coordinator.twitterService.getTimeline(before: nil) { result in
+            switch result {
+            case .success(let success): break // TODO: Use IGListKit
+            case .error(let error): self.presentError(error)
+            }
+        }
     }
-
-//    func setRefreshUI(to status: TableViewStatus) {
-//        if case .refreshing = status {
-//            requestTimeline()
-//            tableView.startRefreshing(at: .top)
-//        } else {
-//            tableView.endRefreshing(at: .top)
-//            print("Last update: \(session.lastUpdate.updateString())")
-////            refresher.refresherData = RefresherData(lastUpdate: session.lastUpdate.updateString(), numberOfTweets: DataManager.realm().objects(Tweet.self).count)
-//        }
-//    }
-
-//    func requestTimeline() {
-//        // Request tweets.
-//        session.getTimeline(before: nil) { error in
-//            if let error = error {
-//                switch error {
-//                case .rateLimitExceeded:
-//                    self.presentAlert(title: "Rate Limit Exceeded ❌")
-//                case .noInternetConnection:
-//                    self.presentAlert(title: "No Internet Connection 📡")
-//                default:
-//                    self.presentAlert(title: error.localizedDescription)
-//                    break
-//                }
-//            } else {
-//                self.session.lastUpdate = Date()
-//            }
-//            self.setRefreshUI(to: .notRefreshing)
-//        }
-//    }
 
     // MARK: UI
 
-    func presentAlert(title: String) {
+    private func presentError(_ error: TweetometerError) {
+        switch error {
+        case .rateLimitExceeded: self.presentAlert(title: "Rate Limit Exceeded ❌")
+        case .noInternetConnection: self.presentAlert(title: "No Internet Connection 📡")
+        default: self.presentAlert(title: error.localizedDescription)
+        }
+    }
+
+    private func presentAlert(title: String) {
         guard let navigationController = navigationController else { return print("No navigation controller in this view hierarchy. Skipping the presentation.") }
         Whisper.Config.modifyInset = false
         let whisperMessage = Message(title: title, textColor: .white, backgroundColor: .backgroundBlue(), images: nil)

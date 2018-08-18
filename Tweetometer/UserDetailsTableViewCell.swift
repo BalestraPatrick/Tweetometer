@@ -48,14 +48,14 @@ class UserDetailsTableViewCell: UITableViewCell {
     func configure(_ user: User, coordinator: UserDetailCoordinator) {
         backgroundColor = .backgroundBlue()
 //        descriptionLabel.text = user.userDescription
-        if let stringURL = user.profileImageURL {
+//        if let stringURL = user.profileImageURL {
 //            profileImage.af_setImage(withURL: URL(string: stringURL)!, placeholderImage: UIImage(asset: .placeholder))
-        }
+//        }
 
-        totalTweetsCount = user.tweetsCount()
-        retweetsCount = user.retweetedTweetsCount()
-        repliesCount = user.repliesTweetsCount()
-        tweetsCount = totalTweetsCount - retweetsCount - repliesCount
+//        totalTweetsCount = user.tweetsCount()
+//        retweetsCount = user.retweetedTweetsCount()
+//        repliesCount = user.repliesTweetsCount()
+//        tweetsCount = totalTweetsCount - retweetsCount - repliesCount
 
         self.coordinator = coordinator
 

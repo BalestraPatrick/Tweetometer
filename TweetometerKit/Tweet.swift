@@ -8,14 +8,19 @@
 
 import Foundation
 
-public class Tweet: Codable {
-    public var userId: String = ""
-    public var createdAt: Date = Date()
-    public var tweetId: String = ""
-    public var text: String = ""
-    public var language: String = ""
-    public var retweetsCount: Int = 0
-    public var likesCount: Int = 0
-    public var retweeted: Bool = false
-    public var reply: Bool = false
+public struct Tweet: Codable {
+    public let idStr: String
+    public let createdAt: Date
+    public let favoriteCount: Int
+    public let retweetCount: Int
+    public let retweeted: Bool
+    public let user: User
+    public let text: String
+}
+
+extension Tweet: CustomStringConvertible {
+
+    public var description: String {
+        return "\nTweet:\n\tidStr: \(idStr)\n\ttext: \(text)\n\tuser: \(user.description)"
+    }
 }

@@ -8,18 +8,51 @@
 
 import Foundation
 
-public class User: Codable {
-    public var userId: String = ""
-    public var followersCount: Int = 0
-    public var followingCount: Int = 0
-    public var statusesCount: Int = 0
-    public var screenName: String = ""
-    public var name: String = ""
-    public var userDescription: String = ""
-    public var profileImageURL: String?
-    public var count: Int = 0
-    public var location: String = ""
-    public var displayURL: String?
+public struct User: Codable {
+    public let idStr: String
+    public let followersCount: Int
+    public let friendsCount: Int
+    public let statusesCount: Int
+    public let screenName: String
+    public let name: String
+    public let descriptionText: String
+    public let profileBannerUrl: String?
+    public let profileImageUrl: String
+    public let location: String
+
+    enum CodingKeys: String, CodingKey {
+        case idStr
+        case followersCount
+        case friendsCount
+        case statusesCount
+        case screenName
+        case name
+        case descriptionText = "description"
+        case profileBannerUrl
+        case profileImageUrl
+        case location
+    }
+
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        idStr = try container.decode(String.self, forKey: .idStr)
+        followersCount = try container.decode(Int.self, forKey: .followersCount)
+        friendsCount = try container.decode(Int.self, forKey: .friendsCount)
+        statusesCount = try container.decode(Int.self, forKey: .statusesCount)
+        screenName = try container.decode(String.self, forKey: .screenName)
+        name = try container.decode(String.self, forKey: .name)
+        descriptionText = try container.decode(String.self, forKey: .descriptionText)
+        profileBannerUrl = try container.decodeIfPresent(String.self, forKey: .profileBannerUrl)
+        profileImageUrl = try container.decode(String.self, forKey: .profileImageUrl)
+        location = try container.decode(String.self, forKey: .location)
+    }
+}
+
+extension User: CustomStringConvertible {
+
+    public var description: String {
+        return "\n\t\tidStr: \(idStr),\n\t\tscreenName: \(screenName)"
+    }
 }
 
 public extension User {
@@ -29,24 +62,11 @@ public extension User {
         return biggerURL
     }
 
-    public func tweets() -> [Tweet] {
-//        let realm = try! Realm()
-//        let tweets = realm.objects(Tweet.self)
-//            .filter { $0.userId == self.userId }
-//            .sorted { $0.0.createdAt > $0.1.createdAt }
-        return []
-    }
-
-    @discardableResult
-    public func tweetsCount() -> Int {
-        return 0
-    }
-
-    public func retweetedTweetsCount() -> Int {
-        return tweets().filter { $0.retweeted }.count
-    }
-
-    public func repliesTweetsCount() -> Int {
-        return tweets().filter { $0.reply }.count
-    }
+//    public func retweetedTweetsCount() -> Int {
+//        return tweets().filter { $0.retweeted }.count
+//    }
+//
+//    public func repliesTweetsCount() -> Int {
+//        return tweets().filter { $0.reply }.count
+//    }
 }

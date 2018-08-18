@@ -13,7 +13,6 @@ protocol HomeCoordinatorDelegate: class {
     func pushDetail(_ controller: UserDetailViewController)
     func presentMenu(_ controller: MenuPopOverViewController)
     func presentLogin()
-    func refreshTimeline()
 }
 
 class HomeCoordinator: Coordinator, HomeCoordinatorDelegate {
@@ -66,10 +65,6 @@ class HomeCoordinator: Coordinator, HomeCoordinatorDelegate {
         let settingsCoordinator = SettingsCoordinator(parent: controller)
         childCoordinators.append(settingsCoordinator)
         settingsCoordinator.start()
-    }
-
-    func refreshTimeline() {
-        controller.refreshTimeline()
     }
 
     // MARK: Internal Methods

@@ -52,10 +52,10 @@ class TweetTableViewCell: UITableViewCell {
     
     func configure(_ tweet: Tweet, indexPath: IndexPath, coordinator: UserDetailCoordinator) {
 //        tweetLabel.text = tweet.text
-        dateLabel.text = tweet.createdAt.tweetDateFormatted()
-        retweetsCountLabel.text = "\(tweet.retweetsCount)"
-        likesCountLabel.text = "\(tweet.likesCount)"
-        index = indexPath.row
-        self.coordinator = coordinator
+//        dateLabel.text = tweet.createdAt.tweetDateFormatted()
+//        retweetsCountLabel.text = "\(tweet.retweetsCount)"
+//        likesCountLabel.text = "\(tweet.likesCount)"
+//        index = indexPath.row
+//        self.coordinator = coordinator
     }
 }
