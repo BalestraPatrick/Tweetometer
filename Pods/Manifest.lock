@@ -1,20 +1,28 @@
 PODS:
+  - IGListKit (3.4.0):
+    - IGListKit/Default (= 3.4.0)
+  - IGListKit/Default (3.4.0):
+    - IGListKit/Diffing
+  - IGListKit/Diffing (3.4.0)
   - TwitterCore (3.1.0)
   - TwitterKit (3.3.0):
     - TwitterCore (>= 3.1.0)
 
 DEPENDENCIES:
+  - IGListKit
   - TwitterKit
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - IGListKit
     - TwitterCore
     - TwitterKit
 
 SPEC CHECKSUMS:
+  IGListKit: 7a5d788e9fb746bcd402baa8e8b24bc3bd2a5a07
   TwitterCore: 644d59e75abccb26cf0a9050d2c4dea0e5412241
   TwitterKit: a2e60ddcedbf54091eac6f27685ca7a87681e1d7
 
-PODFILE CHECKSUM: c614f5f0a4fcdd9ac26e0181c4a60b8466da8dfa
+PODFILE CHECKSUM: 0bf768ef3a77ad524281ad1bdf05fc6b15c2f954
 
 COCOAPODS: 1.5.3

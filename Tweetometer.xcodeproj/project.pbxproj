@@ -42,6 +42,7 @@
 		AE2B2E9221281DEF0042EBBE /* Timeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE2B2E9121281DEF0042EBBE /* Timeline.swift */; };
 		AE2B2E94212878E50042EBBE /* JSONDecoder+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE2B2E93212878E50042EBBE /* JSONDecoder+Utils.swift */; };
 		AE2B2E96212878F60042EBBE /* DateFormatter+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE2B2E95212878F60042EBBE /* DateFormatter+Utils.swift */; };
+		AE2B2E9821289E1C0042EBBE /* TimelineSectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE2B2E9721289E1C0042EBBE /* TimelineSectionController.swift */; };
 		AE2F0DC61C93751100F10122 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE2F0DC51C93751100F10122 /* AppCoordinator.swift */; };
 		AE35A2F41C52B4A4001E1D88 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE35A2F31C52B4A4001E1D88 /* SettingsViewController.swift */; };
 		AE35A2F61C52C146001E1D88 /* DismissFromSettingsSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE35A2F51C52C146001E1D88 /* DismissFromSettingsSegue.swift */; };
@@ -56,6 +57,8 @@
 		AE6352131C66178400799157 /* MenuOptionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6352121C66178400799157 /* MenuOptionTableViewCell.swift */; };
 		AE6352151C66226800799157 /* UserDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6352141C66226800799157 /* UserDetailViewController.swift */; };
 		AE6675901C3C13D500DD47AB /* users_show.json in Resources */ = {isa = PBXBuildFile; fileRef = AE66758F1C3C13D500DD47AB /* users_show.json */; };
+		AE67ACE52128A2530030E7FA /* TimelineUserCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE67ACE32128A2530030E7FA /* TimelineUserCollectionViewCell.swift */; };
+		AE67ACE62128A2530030E7FA /* TimelineUserCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE67ACE42128A2530030E7FA /* TimelineUserCollectionViewCell.xib */; };
 		AE81D52721273D7000207F0C /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE81D52621273D7000207F0C /* Logger.swift */; };
 		AE81D5292127409E00207F0C /* PerformanceLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE81D5282127409E00207F0C /* PerformanceLogger.swift */; };
 		AE94D0D521220E4000DFC3E5 /* AppServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE94D0D421220E4000DFC3E5 /* AppServices.swift */; };
@@ -167,6 +170,7 @@
 		AE2B2E9121281DEF0042EBBE /* Timeline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Timeline.swift; sourceTree = "<group>"; };
 		AE2B2E93212878E50042EBBE /* JSONDecoder+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JSONDecoder+Utils.swift"; sourceTree = "<group>"; };
 		AE2B2E95212878F60042EBBE /* DateFormatter+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+Utils.swift"; sourceTree = "<group>"; };
+		AE2B2E9721289E1C0042EBBE /* TimelineSectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineSectionController.swift; sourceTree = "<group>"; };
 		AE2F0DC51C93751100F10122 /* AppCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		AE35A2F31C52B4A4001E1D88 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		AE35A2F51C52C146001E1D88 /* DismissFromSettingsSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DismissFromSettingsSegue.swift; sourceTree = "<group>"; };
@@ -184,6 +188,8 @@
 		AE6352121C66178400799157 /* MenuOptionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuOptionTableViewCell.swift; sourceTree = "<group>"; };
 		AE6352141C66226800799157 /* UserDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDetailViewController.swift; sourceTree = "<group>"; };
 		AE66758F1C3C13D500DD47AB /* users_show.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = users_show.json; sourceTree = "<group>"; };
+		AE67ACE32128A2530030E7FA /* TimelineUserCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineUserCollectionViewCell.swift; sourceTree = "<group>"; };
+		AE67ACE42128A2530030E7FA /* TimelineUserCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TimelineUserCollectionViewCell.xib; sourceTree = "<group>"; };
 		AE81D52621273D7000207F0C /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		AE81D5282127409E00207F0C /* PerformanceLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerformanceLogger.swift; sourceTree = "<group>"; };
 		AE94D0D421220E4000DFC3E5 /* AppServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppServices.swift; sourceTree = "<group>"; };
@@ -275,6 +281,7 @@
 			isa = PBXGroup;
 			children = (
 				AE277DEF1BD4E6DB004E151C /* HomeViewController.swift */,
+				AE2B2E9721289E1C0042EBBE /* TimelineSectionController.swift */,
 				AE6352141C66226800799157 /* UserDetailViewController.swift */,
 				AE35A2F31C52B4A4001E1D88 /* SettingsViewController.swift */,
 				AE15F36B1C62A1BD00EE2F82 /* MenuPopOverViewController.swift */,
@@ -325,6 +332,8 @@
 		AE0FA7D11C0EE78100EDB0A1 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				AE67ACE32128A2530030E7FA /* TimelineUserCollectionViewCell.swift */,
+				AE67ACE42128A2530030E7FA /* TimelineUserCollectionViewCell.xib */,
 				AE07A0D51C5D4AD400514B1C /* UserTableViewCell.swift */,
 				AEAFB1051C7A0E270030AB33 /* TweetTableViewCell.swift */,
 				AEF598E61CD679B40055E88C /* UserDetailsTableViewCell.swift */,
@@ -632,6 +641,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AE67ACE62128A2530030E7FA /* TimelineUserCollectionViewCell.xib in Resources */,
 				AE277DF81BD4E6DB004E151C /* LaunchScreen.storyboard in Resources */,
 				AE1BD466212566B400760793 /* UserTopBar.storyboard in Resources */,
 				AE277DF51BD4E6DB004E151C /* Assets.xcassets in Resources */,
@@ -722,11 +732,7 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
-			);
-			outputFileListPaths = (
 			);
 			outputPaths = (
 			);
@@ -758,11 +764,13 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Tweetometer/Pods-Tweetometer-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/IGListKit/IGListKit.framework",
 				"${PODS_ROOT}/TwitterCore/iOS/TwitterCore.framework",
 				"${PODS_ROOT}/TwitterKit/iOS/TwitterKit.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IGListKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TwitterCore.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TwitterKit.framework",
 			);
@@ -826,6 +834,7 @@
 				AE292B3D1DFDF009002B91AD /* MenuCoordinator.swift in Sources */,
 				AE6352131C66178400799157 /* MenuOptionTableViewCell.swift in Sources */,
 				AEE22BAB1CD72DF1003CA241 /* ProfilePictureImageView.swift in Sources */,
+				AE2B2E9821289E1C0042EBBE /* TimelineSectionController.swift in Sources */,
 				AE2F0DC61C93751100F10122 /* AppCoordinator.swift in Sources */,
 				AE35A2F41C52B4A4001E1D88 /* SettingsViewController.swift in Sources */,
 				AE04479A1DF3040700FEE093 /* NSAttributedString+User.swift in Sources */,
@@ -849,6 +858,7 @@
 				AE96700A1C94604700189697 /* UserDetailCoordinator.swift in Sources */,
 				AE292B3F1DFDF998002B91AD /* SettingsCoordinator.swift in Sources */,
 				AEFBEBD51E1D3070009BCD34 /* ActiveLabel+Utils.swift in Sources */,
+				AE67ACE52128A2530030E7FA /* TimelineUserCollectionViewCell.swift in Sources */,
 				AE9670071C945ADF00189697 /* HomeCoordinator.swift in Sources */,
 				AE1BD43E2124B1A300760793 /* UserTopBarViewController.swift in Sources */,
 				AE6352151C66226800799157 /* UserDetailViewController.swift in Sources */,

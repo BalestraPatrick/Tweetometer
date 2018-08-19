@@ -36,7 +36,6 @@ extension UIViewController {
     func removeFromParent() {
         willMove(toParent: nil)
         view.removeFromSuperview()
-        removeFromParent()
     }
 }
 
@@ -44,13 +43,13 @@ extension HomeViewController {
     
     func applyStyle() {
         navigationController?.navigationBar.applyStyle()
-        tableView.separatorStyle = .none
-        tableView.applyStyle()
+//        tableView.separatorStyle = .none
+//        tableView.applyStyle()
 //        titleLabel.text = "Your Timeline Stats"
     }
 
     func set(screenName: String) {
-        subtitleLabel.text = "@\(screenName)"
+//        subtitleLabel.text = "@\(screenName)"
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {

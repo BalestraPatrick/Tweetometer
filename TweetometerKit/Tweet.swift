@@ -7,8 +7,9 @@
 //
 
 import Foundation
+import IGListKit
 
-public struct Tweet: Codable {
+public class Tweet: Codable {
     public let idStr: String
     public let createdAt: Date
     public let favoriteCount: Int
@@ -16,6 +17,18 @@ public struct Tweet: Codable {
     public let retweeted: Bool
     public let user: User
     public let text: String
+}
+
+extension Tweet: ListDiffable {
+
+    public func diffIdentifier() -> NSObjectProtocol {
+        return idStr as NSString
+    }
+
+    public func isEqual(toDiffableObject object: ListDiffable?) -> Bool {
+        guard let idStr2 = object?.diffIdentifier() as? String else { return false }
+        return idStr == idStr2
+    }
 }
 
 extension Tweet: CustomStringConvertible {

@@ -1,7 +1,6 @@
 github "BalestraPatrick/ValueStepper"
 github "IcaliaLabs/Presentr"
 github "hyperoslo/Whisper"
-github "Instagram/IGListKit" ~> 3.0
 github "onevcat/Kingfisher" "xcode-10"
 
 git "https://github.com/BalestraPatrick/PullToRefresh"

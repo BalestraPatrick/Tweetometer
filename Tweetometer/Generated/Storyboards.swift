@@ -91,9 +91,6 @@ internal enum StoryboardScene {
 }
 
 internal enum StoryboardSegue {
-  internal enum Main: String, SegueType {
-    case userDetail
-  }
 }
 // swiftlint:enable explicit_type_interface identifier_name line_length type_body_length type_name
 

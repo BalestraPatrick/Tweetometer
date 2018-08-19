@@ -10,24 +10,36 @@ import UIKit
 import TweetometerKit
 import Whisper
 import Kingfisher
+import IGListKit
 
-final class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    
-    @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var subtitleLabel: UILabel!
-    @IBOutlet weak var profilePictureItem: UIButton!
-    @IBOutlet weak var emptyStateLabel: UILabel!
+final class HomeViewController: UIViewController {
 
     weak var coordinator: HomeCoordinatorDelegate!
-    var twitterUserTopView: UserTopBarViewController!
+
+    private let collectionView = ListCollectionView(
+        frame: CGRect.zero,
+        listCollectionViewLayout: ListCollectionViewLayout(stickyHeaders: true, topContentInset: 0, stretchToEdge: false)
+    )
+
+    private lazy var adapter = ListAdapter(updater: ListAdapterUpdater(), viewController: self, workingRangeSize: 0)
+    private var timeline: Timeline?
+
+    private var twitterUserTopView: UserTopBarViewController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         applyStyle()
-        tableView.rowHeight = 75.0
         setUpTwitterUserTopView()
         requestTimeline()
+        view.addSubview(collectionView)
+        collectionView.backgroundColor = .white
+        adapter.collectionView = collectionView
+        adapter.dataSource = self
+    }
+
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        collectionView.frame = view.bounds
     }
 
     private func setUpTwitterUserTopView() {
@@ -57,7 +69,11 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
         // Request tweets.
         coordinator.twitterService.getTimeline(before: nil) { result in
             switch result {
-            case .success(let success): break // TODO: Use IGListKit
+            case .success(let timeline):
+                self.timeline = timeline
+                DispatchQueue.main.async {
+                    self.adapter.performUpdates(animated: true)
+                }
             case .error(let error): self.presentError(error)
             }
         }
@@ -88,7 +104,7 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let count = /*users?.count ??*/ 0
-        emptyStateLabel.isHidden = count != 0
+//        emptyStateLabel.isHidden = count != 0
         return count
     }
     
@@ -114,5 +130,24 @@ extension HomeViewController: UserTopBarDelegate {
         menuPopOver.popoverPresentationController?.sourceView = sender
         menuPopOver.popoverPresentationController?.sourceRect = CGRect(x: 13, y: sender.bounds.height, width: 0, height: 0)
         coordinator.presentMenu(menuPopOver)
+    }
+}
+
+extension HomeViewController: ListAdapterDataSource {
+
+    func objects(for listAdapter: ListAdapter) -> [ListDiffable] {
+        guard let timeline = timeline else { return [] }
+        return timeline.tweets
+    }
+
+    func listAdapter(_ listAdapter: ListAdapter, sectionControllerFor object: Any) -> ListSectionController {
+        return TimelineSectionController(timeline: timeline)
+    }
+
+    func emptyView(for listAdapter: ListAdapter) -> UIView? {
+        // TODO: create empty state UIViewController
+        let emptyView = UIView(frame: collectionView.bounds)
+        emptyView.backgroundColor = .white
+        return emptyView
     }
 }

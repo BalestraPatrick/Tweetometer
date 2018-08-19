@@ -28,8 +28,8 @@ public func logPerformance(_ type: PerformanceLogType, name: StaticString, log: 
     guard #available(iOS 12.0, *) else { return }
     // TODO: Use OSLog.disable in release mode
     if let format = format {
-        os_signpost(type.signpostType, log: log, name: name, format, arguments)
+        os_signpost(type.signpostType, log: log, name: name, signpostID: OSSignpostID(log: log), format, arguments)
     } else {
-        os_signpost(type.signpostType, log: log, name: name)
+        os_signpost(type.signpostType, log: log, name: name, signpostID: OSSignpostID(log: log))
     }
 }

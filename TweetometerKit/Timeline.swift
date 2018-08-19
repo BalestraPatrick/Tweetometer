@@ -9,5 +9,5 @@
 import Foundation
 
 public struct Timeline {
-    let tweets: [Tweet]
+    public let tweets: [Tweet]
 }

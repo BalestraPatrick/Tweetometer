@@ -57,6 +57,15 @@ public final class TwitterSession {
     private var remainingTimelineRequests = 4
     private final let maximumTweetsPerRequest = 200
 
+    let serialQueue: OperationQueue = {
+        let queue = OperationQueue()
+        queue.maxConcurrentOperationCount = 1
+        queue.waitUntilAllOperationsAreFinished()
+        return queue
+    }()
+
+    var timelineCompletion: CompletionBlock<Timeline>?
+
     public init() { }
 
     /// Returns true if a user is currently logged in.
@@ -66,6 +75,7 @@ public final class TwitterSession {
 
     public func loadUserData(completion: @escaping CompletionBlock<TWTRUser>)  {
         guard let client = client, let userID = loggedInUserID else { return }
+        logPerformance(.event, name: "Loading User Data", log: Subsystem.twitterSession)
         logPerformance(.end, name: "Loading User Data", log: Subsystem.twitterSession)
         client.loadUser(withID: userID) { [weak self] user, error in
             if let user = user {
@@ -86,22 +96,12 @@ public final class TwitterSession {
         log("Logged out user", log: Subsystem.twitterSession)
     }
 
-    let serialQueue: OperationQueue = {
-        let queue = OperationQueue()
-        queue.maxConcurrentOperationCount = 1
-        queue.waitUntilAllOperationsAreFinished()
-        return queue
-    }()
-
-    var timelineCompletion: CompletionBlock<[User]>?
-
     /// Get the timeline tweets of the current user.
     ///
     /// - Parameters:
     ///   - maxId: The optional maximum tweetID used to return only the oldest tweets.
     ///   - completion: The completion block containing an optional error.
-    public func getTimeline(before maxId: String? = nil, completion: @escaping CompletionBlock<[User]>) {
-//        NotificationCenter.default.post(name: NSNotification.Name.requestStarted(), object: nil)
+    public func getTimeline(before maxId: String? = nil, completion: @escaping CompletionBlock<Timeline>) {
         guard let client = client else { return completion(.error(TweetometerError.notAuthenticated)) }
         self.timelineCompletion = completion
 
@@ -109,8 +109,8 @@ public final class TwitterSession {
         timelineOperation.completionBlock = {
             guard let result = timelineOperation.result else { return }
             switch result {
-            case .success(let timeline): break
-            case .error(let error): break
+            case .success(let timeline): self.timelineCompletion?(.success(timeline))
+            case .error(let error): self.timelineCompletion?(.error(error))
             }
 
         }

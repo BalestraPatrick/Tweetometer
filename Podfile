@@ -18,5 +18,5 @@ target 'TweetometerKit' do
   use_frameworks!
 
   pod 'TwitterKit'
-
+  pod 'IGListKit'
 end

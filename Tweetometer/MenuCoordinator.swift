@@ -52,9 +52,9 @@ class MenuCoordinator: Coordinator, MenuCoordinatorDelegate {
     func share() {
         controller.dismiss(animated: false)
         var items: [Any] = [URL(string: "https://www.patrickbalestra.com/Tweetometer")!]
-        if let image = parentCoordinator.controller.tableView.topUsersImage {
-            items.append(image)
-        }
+//        if let image = parentCoordinator.controller.tableView.topUsersImage {
+//            items.append(image)
+//        }
         let activity = UIActivityViewController(activityItems: items, applicationActivities: nil)
         parentCoordinator.controller.present(activity, animated: true)    }
 
