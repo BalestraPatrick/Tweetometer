@@ -11,9 +11,9 @@ import IGListKit
 
 public class TwitterTimelineElement {
     public let user: User
-    public let tweets: [Tweet]
+    public let tweets: OrderedSet<Tweet>
 
-    init(user: User, tweets: [Tweet]) {
+    init(user: User, tweets: OrderedSet<Tweet>) {
         self.user = user
         self.tweets = tweets
     }
@@ -22,7 +22,7 @@ public class TwitterTimelineElement {
 extension TwitterTimelineElement: ListDiffable {
 
     public func diffIdentifier() -> NSObjectProtocol {
-        return user.hashValue ^ tweets.hashValue as NSObjectProtocol
+        return user.hashValue ^ tweets.count as NSObjectProtocol
     }
 
     public func isEqual(toDiffableObject object: ListDiffable?) -> Bool {

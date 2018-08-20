@@ -12,8 +12,8 @@ import TwitterKit
 class TimelineDownloaderOperation: Operation {
 
     let client: TWTRAPIClient
-    let semaphore = DispatchSemaphore(value: 0)
     let maxId: String?
+    let semaphore = DispatchSemaphore(value: 0)
 
     var result: Result<[Tweet]>?
 

@@ -42,7 +42,6 @@
 		AE2B2E9221281DEF0042EBBE /* TwitterTimelineElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE2B2E9121281DEF0042EBBE /* TwitterTimelineElement.swift */; };
 		AE2B2E94212878E50042EBBE /* JSONDecoder+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE2B2E93212878E50042EBBE /* JSONDecoder+Utils.swift */; };
 		AE2B2E96212878F60042EBBE /* DateFormatter+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE2B2E95212878F60042EBBE /* DateFormatter+Utils.swift */; };
-		AE2B2E9821289E1C0042EBBE /* TimelineSectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE2B2E9721289E1C0042EBBE /* TimelineSectionController.swift */; };
 		AE2F0DC61C93751100F10122 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE2F0DC51C93751100F10122 /* AppCoordinator.swift */; };
 		AE35A2F41C52B4A4001E1D88 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE35A2F31C52B4A4001E1D88 /* SettingsViewController.swift */; };
 		AE35A2F61C52C146001E1D88 /* DismissFromSettingsSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE35A2F51C52C146001E1D88 /* DismissFromSettingsSegue.swift */; };
@@ -64,6 +63,7 @@
 		AE67ACE62128A2530030E7FA /* TimelineUserCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE67ACE42128A2530030E7FA /* TimelineUserCollectionViewCell.xib */; };
 		AE81D52721273D7000207F0C /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE81D52621273D7000207F0C /* Logger.swift */; };
 		AE81D5292127409E00207F0C /* PerformanceLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE81D5282127409E00207F0C /* PerformanceLogger.swift */; };
+		AE8F5880212B0C210092266C /* OrderedSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8F587F212B0C210092266C /* OrderedSet.swift */; };
 		AE94D0D521220E4000DFC3E5 /* AppServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE94D0D421220E4000DFC3E5 /* AppServices.swift */; };
 		AE9670071C945ADF00189697 /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9670061C945ADF00189697 /* HomeCoordinator.swift */; };
 		AE96700A1C94604700189697 /* UserDetailCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9670091C94604700189697 /* UserDetailCoordinator.swift */; };
@@ -174,7 +174,6 @@
 		AE2B2E9121281DEF0042EBBE /* TwitterTimelineElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwitterTimelineElement.swift; sourceTree = "<group>"; };
 		AE2B2E93212878E50042EBBE /* JSONDecoder+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JSONDecoder+Utils.swift"; sourceTree = "<group>"; };
 		AE2B2E95212878F60042EBBE /* DateFormatter+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+Utils.swift"; sourceTree = "<group>"; };
-		AE2B2E9721289E1C0042EBBE /* TimelineSectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineSectionController.swift; sourceTree = "<group>"; };
 		AE2F0DC51C93751100F10122 /* AppCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		AE35A2F31C52B4A4001E1D88 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		AE35A2F51C52C146001E1D88 /* DismissFromSettingsSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DismissFromSettingsSegue.swift; sourceTree = "<group>"; };
@@ -199,6 +198,7 @@
 		AE67ACE42128A2530030E7FA /* TimelineUserCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TimelineUserCollectionViewCell.xib; sourceTree = "<group>"; };
 		AE81D52621273D7000207F0C /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		AE81D5282127409E00207F0C /* PerformanceLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerformanceLogger.swift; sourceTree = "<group>"; };
+		AE8F587F212B0C210092266C /* OrderedSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderedSet.swift; sourceTree = "<group>"; };
 		AE94D0D421220E4000DFC3E5 /* AppServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppServices.swift; sourceTree = "<group>"; };
 		AE9670061C945ADF00189697 /* HomeCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeCoordinator.swift; sourceTree = "<group>"; };
 		AE9670091C94604700189697 /* UserDetailCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDetailCoordinator.swift; sourceTree = "<group>"; };
@@ -289,7 +289,6 @@
 			isa = PBXGroup;
 			children = (
 				AE277DEF1BD4E6DB004E151C /* HomeViewController.swift */,
-				AE2B2E9721289E1C0042EBBE /* TimelineSectionController.swift */,
 				AE6352141C66226800799157 /* UserDetailViewController.swift */,
 				AE35A2F31C52B4A4001E1D88 /* SettingsViewController.swift */,
 				AE15F36B1C62A1BD00EE2F82 /* MenuPopOverViewController.swift */,
@@ -512,6 +511,7 @@
 			isa = PBXGroup;
 			children = (
 				AEB69AAB212A121000F27041 /* TimelineModelController.swift */,
+				AE8F587F212B0C210092266C /* OrderedSet.swift */,
 			);
 			path = "Model Controller";
 			sourceTree = "<group>";
@@ -854,7 +854,6 @@
 				AE292B3D1DFDF009002B91AD /* MenuCoordinator.swift in Sources */,
 				AE6352131C66178400799157 /* MenuOptionTableViewCell.swift in Sources */,
 				AEE22BAB1CD72DF1003CA241 /* ProfilePictureImageView.swift in Sources */,
-				AE2B2E9821289E1C0042EBBE /* TimelineSectionController.swift in Sources */,
 				AE2F0DC61C93751100F10122 /* AppCoordinator.swift in Sources */,
 				AE35A2F41C52B4A4001E1D88 /* SettingsViewController.swift in Sources */,
 				AE04479A1DF3040700FEE093 /* NSAttributedString+User.swift in Sources */,
@@ -921,6 +920,7 @@
 				AE4EFD1A212AA2E90039F0DD /* Result.swift in Sources */,
 				AE2B2E94212878E50042EBBE /* JSONDecoder+Utils.swift in Sources */,
 				AE028F14211ADA8000741650 /* SettingsManager.swift in Sources */,
+				AE8F5880212B0C210092266C /* OrderedSet.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

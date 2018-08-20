@@ -18,7 +18,9 @@ public class TimelineModelController {
     }
 
     func add(tweets: [Tweet]) {
+        print("New tweets: \(tweets.count)")
         self.tweets.append(contentsOf: tweets)
+        print("New total tweets: \(self.tweets.count)")
         computeTimeline()
     }
 
@@ -35,5 +37,6 @@ public class TimelineModelController {
                 }
             }
             .sorted { $0.tweets.count > $1.tweets.count }
+        print(_usersTimeline)
     }
 }

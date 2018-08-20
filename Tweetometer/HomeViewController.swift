@@ -47,13 +47,6 @@ final class HomeViewController: UIViewController {
         twitterUserTopView.view.centerXAnchor.constraint(equalTo: navigationController!.view.centerXAnchor).isActive = true
         twitterUserTopView.view.layoutIfNeeded()
     }
-
-    // MARK: Storyboard Segues
-
-//            guard let userDetail = segue.destination as? UserDetailViewController, let cell = sender as? UITableViewCell, let indexPath = tableView.indexPath(for: cell), let users = users else { return }
-//            let selectedUser = users[indexPath.row]
-//            userDetail.user = selectedUser
-//            coordinator.pushDetail(userDetail)
     
     // MARK: Data Request
 
@@ -66,7 +59,10 @@ final class HomeViewController: UIViewController {
                 DispatchQueue.main.async {
                     self.adapter.performUpdates(animated: true)
                 }
-            case .error(let error): self.presentError(error)
+            case .error(let error):
+                DispatchQueue.main.async {
+                    self.presentError(error)
+                }
             }
         }
     }
@@ -115,7 +111,6 @@ extension HomeViewController: ListAdapterDataSource {
             guard let cell = cell as? TimelineUserCollectionViewCell, let user = item as? TwitterTimelineElement else { return }
             cell.configure(with: user)
         }
-
         let sizeBlock = { (item: Any, context: ListCollectionContext?) -> CGSize in
             guard let context = context else { return .zero }
             return CGSize(width: context.containerSize.width, height: 80)
@@ -141,6 +136,11 @@ extension HomeViewController: ListAdapterDataSource {
 extension HomeViewController: ListSingleSectionControllerDelegate {
 
     func didSelect(_ sectionController: ListSingleSectionController, with object: Any) {
-
+        guard let element = object as? TwitterTimelineElement else { return }
+        // TODO: move scene creation to coordinator
+        let detailViewController = StoryboardScene.Main.userDetail.instantiate()
+        detailViewController.element = element
+        navigationController?.pushViewController(detailViewController, animated: true)
+//        coordinator.pushDetail(detailViewController)
     }
 }

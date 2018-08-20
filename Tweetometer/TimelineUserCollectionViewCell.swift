@@ -22,6 +22,12 @@ class TimelineUserCollectionViewCell: UICollectionViewCell {
     deinit {
         profileImageView.kf.cancelDownloadTask()
     }
+
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        profileImageView.kf.cancelDownloadTask()
+    }
+    
     func configure(with element: TwitterTimelineElement) {
         profileImageView.kf.setImage(with: URL(string: element.user.profileImageUrl))
         nameLabel.text = "@".appending(element.user.screenName)

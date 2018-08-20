@@ -82,18 +82,18 @@ public final class TwitterSession {
         guard let client = client else { return completion(.error(TweetometerError.notAuthenticated)) }
         self.timelineCompletion = completion
 
-        let timelineOperation = TimelineDownloaderOperation(client: client)
+        let timelineOperation = TimelineDownloaderOperation(client: client, maxId: maxId)
         timelineOperation.completionBlock = {
             guard let result = timelineOperation.result else { return }
             switch result {
             case .success(let tweets):
                 self.timelineController.add(tweets: tweets)
                 self.timelineCompletion?(.success(self.timelineController))
-//                self.timelineRequestsCount -= 1
-//                if self.shouldRequestMoreTimelineTweets() {
-//                    print("requesting more tweets older of: \(tweets.last!.idStr)")
-//                    self.getTimeline(before: tweets.last!.idStr, completion: completion)
-//                }
+                self.timelineRequestsCount -= 1
+                if self.shouldRequestMoreTimelineTweets() {
+                    print("requesting more tweets older of: \(tweets.last!.idStr)")
+                    self.getTimeline(before: tweets.last!.idStr, completion: completion)
+                }
             case .error(let error):
                 self.timelineCompletion?(.error(error))
             }
