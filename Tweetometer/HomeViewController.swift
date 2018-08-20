@@ -20,12 +20,10 @@ final class HomeViewController: UIViewController {
         frame: CGRect.zero,
         listCollectionViewLayout: ListCollectionViewLayout(stickyHeaders: true, topContentInset: 0, stretchToEdge: false)
     )
-
-    private lazy var adapter = ListAdapter(updater: ListAdapterUpdater(), viewController: self, workingRangeSize: 0)
-    private var timeline: Timeline?
-
+    private lazy var adapter = ListAdapter(updater: ListAdapterUpdater(), viewController: self, workingRangeSize: 2)
+    private var timelineController: TimelineModelController?
     private var twitterUserTopView: UserTopBarViewController!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         applyStyle()
@@ -52,16 +50,10 @@ final class HomeViewController: UIViewController {
 
     // MARK: Storyboard Segues
 
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let identifier = segue.identifier, let segueIdentifier = StoryboardSegue.Main(rawValue: identifier) else { return }
-        switch segueIdentifier {
-        case .userDetail: break
 //            guard let userDetail = segue.destination as? UserDetailViewController, let cell = sender as? UITableViewCell, let indexPath = tableView.indexPath(for: cell), let users = users else { return }
 //            let selectedUser = users[indexPath.row]
 //            userDetail.user = selectedUser
 //            coordinator.pushDetail(userDetail)
-        }
-    }
     
     // MARK: Data Request
 
@@ -69,8 +61,8 @@ final class HomeViewController: UIViewController {
         // Request tweets.
         coordinator.twitterService.getTimeline(before: nil) { result in
             switch result {
-            case .success(let timeline):
-                self.timeline = timeline
+            case .success(let timelineController):
+                self.timelineController = timelineController
                 DispatchQueue.main.async {
                     self.adapter.performUpdates(animated: true)
                 }
@@ -95,29 +87,7 @@ final class HomeViewController: UIViewController {
         let whisperMessage = Message(title: title, textColor: .white, backgroundColor: .backgroundBlue(), images: nil)
         Whisper.show(whisper: whisperMessage, to: navigationController, action: .show)
     }
-
-    // MARK: UITableViewDataSource
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let count = /*users?.count ??*/ 0
-//        emptyStateLabel.isHidden = count != 0
-        return count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: TableViewCell.UserCellIdentifier.rawValue) as? UserTableViewCell else {
-            fatalError("Could not create cell with identifier \(TableViewCell.UserCellIdentifier.rawValue) in UITableView: \(tableView)")
-        }
-//        let user = users[indexPath.row]
-//        cell.configure(user, indexPath: indexPath)
-        return cell
-    }
 }
-
 
 extension HomeViewController: UserTopBarDelegate {
 
@@ -136,18 +106,41 @@ extension HomeViewController: UserTopBarDelegate {
 extension HomeViewController: ListAdapterDataSource {
 
     func objects(for listAdapter: ListAdapter) -> [ListDiffable] {
-        guard let timeline = timeline else { return [] }
-        return timeline.tweets
+        guard let timelineController = timelineController else { return [] }
+        return timelineController.usersTimeline()
     }
 
     func listAdapter(_ listAdapter: ListAdapter, sectionControllerFor object: Any) -> ListSectionController {
-        return TimelineSectionController(timeline: timeline)
+        let configureBlock = { (item: Any, cell: UICollectionViewCell) in
+            guard let cell = cell as? TimelineUserCollectionViewCell, let user = item as? TwitterTimelineElement else { return }
+            cell.configure(with: user)
+        }
+
+        let sizeBlock = { (item: Any, context: ListCollectionContext?) -> CGSize in
+            guard let context = context else { return .zero }
+            return CGSize(width: context.containerSize.width, height: 80)
+        }
+        let sectionController = ListSingleSectionController(nibName: "TimelineUserCollectionViewCell",
+                                                            bundle: Bundle.main,
+                                                            configureBlock: configureBlock,
+                                                            sizeBlock: sizeBlock)
+        sectionController.selectionDelegate = self
+        return sectionController
     }
 
     func emptyView(for listAdapter: ListAdapter) -> UIView? {
+        // TODO: cache this view
         // TODO: create empty state UIViewController
-        let emptyView = UIView(frame: collectionView.bounds)
-        emptyView.backgroundColor = .white
-        return emptyView
+//        let emptyView = UIView(frame: collectionView.bounds)
+//        emptyView.backgroundColor = .white
+//        return emptyView
+        return nil
+    }
+}
+
+extension HomeViewController: ListSingleSectionControllerDelegate {
+
+    func didSelect(_ sectionController: ListSingleSectionController, with object: Any) {
+
     }
 }

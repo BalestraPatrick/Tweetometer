@@ -15,7 +15,7 @@ class TimelineDownloaderOperation: Operation {
     let semaphore = DispatchSemaphore(value: 0)
     let maxId: String?
 
-    var result: Result<Timeline>?
+    var result: Result<[Tweet]>?
 
     init(client: TWTRAPIClient, maxId: String? = nil) {
         self.client = client
@@ -31,20 +31,26 @@ class TimelineDownloaderOperation: Operation {
         }
         let request = client.urlRequest(withMethod: "GET", urlString: url, parameters: parameters, error: nil)
         client.sendTwitterRequest(request) { [unowned self] response, data, error in
-            if let error = error {
-                return self.result = .error(TweetometerError.from(error))
+            // Closure is called on main thread for whatever Twitter engineers reason had, go back to background thread to do JSON decoding.
+            DispatchQueue.global(qos: .userInitiated).async {
+                if let error = error {
+                    self.result = .error(TweetometerError.from(error))
+                    self.semaphore.signal()
+                    return
+                }
+                guard let data = data else {
+                    self.result = .error(TweetometerError.invalidResponse)
+                    self.semaphore.signal()
+                    return
+                }
+                do {
+                    let tweets = try JSONDecoder.twitter.decode([Tweet].self, from: data)
+                    self.result = .success(tweets)
+                } catch {
+                    self.result = .error(TweetometerError.invalidResponse)
+                }
+                self.semaphore.signal()
             }
-            guard let data = data else {
-                return self.result = .error(TweetometerError.invalidResponse)
-            }
-
-            do {
-                let tweets = try JSONDecoder.twitter.decode([Tweet].self, from: data)
-                self.result = .success(Timeline(tweets: tweets))
-            } catch {
-                return self.result = .error(TweetometerError.invalidResponse)
-            }
-            self.semaphore.signal()
         }
         self.semaphore.wait()
     }

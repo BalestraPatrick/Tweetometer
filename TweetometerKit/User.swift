@@ -7,8 +7,9 @@
 //
 
 import Foundation
+import IGListKit
 
-public struct User: Codable {
+public class User: Codable {
     public let idStr: String
     public let followersCount: Int
     public let friendsCount: Int
@@ -33,7 +34,7 @@ public struct User: Codable {
         case location
     }
 
-    public init(from decoder: Decoder) throws {
+    required public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         idStr = try container.decode(String.self, forKey: .idStr)
         followersCount = try container.decode(Int.self, forKey: .followersCount)
@@ -48,6 +49,41 @@ public struct User: Codable {
     }
 }
 
+extension User: ListDiffable {
+
+    public func diffIdentifier() -> NSObjectProtocol {
+        return hashValue as NSObjectProtocol
+    }
+
+    public func isEqual(toDiffableObject object: ListDiffable?) -> Bool {
+        return hashValue == (object as? User).hashValue
+    }
+}
+
+extension User: Equatable {
+
+    public static func == (lhs: User, rhs: User) -> Bool {
+        return
+            lhs.idStr == rhs.idStr &&
+            lhs.followersCount == rhs.followersCount &&
+            lhs.friendsCount == rhs.friendsCount &&
+            lhs.statusesCount == rhs.statusesCount &&
+            lhs.screenName == rhs.screenName &&
+            lhs.name == rhs.name &&
+            lhs.descriptionText == rhs.descriptionText &&
+            lhs.profileBannerUrl == rhs.profileBannerUrl &&
+            lhs.profileImageUrl == rhs.profileImageUrl &&
+            lhs.location == rhs.location
+    }
+}
+
+extension User: Hashable {
+
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(idStr)
+    }
+}
+
 extension User: CustomStringConvertible {
 
     public var description: String {
@@ -55,18 +91,10 @@ extension User: CustomStringConvertible {
     }
 }
 
-public extension User {
-
-    fileprivate func convertToBiggerFormat(_ URL: String) -> String {
-        let biggerURL = URL.replacingOccurrences(of: "normal", with: "bigger")
-        return biggerURL
-    }
-
-//    public func retweetedTweetsCount() -> Int {
-//        return tweets().filter { $0.retweeted }.count
-//    }
+//public extension User {
 //
-//    public func repliesTweetsCount() -> Int {
-//        return tweets().filter { $0.reply }.count
+//    fileprivate func convertToBiggerFormat(_ URL: String) -> String {
+//        let biggerURL = URL.replacingOccurrences(of: "normal", with: "bigger")
+//        return biggerURL
 //    }
-}
+//}

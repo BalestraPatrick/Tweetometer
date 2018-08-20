@@ -19,12 +19,15 @@ class TimelineUserCollectionViewCell: UICollectionViewCell {
     @IBOutlet private var followingCount: UILabel!
     @IBOutlet private var tweetsCountLabel: UILabel!
 
-    func configure(with user: User) {
-        profileImageView.kf.setImage(with: URL(string: user.profileImageUrl))
-        nameLabel.text = user.screenName
-        usernameLabel.text = user.name
-        followersCount.text = "\(user.followersCount) followers"
-        followingCount.text = "\(user.friendsCount) following"
-        tweetsCountLabel.text = "\(user.statusesCount) tweets"
+    deinit {
+        profileImageView.kf.cancelDownloadTask()
+    }
+    func configure(with element: TwitterTimelineElement) {
+        profileImageView.kf.setImage(with: URL(string: element.user.profileImageUrl))
+        nameLabel.text = "@".appending(element.user.screenName)
+        usernameLabel.text = element.user.name
+        followersCount.text = "\(element.user.followersCount) followers"
+        followingCount.text = "\(element.user.friendsCount) following"
+        tweetsCountLabel.text = "\(element.tweets.count) tweets"
     }
 }

@@ -11,10 +11,10 @@ import IGListKit
 
 class TimelineSectionController: ListSectionController {
 
-    var timeline: Timeline?
+    var timelineController: TimelineModelController?
 
-    init(timeline: Timeline? = nil) {
-        self.timeline = timeline
+    init(timelineController: TimelineModelController? = nil) {
+        self.timelineController = timelineController
         super.init()
         setUp()
     }
@@ -24,8 +24,8 @@ class TimelineSectionController: ListSectionController {
     }
 
     override func numberOfItems() -> Int {
-        guard let timeline = timeline else { return 0 }
-        return timeline.tweets.count
+        guard let timelineController = timelineController else { return 0 }
+        return timelineController.usersTimeline().count
     }
 
     override func sizeForItem(at index: Int) -> CGSize {
@@ -35,9 +35,8 @@ class TimelineSectionController: ListSectionController {
     }
 
     override func cellForItem(at index: Int) -> UICollectionViewCell {
-        guard let cell = collectionContext?.dequeueReusableCell(withNibName: "TimelineUserCollectionViewCell", bundle: Bundle.main, for: self, at: index) else { fatalError() }
-        guard let tweets = timeline?.tweets, index < tweets.count else { fatalError("Index is greater than the number of tweets.") }
-//        cell.configure(with: tweets[index])
+        guard let cell = collectionContext?.dequeueReusableCell(withNibName: "TimelineUserCollectionViewCell", bundle: Bundle.main, for: self, at: index) as? TimelineUserCollectionViewCell else { fatalError() }
+        
         return cell
     }
 

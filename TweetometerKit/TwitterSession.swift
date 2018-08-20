@@ -9,28 +9,6 @@
 import Foundation
 import TwitterKit
 
-public enum TweetometerError: Error {
-    case notAuthenticated
-    case invalidResponse
-    case rateLimitExceeded
-    case noInternetConnection
-    case failedAnalysis
-    case unknown(Error)
-
-    static func from(_ error: Error) -> TweetometerError {
-        switch (error as NSError).code {
-        case 88: return .rateLimitExceeded
-        case -1009: return .noInternetConnection
-        default: return .unknown(error)
-        }
-    }
-}
-
-public enum Result<T> {
-    case success(T)
-    case error(TweetometerError)
-}
-
 public final class TwitterSession {
 
     public typealias CompletionBlock<T> = (Result<T>) -> Void
@@ -53,18 +31,17 @@ public final class TwitterSession {
         return TWTRTwitter.sharedInstance().sessionStore.session()?.userID
     }
     private var loggedInUser: TWTRUser?
+    private var timelineRequestsCount = 4
 
-    private var remainingTimelineRequests = 4
-    private final let maximumTweetsPerRequest = 200
-
-    let serialQueue: OperationQueue = {
+    private let serialQueue: OperationQueue = {
         let queue = OperationQueue()
         queue.maxConcurrentOperationCount = 1
         queue.waitUntilAllOperationsAreFinished()
         return queue
     }()
 
-    var timelineCompletion: CompletionBlock<Timeline>?
+    private let timelineController = TimelineModelController()
+    private var timelineCompletion: CompletionBlock<TimelineModelController>?
 
     public init() { }
 
@@ -101,7 +78,7 @@ public final class TwitterSession {
     /// - Parameters:
     ///   - maxId: The optional maximum tweetID used to return only the oldest tweets.
     ///   - completion: The completion block containing an optional error.
-    public func getTimeline(before maxId: String? = nil, completion: @escaping CompletionBlock<Timeline>) {
+    public func getTimeline(before maxId: String? = nil, completion: @escaping CompletionBlock<TimelineModelController>) {
         guard let client = client else { return completion(.error(TweetometerError.notAuthenticated)) }
         self.timelineCompletion = completion
 
@@ -109,11 +86,29 @@ public final class TwitterSession {
         timelineOperation.completionBlock = {
             guard let result = timelineOperation.result else { return }
             switch result {
-            case .success(let timeline): self.timelineCompletion?(.success(timeline))
-            case .error(let error): self.timelineCompletion?(.error(error))
+            case .success(let tweets):
+                self.timelineController.add(tweets: tweets)
+                self.timelineCompletion?(.success(self.timelineController))
+//                self.timelineRequestsCount -= 1
+//                if self.shouldRequestMoreTimelineTweets() {
+//                    print("requesting more tweets older of: \(tweets.last!.idStr)")
+//                    self.getTimeline(before: tweets.last!.idStr, completion: completion)
+//                }
+            case .error(let error):
+                self.timelineCompletion?(.error(error))
             }
-
         }
         serialQueue.addOperation(timelineOperation)
+        print(serialQueue.operations)
+    }
+
+    private func shouldRequestMoreTimelineTweets() -> Bool {
+        if timelineRequestsCount >= 0 {
+            return true
+        } else {
+            // Reset the count for the next request.
+            timelineRequestsCount = 4
+            return false
+        }
     }
 }

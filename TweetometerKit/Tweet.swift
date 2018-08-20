@@ -22,12 +22,32 @@ public class Tweet: Codable {
 extension Tweet: ListDiffable {
 
     public func diffIdentifier() -> NSObjectProtocol {
-        return idStr as NSString
+        return hashValue as NSObjectProtocol
     }
 
     public func isEqual(toDiffableObject object: ListDiffable?) -> Bool {
-        guard let idStr2 = object?.diffIdentifier() as? String else { return false }
-        return idStr == idStr2
+        return hashValue == (object as? Tweet).hashValue
+    }
+}
+
+extension Tweet: Equatable {
+
+    public static func == (lhs: Tweet, rhs: Tweet) -> Bool {
+        return
+            lhs.idStr == rhs.idStr &&
+            lhs.createdAt == rhs.createdAt &&
+            lhs.favoriteCount == rhs.favoriteCount &&
+            lhs.retweetCount == rhs.retweetCount &&
+            lhs.retweeted == rhs.retweeted &&
+            lhs.user == rhs.user &&
+            lhs.text == rhs.text
+    }
+}
+
+extension Tweet: Hashable {
+
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(idStr)
     }
 }
 
